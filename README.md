@@ -1,8 +1,58 @@
+
+<div align="center">
+
 # NJUST-JWC-Enhance
+# **🎓 南京理工大学教务系统增强脚本**
 
-南京理工大学教务系统增强脚本
+![GitHub stars](https://img.shields.io/github/stars/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square) ![GitHub forks](https://img.shields.io/github/forks/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square) ![GitHub issues](https://img.shields.io/github/issues/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square) ![GitHub license](https://img.shields.io/github/license/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square)  
 
-## 功能特性
+
+
+*让教务系统更好用的浏览器插件*
+
+[快速开始](#快速开始) • [功能特性](#功能特性) • [使用方法](#使用方法) • [技术实现](#技术实现)
+
+</div>
+
+
+
+---
+
+## 🚀 快速开始
+
+### 一键安装
+
+1. **安装用户脚本管理器**
+   
+   推荐使用以下任一用户脚本管理器：
+   
+   - **Tampermonkey** - 主流跨平台用户脚本管理器
+     - [Chrome 商店安装](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) | [Firefox 安装](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/) | [Edge 商店安装](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
+   - **ScriptCat 脚本猫** - 国产开源脚本管理器
+     - [官方文档](https://docs.scriptcat.org/) 
+     - [Edge 商店安装](https://microsoftedge.microsoft.com/addons/detail/%E8%84%9A%E6%9C%AC%E7%8C%AB/liilgpjgabokdklappibcjfablkpcekh) 
+     - [Chrome 商店安装](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf)
+
+2. **安装脚本**
+   ```bash
+   # 点击下方链接直接安装
+   ```
+   📥 [点击安装 enhance.js](https://github.com/your-username/NJUST-JWC-Enhance/raw/main/enhance.js)
+   
+   📥 [点击安装 getKCDG.js](https://github.com/your-username/NJUST-JWC-Enhance/raw/main/getKCDG.js) *(可选，仅数据采集需要)*
+
+3. **开始使用**
+   - 登录 [南理工教务系统](http://202.119.81.113:8080/)
+   - 脚本将自动启用，享受增强功能！
+
+### ⚡ 核心功能预览
+
+- 🔗 **教学大纲链接** - 课表/选课页面一键查看课程大纲
+- 📊 **学分统计** - 成绩页面自动汇总选修课学分
+- 🏷️ **课程分类** - 显示选修课详细类别信息
+- 🚪 **登录优化** - 智能识别并引导正确登录入口
+
+## 📋 功能特性
 
 本脚本实现以下功能增强：
 
@@ -136,11 +186,27 @@
 3. 通过 `conv.py` 脚本将 CSV 转换为所需 JSON 格式
 4. 自动剔除未上传教学大纲的课程记录
 
-## 使用方法
+## 📖 详细使用指南
 
-1. 安装浏览器扩展 [Tampermonkey](https://www.tampermonkey.net/)
-2. 导入本脚本
-3. 登录南京理工大学教务系统，即可自动启用增强功能
+### 基础使用
+
+安装完成后，脚本会在以下页面自动生效：
+
+- ✅ **课程表页面** - 显示教学大纲链接
+- ✅ **选课页面** - 显示课程分类和大纲链接  
+- ✅ **成绩页面** - 自动统计学分，显示课程分类
+- ✅ **登录页面** - 智能提示正确登录入口
+
+### 高级功能：数据采集
+
+如需更新课程数据，可使用 `getKCDG.js` 脚本：
+
+1. 访问 [课程总库页面](http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz)
+2. 按照脚本提示配置显示字段
+3. 点击"开始采集"自动抓取所有课程数据
+4. 导出 JSON 格式的课程大纲映射数据
+
+> 💡 **提示**：普通用户无需使用数据采集功能，脚本已内置最新数据
 
 ## 免责声明 ⚠️
 
@@ -154,12 +220,52 @@
   
 * **开发者不对任何因使用本工具而产生的后果承担责任**
 
-## 技术栈
+## 🛠️ 技术栈
 
-* JavaScript（前端增强脚本）
-* Python（数据爬取与处理）
-* Tampermonkey（用户脚本管理器）
+- **JavaScript** - 前端增强脚本
+- **Python** - 数据爬取与处理  
+- **Tampermonkey** - 用户脚本管理器
+- **JSON** - 数据存储格式
+
+## 🤝 贡献指南
+
+欢迎提交 Issue 和 Pull Request！
+
+### 如何贡献
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启 Pull Request
+
+### 数据更新
+
+- **选修课分类数据** (`xxk.json`) - 每四年更新一次
+- **教学大纲数据** (`kcdg.json`) - 建议每年更新一次
+
+如果发现数据过期，欢迎提交 Issue 或使用 `getKCDG.js` 采集最新数据后提交 PR。
+
+## 📄 许可证
+
+本项目采用 [MIT License](LICENSE) 许可证。
+
+## ⭐ Star History
+
+如果这个项目对你有帮助，请给个 Star ⭐
+
+## 📞 联系方式
+
+- 📧 Email: your-email@example.com
+- 🐛 Issues: [GitHub Issues](https://github.com/your-username/NJUST-JWC-Enhance/issues)
+- 💬 Discussions: [GitHub Discussions](https://github.com/your-username/NJUST-JWC-Enhance/discussions)
 
 ---
 
-> *注：部分变量命名遵循原教务系统命名规范，以保证兼容性*
+<div align="center">
+
+**Made with ❤️ for NJUST students**
+
+*部分变量命名遵循原教务系统命名规范，以保证兼容性*
+
+</div>
