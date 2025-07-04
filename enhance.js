@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         1南理工选课增强脚本（类别 + 大纲 + 老师说明）
+// @name         南理工教务增强助手
 // @namespace    http://tampermonkey.net/
-// @version      8
-// @description  在课程代码下方完整显示：选修类别、老师说明、大纲链接
+// @version      1.2
+// @description  在合适的地方显示课程大纲、选修课类别及选修课学分情况
 // @match        202.119.81.112/*
 // @match        bkjw.njust.edu.cn/*
 // @match       202.119.81.112:9080/*
@@ -57,7 +57,7 @@
             padding: 0;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             z-index: 10000;
-            min-width: 400px;
+            min-width: 200px;
             max-width: 500px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             overflow: hidden;
@@ -293,67 +293,66 @@
         container.id = 'creditSummaryWindow';
         container.style.cssText = `
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 12px;
+            top: 40px;
+            right: 40px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 14px;
             padding: 0;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.13);
             z-index: 9999;
-            min-width: 280px;
-            max-width: 350px;
+            min-width: 420px;
+            max-width: 520px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             overflow: hidden;
         `;
 
         container.innerHTML = `
             <div id="creditDragHandle" style="
-                background: rgba(255,255,255,0.1);
-                padding: 12px 15px;
+                background: #f5f6fa;
+                padding: 14px 22px;
                 cursor: move;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                border-bottom: 1px solid rgba(255,255,255,0.2);
+                border-bottom: 1px solid #e0e0e0;
             ">
-                <div style="color: white; font-weight: bold; font-size: 16px;">
+                <div style="color: #333; font-weight: 600; font-size: 17px; letter-spacing: 1px;">
                     🎓 南理工教务增强助手
                 </div>
                 <span style="
                     cursor: pointer;
-                    color: rgba(255,255,255,0.8);
+                    color: #888;
                     font-size: 18px;
-                    padding: 2px 6px;
+                    padding: 2px 8px;
                     border-radius: 4px;
                     transition: background-color 0.2s;
                 "
                 onclick="this.closest('div').parentElement.remove()"
-                onmouseover="this.style.backgroundColor='rgba(255,255,255,0.2)'"
+                onmouseover="this.style.backgroundColor='#e0e0e0'"
                 onmouseout="this.style.backgroundColor='transparent'">✕</span>
             </div>
             <div style="
-                background: white;
-                padding: 15px;
-                max-height: 400px;
+                background: #fff;
+                padding: 18px 22px 10px 22px;
+                max-height: 540px;
                 overflow-y: auto;
             ">
                 <div id="creditSummary"></div>
                 <div style="
-                    margin-top: 15px;
+                    margin-top: 18px;
                     padding-top: 12px;
-                    border-top: 1px solid #eee;
-                    font-size: 12px;
-                    color: #666;
-                    line-height: 1.4;
-                    text-align: center;
+                    border-top: 1px solid #e0e0e0;
+                    font-size: 13px;
+                    color: #888;
+                    line-height: 1.6;
+                    text-align: left;
                 ">
-                 <div style="color: #ff6b6b; font-weight: bold; margin-bottom: 5px;">⚠️ 特别声明</div>
-                    <div>选修课类别会发生变化，仅供参考。请以教务处官网为准。</div>
+                 <div style="color: #e67e22; font-weight: 500; margin-bottom: 5px;">⚠️ 特别声明</div>
+                    <div>选修课类别可能发生变化，仅供参考。<br>本工具可能因为教务处改版而不可靠，不对数据准确性负责</div>
                     <div style="margin-bottom: 8px;">
-                        <p>请查看 <a href="https://enhance.njust.wiki" target="_blank" style="color: #007bff; text-decoration: none;">南理工教务增强助手官方网站 </a> 以获取使用说明</p>
+                        <span>请查看 <a href="https://enhance.njust.wiki" target="_blank" style="color: #007bff; text-decoration: none;">南理工教务增强助手官方网站</a> 以获取使用说明</span>
                     </div>
-                   
                 </div>
             </div>
         `;
@@ -474,37 +473,42 @@
         const totalCountByCategory = Object.values(creditsByCategory).reduce((sum, data) => sum + data.count, 0);
 
         // 生成HTML - 表格样式布局
-        let summaryHTML = '<div style="border-bottom: 1px solid #eee; margin-bottom: 15px; padding-bottom: 15px;">';
-        summaryHTML += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">';
-        summaryHTML += '<strong style="color: #333; font-size: 14px;">📊 按课程类型统计</strong>';
-        summaryHTML += `<span style="color: #007bff; font-weight: bold; font-size: 13px;">${totalCreditsByType.toFixed(1)} 学分 (${totalCountByType} 门)</span>`;
-        summaryHTML += '</div>';
-        
+        let summaryHTML = '<div style="border-bottom: 1px solid #e0e0e0; margin-bottom: 12px; padding-bottom: 10px;">';
+        summaryHTML += '<div style="margin-bottom: 8px; font-size: 15px; color: #222; font-weight: 600; letter-spacing: 0.5px;">📊 按课程类型统计</div>';
+        // 总计行
+        summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; padding: 2px 0; align-items: center; background: #f7f7fa; border-radius: 4px; padding: 4px 6px; margin-bottom: 4px;">
+            <span style="color: #007bff; font-weight: 600; font-size: 13px; text-align: left;">总计</span>
+            <span style="font-weight: 600; color: #007bff; font-size: 13px; text-align: left;">${totalCreditsByType.toFixed(1)} 学分</span>
+            <span style="color: #007bff; font-weight: 600; font-size: 13px; text-align: left;">${totalCountByType} 门</span>
+        </div>`;
         // 课程类型表格
-        summaryHTML += '<div style="display: grid; gap: 6px;">';
+        summaryHTML += '<div style="display: grid; gap: 2px;">';
         for (const [type, data] of Object.entries(creditsByType)) {
-            summaryHTML += `<div style="display: grid; grid-template-columns: 1fr auto auto; gap: 8px; padding: 6px 0; align-items: center;">
-                <span style="color: #28a745; font-weight: 500;">${type}</span>
-                <span style="font-weight: bold; color: #333;">${data.credits.toFixed(1)} 学分</span>
-                <span style="color: #666; font-size: 12px;">${data.count} 门</span>
+            summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; padding: 2px 0; align-items: center;">
+                <span style="color: #444; font-weight: 400; font-size: 13px; text-align: left;">${type}</span>
+                <span style="font-weight: 400; color: #333; font-size: 13px; text-align: left;">${data.credits.toFixed(1)} 学分</span>
+                <span style="color: #888; font-size: 13px; text-align: left;">${data.count} 门</span>
             </div>`;
         }
         summaryHTML += '</div>';
+        summaryHTML += '</div>';
 
         if (Object.keys(creditsByCategory).length > 0) {
-            summaryHTML += '</div><div style="margin-top: 15px;">';
-            summaryHTML += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">';
-            summaryHTML += '<strong style="color: #333; font-size: 14px;">🏷️ 按选修课类别统计</strong>';
-            summaryHTML += `<span style="color: #007bff; font-weight: bold; font-size: 13px;">${totalCreditsByCategory.toFixed(1)} 学分 (${totalCountByCategory} 门)</span>`;
-            summaryHTML += '</div>';
-            
+            summaryHTML += '</div><div style="margin-top: 16px;">';
+            summaryHTML += '<div style="margin-bottom: 8px; font-size: 15px; color: #222; font-weight: 600; letter-spacing: 0.5px;">🏷️ 按选修课类别统计</div>';
+            // 总计行
+            summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; padding: 2px 0; align-items: center; background: #f7f7fa; border-radius: 4px; padding: 4px 6px; margin-bottom: 4px;">
+                <span style="color: 007bff; font-weight: 600; font-size: 13px; text-align: left;">总计</span>
+                <span style="font-weight: 600; color: #007bff; font-size: 13px; text-align: left;">${totalCreditsByCategory.toFixed(1)} 学分</span>
+                <span style="color: #007bff; font-weight: 600; font-size: 13px; text-align: left;">${totalCountByCategory} 门</span>
+            </div>`;
             // 选修课类别表格
-            summaryHTML += '<div style="display: grid; gap: 6px;">';
+            summaryHTML += '<div style="display: grid; gap: 2px;">';
             for (const [category, data] of Object.entries(creditsByCategory)) {
-                summaryHTML += `<div style="display: grid; grid-template-columns: 1fr auto auto; gap: 8px; padding: 6px 0; align-items: center;">
-                    <span style="color: #28a745; font-weight: 500;">${category}</span>
-                    <span style="font-weight: bold; color: #333;">${data.credits.toFixed(1)} 学分</span>
-                    <span style="color: #666; font-size: 12px;">${data.count} 门</span>
+                summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; padding: 2px 0; align-items: center;">
+                    <span style="color: #444; font-weight: 400; font-size: 13px; text-align: left;">${category}</span>
+                    <span style="font-weight: 400; color: #333; font-size: 13px; text-align: left;">${data.credits.toFixed(1)} 学分</span>
+                    <span style="color: #888; font-size: 13px; text-align: left;">${data.count} 门</span>
                 </div>`;
             }
             summaryHTML += '</div>';
