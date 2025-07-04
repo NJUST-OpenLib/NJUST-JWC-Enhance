@@ -88,7 +88,7 @@
   `;
   document.body.appendChild(panel);
 document.getElementById('btnOpenExternal').onclick = () => {
-  window.open('https://jwc-enhance.njust.wiki/csv2json.html', '_blank');
+  window.open('https://enhance.njust.wiki/tools/csv2json.html', '_blank');
 };
   function parsePageCourses() {
     const rows = document.querySelectorAll('tbody tr.smartTr');
