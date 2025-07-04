@@ -46,14 +46,14 @@
     <!-- 页面标题 -->
     <header class="text-center mb-10">
       <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-primary mb-2">课程数据解析器</h1>
-      <p class="text-secondary">将三行一组的课程数据转换为JSON格式</p>
+      <p class="text-secondary">将三行一组的课程数据转换为增强助手使用的 JSON 格式</p>
     </header>
     <div class="bg-blue-50 border-l-4 border-primary p-4 mb-6 rounded-r-lg">
       <h3 class="text-lg font-semibold text-primary mb-2">📋 使用说明</h3>
       <ul class="text-secondary space-y-1 text-sm">
         <li>• 适用于处理南理工教务处发布的<a href="https://jwc.njust.edu.cn/b1/7f/c1189a307583/page.htm" target="_blank" class="text-primary hover:underline">通识教育选修课分类汇总（2022 版）</a>页面的课程数据</li>
         <li>• 直接从教务系统表格复制数据，粘贴到输入框即可自动解析</li>
-        <li>• 数据格式：每3行为一组（课程号、课程名、类别）</li>
+        <li>• 数据格式：每 3 行为一组（课程号、课程名、类别）无须人为处理空行</li>
         <li>• 导出的 JSON 文件可替换 enhance.js 中的 xxk.json，以适配新版教学大纲（如有）的选修课类别</li>
       </ul>
     </div>
@@ -71,7 +71,9 @@
 课程号1
 课程名1
 类别1
+
 课程号2
+
 课程名2
 类别2"
         ></textarea>
