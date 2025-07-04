@@ -1,12 +1,14 @@
 # 🎓 南理工教务系统增强助手
 
+
 > 🧩 让教务系统更顺手的浏览器脚本  
 > 💡 支持南京理工大学和其他使用“湖南强智教务系统”的高校
 
 <div align="center">
-  <img src="https://cdn.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/catag.png" width="340" alt="课程分类示意图" />
-  <img src="https://cdn.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kczk4.png" width="340" alt="课程增强示意图" />
-</div>
+  <img src="https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/catag.png"  alt="课程分类示意图" />
+
+  <img src="https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kczk4.png" alt="课程增强示意图" />
+
 
 <p align="center">
   <img src="https://img.shields.io/github/stars/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
@@ -32,6 +34,7 @@
 详细图文说明和数据结构介绍请参见：
 
 - 🧩 [增强功能效果说明（README.enhance.md）](./README.enhance.md)
+
 - 📦 [课程大纲采集流程（README.getKCDG.md）](./README.getKCDG.md)
 
 ---
@@ -77,6 +80,8 @@ scriptcat.org 和 GreasyFork 都是脚本仓库，选择一个即可
 > [GreasyFork](https://greasyfork.org/zh-CN/scripts/541628)
 
 ### 3 启用脚本
+
+![启用](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/PixPin_2025-07-04_23-19-05.png)
 
 访问 [教务系统主页](http://202.119.81.113:8080/)，脚本会自动启用，无需手动配置。
 
