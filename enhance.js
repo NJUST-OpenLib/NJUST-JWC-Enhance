@@ -5,10 +5,13 @@
 // @description  在合适的地方显示课程大纲、选修课类别及选修课学分情况
 // @match        202.119.81.112/*
 // @match        bkjw.njust.edu.cn/*
-// @match       202.119.81.112:9080/*
-// @match       202.119.81.113:9080/*
+// @match        202.119.81.112:9080/*
+// @match        202.119.81.113:9080/*
 // @grant        GM_xmlhttpRequest
 // @connect      jsdelivr.net
+// @author       Light
+// @license      MIT
+// @supportURL   https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance
 // ==/UserScript==
 
 (function () {
@@ -574,7 +577,7 @@
                     const titleDiv = document.createElement('div');
                     titleDiv.setAttribute('data-title-inserted', '1');
                     titleDiv.style.color = '#666';
-                    titleDiv.style.fontSize = '13px';
+                    titleDiv.style.fontSize = '13   px';
                     titleDiv.style.marginTop = '4px';
                     titleDiv.style.fontStyle = 'italic';
                     titleDiv.textContent = `📌 老师说明：${courseCodeTd.title}`;
