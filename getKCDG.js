@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         课程采集助手V2（带暂停/停止+完整大纲链接+格式化展示）
-// @namespace    http://tampermonkey.net/
+// @name         南理工教务处课程采集助手 V2
 // @version      2.1
-// @description  自动采集课程信息，自动翻页，导出 CSV，带暂停/停止，展示格式化数据表格，拼接完整大纲 URL
+// @description  从南理工教务处（基于湖南强智科技开发，其他学校或许也可使用）的课程总库里爬取课程信息。支持自动翻页，导出 CSV，带暂停/停止，展示格式化数据表格，拼接完整大纲 URL
 // @author       Light + ChatGPT
 // @match        http://202.119.81.112:8080//Logon.do*
-// @grant        none
+// @license      MIT
+// @supportURL   https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance
 // ==/UserScript==
 
 (function() {
