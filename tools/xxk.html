@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>课程数据解析器</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#3b82f6',
+          secondary: '#64748b',
+          accent: '#10b981',
+          neutral: '#f1f5f9',
+          dark: '#1e293b'
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        },
+      },
+    }
+  }
+</script>
+<style type="text/tailwindcss">
+  @layer utilities {
+    .content-auto {
+      content-visibility: auto;
+    }
+    .card-shadow {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .btn-hover {
+      transition: all 0.3s ease;
+    }
+    .btn-hover:hover {
+      transform: translateY(-2px);
+    }
+  }
+</style>
+</head>
+<body class="bg-gray-50 font-sans text-dark">
+  <div class="container mx-auto px-4 py-8 max-w-5xl">
+    <!-- 页面标题 -->
+    <header class="text-center mb-10">
+      <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-primary mb-2">课程数据解析器</h1>
+      <p class="text-secondary">将三行一组的课程数据转换为JSON格式</p>
+    </header>
+
+    <!-- 主内容卡片 -->
+    <div class="bg-white rounded-xl card-shadow p-6 mb-8 transition-all duration-300 hover:shadow-lg">
+      <div class="mb-4">
+        <h2 class="text-xl font-semibold mb-3 text-dark flex items-center">
+          <i class="fa fa-info-circle text-primary mr-2"></i>数据输入
+        </h2>
+        <p class="text-secondary text-sm mb-3">请输入课程数据，每3行为一组（课程号，课程名，类别）</p>
+        <textarea 
+          id="inputData" 
+          class="w-full h-40 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none font-mono text-sm"
+          placeholder="例如：
+课程号1
+课程名1
+类别1
+课程号2
+课程名2
+类别2"
+        ></textarea>
+      </div>
+
+      <!-- 按钮区域 -->
+      <div class="flex flex-wrap gap-3 mt-4">
+        <button 
+          onclick="parseCourses()" 
+          class="bg-primary text-white px-5 py-2 rounded-lg flex items-center btn-hover card-shadow"
+        >
+          <i class="fa fa-magic mr-2"></i>解析为JSON
+        </button>
+        <button 
+          id="downloadBtn" 
+          onclick="downloadJson()" 
+          class="bg-accent text-white px-5 py-2 rounded-lg flex items-center btn-hover card-shadow opacity-50 cursor-not-allowed"
+          disabled
+        >
+          <i class="fa fa-download mr-2"></i>下载JSON
+        </button>
+        <button 
+          onclick="clearAll()" 
+          class="bg-gray-200 text-secondary px-5 py-2 rounded-lg flex items-center btn-hover"
+        >
+          <i class="fa fa-trash mr-2"></i>清空内容
+        </button>
+      </div>
+    </div>
+
+    <!-- 结果展示区域 -->
+    <div class="bg-white rounded-xl card-shadow p-6 transition-all duration-300 hover:shadow-lg">
+      <h2 class="text-xl font-semibold mb-3 text-dark flex items-center">
+        <i class="fa fa-code text-primary mr-2"></i>解析结果
+      </h2>
+      <div class="relative">
+        <pre id="outputJson" class="bg-neutral p-4 rounded-lg overflow-x-auto max-h-96 text-sm font-mono"></pre>
+        <div id="emptyResult" class="absolute inset-0 flex items-center justify-center text-secondary">
+          解析结果将显示在这里
+        </div>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="mt-10 text-center text-secondary text-sm">
+      <p>课程数据解析器 &copy; 2023</p>
+    </footer>
+  </div>
+
+  <script>
+    // 解析课程数据为JSON
+    function parseCourses() {
+      const input = document.getElementById('inputData').value.trim();
+      const outputElement = document.getElementById('outputJson');
+      const emptyResult = document.getElementById('emptyResult');
+      const downloadBtn = document.getElementById('downloadBtn');
+
+      if (!input) {
+        showNotification('请输入课程数据', 'warning');
+        return;
+      }
+
+      // 处理输入数据
+      const lines = input.split('\n')
+        .map(line => line.trim())
+        .filter(line => line !== '');
+
+      const courses = [];
+      let hasWarning = false;
+
+      for (let i = 0; i < lines.length; i += 3) {
+        if (i + 2 < lines.length) {
+          const course_code = lines[i];
+          const course_name = lines[i + 1];
+          const category = lines[i + 2];
+          courses.push({ course_code, course_name, category });
+        } else {
+          hasWarning = true;
+        }
+      }
+
+      // 显示结果
+      const jsonResult = JSON.stringify(courses, null, 2);
+      outputElement.textContent = jsonResult;
+      emptyResult.style.display = 'none';
+      
+      // 启用下载按钮
+      downloadBtn.disabled = false;
+      downloadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      
+      // 显示通知
+      showNotification(`成功解析 ${courses.length} 条课程数据`, 'success');
+      
+      // 如果有不完整数据，显示警告
+      if (hasWarning) {
+        showNotification('警告：数据行数不是3的倍数，最后部分数据已忽略', 'warning');
+      }
+    }
+
+    // 下载JSON文件
+    function downloadJson() {
+      const jsonData = document.getElementById('outputJson').textContent;
+      
+      if (!jsonData) {
+        showNotification('没有可下载的解析结果', 'warning');
+        return;
+      }
+      
+      // 创建Blob对象
+      const blob = new Blob([jsonData], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      
+      // 创建下载链接
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'course_data_' + new Date().getTime() + '.json';
+      document.body.appendChild(a);
+      a.click();
+      
+      // 清理
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 0);
+      
+      showNotification('JSON文件已下载', 'success');
+    }
+
+    // 清空所有内容
+    function clearAll() {
+      document.getElementById('inputData').value = '';
+      document.getElementById('outputJson').textContent = '';
+      document.getElementById('emptyResult').style.display = 'flex';
+      
+      const downloadBtn = document.getElementById('downloadBtn');
+      downloadBtn.disabled = true;
+      downloadBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    }
+
+    // 显示通知消息
+    function showNotification(message, type = 'info') {
+      // 创建通知元素
+      const notification = document.createElement('div');
+      
+      // 设置样式和图标
+      let bgColor, icon;
+      switch(type) {
+        case 'success':
+          bgColor = 'bg-accent';
+          icon = 'fa-check-circle';
+          break;
+        case 'warning':
+          bgColor = 'bg-amber-500';
+          icon = 'fa-exclamation-triangle';
+          break;
+        default:
+          bgColor = 'bg-primary';
+          icon = 'fa-info-circle';
+      }
+      
+      notification.className = `${bgColor} text-white px-4 py-3 rounded-lg fixed bottom-4 right-4 flex items-center card-shadow z-50 transform translate-y-20 opacity-0 transition-all duration-300`;
+      notification.innerHTML = `<i class="fa ${icon} mr-2"></i> ${message}`;
+      
+      // 添加到页面
+      document.body.appendChild(notification);
+      
+      // 显示通知
+      setTimeout(() => {
+        notification.classList.remove('translate-y-20', 'opacity-0');
+      }, 10);
+      
+      // 自动隐藏
+      setTimeout(() => {
+        notification.classList.add('translate-y-20', 'opacity-0');
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

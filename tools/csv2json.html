@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CSV课程数据筛选导出JSON</title>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#2563eb',
+          secondary: '#64748b',
+          success: '#10b981',
+          warning: '#f59e0b',
+          danger: '#ef4444',
+          neutral: '#f8fafc'
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        },
+      },
+    }
+  }
+</script>
+<style type="text/tailwindcss">
+  @layer utilities {
+    .content-auto {
+      content-visibility: auto;
+    }
+    .card-shadow {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .btn-effect {
+      transition: all 0.2s ease;
+    }
+    .btn-effect:hover {
+      transform: translateY(-2px);
+    }
+    .file-hover {
+      transition: all 0.3s ease;
+    }
+    .file-hover:hover {
+      background-color: rgba(37, 99, 235, 0.05);
+    }
+  }
+</style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 min-h-screen">
+  <div class="container mx-auto px-4 py-8 max-w-5xl">
+    <!-- 页面标题 -->
+    <header class="text-center mb-10">
+      <h1 class="text-[clamp(1.75rem,3vw,2.25rem)] font-bold text-primary mb-3">
+        <i class="fa fa-database mr-2"></i>CSV课程数据筛选工具
+      </h1>
+      <p class="text-secondary max-w-2xl mx-auto">
+        上传CSV文件，筛选并提取课程数据，导出为JSON格式
+      </p>
+    </header>
+
+    <!-- 主内容卡片 -->
+    <div class="bg-white rounded-xl card-shadow p-6 md:p-8 mb-8 transition-all duration-300 hover:shadow-lg">
+      <div class="mb-6">
+        <h2 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
+          <i class="fa fa-upload text-primary mr-2"></i>文件上传
+        </h2>
+        <p class="text-secondary mb-4 text-sm">
+          请选择一个或多个CSV文件（要求包含以下字段："教学大纲录入"、"操作（课程大纲查看链接）"、"课程编号"）
+        </p>
+        
+        <!-- 文件上传区域 -->
+        <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center file-hover" id="fileDropArea">
+          <input 
+            type="file" 
+            id="csvFiles" 
+            accept=".csv" 
+            multiple 
+            class="hidden"
+          />
+          <label for="csvFiles" class="cursor-pointer">
+            <i class="fa fa-file-text-o text-5xl text-primary/60 mb-3"></i>
+            <p class="text-gray-600 mb-2">点击或拖放CSV文件到此处</p>
+            <p class="text-xs text-gray-400">支持多文件上传</p>
+            <div id="selectedFiles" class="mt-4 text-left hidden"></div>
+          </label>
+        </div>
+      </div>
+
+      <!-- 按钮区域 -->
+      <div class="flex flex-wrap gap-4">
+        <button 
+          onclick="processFiles()" 
+          class="bg-primary text-white px-6 py-3 rounded-lg flex items-center btn-effect card-shadow"
+          id="processBtn"
+        >
+          <i class="fa fa-cogs mr-2"></i>开始处理
+        </button>
+        <button 
+          onclick="downloadJson()" 
+          class="bg-success text-white px-6 py-3 rounded-lg flex items-center btn-effect card-shadow opacity-50 cursor-not-allowed"
+          id="downloadBtn"
+          disabled
+        >
+          <i class="fa fa-download mr-2"></i>下载JSON
+        </button>
+        <button 
+          onclick="clearAll()" 
+          class="bg-gray-200 text-gray-700 px-6 py-3 rounded-lg flex items-center btn-effect"
+        >
+          <i class="fa fa-refresh mr-2"></i>重置
+        </button>
+      </div>
+    </div>
+
+    <!-- 处理结果区域 -->
+    <div class="bg-white rounded-xl card-shadow p-6 md:p-8 transition-all duration-300 hover:shadow-lg">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold text-gray-800 flex items-center">
+          <i class="fa fa-code text-primary mr-2"></i>处理结果
+        </h2>
+        <span id="resultCount" class="text-sm text-secondary hidden">
+          找到 <span class="font-semibold">0</span> 条匹配记录
+        </span>
+      </div>
+      
+      <div class="relative">
+        <div id="emptyState" class="py-16 text-center text-secondary">
+          <i class="fa fa-file-code-o text-5xl mb-3 opacity-30"></i>
+          <p>处理结果将显示在这里</p>
+        </div>
+        <div id="loadingState" class="py-16 text-center text-secondary hidden">
+          <i class="fa fa-spinner fa-spin text-5xl mb-3"></i>
+          <p>正在处理文件，请稍候...</p>
+        </div>
+        <pre id="resultJson" class="bg-neutral p-4 rounded-lg overflow-x-auto max-h-96 text-sm font-mono hidden"></pre>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="mt-10 text-center text-secondary text-sm py-4">
+      <p>CSV课程数据筛选工具 &copy; 2023</p>
+    </footer>
+  </div>
+
+  <script>
+    let processedResult = [];
+    
+    // 监听文件选择变化，显示选中的文件名
+    document.getElementById('csvFiles').addEventListener('change', function(e) {
+      const selectedFiles = document.getElementById('selectedFiles');
+      if (this.files.length > 0) {
+        selectedFiles.innerHTML = '';
+        selectedFiles.classList.remove('hidden');
+        
+        const fileList = document.createElement('ul');
+        fileList.className = 'list-disc list-inside text-sm text-gray-600';
+        
+        for (let i = 0; i < this.files.length; i++) {
+          const fileItem = document.createElement('li');
+          fileItem.className = 'mb-1';
+          fileItem.innerHTML = `<i class="fa fa-file-csv text-primary mr-1"></i> ${this.files[i].name}`;
+          fileList.appendChild(fileItem);
+        }
+        
+        selectedFiles.appendChild(fileList);
+      } else {
+        selectedFiles.classList.add('hidden');
+      }
+    });
+    
+    // 拖放功能
+    const fileDropArea = document.getElementById('fileDropArea');
+    
+    fileDropArea.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      this.classList.add('border-primary');
+      this.classList.add('bg-primary/5');
+    });
+    
+    fileDropArea.addEventListener('dragleave', function() {
+      this.classList.remove('border-primary');
+      this.classList.remove('bg-primary/5');
+    });
+    
+    fileDropArea.addEventListener('drop', function(e) {
+      e.preventDefault();
+      this.classList.remove('border-primary');
+      this.classList.remove('bg-primary/5');
+      
+      if (e.dataTransfer.files.length) {
+        document.getElementById('csvFiles').files = e.dataTransfer.files;
+        // 触发change事件以更新显示
+        const event = new Event('change');
+        document.getElementById('csvFiles').dispatchEvent(event);
+      }
+    });
+
+    // 处理文件
+    function processFiles() {
+      const files = document.getElementById('csvFiles').files;
+      if (!files.length) {
+        showNotification('请先选择至少一个CSV文件', 'warning');
+        return;
+      }
+
+      // 重置结果
+      processedResult = [];
+      let filesProcessed = 0;
+      
+      // 显示加载状态
+      toggleStates('loading');
+      
+      for (const file of files) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          try {
+            const csvText = e.target.result;
+            const parsed = Papa.parse(csvText, {
+              header: true,
+              skipEmptyLines: true,
+              encoding: "utf-8"
+            });
+
+            // 检查是否包含关键字段
+            const cols = parsed.meta.fields || [];
+            if (!cols.includes("教学大纲录入") || !cols.includes("操作（课程大纲查看链接）") || !cols.includes("课程编号")) {
+              showNotification(`文件 ${file.name} 缺少必需字段，已跳过`, 'warning');
+              filesProcessed++;
+              checkDone();
+              return;
+            }
+
+            // 处理每一行数据
+            let fileMatches = 0;
+            parsed.data.forEach(row => {
+              if (row["教学大纲录入"] === '√' && 
+                  typeof row["操作（课程大纲查看链接）"] === 'string' && 
+                  typeof row["课程编号"] === 'string') {
+                  
+                const link = row["操作（课程大纲查看链接）"];
+                const match = link.match(/jx02id=([A-Z0-9]+)&isentering/);
+                if (match) {
+                  processedResult.push({
+                    id: match[1],
+                    course_code: row["课程编号"].trim()
+                  });
+                  fileMatches++;
+                }
+              }
+            });
+            
+            showNotification(`文件 ${file.name} 处理完成，找到 ${fileMatches} 条匹配记录`, 'success');
+
+          } catch (error) {
+            showNotification(`文件 ${file.name} 解析错误: ${error.message}`, 'error');
+          }
+          filesProcessed++;
+          checkDone();
+        };
+        reader.readAsText(file, "utf-8");
+      }
+
+      function checkDone() {
+        if (filesProcessed === files.length) {
+          // 显示结果
+          const resultElement = document.getElementById('resultJson');
+          resultElement.textContent = JSON.stringify(processedResult, null, 2);
+          
+          // 更新计数
+          document.querySelector('#resultCount span').textContent = processedResult.length;
+          document.getElementById('resultCount').classList.remove('hidden');
+          
+          // 切换到结果状态
+          toggleStates('result');
+          
+          // 启用下载按钮
+          const downloadBtn = document.getElementById('downloadBtn');
+          downloadBtn.disabled = false;
+          downloadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+          
+          showNotification(`所有文件处理完成，共找到 ${processedResult.length} 条匹配记录`, 'success');
+        }
+      }
+    }
+
+    // 下载JSON结果
+    function downloadJson() {
+      if (processedResult.length === 0) {
+        showNotification('没有可下载的结果数据', 'warning');
+        return;
+      }
+      
+      const jsonData = JSON.stringify(processedResult, null, 2);
+      const blob = new Blob([jsonData], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'course_data_' + new Date().getTime() + '.json';
+      document.body.appendChild(a);
+      a.click();
+      
+      // 清理
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 0);
+      
+      showNotification('JSON文件已成功下载', 'success');
+    }
+
+    // 清空所有内容
+    function clearAll() {
+      document.getElementById('csvFiles').value = '';
+      document.getElementById('selectedFiles').innerHTML = '';
+      document.getElementById('selectedFiles').classList.add('hidden');
+      
+      processedResult = [];
+      toggleStates('empty');
+      
+      const downloadBtn = document.getElementById('downloadBtn');
+      downloadBtn.disabled = true;
+      downloadBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      
+      document.getElementById('resultCount').classList.add('hidden');
+    }
+
+    // 切换不同状态显示
+    function toggleStates(state) {
+      const emptyState = document.getElementById('emptyState');
+      const loadingState = document.getElementById('loadingState');
+      const resultJson = document.getElementById('resultJson');
+      
+      emptyState.classList.add('hidden');
+      loadingState.classList.add('hidden');
+      resultJson.classList.add('hidden');
+      
+      switch(state) {
+        case 'empty':
+          emptyState.classList.remove('hidden');
+          break;
+        case 'loading':
+          loadingState.classList.remove('hidden');
+          break;
+        case 'result':
+          resultJson.classList.remove('hidden');
+          break;
+      }
+    }
+
+    // 显示通知消息
+    function showNotification(message, type = 'info') {
+      // 创建通知元素
+      const notification = document.createElement('div');
+      
+      // 设置样式和图标
+      let bgColor, icon;
+      switch(type) {
+        case 'success':
+          bgColor = 'bg-success';
+          icon = 'fa-check-circle';
+          break;
+        case 'warning':
+          bgColor = 'bg-warning';
+          icon = 'fa-exclamation-triangle';
+          break;
+        case 'error':
+          bgColor = 'bg-danger';
+          icon = 'fa-exclamation-circle';
+          break;
+        default:
+          bgColor = 'bg-primary';
+          icon = 'fa-info-circle';
+      }
+      
+      notification.className = `${bgColor} text-white px-4 py-3 rounded-lg fixed bottom-4 right-4 flex items-center card-shadow z-50 transform translate-y-20 opacity-0 transition-all duration-300`;
+      notification.innerHTML = `<i class="fa ${icon} mr-2"></i> ${message}`;
+      
+      // 添加到页面
+      document.body.appendChild(notification);
+      
+      // 显示通知
+      setTimeout(() => {
+        notification.classList.remove('translate-y-20', 'opacity-0');
+      }, 10);
+      
+      // 自动隐藏
+      setTimeout(() => {
+        notification.classList.add('translate-y-20', 'opacity-0');
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
+    
