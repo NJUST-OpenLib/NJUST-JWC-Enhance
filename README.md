@@ -10,12 +10,22 @@
   <img src="https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kczk4.png" alt="课程增强示意图" />
 
 
-<p align="center">
+<p>
   <img src="https://img.shields.io/github/stars/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
   <img src="https://img.shields.io/github/forks/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
   <img src="https://img.shields.io/github/issues/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
   <img src="https://img.shields.io/github/license/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
+  <img src="https://img.shields.io/github/last-commit/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
 </p>
+## Star History
+
+<a href="https://www.star-history.com/#NJUST-OpenLib/NJUST-JWC-Enhance&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=NJUST-OpenLib/NJUST-JWC-Enhance&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=NJUST-OpenLib/NJUST-JWC-Enhance&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=NJUST-OpenLib/NJUST-JWC-Enhance&type=Date" />
+ </picture>
+</a>
 
 </div>
 
