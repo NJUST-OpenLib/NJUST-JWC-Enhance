@@ -2,13 +2,18 @@
 <div align="center">
 
 # NJUST-JWC-Enhance
-# **🎓 南京理工大学教务系统增强脚本**
+# **🎓 南京理工大学教务系统增强助手**
 
-![GitHub stars](https://img.shields.io/github/stars/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square) ![GitHub forks](https://img.shields.io/github/forks/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square) ![GitHub issues](https://img.shields.io/github/issues/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square) ![GitHub license](https://img.shields.io/github/license/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square)  
+**让教务系统更好用的浏览器脚本**
+
+适用于南京理工大学，同时可能还适用于其他使用湖南强智教务系统的学校
 
 
+![GitHub stars](https://img.shields.io/github/stars/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square) 
+![GitHub forks](https://img.shields.io/github/forks/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square) 
+![GitHub issues](https://img.shields.io/github/issues/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square) 
+![GitHub license](https://img.shields.io/github/license/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square)  
 
-*让教务系统更好用的浏览器插件*
 
 [快速开始](#快速开始) • [功能特性](#功能特性) • [使用方法](#使用方法) • [技术实现](#技术实现)
 
@@ -18,28 +23,34 @@
 
 ---
 
+
+
+
 ## 🚀 快速开始
 
 ### 一键安装
 
 1. **安装用户脚本管理器**
    
-   推荐使用以下任一用户脚本管理器：
+   推荐使用以下任一用户脚本管理器，在 Edge  138.0.3351.65 上均测试通过：
    
    - **Tampermonkey** - 主流跨平台用户脚本管理器
-     - [Chrome 商店安装](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) | [Firefox 安装](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/) | [Edge 商店安装](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
+     - [Chrome 商店安装](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) 
+     -  [Firefox 安装](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/) 
+     -  [Edge 商店安装](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
    - **ScriptCat 脚本猫** - 国产开源脚本管理器
      - [官方文档](https://docs.scriptcat.org/) 
      - [Edge 商店安装](https://microsoftedge.microsoft.com/addons/detail/%E8%84%9A%E6%9C%AC%E7%8C%AB/liilgpjgabokdklappibcjfablkpcekh) 
      - [Chrome 商店安装](https://chromewebstore.google.com/detail/scriptcat/ndcooeababalnlpkfedmmbbbgkljhpjf)
 
+
 2. **安装脚本**
    ```bash
    # 点击下方链接直接安装
    ```
-   📥 [点击安装 enhance.js](https://github.com/your-username/NJUST-JWC-Enhance/raw/main/enhance.js)
+   📥 [点击安装 教务增强助手](https://github.com/your-username/NJUST-JWC-Enhance/raw/main/enhance.js)
    
-   📥 [点击安装 getKCDG.js](https://github.com/your-username/NJUST-JWC-Enhance/raw/main/getKCDG.js) *(可选，仅数据采集需要)*
+   📥 [点击安装 数据采集助手V2.js](https://github.com/your-username/NJUST-JWC-Enhance/raw/main/getKCDG.js) *(可选，仅数据采集需要)*
 
 3. **开始使用**
    - 登录 [南理工教务系统](http://202.119.81.113:8080/)
@@ -52,20 +63,13 @@
 - 🏷️ **课程分类** - 显示选修课详细类别信息
 - 🚪 **登录优化** - 智能识别并引导正确登录入口
 
-## 📋 功能特性
-
-本脚本实现以下功能增强：
-
-* 在课表、选课、成绩页面中显示课程教学大纲
-* 显示选修课的类别信息
-* 在成绩页面自动汇总选修课程的已修学分
-* 对错误的登录页面进行提示，引导用户前往正确地址
 
 ## 功能展示
 
 ### 1. 教学大纲与选修课分类显示
 
 在课表、选课和成绩页面的课程信息中添加教学大纲链接，便于用户快速查看课程详情。
+（部分课程未上传在线大纲，显示为无信息）
 
 ![教学大纲显示](/docs/static/select_class.png)
 ![课表界面显示](/docs/static/time_table.png)
@@ -138,10 +142,11 @@
 ```
 
 * **数据来源：** 从[课程总库](http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz)爬取并筛选而来
-* **数据规模：** 总库约有 380 页、一万余条课程记录，但是仅约一千条课程上传了教学大纲
-* **更新频率：** 预计每年更新一次
+* **数据规模：**总库约有 380 页、一万余条课程记录，但是仅约一千条课程上传了教学大纲，实际加载的外部数据文件不足 100K
+* **更新频率：** 建议每年重新爬取一次
 
 ## 技术实现
+
 
 ### 数据获取
 
@@ -219,12 +224,7 @@
   
 * **开发者不对任何因使用本工具而产生的后果承担责任**
 
-## 🛠️ 技术栈
 
-- **JavaScript** - 前端增强脚本
-- **Python** - 数据爬取与处理  
-- **Tampermonkey** - 用户脚本管理器
-- **JSON** - 数据存储格式
 
 ## 🤝 贡献指南
 
@@ -243,7 +243,7 @@
 - **选修课分类数据** (`xxk.json`) - 每四年更新一次
 - **教学大纲数据** (`kcdg.json`) - 建议每年更新一次
 
-如果发现数据过期，欢迎提交 Issue 或使用 `getKCDG.js` 采集最新数据后提交 PR。
+如果发现数据过期，欢迎提交 Issue 或使用 ```数据采集助手V2``` 采集最新数据后，提交 PR。
 
 ## 📄 许可证
 
@@ -255,16 +255,19 @@
 
 ## 📞 联系方式
 
-- 📧 Email: your-email@example.com
-- 🐛 Issues: [GitHub Issues](https://github.com/your-username/NJUST-JWC-Enhance/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/your-username/NJUST-JWC-Enhance/discussions)
+- 📧 Email: admin@njust.wiki
+- 🐛 Issues: [GitHub Issues](https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/issues)
+
 
 ---
 
 <div align="center">
 
-**Made with ❤️ for NJUST students**
+**Made with ❤️by Light**
 
 *部分变量命名遵循原教务系统命名规范，以保证兼容性*
+例如：
+kcdg 课程大纲
+xxk  选修课
 
 </div>
