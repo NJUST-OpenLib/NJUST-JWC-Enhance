@@ -17,34 +17,6 @@
 
 ---
 
-## 🚀 快速开始
-
-### 1️⃣ 安装脚本管理器
-
-推荐以下浏览器插件（任选一个）：
-
-- **Tampermonkey（主流推荐）**
-  - [Chrome 商店](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
-  - [Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/)
-  - [Edge 商店](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
-
-- **ScriptCat 脚本猫（国产开源）**
-  - [官方主页](https://docs.scriptcat.org/)
-
-### 2️⃣ 安装增强脚本
-
-- [📦 ScriptCat 安装（推荐）](https://scriptcat.org/zh-CN/script-show-page/3745/)
-- [📦 GreasyFork 安装](https://greasyfork.org/zh-CN/scripts/541627)
-
-> 可选功能：数据采集助手 V2  
-> [ScriptCat](https://scriptcat.org/zh-CN/script-show-page/3744/)｜[GreasyFork](https://greasyfork.org/zh-CN/scripts/541628)
-
-### 3️⃣ 启用脚本
-
-访问 [教务系统主页](http://202.119.81.113:8080/)，脚本会自动启用，无需手动配置。
-
----
-
 ## ✨ 功能概览
 
 - 🔗 教学大纲快捷访问
@@ -63,6 +35,54 @@
 - 📦 [课程大纲采集流程（README.getKCDG.md）](./README.getKCDG.md)
 
 ---
+
+## 🚀 快速开始
+
+### 0 预备知识：
+Tampermonkey 和 ScriptCat 都是脚本管理器，安装一个即可
+
+scriptcat.org 和 GreasyFork 都是脚本仓库，选择一个即可
+
+---
+
+### 1 安装脚本管理器
+
+推荐以下浏览器插件（任选一个）：
+
+- **Tampermonkey（主流推荐）**
+  - [Chrome 商店](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+  - [Edge 商店](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
+  -  [Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/)
+  
+  - **ScriptCat 脚本猫（国产开源）**
+  - [官方主页](https://docs.scriptcat.org/)
+
+#### 1.2 安装脚本管理器
+
+对于在基于 Chrome 的浏览器中使用扩展（版本 5.3+）的用户，必须启用“允许用户脚本”切换开关（在 Chrome 138+ 中可通过扩展设置找到）或 开发者模式
+
+[Tampermonkey 开启开发者模式](https://www.tampermonkey.net/faq.php?version=5.4.6227&ext=gcal#Q209)
+
+[Scriptcat 开启开发者模式](https://docs.scriptcat.org/docs/use/open-dev/)
+
+---
+
+### 2 安装增强脚本
+
+- [📦 ScriptCat.org](https://scriptcat.org/zh-CN/script-show-page/3745/)
+- [📦 GreasyFork](https://greasyfork.org/zh-CN/scripts/541627)
+
+> 可选功能：数据采集助手 V2  
+> [ScriptCat.org](https://scriptcat.org/zh-CN/script-show-page/3744/)
+> [GreasyFork](https://greasyfork.org/zh-CN/scripts/541628)
+
+### 3 启用脚本
+
+访问 [教务系统主页](http://202.119.81.113:8080/)，脚本会自动启用，无需手动配置。
+
+---
+
+
 
 ## ⚠️ 注意事项
 
