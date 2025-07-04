@@ -8,7 +8,7 @@
 // @match       202.119.81.112:9080/*
 // @match       202.119.81.113:9080/*
 // @grant        GM_xmlhttpRequest
-// @connect      fastly.jsdelivr.net
+// @connect      jsdelivr.net
 // ==/UserScript==
 
 (function () {
@@ -53,65 +53,62 @@
             transform: translate(-50%, -50%);
             background: ${gradientColor};
             border: none;
-            border-radius: 20px;
+            border-radius: 15px;
             padding: 0;
-            box-shadow: 0 16px 48px rgba(0,0,0,0.25), 0 1.5px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             z-index: 10000;
-            min-width: 420px;
-            max-width: 540px;
+            min-width: 400px;
+            max-width: 500px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             overflow: hidden;
             animation: fadeIn 0.3s ease-out;
-            backdrop-filter: blur(12px) saturate(1.2);
         `;
 
         container.innerHTML = `
             <div id="dragHandle" style="
-                background: rgba(255,255,255,0.18);
-                padding: 18px 28px 14px 28px;
+                background: rgba(255,255,255,0.1);
+                padding: 15px 20px;
                 cursor: move;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                border-bottom: 1.5px solid rgba(255,255,255,0.22);
-                user-select: none;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
             ">
-                <div style="color: white; font-weight: bold; font-size: 20px; letter-spacing: 1px;">
+                <div style="color: white; font-weight: bold; font-size: 18px;">
                     🎓 ${title}
                 </div>
                 <span style="
                     cursor: pointer;
-                    color: rgba(255,255,255,0.85);
-                    font-size: 22px;
-                    padding: 4px 10px;
-                    border-radius: 6px;
-                    transition: background-color 0.18s;
+                    color: rgba(255,255,255,0.8);
+                    font-size: 18px;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    transition: background-color 0.2s;
                 "
                 onclick="this.closest('div').parentElement.remove()"
-                onmouseover="this.style.backgroundColor='rgba(255,255,255,0.25)'"
+                onmouseover="this.style.backgroundColor='rgba(255,255,255,0.2)'"
                 onmouseout="this.style.backgroundColor='transparent'">✕</span>
             </div>
             <div style="
-                background: rgba(255,255,255,0.93);
-                padding: 32px 32px 18px 32px;
-                border-radius: 0 0 20px 20px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+                background: white;
+                padding: 25px;
             ">
                 ${content}
                 <div style="
-                    margin-top: 24px;
-                    padding-top: 16px;
-                    border-top: 1.5px solid #eee;
-                    font-size: 13px;
+                    margin-top: 20px;
+                    padding-top: 15px;
+                    border-top: 1px solid #eee;
+                    font-size: 12px;
                     color: #666;
-                    line-height: 1.5;
+                    line-height: 1.4;
                     text-align: center;
                 ">
-                    <div style="margin-bottom: 10px;">
-                        <strong>🎓 南理工教务助手</strong> |
-                        <a href="https://njust.wiki" target="_blank" style="color: #007bff; text-decoration: none;">官方网站</a>
-                    </div>
-                    <div style="color: #ff6b6b; font-weight: bold; margin-bottom: 6px;">⚠️ 免责声明</div>
+                    <div style="margin-bottom: 8px;">
+                        <strong>请查看</strong> |
+                        <a href="https://enhance.njust.wiki" target="_blank" style="color: #007bff; text-decoration: none;">官方网站</a>
+                       <strong>以获取使用说明</strong> |
+                        </div>
+                    <div style="color: #ff6b6b; font-weight: bold; margin-bottom: 5px;">⚠️ 免责声明</div>
                     <div>本工具仅为学习交流使用，数据仅供参考。请以教务处官网信息为准，使用本工具产生的任何后果由用户自行承担。</div>
                 </div>
             </div>
@@ -291,45 +288,137 @@
     }
 
     function createCreditSummaryWindow() {
+        // 使用统一的弹窗样式，但保持原有的固定位置和拖动功能
         const container = document.createElement('div');
         container.id = 'creditSummaryWindow';
         container.style.cssText = `
             position: fixed;
             top: 20px;
             right: 20px;
-            background: #ffffff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            min-width: 280px;
-            max-width: 320px;
-            font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-            overflow: hidden;
+            padding: 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
             z-index: 9999;
-            border: 1px solid #e1e5e9;
+            min-width: 280px;
+            max-width: 350px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
         `;
+
         container.innerHTML = `
-            <div style="padding:16px 20px;border-bottom:1px solid #f0f0f0;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span style="font-size:16px;font-weight:600;color:#2c3e50;">📊 学分统计</span>
-                    <button onclick="this.closest('div').parentElement.remove()" style="background:none;border:none;font-size:18px;color:#95a5a6;cursor:pointer;padding:0;width:20px;height:20px;">&times;</button>
+            <div id="creditDragHandle" style="
+                background: rgba(255,255,255,0.1);
+                padding: 12px 15px;
+                cursor: move;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+            ">
+                <div style="color: white; font-weight: bold; font-size: 16px;">
+                    🎓 南理工教务增强助手
                 </div>
+                <span style="
+                    cursor: pointer;
+                    color: rgba(255,255,255,0.8);
+                    font-size: 18px;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    transition: background-color 0.2s;
+                "
+                onclick="this.closest('div').parentElement.remove()"
+                onmouseover="this.style.backgroundColor='rgba(255,255,255,0.2)'"
+                onmouseout="this.style.backgroundColor='transparent'">✕</span>
             </div>
-            <div style="padding:20px;background:#fafbfc;">
+            <div style="
+                background: white;
+                padding: 15px;
+                max-height: 400px;
+                overflow-y: auto;
+            ">
                 <div id="creditSummary"></div>
-                <div style="margin-top:12px;padding-top:8px;border-top:1px solid #e9ecef;font-size:11px;color:#6c757d;text-align:center;">
-                    <a href="https://njust.wiki" target="_blank" style="color:#007bff;text-decoration:none;">南理工教务助手</a>
+                <div style="
+                    margin-top: 15px;
+                    padding-top: 12px;
+                    border-top: 1px solid #eee;
+                    font-size: 12px;
+                    color: #666;
+                    line-height: 1.4;
+                    text-align: center;
+                ">
+                 <div style="color: #ff6b6b; font-weight: bold; margin-bottom: 5px;">⚠️ 特别声明</div>
+                    <div>选修课类别会发生变化，仅供参考。请以教务处官网为准。</div>
+                    <div style="margin-bottom: 8px;">
+                        <p>请查看 <a href="https://enhance.njust.wiki" target="_blank" style="color: #007bff; text-decoration: none;">南理工教务增强助手官方网站 </a> 以获取使用说明</p>
+                    </div>
+                   
                 </div>
             </div>
         `;
+
+        // 添加拖动功能
+        let isDragging = false;
+        let currentX, currentY, initialX, initialY;
+        let xOffset = 0, yOffset = 0;
+
+        const dragHandle = container.querySelector('#creditDragHandle');
+
+        function dragStart(e) {
+            if (e.type === "touchstart") {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+            }
+            if (e.target === dragHandle || dragHandle.contains(e.target)) {
+                isDragging = true;
+            }
+        }
+
+        function dragEnd(e) {
+            initialX = currentX;
+            initialY = currentY;
+            isDragging = false;
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                if (e.type === "touchmove") {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+                xOffset = currentX;
+                yOffset = currentY;
+                container.style.transform = `translate(${currentX}px, ${currentY}px)`;
+            }
+        }
+
+        dragHandle.addEventListener('mousedown', dragStart);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', dragEnd);
+        dragHandle.addEventListener('touchstart', dragStart);
+        document.addEventListener('touchmove', drag);
+        document.addEventListener('touchend', dragEnd);
+
+        document.body.appendChild(container);
+        return container;
     }
 
     function updateCreditSummary() {
         const creditSummaryDiv = document.getElementById('creditSummary');
         if (!creditSummaryDiv) return;
-        const creditsByType = {};
-        const creditsByCategory = {};
-        let totalCredits = 0, totalCourses = 0, electiveCredits = 0;
+
+        const creditsByType = {}; // 按课程类型（通识教育课等）统计
+        const creditsByCategory = {}; // 按选修课类别统计
         const tables = document.querySelectorAll('table');
+
         tables.forEach(table => {
             const rows = table.querySelectorAll('tr');
             rows.forEach(row => {
@@ -337,43 +426,91 @@
                 if (tds.length >= 11) {
                     const courseCode = tds[2].textContent.trim();
                     const credit = parseFloat(tds[6].textContent) || 0;
-                    const courseType = tds[10].textContent.trim();
+                    const courseType = tds[10].textContent.trim(); // 课程类型（通识教育课等）
+
+                    // 从页面上已显示的类别信息中提取选修课类别
                     const categoryDiv = tds[2].querySelector('[data-category-inserted]');
                     let category = null;
                     if (categoryDiv) {
+                        // 直接获取文本内容，因为现在只显示类别名称
                         category = categoryDiv.textContent.trim();
-                        if (!category) category = null;
+                        // 如果文本为空或者不是有效的类别，则设为null
+                        if (!category || category.length === 0) {
+                            category = null;
+                        }
                     }
-                    totalCredits += credit;
-                    totalCourses += 1;
-                    if (category) electiveCredits += credit;
+
+                    // 按课程类型统计
                     if (courseType) {
-                        if (!creditsByType[courseType]) creditsByType[courseType] = {credits: 0, count: 0};
+                        if (!creditsByType[courseType]) {
+                            creditsByType[courseType] = {
+                                credits: 0,
+                                count: 0
+                            };
+                        }
                         creditsByType[courseType].credits += credit;
                         creditsByType[courseType].count += 1;
                     }
+
+                    // 按选修课类别统计
                     if (category) {
-                        if (!creditsByCategory[category]) creditsByCategory[category] = {credits: 0, count: 0};
+                        if (!creditsByCategory[category]) {
+                            creditsByCategory[category] = {
+                                credits: 0,
+                                count: 0
+                            };
+                        }
                         creditsByCategory[category].credits += credit;
                         creditsByCategory[category].count += 1;
                     }
                 }
             });
         });
-        let summaryHTML = `<div style=\"margin-bottom:10px;\"><strong style=\"color:#222;\">课程总学分：</strong><span style=\"color:#007bff;font-weight:bold;\">${totalCredits.toFixed(1)}</span>，<strong style=\"color:#222;\">课程总数：</strong><span style=\"color:#007bff;font-weight:bold;\">${totalCourses}</span></div>`;
-        summaryHTML += `<div style=\"margin-bottom:10px;\"><strong style=\"color:#222;\">选修课总学分：</strong><span style=\"color:#28a745;font-weight:bold;\">${electiveCredits.toFixed(1)}</span></div>`;
-        summaryHTML += '<div style="border-bottom:1px solid #eee;margin-bottom:8px;padding-bottom:6px;"><strong style="color:#333;">按课程类型统计：</strong><br>';
+
+        // 计算总计
+        const totalCreditsByType = Object.values(creditsByType).reduce((sum, data) => sum + data.credits, 0);
+        const totalCountByType = Object.values(creditsByType).reduce((sum, data) => sum + data.count, 0);
+        const totalCreditsByCategory = Object.values(creditsByCategory).reduce((sum, data) => sum + data.credits, 0);
+        const totalCountByCategory = Object.values(creditsByCategory).reduce((sum, data) => sum + data.count, 0);
+
+        // 生成HTML - 表格样式布局
+        let summaryHTML = '<div style="border-bottom: 1px solid #eee; margin-bottom: 15px; padding-bottom: 15px;">';
+        summaryHTML += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">';
+        summaryHTML += '<strong style="color: #333; font-size: 14px;">📊 按课程类型统计</strong>';
+        summaryHTML += `<span style="color: #007bff; font-weight: bold; font-size: 13px;">${totalCreditsByType.toFixed(1)} 学分 (${totalCountByType} 门)</span>`;
+        summaryHTML += '</div>';
+        
+        // 课程类型表格
+        summaryHTML += '<div style="display: grid; gap: 6px;">';
         for (const [type, data] of Object.entries(creditsByType)) {
-            summaryHTML += `<div style=\"margin:3px 0;\"><span style=\"color:#007bff;\">${type}:</span> <strong>${data.credits.toFixed(1)}</strong> 学分 <span style=\"color:#888;\">（${data.count} 门）</span></div>`;
+            summaryHTML += `<div style="display: grid; grid-template-columns: 1fr auto auto; gap: 8px; padding: 6px 0; align-items: center;">
+                <span style="color: #28a745; font-weight: 500;">${type}</span>
+                <span style="font-weight: bold; color: #333;">${data.credits.toFixed(1)} 学分</span>
+                <span style="color: #666; font-size: 12px;">${data.count} 门</span>
+            </div>`;
         }
         summaryHTML += '</div>';
+
         if (Object.keys(creditsByCategory).length > 0) {
-            summaryHTML += '<div style="margin-top:8px;"><strong style="color:#333;">按选修课类别统计：</strong><br>';
+            summaryHTML += '</div><div style="margin-top: 15px;">';
+            summaryHTML += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">';
+            summaryHTML += '<strong style="color: #333; font-size: 14px;">🏷️ 按选修课类别统计</strong>';
+            summaryHTML += `<span style="color: #007bff; font-weight: bold; font-size: 13px;">${totalCreditsByCategory.toFixed(1)} 学分 (${totalCountByCategory} 门)</span>`;
+            summaryHTML += '</div>';
+            
+            // 选修课类别表格
+            summaryHTML += '<div style="display: grid; gap: 6px;">';
             for (const [category, data] of Object.entries(creditsByCategory)) {
-                summaryHTML += `<div style=\"margin:3px 0;\"><span style=\"color:#28a745;\">${category}:</span> <strong>${data.credits.toFixed(1)}</strong> 学分 <span style=\"color:#888;\">（${data.count} 门）</span></div>`;
+                summaryHTML += `<div style="display: grid; grid-template-columns: 1fr auto auto; gap: 8px; padding: 6px 0; align-items: center;">
+                    <span style="color: #28a745; font-weight: 500;">${category}</span>
+                    <span style="font-weight: bold; color: #333;">${data.credits.toFixed(1)} 学分</span>
+                    <span style="color: #666; font-size: 12px;">${data.count} 门</span>
+                </div>`;
             }
             summaryHTML += '</div>';
         }
+        summaryHTML += '</div>';
+
         creditSummaryDiv.innerHTML = summaryHTML || '暂无数据';
     }
 
