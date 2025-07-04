@@ -8,14 +8,14 @@
 // @match       202.119.81.112:9080/*
 // @match       202.119.81.113:9080/*
 // @grant        GM_xmlhttpRequest
-// @connect      190.92.210.56
+// @connect      fastly.jsdelivr.net
 // ==/UserScript==
 
 (function () {
     'use strict';
 
-    const CATEGORY_URL = 'http://190.92.210.56/xxk.json';
-    const OUTLINE_URL = 'http://190.92.210.56/kcdg.json';
+    const CATEGORY_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json';
+    const OUTLINE_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json';
 
     let courseCategoryMap = {};
     let courseOutlineMap = {};
