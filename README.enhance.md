@@ -53,10 +53,6 @@
 ]
 ```
 
-- 来源：教务处发布的课程分类方案  
-- 更新建议：每四年一次（当前版本为 2022 版）
-- 使用[课程数据解析器](https://enhance.njust.wiki/tools/xxk.html)将教务处发布的表格中对内容转换为结构化的 json 数据
-
 ---
 
 ### 2. 教学大纲链接数据（`kcdg.json`）
@@ -70,11 +66,16 @@
 ]
 ```
 
-- 来源：[课程总库](http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz) 爬取  
-- [课程大纲采集流程（README.getKCDG.md）](./README.getKCDG.md)
-- 数据体积：约 100KB，筛选后仅包含有大纲的课程
-- 更新建议：每年爬取一次（当前更新日期为 2025.7.4）
-- 使用 课程采集助手 V2 爬取所有课程，另存为 csv 文件。再使用[CSV 课程数据筛选工具](https://enhance.njust.wiki/tools/csv2json.html)转换为 json
-
-
 ---
+
+### 3.更新数据文件
+
+如果你认为已有的 `kcdg.json`版本已过时（例如您在 2026 年 7 月 4 日使用这个脚本），请参考考
+[课程大纲采集流程（README.getKCDG.md）](./README.getKCDG.md)
+重新采集课程大纲。
+
+
+
+如果你认为已有的 `xxk.json`版本已过时（例如您在 2026 年 7 月 4 日使用这个脚本），请参考
+[选修课采集流程（README.getXXK.md）](./README.getKCDG.md)
+重新采集选修课分类数据。

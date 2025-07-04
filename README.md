@@ -37,6 +37,8 @@
 
 - 📦 [课程大纲采集流程（README.getKCDG.md）](./README.getKCDG.md)
 
+- 📦 [选修课采集流程（README.getXXK.md）](./README.getXXK.md)
+
 ---
 
 ## 🚀 快速开始

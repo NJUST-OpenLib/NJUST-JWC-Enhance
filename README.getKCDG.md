@@ -28,17 +28,23 @@
 
 ![采集中](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kczk4.png)
 
-6. 数据采集完成后，可导出为 CSV格式：
+6. 数据采集完成后，可导出为 CSV 格式：
 
 ![导出结果](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kczk5.png)
 
+7.通过[CSV 课程数据筛选工具](https://enhance.njust.wiki/tools/csv2json.html)将 csv 中的有用数据导出为 JSON 格式：
+
+![](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kcdg_gen_json.png)
+
 ---
 
-## 🔄 数据处理流程
+### 更新数据文件
+
+如果你发现已有的 `kcdg.json` 版本已过时，可以进行如下操作
 
 1. 使用脚本采集课程数据
 2. 导出为 `.csv`
-3. 通过[网页工具](https://enhance.njust.wiki/tools)筛选出已上传大纲的课程
+3. 通过[CSV 课程数据筛选工具](https://enhance.njust.wiki/tools/csv2json.html)筛选出已上传大纲的课程
 4. 导出结构化的 JSON 格式 ```kcdg.json``` 如下：
 
 ```json
@@ -51,3 +57,12 @@
 ]
 ```
 
+- 将新生成的 json 上传至服务器
+
+    然后将用户脚本中的分类数据地址替换为新的链接，例如：
+
+    ```js
+        const OUTLINE_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json'
+    ```
+
+- 或，提交 Pull Request 更新本项目的 `data/kcdg.json`
