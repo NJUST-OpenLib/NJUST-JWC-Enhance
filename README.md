@@ -73,7 +73,7 @@ scriptcat.org 和 GreasyFork.org 都是脚本仓库，选择一个即可
   - [Edge 商店](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
   -  [Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/)
   
-  - **ScriptCat 脚本猫（国产开源）**
+- **ScriptCat 脚本猫（国产开源）**
   - [官方主页](https://docs.scriptcat.org/)
 
 #### 1.2 安装脚本管理器
