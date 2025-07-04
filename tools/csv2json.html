@@ -58,9 +58,37 @@
       </h1>
       <p class="text-secondary max-w-2xl mx-auto">
         上传CSV文件，筛选并提取课程数据，导出为JSON格式
+
       </p>
     </header>
-
+<div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 mb-8 border border-primary/20">
+  <div class="flex items-start gap-4">
+    <div class="flex-shrink-0">
+      <i class="fa fa-lightbulb-o text-2xl text-primary/80"></i>
+    </div>
+    <div class="space-y-4">
+      <div class="text-gray-700">
+        <p class="leading-relaxed">
+          课程采集助手导出的 CSV 文件约 2MiB，其中，大约有 90% 的课程尚未上传教学大纲。<br>
+          本工具能够智能识别并筛选出已上传教学大纲的课程，并将压缩、转换为增强助手可直接使用的 JSON 格式。
+        </p>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</div>
+<div class="bg-amber-50 rounded-lg p-4 border-l-4 border-warning">
+        <div class="flex items-center gap-2 text-warning font-medium mb-2">
+          <i class="fa fa-clock-o"></i>
+          <span>更新周期提醒</span>
+        </div>
+        <p class="text-gray-700 text-sm">
+          教学大纲每 4 年进行一次更新。当前增强助手的 kcdg.json 来自 2022 版教学大纲，请务必在 2026 年进行更新，以确保数据的准确性和时效性。
+        </p>
+      </div>
+      <br>
     <!-- 主内容卡片 -->
     <div class="bg-white rounded-xl card-shadow p-6 md:p-8 mb-8 transition-all duration-300 hover:shadow-lg">
       <div class="mb-6">
@@ -140,8 +168,17 @@
     </div>
 
     <!-- 页脚 -->
-    <footer class="mt-10 text-center text-secondary text-sm py-4">
-      <p>CSV课程数据筛选工具 &copy; 2023</p>
+    <footer class="mt-10 pt-6 border-t border-gray-200">
+      <div class="text-center text-secondary text-sm space-y-2">
+        <p class="font-medium">NJUST-JWC-Enhance CSV to JSON</p>
+        <p>&copy; 2024 NJUST.WIKI. All rights reserved.</p>
+        <p class="text-xs">
+          <a href="https://njust.wiki/" class="text-primary hover:underline">项目主页</a> |
+          <a href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance" class="text-primary hover:underline">GitHub</a> |
+          <a href="index.html" class="text-primary hover:underline">工具集</a>
+        </p>
+        <p class="text-xs text-gray-400">Made with ❤️ by Light</p>
+      </div>
     </footer>
   </div>
 
