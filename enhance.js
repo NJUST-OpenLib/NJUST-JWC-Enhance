@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         南理工教务增强助手
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  在合适的地方显示课程大纲、选修课类别及选修课学分情况
 // @match        202.119.81.112/*
 // @match        bkjw.njust.edu.cn/*
@@ -14,15 +14,528 @@
 // @supportURL   https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance
 // ==/UserScript==
 
+// ==================== 远程数据源配置 ====================
+// 选修课分类数据源
+const CATEGORY_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/data/xxk.json';
+// 课程大纲数据源
+const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/data/kcdg.json';
+
+// 备用数据源（如需要可取消注释）
+// const CATEGORY_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json';
+// const OUTLINE_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json';
+
 (function () {
     'use strict';
 
-    // const CATEGORY_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json';
-     // const OUTLINE_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json';
-    //选修课 json
-    const CATEGORY_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@1.0.0/data/xxk.json';
-    //课程大纲 json
-    const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@1.0.0/data/kcdg.json';
+    // ==================== 配置选项 ====================
+    // 用户界面配置
+    const UI_CONFIG = {
+        showNotifications: true  // 是否显示前端提示框 (true=显示, false=隐藏)
+                                // 设置为 false 可完全关闭所有状态提示框
+                                // 设置为 true 则正常显示加载、成功、错误等提示
+    };
+
+    // 调试配置
+    const DEBUG_CONFIG = {
+        enabled: false,          // 是否启用调试
+        level: 2,              // 调试级别: 0=关闭, 1=错误, 2=警告, 3=信息, 4=详细
+        showCache: true        // 是否显示缓存相关日志
+    };
+
+    // 缓存配置
+    const CACHE_CONFIG = {
+        enabled: true,         // 是否启用缓存
+        ttl: 30,            // 缓存生存时间(秒) - 1小时
+        prefix: 'njust_jwc_'  // 缓存键前缀
+    };
+
+    // ==================== 调试系统 ====================
+    const Logger = {
+        LEVELS: { ERROR: 1, WARN: 2, INFO: 3, DEBUG: 4 },
+
+        log(level, message, ...args) {
+            if (!DEBUG_CONFIG.enabled || level > DEBUG_CONFIG.level) return;
+
+            const timestamp = new Date().toLocaleTimeString();
+            const levelNames = ['', '❌', '⚠️', 'ℹ️', '🔍'];
+            const prefix = `[${timestamp}] ${levelNames[level]} [南理工教务助手]`;
+
+            console.log(prefix, message, ...args);
+
+            // 对于 INFO 级别的消息，同时通过状态提示框显示（如果启用）
+            if (level === this.LEVELS.INFO && UI_CONFIG.showNotifications && typeof StatusNotifier !== 'undefined' && StatusNotifier.show) {
+                try {
+                    // 提取纯文本消息，去除表情符号前缀
+                    let cleanMessage = message.replace(/^[🎯🚀📊🎓🚪💾✅🗑️⏰❌🔍⚠️ℹ️]+\s*/, '');
+
+                    // 如果有额外参数，将其格式化并添加到消息中
+                    if (args.length > 0) {
+                        const formattedArgs = args.map(arg => {
+                            if (typeof arg === 'object' && arg !== null) {
+                                try {
+                                    // 安全的对象序列化，避免循环引用
+                                    const seen = new WeakSet();
+                                    const jsonStr = JSON.stringify(arg, (key, value) => {
+                                        if (typeof value === 'object' && value !== null) {
+                                            if (seen.has(value)) {
+                                                return '[Circular Reference]';
+                                            }
+                                            seen.add(value);
+                                        }
+                                        return value;
+                                    }, 0);
+
+                                    // 如果JSON字符串太长，进行适当格式化
+                                    if (jsonStr.length > 200) {
+                                        // 对于长对象，使用更紧凑的格式，限制深度
+                                        return Object.entries(arg)
+                                            .slice(0, 10) // 限制显示前10个属性
+                                            .map(([key, value]) => {
+                                                let valueStr;
+                                                if (typeof value === 'object' && value !== null) {
+                                                    valueStr = '[Object]';
+                                                } else {
+                                                    valueStr = String(value).slice(0, 50); // 限制值长度
+                                                }
+                                                return `${key}: ${valueStr}`;
+                                            })
+                                            .join(', ') + (Object.keys(arg).length > 10 ? '...' : '');
+                                    } else {
+                                        // 移除JSON的花括号，使其更易读
+                                        return jsonStr.replace(/^{|}$/g, '').replace(/"/g, '');
+                                    }
+                                } catch (e) {
+                                    // 如果JSON.stringify失败，使用安全的回退方法
+                                    try {
+                                        return Object.entries(arg)
+                                            .slice(0, 5) // 限制属性数量
+                                            .map(([key, value]) => `${key}: ${String(value).slice(0, 30)}`)
+                                            .join(', ') + (Object.keys(arg).length > 5 ? '...' : '');
+                                    } catch (e2) {
+                                        return '[Object - Cannot Display]';
+                                    }
+                                }
+                            }
+                            return String(arg).slice(0, 100); // 限制字符串长度
+                        }).join(' ');
+
+                        cleanMessage += ' ' + formattedArgs;
+                    }
+
+                    StatusNotifier.show(cleanMessage, 'info');
+                } catch (e) {
+                    // 静默处理状态提示框错误，避免影响日志功能
+                }
+            }
+        },
+
+        error(message, ...args) { this.log(this.LEVELS.ERROR, message, ...args); },
+        warn(message, ...args) { this.log(this.LEVELS.WARN, message, ...args); },
+        info(message, ...args) { this.log(this.LEVELS.INFO, message, ...args); },
+        debug(message, ...args) { this.log(this.LEVELS.DEBUG, message, ...args); }
+    };
+
+    // ==================== 缓存系统 ====================
+    const CacheManager = {
+        // 获取缓存键
+        getKey(url) {
+            return CACHE_CONFIG.prefix + btoa(url).replace(/[^a-zA-Z0-9]/g, '');
+        },
+
+        // 设置缓存
+        set(url, data) {
+            if (!CACHE_CONFIG.enabled) return false;
+
+            try {
+                const cacheData = {
+                    data: data,
+                    timestamp: Date.now(),
+                    ttl: CACHE_CONFIG.ttl * 1000,
+                    url: url
+                };
+
+                const key = this.getKey(url);
+                localStorage.setItem(key, JSON.stringify(cacheData));
+
+                if (DEBUG_CONFIG.showCache) {
+                    Logger.info(`💾 缓存已保存: ${url}`, {
+                        key: key,
+                        size: JSON.stringify(cacheData).length + ' bytes',
+                        ttl: CACHE_CONFIG.ttl + 's'
+                    });
+                }
+
+                return true;
+            } catch (e) {
+                Logger.error('缓存保存失败:', e);
+                return false;
+            }
+        },
+
+        // 获取缓存
+        get(url) {
+            if (!CACHE_CONFIG.enabled) return null;
+
+            try {
+                const key = this.getKey(url);
+                const cached = localStorage.getItem(key);
+
+                if (!cached) {
+                    if (DEBUG_CONFIG.showCache) {
+                        Logger.debug(`❌ 缓存未命中: ${url}`);
+                    }
+                    return null;
+                }
+
+                const cacheData = JSON.parse(cached);
+                const now = Date.now();
+                const age = (now - cacheData.timestamp) / 1000;
+                const remaining = (cacheData.ttl - (now - cacheData.timestamp)) / 1000;
+
+                // 检查是否过期
+                if (now - cacheData.timestamp > cacheData.ttl) {
+                    localStorage.removeItem(key);
+                    if (DEBUG_CONFIG.showCache) {
+                        Logger.warn(`⏰ 缓存已过期: ${url}`, {
+                            age: age.toFixed(1) + 's',
+                            expired: (age - CACHE_CONFIG.ttl).toFixed(1) + 's ago'
+                        });
+                    }
+                    return null;
+                }
+
+                if (DEBUG_CONFIG.showCache) {
+                    Logger.info(`✅ 缓存命中: ${url}`, {
+                        age: age.toFixed(1) + 's',
+                        remaining: remaining.toFixed(1) + 's',
+                        size: cached.length + ' bytes'
+                    });
+                }
+
+                return cacheData.data;
+            } catch (e) {
+                Logger.error('缓存读取失败:', e);
+                return null;
+            }
+        },
+
+        // 清除所有缓存
+        clear() {
+            try {
+                const keys = Object.keys(localStorage).filter(key =>
+                    key.startsWith(CACHE_CONFIG.prefix)
+                );
+
+                keys.forEach(key => localStorage.removeItem(key));
+
+                Logger.info(`🗑️ 已清除 ${keys.length} 个缓存项`);
+                return keys.length;
+            } catch (e) {
+                Logger.error('清除缓存失败:', e);
+                return 0;
+            }
+        },
+
+        // 获取缓存统计信息
+        getStats() {
+            try {
+                const keys = Object.keys(localStorage).filter(key =>
+                    key.startsWith(CACHE_CONFIG.prefix)
+                );
+
+                let totalSize = 0;
+                let validCount = 0;
+                let expiredCount = 0;
+                const now = Date.now();
+
+                keys.forEach(key => {
+                    try {
+                        const cached = localStorage.getItem(key);
+                        totalSize += cached.length;
+
+                        const cacheData = JSON.parse(cached);
+                        if (now - cacheData.timestamp > cacheData.ttl) {
+                            expiredCount++;
+                        } else {
+                            validCount++;
+                        }
+                    } catch (e) {
+                        expiredCount++;
+                    }
+                });
+
+                return {
+                    total: keys.length,
+                    valid: validCount,
+                    expired: expiredCount,
+                    size: totalSize
+                };
+            } catch (e) {
+                Logger.error('获取缓存统计失败:', e);
+                return { total: 0, valid: 0, expired: 0, size: 0 };
+            }
+        }
+    };
+
+    // ==================== 状态提示框系统 ====================
+    const StatusNotifier = {
+        container: null,
+        messageQueue: [],
+        messageId: 0,
+
+        // 初始化状态提示框容器
+        init() {
+            if (!STATUS_CONFIG.enabled || this.container) return;
+
+            // 确保DOM已准备好
+            if (!document.body) {
+                setTimeout(() => this.init(), 50);
+                return;
+            }
+
+            try {
+                this.container = document.createElement('div');
+                this.container.id = 'njustStatusNotifier';
+
+                // 根据配置设置位置
+                const positions = {
+                    'top-left': { top: '20px', left: '20px', flexDirection: 'column' },
+                    'top-right': { top: '20px', right: '20px', flexDirection: 'column' },
+                    'bottom-left': { bottom: '20px', left: '20px', flexDirection: 'column-reverse' },
+                    'bottom-right': { bottom: '20px', right: '20px', flexDirection: 'column-reverse' }
+                };
+
+                const pos = positions[STATUS_CONFIG.position] || positions['top-right'];
+
+                this.container.style.cssText = `
+                    position: fixed;
+                    ${Object.entries(pos).filter(([k]) => k !== 'flexDirection').map(([k, v]) => `${k}: ${v}`).join('; ')};
+                    display: flex;
+                    flex-direction: ${pos.flexDirection};
+                    gap: 8px;
+                    z-index: 9999;
+                    pointer-events: none;
+                    max-width: 350px;
+                `;
+
+                document.body.appendChild(this.container);
+            } catch (e) {
+                console.error('StatusNotifier初始化失败:', e);
+                this.container = null;
+            }
+        },
+
+        // 显示状态消息
+        show(message, type = 'info', duration = null) {
+            if (!STATUS_CONFIG.enabled || !UI_CONFIG.showNotifications) return;
+
+            try {
+                this.init();
+
+                // 确保容器已创建
+                if (!this.container) {
+                    console.warn('StatusNotifier 容器未创建，跳过消息显示');
+                    return;
+                }
+
+                // 如果是 loading 类型的消息，先隐藏之前的 loading 消息
+                if (type === 'loading') {
+                    const existingLoadingMessages = this.messageQueue.filter(m => m.type === 'loading');
+                    existingLoadingMessages.forEach(m => this.hideMessage(m.id));
+                }
+
+                const messageElement = this.createMessageElement(message, type);
+                const messageData = {
+                    id: ++this.messageId,
+                    element: messageElement,
+                    type: type,
+                    timestamp: Date.now()
+                };
+
+                this.messageQueue.push(messageData);
+                this.container.appendChild(messageElement);
+
+                // 限制同时显示的消息数量
+                this.limitMessages();
+
+                // 显示动画
+                requestAnimationFrame(() => {
+                    if (messageElement.parentNode) {
+                        messageElement.style.opacity = '1';
+                        messageElement.style.transform = 'translateX(0)';
+                    }
+                });
+
+                // 自动隐藏逻辑
+                if (STATUS_CONFIG.autoHide && type !== 'loading') {
+                    const hideTime = duration || this.getHideDelay(type);
+                    setTimeout(() => this.hideMessage(messageData.id), hideTime);
+                }
+            } catch (e) {
+                console.error('StatusNotifier显示消息失败:', e);
+            }
+        },
+
+        // 创建消息元素
+        createMessageElement(message, type) {
+            const icons = {
+                info: 'ℹ️',
+                success: '✅',
+                warning: '⚠️',
+                error: '❌',
+                loading: '🔄'
+            };
+
+            const colors = {
+                info: '#888',
+                success: '#888',
+                warning: '#888',
+                error: '#888',
+                loading: '#888'
+            };
+
+            const messageElement = document.createElement('div');
+            messageElement.style.cssText = `
+                background: ${colors[type] || colors.info};
+                color: white;
+                padding: 12px 16px;
+                border-radius: 8px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 13px;
+                opacity: 0;
+                transform: translateX(${STATUS_CONFIG.position.includes('right') ? '20px' : '-20px'});
+                transition: all 0.3s ease;
+                pointer-events: auto;
+                line-height: 1.4;
+                cursor: pointer;
+                position: relative;
+                margin-bottom: 0;
+            `;
+
+            messageElement.innerHTML = `${icons[type] || icons.info} ${message}`;
+
+            // 点击关闭功能
+            messageElement.addEventListener('click', () => {
+                const messageData = this.messageQueue.find(m => m.element === messageElement);
+                if (messageData) {
+                    this.hideMessage(messageData.id);
+                }
+            });
+
+            return messageElement;
+        },
+
+        // 获取不同类型消息的隐藏延迟
+        getHideDelay(type) {
+            const delays = {
+                info: STATUS_CONFIG.infoDelay || 2000,     // info消息显示更久
+                success: STATUS_CONFIG.hideDelay || 2000,
+                warning: STATUS_CONFIG.hideDelay || 2000,
+                error: STATUS_CONFIG.hideDelay || 2000,
+                loading: STATUS_CONFIG.hideDelay || 2000 // loading消息不自动隐藏
+            };
+            return delays[type] || STATUS_CONFIG.hideDelay;
+        },
+
+        // 隐藏指定消息
+        hideMessage(messageId) {
+            const messageIndex = this.messageQueue.findIndex(m => m.id === messageId);
+            if (messageIndex === -1) return;
+
+            const messageData = this.messageQueue[messageIndex];
+            const element = messageData.element;
+
+            // 立即从队列中移除，避免limitMessages中的循环问题
+            this.messageQueue.splice(messageIndex, 1);
+
+            // 隐藏动画
+            element.style.opacity = '0';
+            element.style.transform = `translateX(${STATUS_CONFIG.position.includes('right') ? '20px' : '-20px'})`;
+
+            // 延迟移除DOM元素
+            setTimeout(() => {
+                if (element.parentNode) {
+                    element.parentNode.removeChild(element);
+                }
+            }, 300);
+        },
+
+        // 限制同时显示的消息数量
+        limitMessages() {
+            // 避免无限循环：只移除超出数量的消息，不使用while循环
+            if (this.messageQueue.length > STATUS_CONFIG.maxMessages) {
+                const excessCount = this.messageQueue.length - STATUS_CONFIG.maxMessages;
+                // 移除最旧的消息
+                for (let i = 0; i < excessCount; i++) {
+                    if (this.messageQueue.length > 0) {
+                        const oldestMessage = this.messageQueue[0];
+                        this.hideMessage(oldestMessage.id);
+                    }
+                }
+            }
+        },
+
+        // 隐藏所有消息
+        hide() {
+            this.messageQueue.forEach(messageData => {
+                this.hideMessage(messageData.id);
+            });
+        },
+
+        // 移除状态提示框
+        remove() {
+            if (this.container) {
+                this.container.remove();
+                this.container = null;
+                this.messageQueue = [];
+            }
+        }
+    };
+
+    // 状态提示框配置
+    const STATUS_CONFIG = {
+        enabled: true,         // 是否显示状态提示
+        autoHide: true,       // 是否自动隐藏
+        hideDelay: 2000,      // 默认自动隐藏延迟(毫秒)
+        infoDelay: 2000,      // info类型消息显示时间(毫秒)
+        maxMessages: 5,       // 同时显示的最大消息数量
+        position: 'top-right' // 位置: top-left, top-right, bottom-left, bottom-right
+    };
+
+    // 延迟初始化日志，避免在DOM未完全加载时出现问题
+    function initializeLogging() {
+        // 确保DOM已加载
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeLogging);
+            return;
+        }
+
+        // 延迟执行，避免与页面初始化冲突
+        setTimeout(() => {
+            try {
+                Logger.info('🚀 南理工教务增强助手已启动', {
+                    debug: DEBUG_CONFIG.enabled ? `Level ${DEBUG_CONFIG.level}` : '关闭',
+                    cache: CACHE_CONFIG.enabled ? `TTL ${CACHE_CONFIG.ttl}s` : '关闭'
+                });
+
+                // 显示缓存统计
+                if (DEBUG_CONFIG.enabled && DEBUG_CONFIG.showCache) {
+                    const stats = CacheManager.getStats();
+                    Logger.info('📊 缓存统计:', {
+                        总数: stats.total,
+                        有效: stats.valid,
+                        过期: stats.expired,
+                        大小: (stats.size / 1024).toFixed(1) + 'KB'
+                    });
+                }
+            } catch (e) {
+                console.error('初始化日志失败:', e);
+            }
+        }, 100);
+    }
+
+    // 调用初始化
+    initializeLogging();
 
     let courseCategoryMap = {};
     let courseOutlineMap = {};
@@ -113,7 +626,7 @@
                     <div style="margin-bottom: 8px;">
                         <strong>请查看
                         <a href="https://enhance.njust.wiki" target="_blank" style="color: #007bff; text-decoration: none;">官方网站</a>
-                      以获取使用说明</strong> 
+                      以获取使用说明</strong>
                         </div>
                     <div style="color: #ff6b6b; font-weight: bold; margin-bottom: 5px;">⚠️ 免责声明</div>
                     <div>本工具仅为学习交流使用，数据仅供参考。</div>
@@ -188,9 +701,9 @@
         dragHandle.addEventListener('mousedown', dragStart);
         document.addEventListener('mousemove', drag);
         document.addEventListener('mouseup', dragEnd);
-        dragHandle.addEventListener('touchstart', dragStart);
-        document.addEventListener('touchmove', drag);
-        document.addEventListener('touchend', dragEnd);
+        dragHandle.addEventListener('touchstart', dragStart, { passive: false });
+        document.addEventListener('touchmove', drag, { passive: false });
+        document.addEventListener('touchend', dragEnd, { passive: false });
     }
 
     // 检测强智科技页面
@@ -198,14 +711,21 @@
         const currentUrl = window.location.href;
         const pageTitle = document.title;
 
+        Logger.debug('🔍 检测页面类型', {
+            URL: currentUrl,
+            标题: pageTitle
+        });
+
         // 检测是否为强智科技页面且无法登录
         if (
             pageTitle.includes('强智科技教务系统概念版')) {
 
+            Logger.warn('⚠️ 检测到强智科技概念版页面，显示登录引导');
+
             const content = `
                 <div style="text-align: center; font-size: 16px; color: #333; margin-bottom: 20px; line-height: 1.6;">
                     <div style="font-size: 20px; margin-bottom: 15px;">🚫 该页面无法登录</div>
-               
+
                     <div style="margin-top: 10px;">请转向以下正确的登录页面：</div>
                 </div>
                 <div style="text-align: center; margin: 20px 0;">
@@ -265,20 +785,64 @@
 
     function loadJSON(url) {
         return new Promise((resolve, reject) => {
+            Logger.debug(`📡 请求数据: ${url}`);
+
+            // 尝试从缓存获取数据
+            const cachedData = CacheManager.get(url);
+            if (cachedData) {
+                Logger.debug(`🎯 使用缓存数据: ${url}`);
+
+                // 显示缓存命中状态
+                const fileName = url.includes('xxk') ? '选修课分类' : '课程大纲';
+                StatusNotifier.show(`从缓存读取${fileName}数据成功`, 'success');
+
+                resolve(cachedData);
+                return;
+            }
+
+            // 缓存未命中，发起网络请求
+            Logger.info(`🌐 发起网络请求: ${url}`);
+            const startTime = Date.now();
+
+            // 显示加载状态
+            const fileName = url.includes('xxk') ? '选修课分类' : '课程大纲';
+        //   StatusNotifier.show(`正在从远程加载${fileName}数据...`, 'info', 0);
+
             GM_xmlhttpRequest({
                 method: "GET",
                 url,
                 onload: function (response) {
+                    const loadTime = Date.now() - startTime;
+
                     try {
                         const json = JSON.parse(response.responseText);
+
+                        // 保存到缓存
+                        const cached = CacheManager.set(url, json);
+
+                        Logger.info(`✅ 请求成功: ${url}`, {
+                            耗时: loadTime + 'ms',
+                            大小: response.responseText.length + ' bytes',
+                            缓存: cached ? '已保存' : '保存失败'
+                        });
+
+                        // 显示成功状态
+                        StatusNotifier.show(`从远程加载${fileName}成功 (${loadTime}ms)`, 'success');
+
                         resolve(json);
                     } catch (e) {
-                        console.error(`解析 JSON 失败: ${url}`, e);
+                        Logger.error(`❌ JSON解析失败: ${url}`, e);
+                        StatusNotifier.show(`${fileName}数据解析失败`, 'error');
                         reject(e);
                     }
                 },
                 onerror: function (err) {
-                    console.error(`加载失败: ${url}`, err);
+                    const loadTime = Date.now() - startTime;
+                    Logger.error(`❌ 网络请求失败: ${url}`, {
+                        耗时: loadTime + 'ms',
+                        错误: err
+                    });
+                    StatusNotifier.show(`${fileName}数据加载失败`, 'error', 4000);
                     reject(err);
                 }
             });
@@ -286,16 +850,29 @@
     }
 
     function buildCourseMaps(categoryList, outlineList) {
+        Logger.debug('🔨 开始构建课程映射表');
+
+        let categoryCount = 0;
+        let outlineCount = 0;
+
         categoryList.forEach(item => {
             if (item.course_code && item.category) {
                 courseCategoryMap[item.course_code.trim()] = item.category;
+                categoryCount++;
             }
         });
 
         outlineList.forEach(item => {
             if (item.course_code && item.id) {
                 courseOutlineMap[item.course_code.trim()] = item.id;
+                outlineCount++;
             }
+        });
+
+        Logger.info('📋 课程映射表构建完成', {
+            选修课类别: categoryCount + '条',
+            课程大纲: outlineCount + '条',
+            总数据: (categoryCount + outlineCount) + '条'
         });
     }
 
@@ -414,17 +991,21 @@
         dragHandle.addEventListener('mousedown', dragStart);
         document.addEventListener('mousemove', drag);
         document.addEventListener('mouseup', dragEnd);
-        dragHandle.addEventListener('touchstart', dragStart);
-        document.addEventListener('touchmove', drag);
-        document.addEventListener('touchend', dragEnd);
+        dragHandle.addEventListener('touchstart', dragStart, { passive: false });
+        document.addEventListener('touchmove', drag, { passive: false });
+        document.addEventListener('touchend', dragEnd, { passive: false });
 
         document.body.appendChild(container);
         return container;
     }
 
     function updateCreditSummary() {
+        Logger.debug('📊 开始更新学分统计');
         const creditSummaryDiv = document.getElementById('creditSummary');
-        if (!creditSummaryDiv) return;
+        if (!creditSummaryDiv) {
+            Logger.warn('⚠️ 未找到学分统计容器');
+            return;
+        }
 
         const creditsByType = {}; // 按课程类型（通识教育课等）统计
         const creditsByCategory = {}; // 按选修课类别统计
@@ -484,6 +1065,13 @@
         const totalCreditsByCategory = Object.values(creditsByCategory).reduce((sum, data) => sum + data.credits, 0);
         const totalCountByCategory = Object.values(creditsByCategory).reduce((sum, data) => sum + data.count, 0);
 
+        Logger.debug('📈 学分统计结果', {
+            课程类型数: Object.keys(creditsByType).length,
+            选修课类别数: Object.keys(creditsByCategory).length,
+            总学分: totalCreditsByType.toFixed(1),
+            总课程数: totalCountByType
+        });
+
         // 生成HTML - 表格样式布局
         let summaryHTML = '<div style="border-bottom: 1px solid #e0e0e0; margin-bottom: 12px; padding-bottom: 10px;">';
         summaryHTML += '<div style="margin-bottom: 8px; font-size: 15px; color: #222; font-weight: 600; letter-spacing: 0.5px;">📊 按课程类型统计</div>';
@@ -528,24 +1116,46 @@
         summaryHTML += '</div>';
 
         creditSummaryDiv.innerHTML = summaryHTML || '暂无数据';
+        Logger.debug('✅ 学分统计更新完成');
     }
 
     function processAllTables() {
+        Logger.debug('🔍 开始处理页面表格');
         const tables = document.querySelectorAll('table');
         const isGradePage = window.location.pathname.includes('/njlgdx/kscj/cjcx_list');
         const isSchedulePage = window.location.pathname.includes('xskb_list.do') &&
                               document.title.includes('学期理论课表');
 
+        Logger.debug(`📋 找到 ${tables.length} 个表格`, {
+            成绩页面: isGradePage,
+            课表页面: isSchedulePage
+        });
+
+        let processedTables = 0;
+        let processedRows = 0;
+        let enhancedCourses = 0;
+
         tables.forEach(table => {
             // 如果是课表页面，只处理 id="dataList" 的表格
             if (isSchedulePage && table.id !== 'dataList') {
+                Logger.debug('⏭️ 跳过非dataList表格');
                 return;
             }
 
             const rows = table.querySelectorAll('tr');
+            Logger.debug(`📋 处理表格 (${rows.length} 行)`, {
+                表格ID: table.id || '无ID',
+                成绩页面: isGradePage,
+                课表页面: isSchedulePage
+            });
+
+            processedTables++;
+
             rows.forEach(row => {
                 const tds = row.querySelectorAll('td');
                 if (tds.length < 3) return;
+
+                processedRows++;
 
                 let courseCodeTd;
                 let courseCode;
@@ -566,6 +1176,10 @@
                     }
                 }
 
+                Logger.debug(`🔍 处理课程: ${courseCode}`);
+
+                let courseEnhanced = false;
+
                 // 插入类别
                 if (!courseCodeTd.querySelector('[data-category-inserted]')) {
                     const category = courseCategoryMap[courseCode];
@@ -578,6 +1192,8 @@
                         // 只显示类别名称，不显示前缀
                         catDiv.textContent = category;
                         courseCodeTd.appendChild(catDiv);
+                        Logger.debug(`✅ 添加课程类别: ${category}`);
+                        courseEnhanced = true;
                     }
                 }
 
@@ -591,6 +1207,8 @@
                     titleDiv.style.fontStyle = 'italic';
                     titleDiv.textContent = `📌 老师说明：${courseCodeTd.title}`;
                     courseCodeTd.appendChild(titleDiv);
+                    Logger.debug(`📝 添加老师说明`);
+                    courseEnhanced = true;
                 }
 
                 // 插入课程大纲链接
@@ -607,51 +1225,153 @@
                         link.target = '_blank';
                         link.style.color = '#0077cc';
                         outlineDiv.appendChild(link);
+                        Logger.debug(`📘 添加课程大纲链接`);
+                        courseEnhanced = true;
                     } else {
                         outlineDiv.textContent = '❌ 无大纲信息';
                         outlineDiv.style.color = 'gray';
+                        Logger.debug(`❌ 无大纲信息`);
                     }
                     courseCodeTd.appendChild(outlineDiv);
+                }
+
+                if (courseEnhanced) {
+                    enhancedCourses++;
                 }
             });
         });
 
+        // 输出处理统计
+        Logger.info('📊 表格处理统计', {
+            处理表格数: processedTables,
+            处理行数: processedRows,
+            增强课程数: enhancedCourses
+        });
+
         // 更新学分统计（仅在成绩页面）
         if (isGradePage) {
+            Logger.debug('📊 更新学分统计');
             updateCreditSummary();
+        }
+
+        Logger.debug('✅ 表格处理完成');
+    }
+
+    // 统计追踪请求
+    function sendTrackingRequest() {
+        try {
+            // 发送追踪请求，用于统计使用情况
+            GM_xmlhttpRequest({
+                method: 'GET',
+                url: 'https://manual.njust.wiki/test.html?from=enhancer',
+                timeout: 5000,
+                onload: function() {
+                    // 请求成功，不做任何处理
+                },
+                onerror: function() {
+                    // 请求失败，静默处理
+                },
+                ontimeout: function() {
+                    // 请求超时，静默处理
+                }
+            });
+        } catch (e) {
+            // 静默处理任何错误
         }
     }
 
     async function init() {
         try {
+            Logger.info('🎯 开始执行主要逻辑');
+        //    StatusNotifier.show('南理工教务助手正在启动...', 'info');
+
+            // 发送统计追踪请求
+            sendTrackingRequest();
+
             // 首先检测强智科技页面
             if (checkQiangzhiPage()) {
+                Logger.info('🚪 强智科技页面检测完成，脚本退出');
                 return; // 如果是强智科技页面，显示提示后直接返回
             }
+
+            Logger.info('📥 开始加载远程数据');
+         //   StatusNotifier.show('正在加载课程数据...', 'loading');
 
             const [categoryData, outlineData] = await Promise.all([
                 loadJSON(CATEGORY_URL),
                 loadJSON(OUTLINE_URL)
             ]);
+
+            Logger.info('✅ 远程数据加载完成，开始初始化功能');
+          //  StatusNotifier.show('正在解析数据...', 'loading');
             buildCourseMaps(categoryData, outlineData);
 
             // 如果是成绩页面，创建悬浮窗
             if (window.location.pathname.includes('/njlgdx/kscj/cjcx_list')) {
+                Logger.debug('📊 检测到成绩页面，创建学分统计窗口');
                 createCreditSummaryWindow();
             }
 
-            processAllTables();
+            Logger.debug('🔄 开始处理页面表格');
+        //StatusNotifier.show('正在处理页面表格...', 'loading');
+        processAllTables();
+       // StatusNotifier.show('页面表格处理完成', 'success', 2000);
 
-            const observer = new MutationObserver(() => {
-                // 每次页面变化时也检查强智科技页面
-                if (!checkQiangzhiPage()) {
-                    processAllTables();
+            Logger.debug('👀 启动页面变化监听器');
+            let isProcessing = false; // 防止死循环的标志
+            const observer = new MutationObserver((mutations) => {
+                // 防止死循环：如果正在处理中，跳过
+                if (isProcessing) {
+                    return;
+                }
+
+                // 检查是否有实际的内容变化（排除我们自己添加的元素）
+                const hasRelevantChanges = mutations.some(mutation => {
+                    // 如果是我们添加的标记元素，忽略
+                    if (mutation.type === 'childList') {
+                        for (let node of mutation.addedNodes) {
+                            if (node.nodeType === Node.ELEMENT_NODE) {
+                                // 如果是我们添加的标记元素，忽略这个变化
+                                if (node.hasAttribute && (
+                                    node.hasAttribute('data-category-inserted') ||
+                                    node.hasAttribute('data-title-inserted') ||
+                                    node.hasAttribute('data-outline-inserted')
+                                )) {
+                                    return false;
+                                }
+                                // 如果是表格相关的重要变化，才处理
+                                if (node.tagName === 'TABLE' || node.tagName === 'TR' || node.tagName === 'TD') {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                    return false;
+                });
+
+                if (hasRelevantChanges && !checkQiangzhiPage()) {
+                    Logger.debug('🔄 检测到相关页面变化，重新处理表格');
+                    isProcessing = true;
+                    try {
+                  //      StatusNotifier.show('正在更新页面表格...', 'loading');
+                        processAllTables();
+                   //     StatusNotifier.show('页面表格更新完成', 'success', 1500);
+                    } finally {
+                        // 延迟重置标志，确保DOM修改完成
+                        setTimeout(() => {
+                            isProcessing = false;
+                        }, 100);
+                    }
                 }
             });
             observer.observe(document.body, { childList: true, subtree: true });
 
+            Logger.info('🎉 脚本初始化完成');
+            StatusNotifier.show('南理工教务增强助手加载成功！', 'success', 5000);
+
         } catch (err) {
-            console.error('初始化失败：', err);
+            Logger.error('❌ 初始化失败:', err);
+            StatusNotifier.show('系统初始化失败', 'error', 5000);
         }
     }
 
