@@ -107,12 +107,13 @@
                     text-align: center;
                 ">
                     <div style="margin-bottom: 8px;">
-                        <strong>请查看</strong> |
+                        <strong>请查看
                         <a href="https://enhance.njust.wiki" target="_blank" style="color: #007bff; text-decoration: none;">官方网站</a>
-                       <strong>以获取使用说明</strong> |
+                      以获取使用说明</strong> 
                         </div>
                     <div style="color: #ff6b6b; font-weight: bold; margin-bottom: 5px;">⚠️ 免责声明</div>
-                    <div>本工具仅为学习交流使用，数据仅供参考。请以教务处官网信息为准，使用本工具产生的任何后果由用户自行承担。</div>
+                    <div>本工具仅为学习交流使用，数据仅供参考。</div>
+                   <div>请以教务处官网信息为准，使用本工具产生的任何后果均由用户自行承担。</div>
                 </div>
             </div>
         `;
@@ -200,12 +201,12 @@
             const content = `
                 <div style="text-align: center; font-size: 16px; color: #333; margin-bottom: 20px; line-height: 1.6;">
                     <div style="font-size: 20px; margin-bottom: 15px;">🚫 该页面无法登录</div>
-                    <div>检测到您正在访问强智科技教务系统概念版，该页面无法正常登录。</div>
+               
                     <div style="margin-top: 10px;">请转向以下正确的登录页面：</div>
                 </div>
                 <div style="text-align: center; margin: 20px 0;">
                     <div style="margin: 10px 0;">
-                        <a href="https://ehall2.njust.edu.cn/index.html#/search?searchKey=%E6%95%99%E5%8A%A1&placeholder=" target="_blank" style="
+                        <a href="https://www.njust.edu.cn/" target="_blank" style="
                             display: inline-block;
                             background: #28a745;
                             color: white;
@@ -244,11 +245,15 @@
                     color: #666;
                     text-align: center;
                 ">
-                    💡 提示：请使用上述链接进行登录，登录后可正常使用教务系统功能
+                    💡 提示：<br>
+                    强智科技教务系统概念版是无法登陆的。<br>
+                    请使用上述链接跳转到正确的登录页面，<br>
+                    登录后可正常使用教务系统功能<br>
+                    验证码区分大小写，大部分情况下均为小写
                 </div>
             `;
 
-            createUnifiedModal('南理工教务助手', content, 'warning');
+            createUnifiedModal('南理工教务增强助手', content, 'warning');
             return true;
         }
         return false;
