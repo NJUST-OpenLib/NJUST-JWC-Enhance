@@ -43,9 +43,9 @@
 
 详细图文说明和数据结构介绍请参见：
 
-- 🧩 [增强功能效果说明（README.enhance.md）](./README.enhance.md)
+- 🧩 [增强助手功能说明](./README.enhance.md)
 
-- 📦 [课程大纲采集流程（README.getKCDG.md）](./README.getKCDG.md)
+- 📦 [课程大纲采集流程（使用课程采集助手 V2）](./README.getKCDG.md)
 
 - 📦 [选修课采集流程（README.getXXK.md）](./README.getXXK.md)
 
@@ -58,9 +58,9 @@
 
 ### 0 预备知识：
 
-Tampermonkey 和 ScriptCat 都是脚本管理器，安装一个即可
+- Tampermonkey 和 ScriptCat 都是脚本管理器，安装一个即可
 
-scriptcat.org 和 GreasyFork.org 都是脚本仓库，选择一个即可
+- scriptcat.org 和 GreasyFork.org 都是脚本仓库，选择一个即可
 
 ---
 
