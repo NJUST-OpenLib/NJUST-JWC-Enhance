@@ -1,2 +1,101 @@
-请添加指向2. xxk.html - 课程数据解析器，将三行一组的文本转换为JSON格式
-3. csv2json.html - CSV课程数据筛选工具，可上传CSV文件并导出为JSON的超链接和介绍
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NJUST-JWC-Enhance 工具集</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .tool-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .tool-title {
+            color: #2c3e50;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .tool-description {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .tool-link {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .tool-link:hover {
+            background: #2980b9;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-link a {
+            color: #7f8c8d;
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛠️ NJUST-JWC-Enhance 工具集</h1>
+        
+        <div class="tool-card">
+            <div class="tool-title">📝 课程数据解析器</div>
+            <div class="tool-description">
+                将三行一组的课程文本数据转换为标准JSON格式。适用于处理从教务系统复制的课程信息，自动解析课程名称、学分、类别等信息。
+            </div>
+            <a href="xxk.html" class="tool-link">打开解析器</a>
+        </div>
+        
+        <div class="tool-card">
+            <div class="tool-title">📊 CSV课程数据筛选工具</div>
+            <div class="tool-description">
+                上传CSV格式的课程数据文件，进行筛选、分类和格式转换，最终导出为JSON格式。支持批量处理和数据清洗功能。
+            </div>
+            <a href="csv2json.html" class="tool-link">打开筛选工具</a>
+        </div>
+        
+        <div class="back-link">
+            <a href="../">← 返回项目主页</a>
+        </div>
+    </div>
+</body>
+</html>
