@@ -1,0 +1,4698 @@
+[
+  {
+    "id": "572BF3AE025044A7BDD7AF953460102C",
+    "course_code": "161803E1"
+  },
+  {
+    "id": "00000023",
+    "course_code": "00000023"
+  },
+  {
+    "id": "00000104",
+    "course_code": "00000104"
+  },
+  {
+    "id": "00000105",
+    "course_code": "00000105"
+  },
+  {
+    "id": "00000107",
+    "course_code": "00000107"
+  },
+  {
+    "id": "1FCC6E2AE8A5499B87B3927B4B6418DC",
+    "course_code": "00000122"
+  },
+  {
+    "id": "E9ABB8E5C58D4092BCFAD3544EE80C4C",
+    "course_code": "00000126"
+  },
+  {
+    "id": "6743A086EBE44767BE1299916AF09CE2",
+    "course_code": "00000182"
+  },
+  {
+    "id": "8F43C139BDED44B398DCA88C02BEC411",
+    "course_code": "00000223"
+  },
+  {
+    "id": "506749385B46420AA1FDC75FDF92B169",
+    "course_code": "00000224"
+  },
+  {
+    "id": "F698EBA8A0EE473385590A3DB1DDDBB1",
+    "course_code": "00000237"
+  },
+  {
+    "id": "3A695A8E5F7A4F0DBC3093A80CDC3B47",
+    "course_code": "00000242"
+  },
+  {
+    "id": "4EA60BCB8B16438FA3F30A661D21D8BE",
+    "course_code": "00000258"
+  },
+  {
+    "id": "2588FE852C124D63B98B7E6177CE84F5",
+    "course_code": "00000262"
+  },
+  {
+    "id": "E94CD5877A884C50B246ADC839337136",
+    "course_code": "00000279"
+  },
+  {
+    "id": "A94B2B2F04AF4A50AE8AEA1EA56A3FF2",
+    "course_code": "00000286"
+  },
+  {
+    "id": "3000ADEDCC2B46DE9009EDC5552F5A8E",
+    "course_code": "00000287"
+  },
+  {
+    "id": "473F476A01914CC6A56EE0F282489737",
+    "course_code": "00000291"
+  },
+  {
+    "id": "1EEF1637C0904529A20AFA51ADDE6F6E",
+    "course_code": "00000297"
+  },
+  {
+    "id": "A9E3FAD02A78403598480D98DF3128D8",
+    "course_code": "00000303"
+  },
+  {
+    "id": "CBCEDC23DB4C486C857FCDBC41DFB0EF",
+    "course_code": "00000310"
+  },
+  {
+    "id": "CB413D3E8E384C1C83E5220CB9BCB9C8",
+    "course_code": "00000311"
+  },
+  {
+    "id": "3F4192A9DF104F2E8CAA7769D628FB91",
+    "course_code": "00000326"
+  },
+  {
+    "id": "D0306E4E6A6A40ABB5BB2463E684012E",
+    "course_code": "00000336"
+  },
+  {
+    "id": "7E2A7460A2504E578BF7C5F2451E9290",
+    "course_code": "00000337"
+  },
+  {
+    "id": "9F9400A741BC4A659C727F2AAF0FB510",
+    "course_code": "00000339"
+  },
+  {
+    "id": "AC66D4743732442294D939219F6F4198",
+    "course_code": "00000346"
+  },
+  {
+    "id": "E3E79E38B3724DE08DD85B17D393694B",
+    "course_code": "00000351"
+  },
+  {
+    "id": "4A5BD104C0D44E338103201390C33E50",
+    "course_code": "00000352"
+  },
+  {
+    "id": "594F4E73B6944BA283996B5D71A093F0",
+    "course_code": "00000353"
+  },
+  {
+    "id": "EC3C9E756A034F24A05B1C13836EBE76",
+    "course_code": "00000365"
+  },
+  {
+    "id": "9C5F8D850191473490508630D43AD1F3",
+    "course_code": "00000368"
+  },
+  {
+    "id": "C0423354745C4BC9AB22901EC273B802",
+    "course_code": "00000373"
+  },
+  {
+    "id": "0BB9A830483941EBA421CC72D5BE42BD",
+    "course_code": "00000385"
+  },
+  {
+    "id": "479B3451182642C28BA0C7BBAB8702C6",
+    "course_code": "00000386"
+  },
+  {
+    "id": "077C8BCC8C7946ED83AA88FB4425CCBF",
+    "course_code": "00000388"
+  },
+  {
+    "id": "0BC4460A051E45149C5AB0316931C494",
+    "course_code": "00000389"
+  },
+  {
+    "id": "B34CBF807D9146648242572C96462D78",
+    "course_code": "00000391"
+  },
+  {
+    "id": "208BDEE0CF3644899BD92A20B627E929",
+    "course_code": "00000405"
+  },
+  {
+    "id": "F293D9F5CE954E20BDB32BA585F1E867",
+    "course_code": "00000406"
+  },
+  {
+    "id": "5E42058577904C9194F379C3CB1C62F1",
+    "course_code": "00000409"
+  },
+  {
+    "id": "AD3078992F6F4E52A2736FB5212867CD",
+    "course_code": "00000410"
+  },
+  {
+    "id": "9A22CBE66897409A9566ED4B96108114",
+    "course_code": "00000411"
+  },
+  {
+    "id": "FDBCFB43739540A095F8EDF5B26413D2",
+    "course_code": "00000414"
+  },
+  {
+    "id": "57E954160A594AEC88E74CAA880B89EF",
+    "course_code": "00000425"
+  },
+  {
+    "id": "5812C42900AE4923A3F0B57445F9ABCE",
+    "course_code": "00000426"
+  },
+  {
+    "id": "3530A732FE6D4F1DB1BDE43A1A3C4D62",
+    "course_code": "00000429"
+  },
+  {
+    "id": "F1CBA324BE8F4ABEB537C70D1F289A7E",
+    "course_code": "00000430"
+  },
+  {
+    "id": "00010062",
+    "course_code": "00010062"
+  },
+  {
+    "id": "00010192",
+    "course_code": "00010192"
+  },
+  {
+    "id": "00010360",
+    "course_code": "00010360"
+  },
+  {
+    "id": "00010624",
+    "course_code": "00010624"
+  },
+  {
+    "id": "02020301",
+    "course_code": "02020301"
+  },
+  {
+    "id": "02020601",
+    "course_code": "02020601"
+  },
+  {
+    "id": "C234EF4D3F5E420C9D41A0FFBEB8BC8A",
+    "course_code": "02020602"
+  },
+  {
+    "id": "02020701",
+    "course_code": "02020701"
+  },
+  {
+    "id": "02020801",
+    "course_code": "02020801"
+  },
+  {
+    "id": "97C9EB7E691D444A8ED57B60F8A214E1",
+    "course_code": "02020803"
+  },
+  {
+    "id": "8357CD4C0D5F451E9C7667886A6E454E",
+    "course_code": "02020805"
+  },
+  {
+    "id": "692372D24B104C9EA743CF23D1B4D2E1",
+    "course_code": "02020895"
+  },
+  {
+    "id": "02021201",
+    "course_code": "02021201"
+  },
+  {
+    "id": "02021301",
+    "course_code": "02021301"
+  },
+  {
+    "id": "333F41E7BF93432C8857C588DCDB5E7F",
+    "course_code": "02021802"
+  },
+  {
+    "id": "02022101",
+    "course_code": "02022101"
+  },
+  {
+    "id": "D5EFFE9DD6674498B0B43C4B5B4ABC5A",
+    "course_code": "020226E1"
+  },
+  {
+    "id": "02022701",
+    "course_code": "02022701"
+  },
+  {
+    "id": "02023101",
+    "course_code": "02023101"
+  },
+  {
+    "id": "02024001",
+    "course_code": "02024001"
+  },
+  {
+    "id": "02024101",
+    "course_code": "02024101"
+  },
+  {
+    "id": "DE0E94A8775D4101A2433D489021A58B",
+    "course_code": "02024302"
+  },
+  {
+    "id": "02027201",
+    "course_code": "02027201"
+  },
+  {
+    "id": "02028401",
+    "course_code": "02028401"
+  },
+  {
+    "id": "02037901",
+    "course_code": "02037901"
+  },
+  {
+    "id": "335338ABF7C74976B560D4EB8AAE9EFC",
+    "course_code": "02038002"
+  },
+  {
+    "id": "7075CB9EC2CA4F17AAFE1323225DAA15",
+    "course_code": "02038401"
+  },
+  {
+    "id": "97CA08CCA5D14B60ADCCFA0AF6CFCA2A",
+    "course_code": "02038701"
+  },
+  {
+    "id": "C5930998C007424D82B9D1001035FF13",
+    "course_code": "02038802"
+  },
+  {
+    "id": "77304263298D4F38B63CFE1584A304F4",
+    "course_code": "02038903"
+  },
+  {
+    "id": "22FA2DAA568F455A94E1F87B0DCCFACD",
+    "course_code": "02039001"
+  },
+  {
+    "id": "F419424C4B27439AA10A4E55004B24C9",
+    "course_code": "02040201"
+  },
+  {
+    "id": "CB6D55D1C0A84590BA0A8BEC875C5D57",
+    "course_code": "020404E1"
+  },
+  {
+    "id": "FE5E3E68574D46AEBAAFE8A838FCA493",
+    "course_code": "02040501"
+  },
+  {
+    "id": "BE4C443C277F4B32A9663D30A64DC9CB",
+    "course_code": "02040601"
+  },
+  {
+    "id": "932E9E16D28943B0BD791B4EB28C22F3",
+    "course_code": "02040801"
+  },
+  {
+    "id": "ABF4FC7D72B249F4AD4078CA3F258DD0",
+    "course_code": "02040901"
+  },
+  {
+    "id": "0B13161CC0734E1DBD5E31379362B3D1",
+    "course_code": "02041001"
+  },
+  {
+    "id": "B88EA9E7218C43FC9193BC591ADB46F2",
+    "course_code": "02041101"
+  },
+  {
+    "id": "9528CD2752544D91A5B9494F72BC8BA1",
+    "course_code": "02041601"
+  },
+  {
+    "id": "00FAAAB1EC134CBB95D46792F69C4851",
+    "course_code": "02041602"
+  },
+  {
+    "id": "F703F6654D6A4A16AE8BA209297B06B0",
+    "course_code": "02041603"
+  },
+  {
+    "id": "7F016DFBF6CF44E8A73501A40B4CBCC1",
+    "course_code": "02041604"
+  },
+  {
+    "id": "B3662503B2AF442A82A9C692BECCD21D",
+    "course_code": "02041801"
+  },
+  {
+    "id": "B47CF48D09274617945B7BFA991EA565",
+    "course_code": "02041901"
+  },
+  {
+    "id": "717701205F5F42E98E670F80048FE769",
+    "course_code": "02042001"
+  },
+  {
+    "id": "EC420FF4DBED4E9EBCA9BF55EC1E3645",
+    "course_code": "02042101"
+  },
+  {
+    "id": "BF6721C6447F4BC496132880EDF93D65",
+    "course_code": "02042301"
+  },
+  {
+    "id": "A96276F0264D4EA9AC86088586F7891D",
+    "course_code": "02042501"
+  },
+  {
+    "id": "A2FE02EC995A42B4842595C8A5DA5F9B",
+    "course_code": "02042601"
+  },
+  {
+    "id": "97C987CFAD074493B76F67F2ACA68EF0",
+    "course_code": "02047401"
+  },
+  {
+    "id": "A16250AA7C1E44FB9711F69B7A44B00D",
+    "course_code": "02047901"
+  },
+  {
+    "id": "18211EAB404A4EB19008A731D31281AE",
+    "course_code": "02048201"
+  },
+  {
+    "id": "AC0015D2CAC246D8812190A9413C393F",
+    "course_code": "020483E1"
+  },
+  {
+    "id": "61A16CDD67C54DA7B9CD59CDA5FC424D",
+    "course_code": "022313E2"
+  },
+  {
+    "id": "03020301",
+    "course_code": "03020301"
+  },
+  {
+    "id": "03020503",
+    "course_code": "03020503"
+  },
+  {
+    "id": "03020902",
+    "course_code": "03020902"
+  },
+  {
+    "id": "03021102",
+    "course_code": "03021102"
+  },
+  {
+    "id": "03021401",
+    "course_code": "03021401"
+  },
+  {
+    "id": "03021501",
+    "course_code": "03021501"
+  },
+  {
+    "id": "03021601",
+    "course_code": "03021601"
+  },
+  {
+    "id": "03022204",
+    "course_code": "03022204"
+  },
+  {
+    "id": "03023201",
+    "course_code": "03023201"
+  },
+  {
+    "id": "03024602",
+    "course_code": "03024602"
+  },
+  {
+    "id": "03025402",
+    "course_code": "03025402"
+  },
+  {
+    "id": "03027201",
+    "course_code": "03027201"
+  },
+  {
+    "id": "03027503",
+    "course_code": "03027503"
+  },
+  {
+    "id": "03027802",
+    "course_code": "03027802"
+  },
+  {
+    "id": "03028103",
+    "course_code": "03028103"
+  },
+  {
+    "id": "03028301",
+    "course_code": "03028301"
+  },
+  {
+    "id": "03028402",
+    "course_code": "03028402"
+  },
+  {
+    "id": "03029501",
+    "course_code": "03029501"
+  },
+  {
+    "id": "03030202",
+    "course_code": "03030202"
+  },
+  {
+    "id": "030302E2",
+    "course_code": "030302E2"
+  },
+  {
+    "id": "03030403",
+    "course_code": "03030403"
+  },
+  {
+    "id": "03030404",
+    "course_code": "03030404"
+  },
+  {
+    "id": "331150E1D7E849CAA4F6628EBBBD9167",
+    "course_code": "03030602"
+  },
+  {
+    "id": "03031000",
+    "course_code": "03031000"
+  },
+  {
+    "id": "03031006",
+    "course_code": "03031006"
+  },
+  {
+    "id": "03031008",
+    "course_code": "03031008"
+  },
+  {
+    "id": "03031090",
+    "course_code": "03031090"
+  },
+  {
+    "id": "03031096",
+    "course_code": "03031096"
+  },
+  {
+    "id": "03031301",
+    "course_code": "03031301"
+  },
+  {
+    "id": "03031302",
+    "course_code": "03031302"
+  },
+  {
+    "id": "9524C1BB3A824D42A9CB0758E538831F",
+    "course_code": "030313E1"
+  },
+  {
+    "id": "63B759278FBF4B68BB915A3A6661EA78",
+    "course_code": "030315E2"
+  },
+  {
+    "id": "03031603",
+    "course_code": "03031603"
+  },
+  {
+    "id": "26E1C83D022D4D2D98495D489EC1A7D1",
+    "course_code": "030316E2"
+  },
+  {
+    "id": "03032403",
+    "course_code": "03032403"
+  },
+  {
+    "id": "03032503",
+    "course_code": "03032503"
+  },
+  {
+    "id": "03032804",
+    "course_code": "03032804"
+  },
+  {
+    "id": "03032901",
+    "course_code": "03032901"
+  },
+  {
+    "id": "03034703",
+    "course_code": "03034703"
+  },
+  {
+    "id": "03036702",
+    "course_code": "03036702"
+  },
+  {
+    "id": "03038301",
+    "course_code": "03038301"
+  },
+  {
+    "id": "03039301",
+    "course_code": "03039301"
+  },
+  {
+    "id": "03040802",
+    "course_code": "03040802"
+  },
+  {
+    "id": "CB4F151ADA8B4BE4B61CB42AAE17C82F",
+    "course_code": "03041204"
+  },
+  {
+    "id": "03041301",
+    "course_code": "03041301"
+  },
+  {
+    "id": "FF6009074A2A43CC85FF8A7AC0D78B00",
+    "course_code": "03042304"
+  },
+  {
+    "id": "03042902",
+    "course_code": "03042902"
+  },
+  {
+    "id": "03044203",
+    "course_code": "03044203"
+  },
+  {
+    "id": "03044401",
+    "course_code": "03044401"
+  },
+  {
+    "id": "03044501",
+    "course_code": "03044501"
+  },
+  {
+    "id": "03045501",
+    "course_code": "03045501"
+  },
+  {
+    "id": "03046801",
+    "course_code": "03046801"
+  },
+  {
+    "id": "03046901",
+    "course_code": "03046901"
+  },
+  {
+    "id": "03047301",
+    "course_code": "03047301"
+  },
+  {
+    "id": "03047501",
+    "course_code": "03047501"
+  },
+  {
+    "id": "03048301",
+    "course_code": "03048301"
+  },
+  {
+    "id": "E7E6069D0F554CC98434E01759985050",
+    "course_code": "030493E1"
+  },
+  {
+    "id": "03049501",
+    "course_code": "03049501"
+  },
+  {
+    "id": "7B69774F8B994E41B7EE3A76D9EC966A",
+    "course_code": "03049502"
+  },
+  {
+    "id": "03055304",
+    "course_code": "03055304"
+  },
+  {
+    "id": "03059901",
+    "course_code": "03059901"
+  },
+  {
+    "id": "03060401",
+    "course_code": "03060401"
+  },
+  {
+    "id": "0D7E59FB604B4B6FA395BD8CB56AACFF",
+    "course_code": "03062002"
+  },
+  {
+    "id": "3771C1853CFD471E9A94BFDEABAA2EAC",
+    "course_code": "03062202"
+  },
+  {
+    "id": "B1150BA5E602407390D1847E8D40F596",
+    "course_code": "03062906"
+  },
+  {
+    "id": "E0035E0BE0874A9B8DA78F20322F7FD2",
+    "course_code": "03063204"
+  },
+  {
+    "id": "4317E461C0ED4BF38F50889B47788D2B",
+    "course_code": "03063206"
+  },
+  {
+    "id": "4107EB40B3514143AEA6F1755EB4F83E",
+    "course_code": "03063301"
+  },
+  {
+    "id": "2C1893EF10C04CE189B97F55339DCEC6",
+    "course_code": "03063401"
+  },
+  {
+    "id": "15ED9606C68E4FE98A953F64811997B4",
+    "course_code": "03064301"
+  },
+  {
+    "id": "F64989AE2029409E8F7FE6551D1B1776",
+    "course_code": "03064401"
+  },
+  {
+    "id": "93F43642B6C842D6B74EE4E2069C3FF8",
+    "course_code": "03064501"
+  },
+  {
+    "id": "EA2D9903A7854CF0ADE3B682B8583E3F",
+    "course_code": "03064601"
+  },
+  {
+    "id": "03132103",
+    "course_code": "03132103"
+  },
+  {
+    "id": "3255CB5FB0AF42059A9B8DB84DD0A8E7",
+    "course_code": "03132104"
+  },
+  {
+    "id": "03132602",
+    "course_code": "03132602"
+  },
+  {
+    "id": "03132801",
+    "course_code": "03132801"
+  },
+  {
+    "id": "03132902",
+    "course_code": "03132902"
+  },
+  {
+    "id": "FB5EC38214CF404D8289BA6E81B09A7A",
+    "course_code": "03144604"
+  },
+  {
+    "id": "03232602",
+    "course_code": "03232602"
+  },
+  {
+    "id": "03232801",
+    "course_code": "03232801"
+  },
+  {
+    "id": "03232902",
+    "course_code": "03232902"
+  },
+  {
+    "id": "63C27050F15547BFAD09D3DBA750AAFE",
+    "course_code": "03244604"
+  },
+  {
+    "id": "05035003",
+    "course_code": "05035003"
+  },
+  {
+    "id": "06000704",
+    "course_code": "06000704"
+  },
+  {
+    "id": "06024202",
+    "course_code": "06024202"
+  },
+  {
+    "id": "06034401",
+    "course_code": "06034401"
+  },
+  {
+    "id": "06034501",
+    "course_code": "06034501"
+  },
+  {
+    "id": "E79AA74CA80E4DDABB9BE584969A26C0",
+    "course_code": "06035901"
+  },
+  {
+    "id": "F8EE7A469FD0441FB4FCC1A99B9D524D",
+    "course_code": "06036701"
+  },
+  {
+    "id": "D5A8FCA6104E435A8B4E655BE69D6B1E",
+    "course_code": "06037201"
+  },
+  {
+    "id": "6D072723E1BB49AC9AAF35FCE7A39CAB",
+    "course_code": "06037501"
+  },
+  {
+    "id": "011869A6B0D94DADBDECC6E433616E2D",
+    "course_code": "06800101"
+  },
+  {
+    "id": "944EBE13536244DA9233B9CC714D02B2",
+    "course_code": "06800201"
+  },
+  {
+    "id": "3AEA843D34364842B56B9E7A7008B409",
+    "course_code": "06800401"
+  },
+  {
+    "id": "DF63D1D9C7974F00B2DC39A50154D394",
+    "course_code": "06800601"
+  },
+  {
+    "id": "AC000EE1E7BB45A9877CA62C74605BF1",
+    "course_code": "06800801"
+  },
+  {
+    "id": "309A17FE8E2C4FE9824B4725226C4F4D",
+    "course_code": "06800901"
+  },
+  {
+    "id": "121D62F191734EE79069118E78EB6F8A",
+    "course_code": "06801101"
+  },
+  {
+    "id": "10875205E9EF4F42929C6D1EB7C4004D",
+    "course_code": "06801501"
+  },
+  {
+    "id": "1D3767DBA4494519AB67182429032E11",
+    "course_code": "06801701"
+  },
+  {
+    "id": "4A0B758BDFD940199F33B35EBEFEC5D9",
+    "course_code": "06801801"
+  },
+  {
+    "id": "4F1051F34BDD47928A2DEFA3C12BDDC9",
+    "course_code": "06802101"
+  },
+  {
+    "id": "4E4074FAC691431292B2E500BC2D2400",
+    "course_code": "06802201"
+  },
+  {
+    "id": "1C2B05BF0F7A45E39DFDAC7E376CD7F3",
+    "course_code": "06802301"
+  },
+  {
+    "id": "0DE76012EB274BE18A66B2152C8D357C",
+    "course_code": "06802302"
+  },
+  {
+    "id": "91AB4CE4C330426881E8D0CC9EAE80D7",
+    "course_code": "06802303"
+  },
+  {
+    "id": "7D663F888A59490CA6C75C22016D2884",
+    "course_code": "06802401"
+  },
+  {
+    "id": "B160084A83C4403F8143C16DB7121764",
+    "course_code": "06802501"
+  },
+  {
+    "id": "4A7B50A5D4B14E41969B70B54F7EC94D",
+    "course_code": "06802601"
+  },
+  {
+    "id": "7880049DA0474C089EEAAD07703582C7",
+    "course_code": "06802701"
+  },
+  {
+    "id": "BF02FE7E05E94F0D97601C51952D6068",
+    "course_code": "06802901"
+  },
+  {
+    "id": "D2C4813B50FB476BA8A88CD2E3077D2B",
+    "course_code": "06803001"
+  },
+  {
+    "id": "4D71185D6F7B46E6A57242FD257A0B3F",
+    "course_code": "06803101"
+  },
+  {
+    "id": "9D5F7363F1E7432083325158589B54AF",
+    "course_code": "06803201"
+  },
+  {
+    "id": "F1A48DC9C2EE465A8864BFF0D288B01B",
+    "course_code": "06803301"
+  },
+  {
+    "id": "41D1EE9E3AE844D79E021C0FF165CF98",
+    "course_code": "06803401"
+  },
+  {
+    "id": "9651A825A6E0499394DC82AF3066E04E",
+    "course_code": "06803501"
+  },
+  {
+    "id": "9BF5C4F82F2F41F196310E6C2FAC46D2",
+    "course_code": "06803601"
+  },
+  {
+    "id": "38DC2DEAE30E42F98178B114F4902EE2",
+    "course_code": "06803801"
+  },
+  {
+    "id": "BDB6767311E4464596932189650BE433",
+    "course_code": "06803901"
+  },
+  {
+    "id": "DC125F9055F4483BA1EC38C5BF99C4C9",
+    "course_code": "06804101"
+  },
+  {
+    "id": "D60B56823F814A0894DF730295004F9E",
+    "course_code": "06804201"
+  },
+  {
+    "id": "09CA6E09666B44BD80AC15047FE955F3",
+    "course_code": "06804301"
+  },
+  {
+    "id": "5E5F6860513B47F7822D499079B48FB2",
+    "course_code": "06804401"
+  },
+  {
+    "id": "290A9490CB0D4C8A99EC7C06ACDBF381",
+    "course_code": "06804501"
+  },
+  {
+    "id": "F8738F530B1A480EA90E1B94EE1E86D5",
+    "course_code": "06804601"
+  },
+  {
+    "id": "27ABBF8E73F646478B0E032D72899CC8",
+    "course_code": "06804701"
+  },
+  {
+    "id": "3366258D477E42F49B47182CCEC13B6A",
+    "course_code": "06804801"
+  },
+  {
+    "id": "9FC053C145894C7997C904179BE05BA6",
+    "course_code": "06804901"
+  },
+  {
+    "id": "E302AEFEBA3843EE8A04D2AFBE7B4087",
+    "course_code": "06805001"
+  },
+  {
+    "id": "A3F3FE89345F49568B0627A25900ABA5",
+    "course_code": "06805101"
+  },
+  {
+    "id": "83A8435246D24232A324A54A0F1E2825",
+    "course_code": "06805301"
+  },
+  {
+    "id": "95A1534F2A74444B96BDCE7AF676ED08",
+    "course_code": "06805401"
+  },
+  {
+    "id": "1E62F647EA0640D5B46449CC7F13F59C",
+    "course_code": "06805501"
+  },
+  {
+    "id": "B97454956A874E40B2655CCFF06FC532",
+    "course_code": "06805601"
+  },
+  {
+    "id": "1D0C7D2A9C3640708A53828BB0F5AC81",
+    "course_code": "06805701"
+  },
+  {
+    "id": "D18CC10FE88D4E649B6B454B4B0CFC8E",
+    "course_code": "06805801"
+  },
+  {
+    "id": "33A767A9CA564EC3B160F30FE403C624",
+    "course_code": "06805901"
+  },
+  {
+    "id": "1587F2C0766D41DF9D5AA107CF0F53DB",
+    "course_code": "06806001"
+  },
+  {
+    "id": "DD54B0B1752E45EF9D17E669419CC6EF",
+    "course_code": "06806101"
+  },
+  {
+    "id": "07020503",
+    "course_code": "07020503"
+  },
+  {
+    "id": "07020701",
+    "course_code": "07020701"
+  },
+  {
+    "id": "07021002",
+    "course_code": "07021002"
+  },
+  {
+    "id": "AA5D40644CE54EA48595168E98C6A6E4",
+    "course_code": "07021204"
+  },
+  {
+    "id": "07021701",
+    "course_code": "07021701"
+  },
+  {
+    "id": "07022203",
+    "course_code": "07022203"
+  },
+  {
+    "id": "070223E1",
+    "course_code": "070223E1"
+  },
+  {
+    "id": "07022502",
+    "course_code": "07022502"
+  },
+  {
+    "id": "07022603",
+    "course_code": "07022603"
+  },
+  {
+    "id": "96C6112274B8444CA38EFAFF1AA0B803",
+    "course_code": "07022606"
+  },
+  {
+    "id": "6DCFBDAF73FA4FDA9EF0169AC566377B",
+    "course_code": "07022607"
+  },
+  {
+    "id": "070230E1",
+    "course_code": "070230E1"
+  },
+  {
+    "id": "070231E1",
+    "course_code": "070231E1"
+  },
+  {
+    "id": "070232E2",
+    "course_code": "070232E2"
+  },
+  {
+    "id": "9620A537D4934FC3BFB2133F6CD172D0",
+    "course_code": "070232E3"
+  },
+  {
+    "id": "7358A95B5D524D2681353A7D053A0161",
+    "course_code": "070233E2"
+  },
+  {
+    "id": "07023402",
+    "course_code": "07023402"
+  },
+  {
+    "id": "070234E2",
+    "course_code": "070234E2"
+  },
+  {
+    "id": "07023601",
+    "course_code": "07023601"
+  },
+  {
+    "id": "070236E1",
+    "course_code": "070236E1"
+  },
+  {
+    "id": "5F5AAF0A218C4FF6A6D9440B8A1E7943",
+    "course_code": "070240E1"
+  },
+  {
+    "id": "07024202",
+    "course_code": "07024202"
+  },
+  {
+    "id": "8A4306A7661E4525A0570576971B71FD",
+    "course_code": "070242E3"
+  },
+  {
+    "id": "07024403",
+    "course_code": "07024403"
+  },
+  {
+    "id": "28C952F8F2AC4B67BD25362CA6EC5447",
+    "course_code": "07024504"
+  },
+  {
+    "id": "070246E1",
+    "course_code": "070246E1"
+  },
+  {
+    "id": "07024801",
+    "course_code": "07024801"
+  },
+  {
+    "id": "07025402",
+    "course_code": "07025402"
+  },
+  {
+    "id": "07026102",
+    "course_code": "07026102"
+  },
+  {
+    "id": "07027002",
+    "course_code": "07027002"
+  },
+  {
+    "id": "07027203",
+    "course_code": "07027203"
+  },
+  {
+    "id": "07027401",
+    "course_code": "07027401"
+  },
+  {
+    "id": "07027701",
+    "course_code": "07027701"
+  },
+  {
+    "id": "07027702",
+    "course_code": "07027702"
+  },
+  {
+    "id": "07028101",
+    "course_code": "07028101"
+  },
+  {
+    "id": "E6F9EDC791CA49DE91F3CA269391E6E2",
+    "course_code": "07028202"
+  },
+  {
+    "id": "07028602",
+    "course_code": "07028602"
+  },
+  {
+    "id": "07029801",
+    "course_code": "07029801"
+  },
+  {
+    "id": "3DA61F9DEC96497FB8C04948437275B9",
+    "course_code": "070298E4"
+  },
+  {
+    "id": "07030201",
+    "course_code": "07030201"
+  },
+  {
+    "id": "07030501",
+    "course_code": "07030501"
+  },
+  {
+    "id": "07031703",
+    "course_code": "07031703"
+  },
+  {
+    "id": "07032201",
+    "course_code": "07032201"
+  },
+  {
+    "id": "07032701",
+    "course_code": "07032701"
+  },
+  {
+    "id": "29407E8854FE48E4A1B037A42B93C714",
+    "course_code": "07032703"
+  },
+  {
+    "id": "07032801",
+    "course_code": "07032801"
+  },
+  {
+    "id": "070329E1",
+    "course_code": "070329E1"
+  },
+  {
+    "id": "054AAF8EB64B45C1932F61E02522CAEE",
+    "course_code": "070329E2"
+  },
+  {
+    "id": "07033202",
+    "course_code": "07033202"
+  },
+  {
+    "id": "07033901",
+    "course_code": "07033901"
+  },
+  {
+    "id": "070340E1",
+    "course_code": "070340E1"
+  },
+  {
+    "id": "0F5BF889F29147DD96FBF029EA2820EB",
+    "course_code": "070340E2"
+  },
+  {
+    "id": "07036702",
+    "course_code": "07036702"
+  },
+  {
+    "id": "07038004",
+    "course_code": "07038004"
+  },
+  {
+    "id": "07038502",
+    "course_code": "07038502"
+  },
+  {
+    "id": "07038503",
+    "course_code": "07038503"
+  },
+  {
+    "id": "07038506",
+    "course_code": "07038506"
+  },
+  {
+    "id": "07038507",
+    "course_code": "07038507"
+  },
+  {
+    "id": "07038704",
+    "course_code": "07038704"
+  },
+  {
+    "id": "07038802",
+    "course_code": "07038802"
+  },
+  {
+    "id": "07038904",
+    "course_code": "07038904"
+  },
+  {
+    "id": "07039403",
+    "course_code": "07039403"
+  },
+  {
+    "id": "070394E2",
+    "course_code": "070394E2"
+  },
+  {
+    "id": "07039501",
+    "course_code": "07039501"
+  },
+  {
+    "id": "07040701",
+    "course_code": "07040701"
+  },
+  {
+    "id": "07040901",
+    "course_code": "07040901"
+  },
+  {
+    "id": "07041201",
+    "course_code": "07041201"
+  },
+  {
+    "id": "07041401",
+    "course_code": "07041401"
+  },
+  {
+    "id": "070414E1",
+    "course_code": "070414E1"
+  },
+  {
+    "id": "886557DB76D24B73BCF14D8856122833",
+    "course_code": "07041503"
+  },
+  {
+    "id": "07041802",
+    "course_code": "07041802"
+  },
+  {
+    "id": "0F1D1A11E03141CEB954838814359674",
+    "course_code": "07042504"
+  },
+  {
+    "id": "07042701",
+    "course_code": "07042701"
+  },
+  {
+    "id": "070427E1",
+    "course_code": "070427E1"
+  },
+  {
+    "id": "07042901",
+    "course_code": "07042901"
+  },
+  {
+    "id": "070429E1",
+    "course_code": "070429E1"
+  },
+  {
+    "id": "07043004",
+    "course_code": "07043004"
+  },
+  {
+    "id": "07043202",
+    "course_code": "07043202"
+  },
+  {
+    "id": "1DD5ADD1FD8045A1B159591D37FC053A",
+    "course_code": "07043905"
+  },
+  {
+    "id": "070441E3",
+    "course_code": "070441E3"
+  },
+  {
+    "id": "07044603",
+    "course_code": "07044603"
+  },
+  {
+    "id": "07045701",
+    "course_code": "07045701"
+  },
+  {
+    "id": "07045801",
+    "course_code": "07045801"
+  },
+  {
+    "id": "07045903",
+    "course_code": "07045903"
+  },
+  {
+    "id": "07047101",
+    "course_code": "07047101"
+  },
+  {
+    "id": "121C261C4B8B4734ADF774E6D04D79D0",
+    "course_code": "070471E1"
+  },
+  {
+    "id": "07047201",
+    "course_code": "07047201"
+  },
+  {
+    "id": "07047301",
+    "course_code": "07047301"
+  },
+  {
+    "id": "07047902",
+    "course_code": "07047902"
+  },
+  {
+    "id": "07047904",
+    "course_code": "07047904"
+  },
+  {
+    "id": "070482E1",
+    "course_code": "070482E1"
+  },
+  {
+    "id": "07048301",
+    "course_code": "07048301"
+  },
+  {
+    "id": "070483E1",
+    "course_code": "070483E1"
+  },
+  {
+    "id": "07048402",
+    "course_code": "07048402"
+  },
+  {
+    "id": "07048701",
+    "course_code": "07048701"
+  },
+  {
+    "id": "07048901",
+    "course_code": "07048901"
+  },
+  {
+    "id": "07051302",
+    "course_code": "07051302"
+  },
+  {
+    "id": "07051901",
+    "course_code": "07051901"
+  },
+  {
+    "id": "07054201",
+    "course_code": "07054201"
+  },
+  {
+    "id": "07054401",
+    "course_code": "07054401"
+  },
+  {
+    "id": "8D00D2302BD54B8BAE413209029CEB5C",
+    "course_code": "07055002"
+  },
+  {
+    "id": "070553E2",
+    "course_code": "070553E2"
+  },
+  {
+    "id": "07055401",
+    "course_code": "07055401"
+  },
+  {
+    "id": "070555E1",
+    "course_code": "070555E1"
+  },
+  {
+    "id": "AC1BE1726685417EBE3C354D9438005C",
+    "course_code": "070555E2"
+  },
+  {
+    "id": "07055701",
+    "course_code": "07055701"
+  },
+  {
+    "id": "0398257821574801978DC982F4588861",
+    "course_code": "07056202"
+  },
+  {
+    "id": "F1EE99A4046F47D9AE74878B26547DFB",
+    "course_code": "070574E1"
+  },
+  {
+    "id": "07057601",
+    "course_code": "07057601"
+  },
+  {
+    "id": "07057801",
+    "course_code": "07057801"
+  },
+  {
+    "id": "07058001",
+    "course_code": "07058001"
+  },
+  {
+    "id": "07059001",
+    "course_code": "07059001"
+  },
+  {
+    "id": "07059101",
+    "course_code": "07059101"
+  },
+  {
+    "id": "07059701",
+    "course_code": "07059701"
+  },
+  {
+    "id": "C5A416843FDA40BEB3376C2346721C86",
+    "course_code": "07059702"
+  },
+  {
+    "id": "07060101",
+    "course_code": "07060101"
+  },
+  {
+    "id": "07060201",
+    "course_code": "07060201"
+  },
+  {
+    "id": "07060301",
+    "course_code": "07060301"
+  },
+  {
+    "id": "E97D828EF1074660988A0B68E004DE92",
+    "course_code": "07060401"
+  },
+  {
+    "id": "2A4A07B64F76418E900F269696494830",
+    "course_code": "07060502"
+  },
+  {
+    "id": "5A2BB631F46E4EF2A1C554E08DDE1E0D",
+    "course_code": "07060503"
+  },
+  {
+    "id": "9F0E796B246A48F1BCE3EFAB8EC603A1",
+    "course_code": "07060504"
+  },
+  {
+    "id": "28BC0D1C370446F38C9518B28EB88694",
+    "course_code": "07060505"
+  },
+  {
+    "id": "29B1F8203DDE4FFFBD35B5D44C80F83D",
+    "course_code": "07060507"
+  },
+  {
+    "id": "FD61CA4C54DF450AACD3720518CD0840",
+    "course_code": "07060701"
+  },
+  {
+    "id": "FC0724944EB44AF88B5D2988BE61006C",
+    "course_code": "07060901"
+  },
+  {
+    "id": "15997EED5722445E861BAEAF929464E6",
+    "course_code": "07061301"
+  },
+  {
+    "id": "05BED354A50B423E835F0CE2B716EF81",
+    "course_code": "07061401"
+  },
+  {
+    "id": "40A4D989D44B4CA49C567B5ACCA35EC5",
+    "course_code": "07061502"
+  },
+  {
+    "id": "925F7E45E8D744AF8FA0D5238CBF4A51",
+    "course_code": "07061601"
+  },
+  {
+    "id": "E208CFD74AAC4C4BAD5497D30981F401",
+    "course_code": "07061701"
+  },
+  {
+    "id": "003D91701286450DB6DD9ED966BC508E",
+    "course_code": "07061901"
+  },
+  {
+    "id": "0BC35F81DF03416C97A2EADBA88D6BE3",
+    "course_code": "07062202"
+  },
+  {
+    "id": "4AEBFD9553044278815941FF848A1B2E",
+    "course_code": "07062301"
+  },
+  {
+    "id": "AE0A6F20FA5B420A8631B3774A95897C",
+    "course_code": "07062401"
+  },
+  {
+    "id": "D407F57B43B546C883CAE78AE97D6D43",
+    "course_code": "07062501"
+  },
+  {
+    "id": "6A78E15F90264D4B8A5B25AEC7D657B4",
+    "course_code": "07062601"
+  },
+  {
+    "id": "22A5E7D298C84CE8B7697453CE46F3BF",
+    "course_code": "07062901"
+  },
+  {
+    "id": "AB2EB4D272844006B66B47C7814CCB8A",
+    "course_code": "07062902"
+  },
+  {
+    "id": "69D80C6B1891427BAB8752D58EFEC1E2",
+    "course_code": "07063001"
+  },
+  {
+    "id": "070701E1",
+    "course_code": "070701E1"
+  },
+  {
+    "id": "070703E1",
+    "course_code": "070703E1"
+  },
+  {
+    "id": "070704E1",
+    "course_code": "070704E1"
+  },
+  {
+    "id": "070706E1",
+    "course_code": "070706E1"
+  },
+  {
+    "id": "070707E1",
+    "course_code": "070707E1"
+  },
+  {
+    "id": "65891217BDB940A180D70FD7E04D8D39",
+    "course_code": "070707E2"
+  },
+  {
+    "id": "070710E1",
+    "course_code": "070710E1"
+  },
+  {
+    "id": "070711E1",
+    "course_code": "070711E1"
+  },
+  {
+    "id": "115A91708F774DD79D5163047800E34A",
+    "course_code": "070713E1"
+  },
+  {
+    "id": "B2F8452E867F4C4EB804B3A37F948CD4",
+    "course_code": "070716E1"
+  },
+  {
+    "id": "FD40D90F6DDB49799B4276D69285BE12",
+    "course_code": "07071901"
+  },
+  {
+    "id": "2A30591E832F49EDADB0A8CA66744E4B",
+    "course_code": "07072401"
+  },
+  {
+    "id": "CB4349E311BB40B1A2663457A2194BED",
+    "course_code": "07072501"
+  },
+  {
+    "id": "58E9A439E98E4282A850C1F19EA23BC2",
+    "course_code": "07072601"
+  },
+  {
+    "id": "070800E1",
+    "course_code": "070800E1"
+  },
+  {
+    "id": "E6A0268BF52E4E639B949DE11FC84FAE",
+    "course_code": "070802E1"
+  },
+  {
+    "id": "5D6604F7B5E148F8947AB4F1FF0D18F8",
+    "course_code": "07080401"
+  },
+  {
+    "id": "B14E361109AC45E9AF4AF3ED72C928F3",
+    "course_code": "07080501"
+  },
+  {
+    "id": "CDAE1059A0054BF7865E4864B5626656",
+    "course_code": "07080601"
+  },
+  {
+    "id": "BD5376BBC9E5434D8C07B83A59B9C36F",
+    "course_code": "07080801"
+  },
+  {
+    "id": "4FB5293AB3384D0C8BB6D228FF94C02F",
+    "course_code": "07081001"
+  },
+  {
+    "id": "5904815E98614706B9A032A7821591A0",
+    "course_code": "07081101"
+  },
+  {
+    "id": "856DF4BC0A5F4E0E8F21A052DDF53F42",
+    "course_code": "07081201"
+  },
+  {
+    "id": "B6F9B5BDB77C417D8D0AA39558D38EE5",
+    "course_code": "07081301"
+  },
+  {
+    "id": "475D9CF37B204ECCB9F352946F0D88D2",
+    "course_code": "07081401"
+  },
+  {
+    "id": "BEC1099D30754547BE1490D8884CABCF",
+    "course_code": "07081501"
+  },
+  {
+    "id": "616FEC3C5DA04DAAA1CB47B2C80A55A9",
+    "course_code": "07081701"
+  },
+  {
+    "id": "7602911E7A4F45D39D5F4E630A08086B",
+    "course_code": "07081801"
+  },
+  {
+    "id": "3061C4E37967407A91334BC49917C126",
+    "course_code": "07081802"
+  },
+  {
+    "id": "9C332ABB217348BBA26DFDBF711A2C49",
+    "course_code": "07081803"
+  },
+  {
+    "id": "624A1EB211174B5CA4D9B65A19CFB0A9",
+    "course_code": "07081804"
+  },
+  {
+    "id": "DA3309ACC57F42ACAD8802D5F5636E2C",
+    "course_code": "07081901"
+  },
+  {
+    "id": "9F49919B713F4086A110445814AB5D03",
+    "course_code": "070826E1"
+  },
+  {
+    "id": "0CF700CDD3464E38AD27A693A2BE96D2",
+    "course_code": "07082701"
+  },
+  {
+    "id": "34EC3146FCD64A4AAF745C540E042852",
+    "course_code": "07082801"
+  },
+  {
+    "id": "DC13046F7F534FBF96EF191F5FD78C61",
+    "course_code": "07083002"
+  },
+  {
+    "id": "F0E62B497F734D45BE77BDA1ACC12652",
+    "course_code": "07083301"
+  },
+  {
+    "id": "303DB25513F34625BFC6DA292E418634",
+    "course_code": "07083302"
+  },
+  {
+    "id": "5B6A0289DA3043909AFA153824198B6B",
+    "course_code": "07083701"
+  },
+  {
+    "id": "4DF29B78B7CB4497A9D4492F4DDD6889",
+    "course_code": "07139001"
+  },
+  {
+    "id": "07153301",
+    "course_code": "07153301"
+  },
+  {
+    "id": "1F7A99828147460F90481BE59EA297F2",
+    "course_code": "07180101"
+  },
+  {
+    "id": "A7795E0936004CAE923B84D0097A999A",
+    "course_code": "07182101"
+  },
+  {
+    "id": "ED84380D88DC451F850F38CF95F50409",
+    "course_code": "07182201"
+  },
+  {
+    "id": "EA12377A82EE4077A28A705253294121",
+    "course_code": "07182301"
+  },
+  {
+    "id": "7D7645953B3E4D269CA67FA7E83DEFD3",
+    "course_code": "07182401"
+  },
+  {
+    "id": "0B541C51F759496E887372313D02B916",
+    "course_code": "07182501"
+  },
+  {
+    "id": "519B7BC850684146B624469535FD449D",
+    "course_code": "07182601"
+  },
+  {
+    "id": "37746C0013C545DBBEED8FF366606EEF",
+    "course_code": "07239001"
+  },
+  {
+    "id": "CC76184D758445558018816E5436FCC7",
+    "course_code": "07280101"
+  },
+  {
+    "id": "05D89B29A3AB445D98BF84C45B57B4EC",
+    "course_code": "07282101"
+  },
+  {
+    "id": "98E7168B993349F0B200150F5FF86897",
+    "course_code": "07282201"
+  },
+  {
+    "id": "28FDF48A0B664A409FDB0FE27B86DF00",
+    "course_code": "07282301"
+  },
+  {
+    "id": "C7F7E8F38C93486B9F88ECA5856860EA",
+    "course_code": "07282401"
+  },
+  {
+    "id": "07353201",
+    "course_code": "07353201"
+  },
+  {
+    "id": "08021003",
+    "course_code": "08021003"
+  },
+  {
+    "id": "3F0B510D28754DD79336C5871E43767B",
+    "course_code": "08021006"
+  },
+  {
+    "id": "8044C2E0C650460BB4A2BCDF0DE26581",
+    "course_code": "08021007"
+  },
+  {
+    "id": "08021093",
+    "course_code": "08021093"
+  },
+  {
+    "id": "993D1C2B807F4ED9943A949EE7B08224",
+    "course_code": "08021097"
+  },
+  {
+    "id": "08021403",
+    "course_code": "08021403"
+  },
+  {
+    "id": "080214E3",
+    "course_code": "080214E3"
+  },
+  {
+    "id": "E9EEBA2E829E4AE1AE15CBD468DC8F15",
+    "course_code": "08021503"
+  },
+  {
+    "id": "08022404",
+    "course_code": "08022404"
+  },
+  {
+    "id": "1F1ABF835DCC46E88A978D15D4CE6501",
+    "course_code": "08022602"
+  },
+  {
+    "id": "26A43845C77949DBAD064277466BF64D",
+    "course_code": "08023503"
+  },
+  {
+    "id": "08024002",
+    "course_code": "08024002"
+  },
+  {
+    "id": "08024402",
+    "course_code": "08024402"
+  },
+  {
+    "id": "08024403",
+    "course_code": "08024403"
+  },
+  {
+    "id": "08024501",
+    "course_code": "08024501"
+  },
+  {
+    "id": "08024504",
+    "course_code": "08024504"
+  },
+  {
+    "id": "08025002",
+    "course_code": "08025002"
+  },
+  {
+    "id": "08025201",
+    "course_code": "08025201"
+  },
+  {
+    "id": "6608BA2EBC9644BB8804F94460E453DB",
+    "course_code": "08025602"
+  },
+  {
+    "id": "08025702",
+    "course_code": "08025702"
+  },
+  {
+    "id": "08027201",
+    "course_code": "08027201"
+  },
+  {
+    "id": "08027401",
+    "course_code": "08027401"
+  },
+  {
+    "id": "08029002",
+    "course_code": "08029002"
+  },
+  {
+    "id": "08029401",
+    "course_code": "08029401"
+  },
+  {
+    "id": "DBEA273B0DDB488CBDCD67DAA52863CE",
+    "course_code": "08029702"
+  },
+  {
+    "id": "D4740E2F667C4672960BB8B71DFD8C76",
+    "course_code": "08030102"
+  },
+  {
+    "id": "DF5AF4B26D9646498AD8D9A14C196F59",
+    "course_code": "08030504"
+  },
+  {
+    "id": "08030800",
+    "course_code": "08030800"
+  },
+  {
+    "id": "08030802",
+    "course_code": "08030802"
+  },
+  {
+    "id": "08030804",
+    "course_code": "08030804"
+  },
+  {
+    "id": "D7A308F736004FD6AD723763CB7A78C8",
+    "course_code": "08030806"
+  },
+  {
+    "id": "08030903",
+    "course_code": "08030903"
+  },
+  {
+    "id": "08030923",
+    "course_code": "08030923"
+  },
+  {
+    "id": "08030993",
+    "course_code": "08030993"
+  },
+  {
+    "id": "245F6A264B44459EB8F52033BB90FF33",
+    "course_code": "08030997"
+  },
+  {
+    "id": "08034401",
+    "course_code": "08034401"
+  },
+  {
+    "id": "08034904",
+    "course_code": "08034904"
+  },
+  {
+    "id": "08035001",
+    "course_code": "08035001"
+  },
+  {
+    "id": "08036201",
+    "course_code": "08036201"
+  },
+  {
+    "id": "08037401",
+    "course_code": "08037401"
+  },
+  {
+    "id": "08040502",
+    "course_code": "08040502"
+  },
+  {
+    "id": "08040601",
+    "course_code": "08040601"
+  },
+  {
+    "id": "08040803",
+    "course_code": "08040803"
+  },
+  {
+    "id": "23986CA427A54FB39D4B3992150E876A",
+    "course_code": "08041003"
+  },
+  {
+    "id": "8DE40EA0E3D1447AAB61AAB537DABE25",
+    "course_code": "08041402"
+  },
+  {
+    "id": "169B16CB51154B2A863396BA90CE7C37",
+    "course_code": "08054402"
+  },
+  {
+    "id": "ED17ECAE24824DAEA6715AAA5E284D91",
+    "course_code": "08055002"
+  },
+  {
+    "id": "416695F872FB4D5481FA2E904D78D540",
+    "course_code": "08055102"
+  },
+  {
+    "id": "0F494BDD7394454EA73CB1DA4BE532F2",
+    "course_code": "08060102"
+  },
+  {
+    "id": "08060901",
+    "course_code": "08060901"
+  },
+  {
+    "id": "08061101",
+    "course_code": "08061101"
+  },
+  {
+    "id": "C889D52AB3FF41DE95B0AE68ECADF064",
+    "course_code": "08061202"
+  },
+  {
+    "id": "230A91825CB9483DB8085416434356B8",
+    "course_code": "08061402"
+  },
+  {
+    "id": "C8CE4096305148DCB47732F5A6D30927",
+    "course_code": "08061702"
+  },
+  {
+    "id": "9F38884577CD446C9B238F6F37521E0F",
+    "course_code": "08063202"
+  },
+  {
+    "id": "9A722A3F01D74224A9E9CF99B38789EC",
+    "course_code": "08063501"
+  },
+  {
+    "id": "D5D6FAB537D246FD9F206FD10FD9C529",
+    "course_code": "08063601"
+  },
+  {
+    "id": "8DE9E7C067B948BF8F2C9BADD35C9A7B",
+    "course_code": "08063701"
+  },
+  {
+    "id": "82A3710CC9884FAC81265518FD40FC18",
+    "course_code": "08063901"
+  },
+  {
+    "id": "29DCF880FD2142CBAA3BB6141FA35F1C",
+    "course_code": "08063902"
+  },
+  {
+    "id": "C4C8C741FFC04E6A89F87F419842EF11",
+    "course_code": "08064002"
+  },
+  {
+    "id": "25EB7DDB196640BDB7C85C6FEE178519",
+    "course_code": "08064301"
+  },
+  {
+    "id": "730E5D98F1924816B3868C44DD2C3E41",
+    "course_code": "08064402"
+  },
+  {
+    "id": "331AF7418642496C99CD029E28DBB003",
+    "course_code": "08064501"
+  },
+  {
+    "id": "32045E7D7A25490CAAB7A7FD0EE9025C",
+    "course_code": "08064601"
+  },
+  {
+    "id": "3CE03AD46ABB4955AC2047EF971FC9F0",
+    "course_code": "08064701"
+  },
+  {
+    "id": "B150C67E9DBC4486B5422EF0D2114FDF",
+    "course_code": "08065101"
+  },
+  {
+    "id": "EA0DB10E57AC4411B81764687081CF78",
+    "course_code": "08065201"
+  },
+  {
+    "id": "8ABE150567BB45759BF3DE737F56901D",
+    "course_code": "08066301"
+  },
+  {
+    "id": "6C46252E2BDA422F8A3D8BC954D27F07",
+    "course_code": "08066401"
+  },
+  {
+    "id": "BFA064AFCC2B41B2AA5A11A4C677599C",
+    "course_code": "08070101"
+  },
+  {
+    "id": "A6F9C8766C6049738791C8776CF1323C",
+    "course_code": "08070301"
+  },
+  {
+    "id": "FD34F3EBB36D42D897EB5DE453ACE85F",
+    "course_code": "08070501"
+  },
+  {
+    "id": "C2971B491EAF4ACDBD08D1DC9B088F87",
+    "course_code": "08070601"
+  },
+  {
+    "id": "7FF449D58051451C95E7F477B69C2529",
+    "course_code": "08070801"
+  },
+  {
+    "id": "B67B484C41D5462786D685C885E92E48",
+    "course_code": "08070901"
+  },
+  {
+    "id": "9691A12C87F04B12BD66670CB3924613",
+    "course_code": "08071101"
+  },
+  {
+    "id": "1603B31656FB40AAA680EBF8A13F39CA",
+    "course_code": "08071301"
+  },
+  {
+    "id": "CD2473FBB6C64AC2810D28E1192F3682",
+    "course_code": "08071601"
+  },
+  {
+    "id": "E716698A5F4F4E0C853013237ED7F8FF",
+    "course_code": "08071801"
+  },
+  {
+    "id": "B26CA196FCCD446086C9CEC48A384359",
+    "course_code": "08072001"
+  },
+  {
+    "id": "C115386074B54EB089F49B423C31B902",
+    "course_code": "08072101"
+  },
+  {
+    "id": "27ACF7337A82420DA45267A61D62D622",
+    "course_code": "08072201"
+  },
+  {
+    "id": "EDBDBDD3B3484259A604583E648B424A",
+    "course_code": "08072301"
+  },
+  {
+    "id": "1D845DEE81454732BE9D32B30011E2DC",
+    "course_code": "08072401"
+  },
+  {
+    "id": "8BBD79B4C4284D4DBD4D030236E1DA71",
+    "course_code": "08072501"
+  },
+  {
+    "id": "40FBBE3159864584B0533B127A5CF8BA",
+    "course_code": "08072801"
+  },
+  {
+    "id": "30877FE74A194110849F64ACCBEBBF8F",
+    "course_code": "08072901"
+  },
+  {
+    "id": "CC557110D3B7406F86BBC2F2D0F6300B",
+    "course_code": "08073002"
+  },
+  {
+    "id": "76160181F0804AB2AF98E30FDF102D75",
+    "course_code": "08073101"
+  },
+  {
+    "id": "2C68101251CE41C6838A1E9DA309EC48",
+    "course_code": "08073301"
+  },
+  {
+    "id": "C5E1EEDA7DDE4E3A99505E45B435E47F",
+    "course_code": "08073402"
+  },
+  {
+    "id": "AED4C3D9EDDA4BCABDFA672A3D31948A",
+    "course_code": "08073501"
+  },
+  {
+    "id": "1C9E78FFC268478DB1ADA0C38E88DDF4",
+    "course_code": "08073602"
+  },
+  {
+    "id": "FE3B0E1315B84BFE9ADBEFB2C5D6D080",
+    "course_code": "08073701"
+  },
+  {
+    "id": "F45F7BA0577C4ABD88A5A4A176E38110",
+    "course_code": "08073801"
+  },
+  {
+    "id": "7674CD9461624816BA198340101335B2",
+    "course_code": "08073901"
+  },
+  {
+    "id": "87577F831482438EAF5BFC0D4FC6717A",
+    "course_code": "08074001"
+  },
+  {
+    "id": "C3A3F9C2717B463FA61177E829198F53",
+    "course_code": "08074201"
+  },
+  {
+    "id": "15EE5F0CE21C4E688E39D85C7BD0D6A6",
+    "course_code": "08074301"
+  },
+  {
+    "id": "E89A7FC7846B4043BCE3375CE55B3E1C",
+    "course_code": "08074401"
+  },
+  {
+    "id": "50CFBDA40696470983DF50DBA72DBDAD",
+    "course_code": "08074802"
+  },
+  {
+    "id": "AF189B00379147E29E1ECAF234E77FA7",
+    "course_code": "08074901"
+  },
+  {
+    "id": "FD175D5684234056A9E234D53817DF95",
+    "course_code": "08075001"
+  },
+  {
+    "id": "0D63209997084DFEBB41B3D5B56C5695",
+    "course_code": "08075501"
+  },
+  {
+    "id": "97144306C7C04C6FB7AC07D6BC6A74F8",
+    "course_code": "08075601"
+  },
+  {
+    "id": "D704CA9CFF604E69A85D5AFA9AB56C34",
+    "course_code": "08075801"
+  },
+  {
+    "id": "64ACD325F1A9466CB1BC83B5CE60DAFD",
+    "course_code": "08075901"
+  },
+  {
+    "id": "E851E2D6DD9F44CA9B85D54C3FE45C0C",
+    "course_code": "08076001"
+  },
+  {
+    "id": "81D076B399314DDA8DE0B9817097D55D",
+    "course_code": "08076101"
+  },
+  {
+    "id": "7E33AA0A1F1C44B6B17F338B5FEF773C",
+    "course_code": "08076201"
+  },
+  {
+    "id": "18C9C55E2439462AB98B1997E3AD9055",
+    "course_code": "08076301"
+  },
+  {
+    "id": "91D8106C378949E8AA73DE33993EF771",
+    "course_code": "08076401"
+  },
+  {
+    "id": "40FB9104F8354DBAA513F9D3870EB98E",
+    "course_code": "08076701"
+  },
+  {
+    "id": "D976AC1A419B4BA6BB3EBE692FDD23D0",
+    "course_code": "08076901"
+  },
+  {
+    "id": "6EBA19841E7C4149914A901E8CFD8249",
+    "course_code": "08077001"
+  },
+  {
+    "id": "737432EC319141CDBDB872854C630342",
+    "course_code": "08077101"
+  },
+  {
+    "id": "F1B16F0C35B14C1384D7823E8BDE18F8",
+    "course_code": "08077201"
+  },
+  {
+    "id": "20F12E23FAD149B9A31B481670411BBC",
+    "course_code": "08077301"
+  },
+  {
+    "id": "584F45F5E777416CAF7ACD6191E4F510",
+    "course_code": "08077601"
+  },
+  {
+    "id": "BF146EE56B22462DBDF666B509DE3778",
+    "course_code": "08078201"
+  },
+  {
+    "id": "4F91FD6788A947178C7FBBDC50A2F23E",
+    "course_code": "08172701"
+  },
+  {
+    "id": "C506CFB49FD549578FDE1AD64F1B2D24",
+    "course_code": "08272701"
+  },
+  {
+    "id": "A87BDCC80B344B1CA7380DFB1616BFEA",
+    "course_code": "09030902"
+  },
+  {
+    "id": "C9C57B43B10244D69405640FBB229A20",
+    "course_code": "09039102"
+  },
+  {
+    "id": "69C31995737A449D86ED0CDF5154C091",
+    "course_code": "09039502"
+  },
+  {
+    "id": "6014F2B2E573420BA21EF222F6CBFF1D",
+    "course_code": "09040403"
+  },
+  {
+    "id": "A9818ED9E4E54629958710CB14BF0AA6",
+    "course_code": "09059101"
+  },
+  {
+    "id": "A795061D4EAF4D58902FD8FD53AEEC5D",
+    "course_code": "09059401"
+  },
+  {
+    "id": "4C6058B649964783B1D7BDF163684D9A",
+    "course_code": "09062601"
+  },
+  {
+    "id": "9E6C3A5D57474DE9A6B0135E1C4CF326",
+    "course_code": "09064701"
+  },
+  {
+    "id": "7FA2E266CE974E01B7D5045752C29376",
+    "course_code": "09064704"
+  },
+  {
+    "id": "C0F52D768D4641B6A2572D7E880B5633",
+    "course_code": "09065401"
+  },
+  {
+    "id": "100201E3",
+    "course_code": "100201E3"
+  },
+  {
+    "id": "1B9D3DBCC856404587FA469265FE9919",
+    "course_code": "10020302"
+  },
+  {
+    "id": "6FD60FE794F94ADF89C27F6585C9C5AE",
+    "course_code": "10020304"
+  },
+  {
+    "id": "6B4DAE6B793C45BF93295EF01E07D3D1",
+    "course_code": "10020307"
+  },
+  {
+    "id": "A8E93A95935642A78017F02F06B23C46",
+    "course_code": "10020308"
+  },
+  {
+    "id": "2101DF35F5E64C149713E547391F11C6",
+    "course_code": "10020392"
+  },
+  {
+    "id": "EB9BC1D663AF4C298ACAD99AE0B8D516",
+    "course_code": "10020397"
+  },
+  {
+    "id": "10020403",
+    "course_code": "10020403"
+  },
+  {
+    "id": "10020405",
+    "course_code": "10020405"
+  },
+  {
+    "id": "10020406",
+    "course_code": "10020406"
+  },
+  {
+    "id": "10020496",
+    "course_code": "10020496"
+  },
+  {
+    "id": "9DF5216F0BDD47CC860B7EB5A594E55C",
+    "course_code": "100205E1"
+  },
+  {
+    "id": "10021101",
+    "course_code": "10021101"
+  },
+  {
+    "id": "10021701",
+    "course_code": "10021701"
+  },
+  {
+    "id": "045A15666B924E54956B76B2EE146AC4",
+    "course_code": "10021705"
+  },
+  {
+    "id": "1953C856FA8B47A4905304C6EF13BBDA",
+    "course_code": "10022205"
+  },
+  {
+    "id": "10022701",
+    "course_code": "10022701"
+  },
+  {
+    "id": "37FAB2C550714CADA42413363236DD0B",
+    "course_code": "10023602"
+  },
+  {
+    "id": "10024601",
+    "course_code": "10024601"
+  },
+  {
+    "id": "10025401",
+    "course_code": "10025401"
+  },
+  {
+    "id": "10025402",
+    "course_code": "10025402"
+  },
+  {
+    "id": "10025404",
+    "course_code": "10025404"
+  },
+  {
+    "id": "10025406",
+    "course_code": "10025406"
+  },
+  {
+    "id": "10025501",
+    "course_code": "10025501"
+  },
+  {
+    "id": "C55D39C385FC4432BA4415EB3082FD04",
+    "course_code": "10026202"
+  },
+  {
+    "id": "10026602",
+    "course_code": "10026602"
+  },
+  {
+    "id": "10027002",
+    "course_code": "10027002"
+  },
+  {
+    "id": "10027003",
+    "course_code": "10027003"
+  },
+  {
+    "id": "10027004",
+    "course_code": "10027004"
+  },
+  {
+    "id": "E990DF2C75ED4EB7B93FD7E3E7177F6E",
+    "course_code": "10027005"
+  },
+  {
+    "id": "10027103",
+    "course_code": "10027103"
+  },
+  {
+    "id": "3FB85B5AA5D045B394EC9CA5CAB50B69",
+    "course_code": "10027703"
+  },
+  {
+    "id": "10028206",
+    "course_code": "10028206"
+  },
+  {
+    "id": "10028605",
+    "course_code": "10028605"
+  },
+  {
+    "id": "10028902",
+    "course_code": "10028902"
+  },
+  {
+    "id": "10029002",
+    "course_code": "10029002"
+  },
+  {
+    "id": "10029601",
+    "course_code": "10029601"
+  },
+  {
+    "id": "01261A3188B643DA9A1272BFECEE09C5",
+    "course_code": "10030202"
+  },
+  {
+    "id": "10030303",
+    "course_code": "10030303"
+  },
+  {
+    "id": "53B1643621564979A5E46BA48A1EF8DE",
+    "course_code": "10030602"
+  },
+  {
+    "id": "10030603",
+    "course_code": "10030603"
+  },
+  {
+    "id": "10030801",
+    "course_code": "10030801"
+  },
+  {
+    "id": "10031103",
+    "course_code": "10031103"
+  },
+  {
+    "id": "10031201",
+    "course_code": "10031201"
+  },
+  {
+    "id": "935FBA7E69C647369820807AC4A2519A",
+    "course_code": "10031702"
+  },
+  {
+    "id": "10031801",
+    "course_code": "10031801"
+  },
+  {
+    "id": "10032001",
+    "course_code": "10032001"
+  },
+  {
+    "id": "10032202",
+    "course_code": "10032202"
+  },
+  {
+    "id": "10032301",
+    "course_code": "10032301"
+  },
+  {
+    "id": "D03D4D86884F4EA189929549CA6F218D",
+    "course_code": "10033104"
+  },
+  {
+    "id": "03E994EC9C904304A45A788C77C5D67F",
+    "course_code": "10033106"
+  },
+  {
+    "id": "10033502",
+    "course_code": "10033502"
+  },
+  {
+    "id": "631E894D157E489585A73134AC585AB9",
+    "course_code": "10033702"
+  },
+  {
+    "id": "10034601",
+    "course_code": "10034601"
+  },
+  {
+    "id": "10037101",
+    "course_code": "10037101"
+  },
+  {
+    "id": "5D1E77E0C8D44666B04968483B8F4574",
+    "course_code": "10037203"
+  },
+  {
+    "id": "10037501",
+    "course_code": "10037501"
+  },
+  {
+    "id": "10037601",
+    "course_code": "10037601"
+  },
+  {
+    "id": "10037701",
+    "course_code": "10037701"
+  },
+  {
+    "id": "10037801",
+    "course_code": "10037801"
+  },
+  {
+    "id": "511C1F64CFCE4E7FABBDC5C46624FAE7",
+    "course_code": "10037902"
+  },
+  {
+    "id": "10038401",
+    "course_code": "10038401"
+  },
+  {
+    "id": "10040902",
+    "course_code": "10040902"
+  },
+  {
+    "id": "B02DC2D3E16540939683680816ECE23E",
+    "course_code": "10041302"
+  },
+  {
+    "id": "CE01E42F00CC46D98B45EBA189B31BC5",
+    "course_code": "10041503"
+  },
+  {
+    "id": "10041601",
+    "course_code": "10041601"
+  },
+  {
+    "id": "10041701",
+    "course_code": "10041701"
+  },
+  {
+    "id": "10042501",
+    "course_code": "10042501"
+  },
+  {
+    "id": "10042802",
+    "course_code": "10042802"
+  },
+  {
+    "id": "10043001",
+    "course_code": "10043001"
+  },
+  {
+    "id": "3C5ED121CF3943B8A84DAB96EE7E6608",
+    "course_code": "10043103"
+  },
+  {
+    "id": "10043201",
+    "course_code": "10043201"
+  },
+  {
+    "id": "10043301",
+    "course_code": "10043301"
+  },
+  {
+    "id": "546FB1BA3C5A417F87F56EFFD1E87899",
+    "course_code": "10043502"
+  },
+  {
+    "id": "10044001",
+    "course_code": "10044001"
+  },
+  {
+    "id": "35C8817388B84B1A84CCA038A0381002",
+    "course_code": "10045002"
+  },
+  {
+    "id": "10045101",
+    "course_code": "10045101"
+  },
+  {
+    "id": "10045301",
+    "course_code": "10045301"
+  },
+  {
+    "id": "834EC849B3734A75B6352679B6B54ACC",
+    "course_code": "10045902"
+  },
+  {
+    "id": "10050001",
+    "course_code": "10050001"
+  },
+  {
+    "id": "10050401",
+    "course_code": "10050401"
+  },
+  {
+    "id": "10050501",
+    "course_code": "10050501"
+  },
+  {
+    "id": "10050601",
+    "course_code": "10050601"
+  },
+  {
+    "id": "10050701",
+    "course_code": "10050701"
+  },
+  {
+    "id": "10051001",
+    "course_code": "10051001"
+  },
+  {
+    "id": "10051101",
+    "course_code": "10051101"
+  },
+  {
+    "id": "86316180C9B0454AB397FA3473444AE1",
+    "course_code": "10051503"
+  },
+  {
+    "id": "538F674E81BF458EAB149C3574E0F5D9",
+    "course_code": "10051802"
+  },
+  {
+    "id": "6A14E229C072403785A131BFB4C3D137",
+    "course_code": "10052101"
+  },
+  {
+    "id": "15AC62B3BB5E40F6B89CF907D50B654F",
+    "course_code": "10052201"
+  },
+  {
+    "id": "CE0B47A8643E4E1EA88D6CA5DF48B402",
+    "course_code": "10052301"
+  },
+  {
+    "id": "F99438DEA86447ACB663758920914104",
+    "course_code": "10052401"
+  },
+  {
+    "id": "4AC497826EF448ED986E8CB3646CC748",
+    "course_code": "10052502"
+  },
+  {
+    "id": "62E8438071E949F6B52789F3E32BC5E1",
+    "course_code": "10052601"
+  },
+  {
+    "id": "8BDCA8F8AA58425C851E2D6513E571CD",
+    "course_code": "10052801"
+  },
+  {
+    "id": "AA8B1291C75A49879D0E3531ACA16784",
+    "course_code": "10053001"
+  },
+  {
+    "id": "342399964FB54BF4A5FF5D8C64FB61BC",
+    "course_code": "10053102"
+  },
+  {
+    "id": "F69DB698BDED4A61915B5000A9A53DE9",
+    "course_code": "10053401"
+  },
+  {
+    "id": "E98501DC36A2492C8BC62051BD230C73",
+    "course_code": "10053501"
+  },
+  {
+    "id": "2B38983C1DD74F46B5E91E399BA69A68",
+    "course_code": "10053701"
+  },
+  {
+    "id": "AE62CC847BD04F0C87F0738A6CCA9D9C",
+    "course_code": "10053901"
+  },
+  {
+    "id": "758E174174864C53923F237727C2A9E9",
+    "course_code": "10053902"
+  },
+  {
+    "id": "E5C95D043C39426987D88C54A06C1EDC",
+    "course_code": "10054002"
+  },
+  {
+    "id": "4B316449B61043DFA579686597EB2AF1",
+    "course_code": "10054301"
+  },
+  {
+    "id": "639AA5E434244B53B775A369C5DB9FEC",
+    "course_code": "10054501"
+  },
+  {
+    "id": "513661AEA449429C8D803FD1EC84AEDF",
+    "course_code": "10054802"
+  },
+  {
+    "id": "4F57476FC957428B8065D9A40F2BC253",
+    "course_code": "10054901"
+  },
+  {
+    "id": "913A5D799B9A4F888FA7E538DCA6CA4B",
+    "course_code": "10055001"
+  },
+  {
+    "id": "6B9663072F034C63A4B4F04A3E5D459F",
+    "course_code": "10055401"
+  },
+  {
+    "id": "300821FBC6574F6C804A2DD060F128CC",
+    "course_code": "10060102"
+  },
+  {
+    "id": "3FA090F33B2F420BB89217C952CBE323",
+    "course_code": "100602E1"
+  },
+  {
+    "id": "58F053F3EEB94D8BA35133D58AF38A58",
+    "course_code": "10060401"
+  },
+  {
+    "id": "1859898168664ACA8B718CA617C3DF2E",
+    "course_code": "10060501"
+  },
+  {
+    "id": "764DDB6385DE4C55A0D9D82D890C2F00",
+    "course_code": "10060801"
+  },
+  {
+    "id": "25CE2DB2633D4172A69F98BA05FDDC68",
+    "course_code": "10060901"
+  },
+  {
+    "id": "3CB13C9DA4C84C31876BF5BE75B240F9",
+    "course_code": "10061001"
+  },
+  {
+    "id": "D17F773C32BD463285EA47D2F0F2FBA4",
+    "course_code": "10061301"
+  },
+  {
+    "id": "C9DDB92E3B6F4BBA85830AFAECE71341",
+    "course_code": "10061402"
+  },
+  {
+    "id": "9FCB6375CC9F4BAC86915E8A3A6BBAC4",
+    "course_code": "10061601"
+  },
+  {
+    "id": "F53D1E96286D4005881594E167780C4C",
+    "course_code": "10061602"
+  },
+  {
+    "id": "83C1AD8B216A45C990454916159C5537",
+    "course_code": "10061701"
+  },
+  {
+    "id": "EAD4EA88FBFD441698798D85E498BA6D",
+    "course_code": "10061801"
+  },
+  {
+    "id": "A5A765E273E646CF9700E5146DB69EB0",
+    "course_code": "10061901"
+  },
+  {
+    "id": "0971F6AEBD16481F81A6C06E38990DCA",
+    "course_code": "10062002"
+  },
+  {
+    "id": "79AE777FC5674462AC6DA8060F21D74F",
+    "course_code": "10062301"
+  },
+  {
+    "id": "3DD62DCDB5A141BF81493CF297EBA97C",
+    "course_code": "10062401"
+  },
+  {
+    "id": "1D793415406C433E8520A488E2695746",
+    "course_code": "10062501"
+  },
+  {
+    "id": "6C08537249F2435C862219BA54D71815",
+    "course_code": "10062601"
+  },
+  {
+    "id": "80997FAF7245495CB0CA82D3E39029F5",
+    "course_code": "10062701"
+  },
+  {
+    "id": "4F0EB6F118634BB194E9356D27D31901",
+    "course_code": "10063001"
+  },
+  {
+    "id": "77CC45296AE9498FB20504A726807F61",
+    "course_code": "10063201"
+  },
+  {
+    "id": "F40E8C7091714145884C09473E90C15D",
+    "course_code": "10063301"
+  },
+  {
+    "id": "4D23F0F3A9464D7196D3007851420BD0",
+    "course_code": "10063401"
+  },
+  {
+    "id": "322058DB8ADE4B54A8D7814ADC92823B",
+    "course_code": "10063502"
+  },
+  {
+    "id": "2D040675B89F44319523782AA1FC7D56",
+    "course_code": "10063601"
+  },
+  {
+    "id": "3CA5B756181C4AF8BEB1E502A58C321B",
+    "course_code": "10063901"
+  },
+  {
+    "id": "6AB8D168CE0A4859902787AA007EFECD",
+    "course_code": "10064001"
+  },
+  {
+    "id": "D993A0722E1C4276B2CDD4AB6AACDC95",
+    "course_code": "10064101"
+  },
+  {
+    "id": "D0713F1B98464C07990AA73B9531B57F",
+    "course_code": "10064201"
+  },
+  {
+    "id": "ADD51C01ACEC4FB6AEDF30D317C2150B",
+    "course_code": "10064301"
+  },
+  {
+    "id": "690193698E7049A284A11C40419D3638",
+    "course_code": "10064401"
+  },
+  {
+    "id": "C45E617B611C4B4DA611BD3C4E001D4C",
+    "course_code": "10064501"
+  },
+  {
+    "id": "02BD8735269C4A4780E45BF123863F87",
+    "course_code": "10064601"
+  },
+  {
+    "id": "0DFB1171C2A7417992738BC1D469550F",
+    "course_code": "10064701"
+  },
+  {
+    "id": "2EE1084CE2384DEEA0C8FD7EEBA13496",
+    "course_code": "10064801"
+  },
+  {
+    "id": "33A90063D9184809A31655F1E76E3E26",
+    "course_code": "10064802"
+  },
+  {
+    "id": "E85A417DC96344319ADD52C04A74F786",
+    "course_code": "10064803"
+  },
+  {
+    "id": "D54C75B95C9E4D4A86AD4DB97AB730D4",
+    "course_code": "10064901"
+  },
+  {
+    "id": "51FBAEDCCE7E4098B321FC6C193768D9",
+    "course_code": "10065001"
+  },
+  {
+    "id": "CBA475C2AEFE424789A3D7B2EB9D6D7F",
+    "course_code": "10065101"
+  },
+  {
+    "id": "EB73A19BB48F4FD0B484C9C88781AFC0",
+    "course_code": "10065401"
+  },
+  {
+    "id": "8B9C386279AC4660BF5E0E50D727D7DD",
+    "course_code": "10065501"
+  },
+  {
+    "id": "CDCA68FF245B4CA1AB8AF98297F6BCA3",
+    "course_code": "10066101"
+  },
+  {
+    "id": "BF6858D027C445CD90D0D660C2D9A9C7",
+    "course_code": "10130603"
+  },
+  {
+    "id": "50B9D2BE975C41B28D02D0861A4C1D67",
+    "course_code": "10230603"
+  },
+  {
+    "id": "11020308",
+    "course_code": "11020308"
+  },
+  {
+    "id": "11020401",
+    "course_code": "11020401"
+  },
+  {
+    "id": "11020406",
+    "course_code": "11020406"
+  },
+  {
+    "id": "11020408",
+    "course_code": "11020408"
+  },
+  {
+    "id": "11020601",
+    "course_code": "11020601"
+  },
+  {
+    "id": "11022402",
+    "course_code": "11022402"
+  },
+  {
+    "id": "11022403",
+    "course_code": "11022403"
+  },
+  {
+    "id": "E31A27D2630144D18B49C627EF4BE364",
+    "course_code": "11022504"
+  },
+  {
+    "id": "11022601",
+    "course_code": "11022601"
+  },
+  {
+    "id": "74057E81985B487F8D371C8DC9F6BD2D",
+    "course_code": "11022608"
+  },
+  {
+    "id": "110226E1",
+    "course_code": "110226E1"
+  },
+  {
+    "id": "11023204",
+    "course_code": "11023204"
+  },
+  {
+    "id": "11023302",
+    "course_code": "11023302"
+  },
+  {
+    "id": "11024001",
+    "course_code": "11024001"
+  },
+  {
+    "id": "11024002",
+    "course_code": "11024002"
+  },
+  {
+    "id": "11024003",
+    "course_code": "11024003"
+  },
+  {
+    "id": "32A9AAE62EA643B2803EF9698CF9E887",
+    "course_code": "11024004"
+  },
+  {
+    "id": "374FFAFFEB4F43B7B3015A84D3D3A4A9",
+    "course_code": "11024005"
+  },
+  {
+    "id": "11024801",
+    "course_code": "11024801"
+  },
+  {
+    "id": "8DD299CF3B0B4512B3619934107577F7",
+    "course_code": "11025204"
+  },
+  {
+    "id": "483A3F6C006B4658A0AE291F4FF2748A",
+    "course_code": "11027304"
+  },
+  {
+    "id": "11027702",
+    "course_code": "11027702"
+  },
+  {
+    "id": "11028502",
+    "course_code": "11028502"
+  },
+  {
+    "id": "11028504",
+    "course_code": "11028504"
+  },
+  {
+    "id": "11029302",
+    "course_code": "11029302"
+  },
+  {
+    "id": "11029303",
+    "course_code": "11029303"
+  },
+  {
+    "id": "11029401",
+    "course_code": "11029401"
+  },
+  {
+    "id": "11029803",
+    "course_code": "11029803"
+  },
+  {
+    "id": "A1207C7E9FC3401381ED0F7C2DAF1282",
+    "course_code": "11030104"
+  },
+  {
+    "id": "11031201",
+    "course_code": "11031201"
+  },
+  {
+    "id": "110312E2",
+    "course_code": "110312E2"
+  },
+  {
+    "id": "BDF5A1E0CD58443783457F0AAEFE7A7A",
+    "course_code": "110312E3"
+  },
+  {
+    "id": "9AAC9585A8DC444FA794DA0F0E04356E",
+    "course_code": "11036403"
+  },
+  {
+    "id": "11037201",
+    "course_code": "11037201"
+  },
+  {
+    "id": "7576CE86079E4D518EA8BCDEF6D258CE",
+    "course_code": "11037403"
+  },
+  {
+    "id": "D0B666B46D2048FBBBAAB6DD64D4A14C",
+    "course_code": "11038303"
+  },
+  {
+    "id": "11040202",
+    "course_code": "11040202"
+  },
+  {
+    "id": "11040302",
+    "course_code": "11040302"
+  },
+  {
+    "id": "22FDA152713C450E8D3F92FF6EDF15C4",
+    "course_code": "11046003"
+  },
+  {
+    "id": "1A99741FED5F4BC788939564C3355C8E",
+    "course_code": "11046202"
+  },
+  {
+    "id": "11046501",
+    "course_code": "11046501"
+  },
+  {
+    "id": "11046801",
+    "course_code": "11046801"
+  },
+  {
+    "id": "7FAE50B3CB6F4A488E1FF418F2FE2664",
+    "course_code": "11046902"
+  },
+  {
+    "id": "11047001",
+    "course_code": "11047001"
+  },
+  {
+    "id": "11047101",
+    "course_code": "11047101"
+  },
+  {
+    "id": "11047501",
+    "course_code": "11047501"
+  },
+  {
+    "id": "BCF0BF2BC84F4B1F8A4C278A9B9FB15D",
+    "course_code": "11047602"
+  },
+  {
+    "id": "11047801",
+    "course_code": "11047801"
+  },
+  {
+    "id": "CF5CE3465E3D4C5690781DB615BEE0FE",
+    "course_code": "11048202"
+  },
+  {
+    "id": "7648539A55D94A6EA1AD471031BFEB5C",
+    "course_code": "11048802"
+  },
+  {
+    "id": "11123301",
+    "course_code": "11123301"
+  },
+  {
+    "id": "11129201",
+    "course_code": "11129201"
+  },
+  {
+    "id": "11223202",
+    "course_code": "11223202"
+  },
+  {
+    "id": "11223301",
+    "course_code": "11223301"
+  },
+  {
+    "id": "11229201",
+    "course_code": "11229201"
+  },
+  {
+    "id": "11329201",
+    "course_code": "11329201"
+  },
+  {
+    "id": "61E45F16A76640569F5F7EE45B6A7496",
+    "course_code": "13031701"
+  },
+  {
+    "id": "8B29FBA015434E2AB3BC48932F9B9965",
+    "course_code": "13031801"
+  },
+  {
+    "id": "8E43732BAAAF4C8AAB206F6AF65869A2",
+    "course_code": "13031802"
+  },
+  {
+    "id": "F1789F1FC3EB426F84E5F3D9BEC763EA",
+    "course_code": "13031803"
+  },
+  {
+    "id": "5E574CEB6F4C42F69AF328836B6C6088",
+    "course_code": "13032101"
+  },
+  {
+    "id": "16B78C42E58D414C90D506C446CA276E",
+    "course_code": "13032201"
+  },
+  {
+    "id": "85706CAC5E5F43A7AA81A59BC1A3255A",
+    "course_code": "13032601"
+  },
+  {
+    "id": "B5EDD83DF57540389E1CCF9831F67C8D",
+    "course_code": "13032701"
+  },
+  {
+    "id": "5E1848473F3343CFBE1821855CEAF8A5",
+    "course_code": "13034705"
+  },
+  {
+    "id": "EC97F7205AB14307888D55800DBAEE29",
+    "course_code": "13035501"
+  },
+  {
+    "id": "A9DD0C85E0CD4E08B9D801A11F8B6C12",
+    "course_code": "13120501"
+  },
+  {
+    "id": "E3EA882BF31B48879148BAF8CA8641B1",
+    "course_code": "13120502"
+  },
+  {
+    "id": "CE14C1D1123B4C5B93B84F0AC8DD4385",
+    "course_code": "13132302"
+  },
+  {
+    "id": "92B044C58E944ACF9E2F32F9C2BA5E55",
+    "course_code": "13220501"
+  },
+  {
+    "id": "FCA1C22B8D804FD087DDC150BFC0E110",
+    "course_code": "13220502"
+  },
+  {
+    "id": "C1411461F8C0446988344A3D39BEF568",
+    "course_code": "13232302"
+  },
+  {
+    "id": "00BB6A16D91747608EEE4DC5DE7ADC30",
+    "course_code": "13320502"
+  },
+  {
+    "id": "14004902",
+    "course_code": "14004902"
+  },
+  {
+    "id": "CC8CD4DED75A42669A3E0C1B8D5A994E",
+    "course_code": "14004904"
+  },
+  {
+    "id": "14020601",
+    "course_code": "14020601"
+  },
+  {
+    "id": "B563E7CDB39D4AF89F0DBC06962A538C",
+    "course_code": "14020602"
+  },
+  {
+    "id": "890488DAF87D4629BE025252365E5B5D",
+    "course_code": "14020704"
+  },
+  {
+    "id": "14020801",
+    "course_code": "14020801"
+  },
+  {
+    "id": "14020802",
+    "course_code": "14020802"
+  },
+  {
+    "id": "14021402",
+    "course_code": "14021402"
+  },
+  {
+    "id": "791FEE77D57F415CAA21517E567960A7",
+    "course_code": "14021704"
+  },
+  {
+    "id": "4739356C9DDD4CF38DA64382DD8F2BC8",
+    "course_code": "14022803"
+  },
+  {
+    "id": "14023003",
+    "course_code": "14023003"
+  },
+  {
+    "id": "14023004",
+    "course_code": "14023004"
+  },
+  {
+    "id": "1E9865FBFAB64344B62491438F0BB402",
+    "course_code": "14023005"
+  },
+  {
+    "id": "65B1C851839F44A990A1C9C1035D19A1",
+    "course_code": "14023105"
+  },
+  {
+    "id": "BF7320858EAD4634A05295C294CC5E3A",
+    "course_code": "14023106"
+  },
+  {
+    "id": "C6D797B7E1C34070B5105E786422398E",
+    "course_code": "14023107"
+  },
+  {
+    "id": "14023203",
+    "course_code": "14023203"
+  },
+  {
+    "id": "CCCC508331754B90B60D7F127E1EB7C3",
+    "course_code": "14023204"
+  },
+  {
+    "id": "B0D0D451CA01447EB64F4B89826AC378",
+    "course_code": "14023303"
+  },
+  {
+    "id": "A566123248E24BBBB376440EFF205D4C",
+    "course_code": "14023403"
+  },
+  {
+    "id": "1804AEB6A47747F894D208B9445DC378",
+    "course_code": "14023502"
+  },
+  {
+    "id": "6CCF4802A66248F99BEF224C3E8C9F63",
+    "course_code": "14023503"
+  },
+  {
+    "id": "AF29BD455C3449A39FC0747121FCE96B",
+    "course_code": "14025002"
+  },
+  {
+    "id": "14025101",
+    "course_code": "14025101"
+  },
+  {
+    "id": "14025203",
+    "course_code": "14025203"
+  },
+  {
+    "id": "A1D677BEADEC4DD3AE317A7867132C1D",
+    "course_code": "14043501"
+  },
+  {
+    "id": "14043701",
+    "course_code": "14043701"
+  },
+  {
+    "id": "14044401",
+    "course_code": "14044401"
+  },
+  {
+    "id": "14044601",
+    "course_code": "14044601"
+  },
+  {
+    "id": "14044801",
+    "course_code": "14044801"
+  },
+  {
+    "id": "14045102",
+    "course_code": "14045102"
+  },
+  {
+    "id": "14045501",
+    "course_code": "14045501"
+  },
+  {
+    "id": "02BCF32CA2594A7FB704B5839BE003E5",
+    "course_code": "14045702"
+  },
+  {
+    "id": "14045801",
+    "course_code": "14045801"
+  },
+  {
+    "id": "14045802",
+    "course_code": "14045802"
+  },
+  {
+    "id": "C03030DA525D48CBA7785304F0BD4313",
+    "course_code": "14045803"
+  },
+  {
+    "id": "14045901",
+    "course_code": "14045901"
+  },
+  {
+    "id": "14046101",
+    "course_code": "14046101"
+  },
+  {
+    "id": "14046301",
+    "course_code": "14046301"
+  },
+  {
+    "id": "14046401",
+    "course_code": "14046401"
+  },
+  {
+    "id": "14046501",
+    "course_code": "14046501"
+  },
+  {
+    "id": "48C16CE3998040B587B459E29D987004",
+    "course_code": "14046702"
+  },
+  {
+    "id": "783E29EF292841F28626FB1536AFE91B",
+    "course_code": "14046703"
+  },
+  {
+    "id": "E7C5830864394CD3BCC0B56DE07B63FF",
+    "course_code": "14046802"
+  },
+  {
+    "id": "14046901",
+    "course_code": "14046901"
+  },
+  {
+    "id": "14047401",
+    "course_code": "14047401"
+  },
+  {
+    "id": "14047601",
+    "course_code": "14047601"
+  },
+  {
+    "id": "A9F5697D2FF242359D98ECE45A35A3D1",
+    "course_code": "14047702"
+  },
+  {
+    "id": "9D556ED2536641DCABD9DC566E7E4346",
+    "course_code": "14047704"
+  },
+  {
+    "id": "3EB547C544D6406DB19FE36762EADB71",
+    "course_code": "14047801"
+  },
+  {
+    "id": "C153E0CFB413404D9A6F9DD7ADA51626",
+    "course_code": "14047902"
+  },
+  {
+    "id": "9A20229E902B404087926BE6B9F8AAFE",
+    "course_code": "14048101"
+  },
+  {
+    "id": "870A1C8FFE614538814586E94E0AD28C",
+    "course_code": "14048201"
+  },
+  {
+    "id": "33E196C7C9414C17B277196F268F0762",
+    "course_code": "14048501"
+  },
+  {
+    "id": "699CB0F9F2924B67999D0F49C9D664DB",
+    "course_code": "14048502"
+  },
+  {
+    "id": "A836AEC83ED24E9BACA08DF9F61A277D",
+    "course_code": "14048801"
+  },
+  {
+    "id": "BEA71AD4455A45D5956C4A605BB96F0F",
+    "course_code": "14048901"
+  },
+  {
+    "id": "DE1B39F8B4084DF1937B86EF6AE55F62",
+    "course_code": "14049101"
+  },
+  {
+    "id": "D3F710A48DE7412B9DCD36443F8385B2",
+    "course_code": "14049201"
+  },
+  {
+    "id": "293871350BC1443184F07D4C56F7778E",
+    "course_code": "14049301"
+  },
+  {
+    "id": "B9245CED533E48DB9364656295ED8E10",
+    "course_code": "14049402"
+  },
+  {
+    "id": "0AF7BEBA8A0346E3AB686E3382DFC73D",
+    "course_code": "14050001"
+  },
+  {
+    "id": "84C3066D517748BAA4E57A7126B74BC4",
+    "course_code": "14050203"
+  },
+  {
+    "id": "B88A9B22B16C436DB42E2622EE7BD82F",
+    "course_code": "14050401"
+  },
+  {
+    "id": "7968461C0A0945038979B378F95271AF",
+    "course_code": "14050501"
+  },
+  {
+    "id": "64139E8F97194B599A8930EF249A58C2",
+    "course_code": "14051001"
+  },
+  {
+    "id": "6F7E1B7A582941849EB3CBECB7DDE714",
+    "course_code": "14051101"
+  },
+  {
+    "id": "6C08195B49444139BC0DE8E37D7EAD0D",
+    "course_code": "14051102"
+  },
+  {
+    "id": "88C966D1B669467CAC407F61874C9292",
+    "course_code": "14060201"
+  },
+  {
+    "id": "29543659E6074D4FA24E02B1BEF05538",
+    "course_code": "14060301"
+  },
+  {
+    "id": "4134C1A5768D48428CBD6E87706C5107",
+    "course_code": "14060501"
+  },
+  {
+    "id": "57E082A718914513B99B624D060473DA",
+    "course_code": "14060601"
+  },
+  {
+    "id": "E8AE9C73F5BE44EE8AD73399CF8E7A86",
+    "course_code": "14060602"
+  },
+  {
+    "id": "266210788DD8481E8C26AF825C7A9C58",
+    "course_code": "14060603"
+  },
+  {
+    "id": "5A1FC66005D2432EAFF9E674E4F06B76",
+    "course_code": "14060604"
+  },
+  {
+    "id": "BEA3AA05C79240569F070FC7B977C931",
+    "course_code": "14060607"
+  },
+  {
+    "id": "86A0B7E1CE6748A7B6B8058DF293D7F5",
+    "course_code": "14060608"
+  },
+  {
+    "id": "8B73E75BFA204355837427A3FFA64161",
+    "course_code": "14060609"
+  },
+  {
+    "id": "5E9AC0C420FE4EEFA309AC24031D52D0",
+    "course_code": "14060610"
+  },
+  {
+    "id": "DD0B98C3E2FC414A9D1D99846A673B12",
+    "course_code": "14060614"
+  },
+  {
+    "id": "A9E6F08FA43841CA9E70770AEC01DF56",
+    "course_code": "14060615"
+  },
+  {
+    "id": "070F6A1499294B5586505D97C24327AB",
+    "course_code": "14060701"
+  },
+  {
+    "id": "B217B1E96A074512AB88008EB2937FC7",
+    "course_code": "14060801"
+  },
+  {
+    "id": "4BB941571089454BA9120618D35722C0",
+    "course_code": "14061101"
+  },
+  {
+    "id": "984BE33C4BD0476184222E59E9613601",
+    "course_code": "14061201"
+  },
+  {
+    "id": "52A0B5ADE20A45958630CEFDC6C0B985",
+    "course_code": "14061401"
+  },
+  {
+    "id": "482BA9CBDAFA468DA8FF1BAD3B56D736",
+    "course_code": "14061501"
+  },
+  {
+    "id": "5C837E628631458289F0DAE347FB95D1",
+    "course_code": "14061601"
+  },
+  {
+    "id": "00E54FFAADFB47629FF52110D25DA58F",
+    "course_code": "14061701"
+  },
+  {
+    "id": "9FE0A43DB90B4DB9A28A22FE76EB0FFF",
+    "course_code": "14062101"
+  },
+  {
+    "id": "23437345A2EB4EC0897553A77436EB21",
+    "course_code": "14062201"
+  },
+  {
+    "id": "589D394A66B4411FADA8E06C9309B410",
+    "course_code": "14062301"
+  },
+  {
+    "id": "6AF2EAB3615B4DCA9BDC1927E994CE3F",
+    "course_code": "14062401"
+  },
+  {
+    "id": "D841C08EE4264BA480D2143700BAE7F0",
+    "course_code": "14062701"
+  },
+  {
+    "id": "D10FEDBF95C540188B08223CE21B1134",
+    "course_code": "14063101"
+  },
+  {
+    "id": "A4C9CB28EDE84EAA9A8B0711B7C2E279",
+    "course_code": "14063201"
+  },
+  {
+    "id": "7F6C83E74BBE41CA9FDE8D08E97D8AEF",
+    "course_code": "14063301"
+  },
+  {
+    "id": "DEF4CE4710BE49E68B00F947CC278791",
+    "course_code": "14063401"
+  },
+  {
+    "id": "792D4F8B041A44B2AEF439E434A19328",
+    "course_code": "14063901"
+  },
+  {
+    "id": "592116921E56482F882CBB631D9E1D29",
+    "course_code": "14064001"
+  },
+  {
+    "id": "52B4021788A44365B7389696C7DA7600",
+    "course_code": "14064101"
+  },
+  {
+    "id": "D088ECD9277447B19C6C34CDD400038A",
+    "course_code": "14064201"
+  },
+  {
+    "id": "C1C48AF24EE345DF97EE6E988F7818F8",
+    "course_code": "14064301"
+  },
+  {
+    "id": "52495730F2524415A172EF19173251CC",
+    "course_code": "14064401"
+  },
+  {
+    "id": "A6E15470577F4EEC8DF1EACF893241BF",
+    "course_code": "14064501"
+  },
+  {
+    "id": "4409A649C2D34B4C81ED171ADC849DD2",
+    "course_code": "14064601"
+  },
+  {
+    "id": "90D3FE809CD14E53810FBD1A198F9051",
+    "course_code": "14064801"
+  },
+  {
+    "id": "7EFA6BAB5BD643EFB4C5675FFCE24A50",
+    "course_code": "14105002"
+  },
+  {
+    "id": "14120202",
+    "course_code": "14120202"
+  },
+  {
+    "id": "14120302",
+    "course_code": "14120302"
+  },
+  {
+    "id": "E016E675CA00449A87DBA8AA4B799FA3",
+    "course_code": "14120303"
+  },
+  {
+    "id": "14120402",
+    "course_code": "14120402"
+  },
+  {
+    "id": "14121502",
+    "course_code": "14121502"
+  },
+  {
+    "id": "14121802",
+    "course_code": "14121802"
+  },
+  {
+    "id": "14125002",
+    "course_code": "14125002"
+  },
+  {
+    "id": "96A54461E61B4248B45D0A54ECE13C73",
+    "course_code": "14125003"
+  },
+  {
+    "id": "14125303",
+    "course_code": "14125303"
+  },
+  {
+    "id": "14125403",
+    "course_code": "14125403"
+  },
+  {
+    "id": "B4898AE1F4A549AA981EB68A1D05C223",
+    "course_code": "14125404"
+  },
+  {
+    "id": "14140103",
+    "course_code": "14140103"
+  },
+  {
+    "id": "4452D5E3AAD845699CD1FABDC2A97D05",
+    "course_code": "14143402"
+  },
+  {
+    "id": "14144001",
+    "course_code": "14144001"
+  },
+  {
+    "id": "14145901",
+    "course_code": "14145901"
+  },
+  {
+    "id": "B99A3BFEF7E243AE832CBAEE30E37CAD",
+    "course_code": "14148301"
+  },
+  {
+    "id": "2ABD566420294C1F908FADDFA015BEF5",
+    "course_code": "14162501"
+  },
+  {
+    "id": "B49EF340C0044C269943749495FD041D",
+    "course_code": "14162601"
+  },
+  {
+    "id": "B89214E1D584452C944989DF9DE81580",
+    "course_code": "14163501"
+  },
+  {
+    "id": "86E0CD617B92404DA7389FC7B77D2FA2",
+    "course_code": "14205002"
+  },
+  {
+    "id": "14220202",
+    "course_code": "14220202"
+  },
+  {
+    "id": "14220302",
+    "course_code": "14220302"
+  },
+  {
+    "id": "B058FBDF812A4300A39237872B56FEB1",
+    "course_code": "14220303"
+  },
+  {
+    "id": "14220402",
+    "course_code": "14220402"
+  },
+  {
+    "id": "14220404",
+    "course_code": "14220404"
+  },
+  {
+    "id": "14221502",
+    "course_code": "14221502"
+  },
+  {
+    "id": "14221802",
+    "course_code": "14221802"
+  },
+  {
+    "id": "14225002",
+    "course_code": "14225002"
+  },
+  {
+    "id": "14225303",
+    "course_code": "14225303"
+  },
+  {
+    "id": "14225403",
+    "course_code": "14225403"
+  },
+  {
+    "id": "75879A18E8084BB7AED70D2FE85C9A90",
+    "course_code": "14225404"
+  },
+  {
+    "id": "14240103",
+    "course_code": "14240103"
+  },
+  {
+    "id": "C267A94879A447D180C449C21C3FAAE2",
+    "course_code": "14243402"
+  },
+  {
+    "id": "14244001",
+    "course_code": "14244001"
+  },
+  {
+    "id": "14245901",
+    "course_code": "14245901"
+  },
+  {
+    "id": "D6748124C2614D6885D995A4E206C2FC",
+    "course_code": "14247302"
+  },
+  {
+    "id": "89D499DECB594106BBB53342DE0CEBCD",
+    "course_code": "14248301"
+  },
+  {
+    "id": "E2B0F9C222F347BB85092A22B4F79437",
+    "course_code": "14262501"
+  },
+  {
+    "id": "DC8A260DCF774DE9B96DB339F0D731C3",
+    "course_code": "14262601"
+  },
+  {
+    "id": "D627AC07DF494764B617B4C2E4D5B2F9",
+    "course_code": "14263501"
+  },
+  {
+    "id": "8620B4D6099D4E09B26ED9686F371E78",
+    "course_code": "14305002"
+  },
+  {
+    "id": "14320202",
+    "course_code": "14320202"
+  },
+  {
+    "id": "14320302",
+    "course_code": "14320302"
+  },
+  {
+    "id": "14320402",
+    "course_code": "14320402"
+  },
+  {
+    "id": "E3619885651E4499A4AADB48AECE8D0F",
+    "course_code": "14320405"
+  },
+  {
+    "id": "14325002",
+    "course_code": "14325002"
+  },
+  {
+    "id": "14345901",
+    "course_code": "14345901"
+  },
+  {
+    "id": "476A8BE773304BE5804A4921FA176863",
+    "course_code": "14348301"
+  },
+  {
+    "id": "5809C11B4204449CB19CBF5C45DC113D",
+    "course_code": "14405002"
+  },
+  {
+    "id": "4A2AAE475A844F2F9403FFE3CEB163C6",
+    "course_code": "14420406"
+  },
+  {
+    "id": "DA31FE883C3448A69686971CC68914DC",
+    "course_code": "14448301"
+  },
+  {
+    "id": "15022502",
+    "course_code": "15022502"
+  },
+  {
+    "id": "15022503",
+    "course_code": "15022503"
+  },
+  {
+    "id": "15023601",
+    "course_code": "15023601"
+  },
+  {
+    "id": "15024002",
+    "course_code": "15024002"
+  },
+  {
+    "id": "37600202D8EF488193724E8E6DB5F4B0",
+    "course_code": "15025408"
+  },
+  {
+    "id": "15026203",
+    "course_code": "15026203"
+  },
+  {
+    "id": "15027102",
+    "course_code": "15027102"
+  },
+  {
+    "id": "15028701",
+    "course_code": "15028701"
+  },
+  {
+    "id": "15030101",
+    "course_code": "15030101"
+  },
+  {
+    "id": "4CF02DD513BF432D8E1A595B3EE8D25C",
+    "course_code": "15030505"
+  },
+  {
+    "id": "9D65C93AB40F4507B8E6C561F57AB359",
+    "course_code": "15032702"
+  },
+  {
+    "id": "1D82732F6C524BA29D8C5183A3684127",
+    "course_code": "15042402"
+  },
+  {
+    "id": "15045201",
+    "course_code": "15045201"
+  },
+  {
+    "id": "15045202",
+    "course_code": "15045202"
+  },
+  {
+    "id": "CFB7634B286D4917A0462EAA7C95074B",
+    "course_code": "15045203"
+  },
+  {
+    "id": "15050101",
+    "course_code": "15050101"
+  },
+  {
+    "id": "15051701",
+    "course_code": "15051701"
+  },
+  {
+    "id": "15051901",
+    "course_code": "15051901"
+  },
+  {
+    "id": "15052001",
+    "course_code": "15052001"
+  },
+  {
+    "id": "15052801",
+    "course_code": "15052801"
+  },
+  {
+    "id": "15054301",
+    "course_code": "15054301"
+  },
+  {
+    "id": "15054401",
+    "course_code": "15054401"
+  },
+  {
+    "id": "15054501",
+    "course_code": "15054501"
+  },
+  {
+    "id": "15054601",
+    "course_code": "15054601"
+  },
+  {
+    "id": "15055101",
+    "course_code": "15055101"
+  },
+  {
+    "id": "15064601",
+    "course_code": "15064601"
+  },
+  {
+    "id": "BEA082F92B104A74B1F271A6291DCEEE",
+    "course_code": "16020505"
+  },
+  {
+    "id": "16024103",
+    "course_code": "16024103"
+  },
+  {
+    "id": "16024201",
+    "course_code": "16024201"
+  },
+  {
+    "id": "16025805",
+    "course_code": "16025805"
+  },
+  {
+    "id": "16026401",
+    "course_code": "16026401"
+  },
+  {
+    "id": "443B8D14CF7D4C8CB85CD75F1ECA1E9E",
+    "course_code": "16026402"
+  },
+  {
+    "id": "7876FE07E31F4980951DD1FFA2493A42",
+    "course_code": "160264E1"
+  },
+  {
+    "id": "400B2DA05616447AB26B74D7A25D1E20",
+    "course_code": "160267E1"
+  },
+  {
+    "id": "341BD178D654460D89D542FC8764EE9D",
+    "course_code": "160280E3"
+  },
+  {
+    "id": "16028403",
+    "course_code": "16028403"
+  },
+  {
+    "id": "B95BD4AABCE34E968A53E3132893C422",
+    "course_code": "160296E2"
+  },
+  {
+    "id": "49BEAD6B964B43B49B75B809EDDB96D4",
+    "course_code": "16030004"
+  },
+  {
+    "id": "16030202",
+    "course_code": "16030202"
+  },
+  {
+    "id": "64C3F69B0D7F41048D3B3C53B9649E43",
+    "course_code": "16030405"
+  },
+  {
+    "id": "16030804",
+    "course_code": "16030804"
+  },
+  {
+    "id": "4E968E027CDD4D23B8BB888863328109",
+    "course_code": "16030805"
+  },
+  {
+    "id": "19708D31741B4A0C91BBEDF4CF0F514A",
+    "course_code": "160310E3"
+  },
+  {
+    "id": "18C772708A6F4F45AEFD2DB27F002F0E",
+    "course_code": "160345E1"
+  },
+  {
+    "id": "16035202",
+    "course_code": "16035202"
+  },
+  {
+    "id": "6546A2222AB241F89F9CE34452F964E1",
+    "course_code": "16035405"
+  },
+  {
+    "id": "9AD90C3E9D4945C9BDE0E19EF2E3FC08",
+    "course_code": "16035406"
+  },
+  {
+    "id": "F196C1A4398A4D7981089AF9A9D69867",
+    "course_code": "16035903"
+  },
+  {
+    "id": "16036901",
+    "course_code": "16036901"
+  },
+  {
+    "id": "72B471C217FB484899DB0F386E132A96",
+    "course_code": "16038004"
+  },
+  {
+    "id": "16039101",
+    "course_code": "16039101"
+  },
+  {
+    "id": "098D7D02CBD8434A99AC149B7E31D17A",
+    "course_code": "16073604"
+  },
+  {
+    "id": "D585B4EEC3EA4C458B899E96FC61823F",
+    "course_code": "16073694"
+  },
+  {
+    "id": "57042A10F6934C438E15F37C55E726FD",
+    "course_code": "160739E1"
+  },
+  {
+    "id": "3CE212F8C11B4E59B7FF95890544B011",
+    "course_code": "160740E1"
+  },
+  {
+    "id": "71DD98687BB34EF28F8D5CFE0D6829FE",
+    "course_code": "16074401"
+  },
+  {
+    "id": "08258DE5FA384D5EB1E874441ECE22FC",
+    "course_code": "16074601"
+  },
+  {
+    "id": "75A09D24227C41219F658E1969BFA722",
+    "course_code": "16074701"
+  },
+  {
+    "id": "E8DED333D92C4A9591B04C082BDFB8B8",
+    "course_code": "16075101"
+  },
+  {
+    "id": "2B9CBC24D1C64FA2AD1DA61F6CF5C82B",
+    "course_code": "16075701"
+  },
+  {
+    "id": "F5342D99B4554296A7A9E382EF7C786B",
+    "course_code": "16075801"
+  },
+  {
+    "id": "ED18BEDB9A4F44198328FDB35BB91848",
+    "course_code": "16076701"
+  },
+  {
+    "id": "D42CA61FD2B445EB9EADFD43EADDF4EA",
+    "course_code": "16078302"
+  },
+  {
+    "id": "1B2D11CF7DE14D63A664107D60B274A0",
+    "course_code": "16079202"
+  },
+  {
+    "id": "63AAAEB6E91B4B5EBC17D63291825DED",
+    "course_code": "160799E1"
+  },
+  {
+    "id": "FDCA69FA361C4F3C9E2498F4C89F47DD",
+    "course_code": "16081201"
+  },
+  {
+    "id": "D6064D858A534AB99F8B655533A0F955",
+    "course_code": "16081301"
+  },
+  {
+    "id": "0CE256A7CF50490AA7ACCE68D938032C",
+    "course_code": "16081701"
+  },
+  {
+    "id": "F5DC79AD47EA4A84877A23FDE5AD264D",
+    "course_code": "160819E2"
+  },
+  {
+    "id": "394892A2144649F78786FC44064CB3D0",
+    "course_code": "16082001"
+  },
+  {
+    "id": "84EC6AFA00834DB48CF99712B316C83D",
+    "course_code": "16082201"
+  },
+  {
+    "id": "A9335A7A535641AB94B0E3D415227935",
+    "course_code": "161212E1"
+  },
+  {
+    "id": "16130201",
+    "course_code": "16130201"
+  },
+  {
+    "id": "E5D157EE50EA4956AE4EA848A21ACC53",
+    "course_code": "161332E3"
+  },
+  {
+    "id": "589E744BEAD24D72A69281C141C7D917",
+    "course_code": "162332E3"
+  },
+  {
+    "id": "E36F8B9FDFA54B8486B7BD0DC442F35B",
+    "course_code": "162803E1"
+  },
+  {
+    "id": "BDAD91993B3645BA876F7DB4227ABB97",
+    "course_code": "17020102"
+  },
+  {
+    "id": "612018F1E67346828569419413B9D4C7",
+    "course_code": "17020604"
+  },
+  {
+    "id": "74D97B7E0D07436F88C462EF9D6C3E9D",
+    "course_code": "17020605"
+  },
+  {
+    "id": "20662C9CF7FB4112A5228464E4821736",
+    "course_code": "17020606"
+  },
+  {
+    "id": "6BD628D8793848EE881076612CAFA37F",
+    "course_code": "17020608"
+  },
+  {
+    "id": "415B9F93667344829788F18772A364C6",
+    "course_code": "17020801"
+  },
+  {
+    "id": "F40627E9931C40B486ED2684157704B9",
+    "course_code": "17020802"
+  },
+  {
+    "id": "BCB2A1A6C6BB4C2C8AD183ED5DE408EE",
+    "course_code": "17020803"
+  },
+  {
+    "id": "92719231DEB248D8A129CF88047972BA",
+    "course_code": "17021001"
+  },
+  {
+    "id": "7E07B5CDABDA4BF78D20E7FDF1F89799",
+    "course_code": "17022201"
+  },
+  {
+    "id": "4C8B605F8E4A4635A78DF6C5BAB1DCF9",
+    "course_code": "17022301"
+  },
+  {
+    "id": "E37121A4E79741D99187D0CBF10EBA5D",
+    "course_code": "17022501"
+  },
+  {
+    "id": "0AA267F98400466E8B85E7BDDF6601FB",
+    "course_code": "17022601"
+  },
+  {
+    "id": "5A1280E6B97141AFA4CEFC5C4554EC1F",
+    "course_code": "17022701"
+  },
+  {
+    "id": "DB68F717836C447795E2CCBCA57EE113",
+    "course_code": "17022801"
+  },
+  {
+    "id": "04C6A38839D645AD86C5574EEB9F87EB",
+    "course_code": "17023001"
+  },
+  {
+    "id": "D476E49CD5324DCFAFAEAE930FE6B0E8",
+    "course_code": "17122401"
+  },
+  {
+    "id": "F118272FC2D34BE4AD38B14D89B71A99",
+    "course_code": "17222401"
+  },
+  {
+    "id": "21120102",
+    "course_code": "21120102"
+  },
+  {
+    "id": "21220102",
+    "course_code": "21220102"
+  },
+  {
+    "id": "21320102",
+    "course_code": "21320102"
+  },
+  {
+    "id": "21420102",
+    "course_code": "21420102"
+  },
+  {
+    "id": "21520102",
+    "course_code": "21520102"
+  },
+  {
+    "id": "21620102",
+    "course_code": "21620102"
+  },
+  {
+    "id": "64C1BC6283EF4B9B940B513175E042ED",
+    "course_code": "22000101"
+  },
+  {
+    "id": "23020503",
+    "course_code": "23020503"
+  },
+  {
+    "id": "23020504",
+    "course_code": "23020504"
+  },
+  {
+    "id": "57A10140",
+    "course_code": "57A10140"
+  },
+  {
+    "id": "57A10250",
+    "course_code": "57A10250"
+  },
+  {
+    "id": "57A10270",
+    "course_code": "57A10270"
+  },
+  {
+    "id": "57A10520",
+    "course_code": "57A10520"
+  },
+  {
+    "id": "57A10670",
+    "course_code": "57A10670"
+  },
+  {
+    "id": "E3FF571A72084A3094CA60AEAA9E5B41",
+    "course_code": "57A10801"
+  },
+  {
+    "id": "57A10900",
+    "course_code": "57A10900"
+  },
+  {
+    "id": "57A10960",
+    "course_code": "57A10960"
+  },
+  {
+    "id": "99BC3DA2EF9A4E6E98F74B3934171C87",
+    "course_code": "57A24301"
+  },
+  {
+    "id": "11EFFA2A81BC4F07BDD62128E436177D",
+    "course_code": "57A26101"
+  },
+  {
+    "id": "815D54CACB5E47199603506B0B7D458D",
+    "course_code": "57A26201"
+  },
+  {
+    "id": "C1F0235C7436479F95A88B93FE21869D",
+    "course_code": "57A26301"
+  },
+  {
+    "id": "E2EBAAB568694021A47FEB1BE1B43082",
+    "course_code": "57A26401"
+  },
+  {
+    "id": "E233920919144793B8FFE63D19D1F663",
+    "course_code": "57A26501"
+  },
+  {
+    "id": "C32AE12347FE45018ED56CB7E8ADCFA6",
+    "course_code": "57A26601"
+  },
+  {
+    "id": "F84C59F5DB634BAE8C75E2B2A81568C8",
+    "course_code": "57A26701"
+  },
+  {
+    "id": "8378BB236B7A4A4D9945DC2CADFABCDA",
+    "course_code": "57A26901"
+  },
+  {
+    "id": "54F76485E645494BB2F8B25C8F53182E",
+    "course_code": "57A27001"
+  },
+  {
+    "id": "452DD149D6754493B4B7C6FC25FB356F",
+    "course_code": "57A27101"
+  },
+  {
+    "id": "7F426004A9394FDAAE6DE670EEED9837",
+    "course_code": "57A27201"
+  },
+  {
+    "id": "55D3F6801C0143EE805ED4A60710C486",
+    "course_code": "57A27301"
+  },
+  {
+    "id": "08E8E13B9A9A403C992DD24FE1A20778",
+    "course_code": "57A27401"
+  },
+  {
+    "id": "75364385D9124F8ABF95C9E7B9BD292A",
+    "course_code": "57A27501"
+  },
+  {
+    "id": "2A0031A762B04A9CB5E55025DDFB5CCF",
+    "course_code": "57A27601"
+  },
+  {
+    "id": "5D2FE8AEFA1F496F8C04F881D50981E0",
+    "course_code": "63021101"
+  },
+  {
+    "id": "CD47A3B781CF47D2B4C551421AFB26FA",
+    "course_code": "63021401"
+  },
+  {
+    "id": "C411FE1BFB0E48F29E2956430D05DD54",
+    "course_code": "63021501"
+  },
+  {
+    "id": "A5B020D1B9304394BECD748D4A1EA39E",
+    "course_code": "63022501"
+  },
+  {
+    "id": "7862B88FCF29413B885B671BE6881B42",
+    "course_code": "63022701"
+  },
+  {
+    "id": "2C23DE1EDEC6486183B12FD942E34255",
+    "course_code": "63022702"
+  },
+  {
+    "id": "FC06993E1FC84F6894518AEAFDC74614",
+    "course_code": "63023201"
+  },
+  {
+    "id": "03F0691FD1D2417E91EB30D5ED458BB8",
+    "course_code": "63023501"
+  },
+  {
+    "id": "DF8D8ECBF56045BD9A9A7AA8A93D6AC1",
+    "course_code": "63023901"
+  },
+  {
+    "id": "4FF4CAE594324B69A349162B9B2E4139",
+    "course_code": "63023902"
+  },
+  {
+    "id": "94E484810B5E464A86B1455A1E2BC287",
+    "course_code": "63024201"
+  },
+  {
+    "id": "54B8E8AA17E1444AA8DAA3AEA16C7307",
+    "course_code": "63024301"
+  },
+  {
+    "id": "05BDA1C953EF4E24B47ED03CF7B55F95",
+    "course_code": "63025901"
+  },
+  {
+    "id": "DBF3375B7B87451B97672BCFD77A7A58",
+    "course_code": "66003302"
+  },
+  {
+    "id": "6A863971D2454A46AFC36DFE4510EBA4",
+    "course_code": "66003602"
+  },
+  {
+    "id": "E27FCC2A0F1B491684B2634E7C838034",
+    "course_code": "66003701"
+  },
+  {
+    "id": "FDE4B9668EA0406D9485F07FC769C818",
+    "course_code": "66003901"
+  },
+  {
+    "id": "55B01A977AF14EF4AB8D91F7F3744F02",
+    "course_code": "66004301"
+  },
+  {
+    "id": "94ECA1FE3E31414389C7A9842A9F9B96",
+    "course_code": "66004401"
+  },
+  {
+    "id": "157BC3A836684ECBAF0FD4E310380DD7",
+    "course_code": "66004501"
+  },
+  {
+    "id": "1E3A339143A74F94BB4EABA599C17290",
+    "course_code": "66004601"
+  },
+  {
+    "id": "68833A41D9FA42D09B92D7D388AA6EEE",
+    "course_code": "66004701"
+  },
+  {
+    "id": "A53C657B4D014D0691E4163FDA269913",
+    "course_code": "66004901"
+  },
+  {
+    "id": "BAAE3DB11A7849738DBB9556490A9FBF",
+    "course_code": "66005101"
+  },
+  {
+    "id": "62171F917EF24AD884E13D956DFD3EA7",
+    "course_code": "66103401"
+  },
+  {
+    "id": "461FEFE3A60B4D55869F1AA0388BB108",
+    "course_code": "66203401"
+  },
+  {
+    "id": "BFCBF1688B3F405F83FA2B25E1114589",
+    "course_code": "67000301"
+  },
+  {
+    "id": "4AD5B1369017450684A2FB08C2ADE4CB",
+    "course_code": "67000701"
+  },
+  {
+    "id": "9FCD06C242574F1BB6EEF945CB671AAB",
+    "course_code": "67000901"
+  },
+  {
+    "id": "AB3793214F764B07984BD339483E3BFA",
+    "course_code": "67001001"
+  },
+  {
+    "id": "B956C575D2D74144A2CA6D556A388C6B",
+    "course_code": "67001002"
+  },
+  {
+    "id": "364213468BFA4FF2B85F5913F51DFA15",
+    "course_code": "670012E1"
+  },
+  {
+    "id": "6A5F542A4B864B5AB19B71C38009D291",
+    "course_code": "67001501"
+  },
+  {
+    "id": "88E619E947B346009A5F0E09311C0001",
+    "course_code": "67002001"
+  },
+  {
+    "id": "E10CA56EC93647E097C8BAACE0F59FE5",
+    "course_code": "67002201"
+  },
+  {
+    "id": "015F01A63C9D4FEF99BE38C627313866",
+    "course_code": "67002601"
+  },
+  {
+    "id": "11401F3F738C423F8AF75D86510A8932",
+    "course_code": "67002701"
+  },
+  {
+    "id": "8E2B66F2B4AE45D6BB3917A7602E4563",
+    "course_code": "67003001"
+  },
+  {
+    "id": "17B01CA6F0C249A080E7FEF943E76DF1",
+    "course_code": "67003201"
+  },
+  {
+    "id": "B4A1E4A322894176815D7E070684222C",
+    "course_code": "67003401"
+  },
+  {
+    "id": "153A9134C56F4C639142315509CDDDE8",
+    "course_code": "67003601"
+  },
+  {
+    "id": "7EA5FF172BD1472AB0DF0B4ECB6D6A23",
+    "course_code": "67003801"
+  },
+  {
+    "id": "197F810519AA497F9F69A463EABB1913",
+    "course_code": "67003901"
+  },
+  {
+    "id": "1F657A9A5D9540CA8E37E3DDA8717224",
+    "course_code": "67004001"
+  },
+  {
+    "id": "7C9DE6FC2055406DA5348E58E0CF17CD",
+    "course_code": "67004501"
+  },
+  {
+    "id": "06CA53230AC64274B832DEE384D2B814",
+    "course_code": "67004601"
+  },
+  {
+    "id": "4AF206C7DBF84592A1FCC60BA6341B2D",
+    "course_code": "67004701"
+  },
+  {
+    "id": "8F4B3F7026A54B4599E367489710995C",
+    "course_code": "67004801"
+  },
+  {
+    "id": "F213DD11AA354D17B608A99EB6D9B1A3",
+    "course_code": "67004901"
+  },
+  {
+    "id": "C4E37600A61945C28E459896B1CE3787",
+    "course_code": "67204301"
+  },
+  {
+    "id": "F4F736571CF747069A34C88BC4EDA665",
+    "course_code": "69000001"
+  },
+  {
+    "id": "5A95B23C23714BB29261544392529BB8",
+    "course_code": "71000101"
+  },
+  {
+    "id": "5BB5B58A83494EC5827AF2E68DFEE8A0",
+    "course_code": "71000301"
+  },
+  {
+    "id": "E3ACA0810C79495B87B85FDE02D96547",
+    "course_code": "71000401"
+  },
+  {
+    "id": "D25E519036C44BE382E289FED93BE8A7",
+    "course_code": "71000501"
+  },
+  {
+    "id": "6C7E18861EB24E73AD484C978E466AF6",
+    "course_code": "71000601"
+  },
+  {
+    "id": "0770EC55DDEC4B15818CEB8577387660",
+    "course_code": "71000701"
+  },
+  {
+    "id": "E08456EA178C462A94EF48FF7B73E5A0",
+    "course_code": "71000801"
+  },
+  {
+    "id": "4E1320D3D69C43F9ABA490750E556CA1",
+    "course_code": "71000901"
+  },
+  {
+    "id": "F7E03BEA119C46C08B4FFBBDD356F948",
+    "course_code": "71001001"
+  },
+  {
+    "id": "BF3CC72B3FE248238F24A5FF8FADE709",
+    "course_code": "71001101"
+  },
+  {
+    "id": "8B659FF514D743FC82E9FAD5FEF040F3",
+    "course_code": "71001102"
+  },
+  {
+    "id": "86B5670ADC834D7CAF6D5F2CD09E7794",
+    "course_code": "71100201"
+  },
+  {
+    "id": "C8E280AAEE3142269638BE9E552D55D1",
+    "course_code": "71100202"
+  },
+  {
+    "id": "C7BB17A767604C1CBAE4CF7B9E9E53CE",
+    "course_code": "71101201"
+  },
+  {
+    "id": "9D8696D27AD3493C8C8B02AF339C45BF",
+    "course_code": "71200201"
+  },
+  {
+    "id": "BCFECE82FF774141A9CE94E03FB81FAE",
+    "course_code": "71200202"
+  },
+  {
+    "id": "341B27D45F08484EA08E1820748F6044",
+    "course_code": "71201201"
+  },
+  {
+    "id": "D885903628C74A3CAEBC1B34B2D22591",
+    "course_code": "HX000005"
+  },
+  {
+    "id": "BCF7C8CC90F244F482B0A4EDE17A2798",
+    "course_code": "HX000007"
+  },
+  {
+    "id": "317EDACB5B6A4BF89788ABB5F04DACBE",
+    "course_code": "HX000018"
+  },
+  {
+    "id": "E8D42435F0434464BC85B70DEA6127FC",
+    "course_code": "QY000031"
+  },
+  {
+    "id": "E0D2DB07E98D4553A3FFC9C129835961",
+    "course_code": "QY000047"
+  },
+  {
+    "id": "01B6D557FE8745D4AF7B0767E9C87401",
+    "course_code": "QY000048"
+  },
+  {
+    "id": "DB00F1D5974746B9B3CA049D0D837CB5",
+    "course_code": "QY000049"
+  },
+  {
+    "id": "5CB632A85FBD4E959964F36A9D36EA26",
+    "course_code": "QY000052"
+  },
+  {
+    "id": "44C2C4CB9537430B8B54DB5006E6125E",
+    "course_code": "YK100401"
+  },
+  {
+    "id": "49E1FBC6BD5B4EC99603AF248B7DA43D",
+    "course_code": "YK200401"
+  },
+  {
+    "id": "YT000010",
+    "course_code": "YT000010"
+  },
+  {
+    "id": "YT000021",
+    "course_code": "YT000021"
+  },
+  {
+    "id": "YT000022",
+    "course_code": "YT000022"
+  },
+  {
+    "id": "YT000023",
+    "course_code": "YT000023"
+  },
+  {
+    "id": "YT000029",
+    "course_code": "YT000029"
+  },
+  {
+    "id": "YT000063",
+    "course_code": "YT000063"
+  },
+  {
+    "id": "YT000073",
+    "course_code": "YT000073"
+  },
+  {
+    "id": "203FDF811D1E4C0EBBCB48A388521256",
+    "course_code": "YT000094"
+  },
+  {
+    "id": "D73F610616C74574A4FFE268A9342775",
+    "course_code": "YT000096"
+  },
+  {
+    "id": "03502FDF5059413FA9D19016445F17E8",
+    "course_code": "YT000108"
+  }
+]
