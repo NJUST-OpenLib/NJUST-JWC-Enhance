@@ -17,8 +17,12 @@
 (function () {
     'use strict';
 
-    const CATEGORY_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json';
-    const OUTLINE_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json';
+    // const CATEGORY_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json';
+     // const OUTLINE_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json';
+    //选修课 json
+    const CATEGORY_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@1.0.0/data/xxk.json';
+    //课程大纲 json
+    const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@1.0.0/data/kcdg.json';
 
     let courseCategoryMap = {};
     let courseOutlineMap = {};

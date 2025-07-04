@@ -1,0 +1,25 @@
+{
+  "name": "njust-jwc-enhance",
+  "version": "1.0.0",
+  "description": "南理工教务处增强程序及配套的数据采集处理",
+  "main": "enhance.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance.git"
+  },
+  "keywords": [
+    "南京理工大学"
+  ],
+  "author": "Light",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/issues"
+  },
+  "homepage": "https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance#readme"
+}
