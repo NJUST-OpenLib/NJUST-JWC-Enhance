@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         南理工教务增强助手
+// @name         南理工教务增强助手 v1.5
 // @namespace    http://tampermonkey.net/
 // @version      1.5
-// @description  在合适的地方显示课程大纲、选修课类别及选修课学分情况，并自动刷新登录状态
+// @description  在合适的地方显示课程大纲、选修课类别及选修课学分情况，并自动刷新登录状态。
 // @match        202.119.81.112/*
 // @match        bkjw.njust.edu.cn/*
 // @match        202.119.81.112:9080/*
