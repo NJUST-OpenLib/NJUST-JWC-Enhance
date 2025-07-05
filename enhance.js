@@ -1423,7 +1423,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
         //    StatusNotifier.show('南理工教务助手正在启动...', 'info');
 
             // 发送统计追踪请求
-            sendTrackingRequest();
+           // sendTrackingRequest();
 
             // 首先检测强智科技页面
             if (checkQiangzhiPage()) {
