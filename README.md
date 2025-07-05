@@ -122,6 +122,25 @@
 
 访问 [教务系统主页](http://202.119.81.113:8080/)，脚本会自动启用，无需手动配置。
 
+### 4 刷新登录状态
+
+如果您在点击课程大纲时遇到以下提示：
+
+![登录状态失效提示](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/re_login.png)
+
+证明课程总库登陆状态无效，为应对该问题，系统将在
+
+- 首次登陆成功后每五分钟
+- 每次出现提示时
+
+自动尝试加载```http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz```隐藏页面来刷新课程总库的登录状态。
+但如果您仍然无法访问，请直接访问以下任一地址手动刷新：
+
+   - http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz（教务处）
+   - http://bkjw.njust.edu.cn/njlgdx/pyfa/kcdgxz（智慧理工）
+
+完成后您应当可以点击课程大纲。
+
 ---
 
 

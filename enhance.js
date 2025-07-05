@@ -1,14 +1,15 @@
 // ==UserScript==
 // @name         南理工教务增强助手
 // @namespace    http://tampermonkey.net/
-// @version      1.3
-// @description  在合适的地方显示课程大纲、选修课类别及选修课学分情况
+// @version      1.4
+// @description  在合适的地方显示课程大纲、选修课类别及选修课学分情况，并自动刷新登录状态
 // @match        202.119.81.112/*
 // @match        bkjw.njust.edu.cn/*
 // @match        202.119.81.112:9080/*
 // @match        202.119.81.113:9080/*
 // @grant        GM_xmlhttpRequest
 // @connect      jsdelivr.net
+// @connect      njust.wiki
 // @author       Light
 // @license      MIT
 // @supportURL   https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance
@@ -30,7 +31,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
     // ==================== 配置选项 ====================
     // 用户界面配置
     const UI_CONFIG = {
-        showNotifications: true  // 是否显示前端提示框 (true=显示, false=隐藏)
+        showNotifications: true  // 是否显示前端提示框 (true=显示，false=隐藏)
                                 // 设置为 false 可完全关闭所有状态提示框
                                 // 设置为 true 则正常显示加载、成功、错误等提示
     };
@@ -38,14 +39,14 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
     // 调试配置
     const DEBUG_CONFIG = {
         enabled: false,          // 是否启用调试
-        level: 2,              // 调试级别: 0=关闭, 1=错误, 2=警告, 3=信息, 4=详细
+        level: 0,              // 调试级别: 0=关闭，1=错误，2=警告，3=信息，4=详细
         showCache: true        // 是否显示缓存相关日志
     };
 
     // 缓存配置
     const CACHE_CONFIG = {
         enabled: true,         // 是否启用缓存
-        ttl: 30,            // 缓存生存时间(秒) - 1小时
+        ttl: 30,            // 缓存生存时间 (秒) - 1 小时
         prefix: 'njust_jwc_'  // 缓存键前缀
     };
 
@@ -85,11 +86,11 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                                         return value;
                                     }, 0);
 
-                                    // 如果JSON字符串太长，进行适当格式化
+                                    // 如果 JSON 字符串太长，进行适当格式化
                                     if (jsonStr.length > 200) {
                                         // 对于长对象，使用更紧凑的格式，限制深度
                                         return Object.entries(arg)
-                                            .slice(0, 10) // 限制显示前10个属性
+                                            .slice(0, 10) // 限制显示前 10 个属性
                                             .map(([key, value]) => {
                                                 let valueStr;
                                                 if (typeof value === 'object' && value !== null) {
@@ -101,11 +102,11 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                                             })
                                             .join(', ') + (Object.keys(arg).length > 10 ? '...' : '');
                                     } else {
-                                        // 移除JSON的花括号，使其更易读
+                                        // 移除 JSON 的花括号，使其更易读
                                         return jsonStr.replace(/^{|}$/g, '').replace(/"/g, '');
                                     }
                                 } catch (e) {
-                                    // 如果JSON.stringify失败，使用安全的回退方法
+                                    // 如果 JSON.stringify 失败，使用安全的回退方法
                                     try {
                                         return Object.entries(arg)
                                             .slice(0, 5) // 限制属性数量
@@ -167,7 +168,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
 
                 return true;
             } catch (e) {
-                Logger.error('缓存保存失败:', e);
+                Logger.error('缓存保存失败: ', e);
                 return false;
             }
         },
@@ -214,7 +215,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
 
                 return cacheData.data;
             } catch (e) {
-                Logger.error('缓存读取失败:', e);
+                Logger.error('缓存读取失败: ', e);
                 return null;
             }
         },
@@ -231,7 +232,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                 Logger.info(`🗑️ 已清除 ${keys.length} 个缓存项`);
                 return keys.length;
             } catch (e) {
-                Logger.error('清除缓存失败:', e);
+                Logger.error('清除缓存失败: ', e);
                 return 0;
             }
         },
@@ -271,7 +272,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                     size: totalSize
                 };
             } catch (e) {
-                Logger.error('获取缓存统计失败:', e);
+                Logger.error('获取缓存统计失败: ', e);
                 return { total: 0, valid: 0, expired: 0, size: 0 };
             }
         }
@@ -287,7 +288,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
         init() {
             if (!STATUS_CONFIG.enabled || this.container) return;
 
-            // 确保DOM已准备好
+            // 确保 DOM 已准备好
             if (!document.body) {
                 setTimeout(() => this.init(), 50);
                 return;
@@ -320,7 +321,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
 
                 document.body.appendChild(this.container);
             } catch (e) {
-                console.error('StatusNotifier初始化失败:', e);
+                console.error('StatusNotifier 初始化失败: ', e);
                 this.container = null;
             }
         },
@@ -372,7 +373,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                     setTimeout(() => this.hideMessage(messageData.id), hideTime);
                 }
             } catch (e) {
-                console.error('StatusNotifier显示消息失败:', e);
+                console.error('StatusNotifier 显示消息失败: ', e);
             }
         },
 
@@ -428,11 +429,11 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
         // 获取不同类型消息的隐藏延迟
         getHideDelay(type) {
             const delays = {
-                info: STATUS_CONFIG.infoDelay || 2000,     // info消息显示更久
+                info: STATUS_CONFIG.infoDelay || 2000,     // info 消息显示更久
                 success: STATUS_CONFIG.hideDelay || 2000,
                 warning: STATUS_CONFIG.hideDelay || 2000,
                 error: STATUS_CONFIG.hideDelay || 2000,
-                loading: STATUS_CONFIG.hideDelay || 2000 // loading消息不自动隐藏
+                loading: STATUS_CONFIG.hideDelay || 2000 // loading 消息不自动隐藏
             };
             return delays[type] || STATUS_CONFIG.hideDelay;
         },
@@ -445,14 +446,14 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
             const messageData = this.messageQueue[messageIndex];
             const element = messageData.element;
 
-            // 立即从队列中移除，避免limitMessages中的循环问题
+            // 立即从队列中移除，避免 limitMessages 中的循环问题
             this.messageQueue.splice(messageIndex, 1);
 
             // 隐藏动画
             element.style.opacity = '0';
             element.style.transform = `translateX(${STATUS_CONFIG.position.includes('right') ? '20px' : '-20px'})`;
 
-            // 延迟移除DOM元素
+            // 延迟移除 DOM 元素
             setTimeout(() => {
                 if (element.parentNode) {
                     element.parentNode.removeChild(element);
@@ -462,7 +463,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
 
         // 限制同时显示的消息数量
         limitMessages() {
-            // 避免无限循环：只移除超出数量的消息，不使用while循环
+            // 避免无限循环: 只移除超出数量的消息，不使用 while 循环
             if (this.messageQueue.length > STATUS_CONFIG.maxMessages) {
                 const excessCount = this.messageQueue.length - STATUS_CONFIG.maxMessages;
                 // 移除最旧的消息
@@ -496,15 +497,15 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
     const STATUS_CONFIG = {
         enabled: true,         // 是否显示状态提示
         autoHide: true,       // 是否自动隐藏
-        hideDelay: 2000,      // 默认自动隐藏延迟(毫秒)
-        infoDelay: 2000,      // info类型消息显示时间(毫秒)
+        hideDelay: 2000,      // 默认自动隐藏延迟 (毫秒)
+        infoDelay: 2000,      // info 类型消息显示时间 (毫秒)
         maxMessages: 5,       // 同时显示的最大消息数量
         position: 'top-right' // 位置: top-left, top-right, bottom-left, bottom-right
     };
 
-    // 延迟初始化日志，避免在DOM未完全加载时出现问题
+    // 延迟初始化日志，避免在 DOM 未完全加载时出现问题
     function initializeLogging() {
-        // 确保DOM已加载
+        // 确保 DOM 已加载
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initializeLogging);
             return;
@@ -521,7 +522,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                 // 显示缓存统计
                 if (DEBUG_CONFIG.enabled && DEBUG_CONFIG.showCache) {
                     const stats = CacheManager.getStats();
-                    Logger.info('📊 缓存统计:', {
+                    Logger.info('📊 缓存统计: ', {
                         总数: stats.total,
                         有效: stats.valid,
                         过期: stats.expired,
@@ -529,7 +530,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                     });
                 }
             } catch (e) {
-                console.error('初始化日志失败:', e);
+                console.error('初始化日志失败: ', e);
             }
         }, 100);
     }
@@ -635,7 +636,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
             </div>
         `;
 
-        // 添加CSS动画
+        // 添加 CSS 动画
         if (!document.getElementById('njustAssistantStyles')) {
             const style = document.createElement('style');
             style.id = 'njustAssistantStyles';
@@ -726,7 +727,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                 <div style="text-align: center; font-size: 16px; color: #333; margin-bottom: 20px; line-height: 1.6;">
                     <div style="font-size: 20px; margin-bottom: 15px;">🚫 该页面无法登录</div>
 
-                    <div style="margin-top: 10px;">请转向以下正确的登录页面：</div>
+                    <div style="margin-top: 10px;">请转向以下正确的登录页面:</div>
                 </div>
                 <div style="text-align: center; margin: 20px 0;">
                     <div style="margin: 10px 0;">
@@ -769,7 +770,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                     color: #666;
                     text-align: center;
                 ">
-                    💡 提示：<br>
+                    💡 提示:<br>
                     强智科技教务系统概念版是无法登陆的。<br>
                     请使用上述链接跳转到正确的登录页面，<br>
                     登录后可正常使用教务系统功能<br>
@@ -831,7 +832,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
 
                         resolve(json);
                     } catch (e) {
-                        Logger.error(`❌ JSON解析失败: ${url}`, e);
+                        Logger.error(`❌ JSON 解析失败: ${url}`, e);
                         StatusNotifier.show(`${fileName}数据解析失败`, 'error');
                         reject(e);
                     }
@@ -1026,7 +1027,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                     if (categoryDiv) {
                         // 直接获取文本内容，因为现在只显示类别名称
                         category = categoryDiv.textContent.trim();
-                        // 如果文本为空或者不是有效的类别，则设为null
+                        // 如果文本为空或者不是有效的类别，则设为 null
                         if (!category || category.length === 0) {
                             category = null;
                         }
@@ -1072,7 +1073,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
             总课程数: totalCountByType
         });
 
-        // 生成HTML - 表格样式布局
+        // 生成 HTML - 表格样式布局
         let summaryHTML = '<div style="border-bottom: 1px solid #e0e0e0; margin-bottom: 12px; padding-bottom: 10px;">';
         summaryHTML += '<div style="margin-bottom: 8px; font-size: 15px; color: #222; font-weight: 600; letter-spacing: 0.5px;">📊 按课程类型统计</div>';
         // 总计行
@@ -1138,13 +1139,13 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
         tables.forEach(table => {
             // 如果是课表页面，只处理 id="dataList" 的表格
             if (isSchedulePage && table.id !== 'dataList') {
-                Logger.debug('⏭️ 跳过非dataList表格');
+                Logger.debug('⏭️ 跳过非 dataList 表格');
                 return;
             }
 
             const rows = table.querySelectorAll('tr');
             Logger.debug(`📋 处理表格 (${rows.length} 行)`, {
-                表格ID: table.id || '无ID',
+                表格ID: table.id || '无 ID',
                 成绩页面: isGradePage,
                 课表页面: isSchedulePage
             });
@@ -1205,7 +1206,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                     titleDiv.style.fontSize = '13   px';
                     titleDiv.style.marginTop = '4px';
                     titleDiv.style.fontStyle = 'italic';
-                    titleDiv.textContent = `📌 老师说明：${courseCodeTd.title}`;
+                    titleDiv.textContent = `📌 老师说明: ${courseCodeTd.title}`;
                     courseCodeTd.appendChild(titleDiv);
                     Logger.debug(`📝 添加老师说明`);
                     courseEnhanced = true;
@@ -1280,6 +1281,142 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
         }
     }
 
+    // 检测登录错误页面并自动处理
+    function checkLoginErrorAndRefresh() {
+        const pageTitle = document.title;
+        const pageContent = document.body ? document.body.textContent : '';
+        
+        // 检测是否为登录错误页面
+        const isLoginError = pageTitle.includes('出错页面') && 
+                            (pageContent.includes('您登录后过长时间没有操作') || 
+                             pageContent.includes('您的用户名已经在别处登录') ||
+                             pageContent.includes('请重新输入帐号，密码后，继续操作'));
+        
+        if (isLoginError) {
+            Logger.warn('⚠️ 检测到登录超时或重复登录错误页面');
+            
+            // 显示用户提示
+            if (UI_CONFIG.showNotifications) {
+                StatusNotifier.show('检测到登录超时，正在自动刷新登录状态...', 'warning', 5000);
+            }
+            
+            // 强制刷新登录状态（忽略时间间隔限制）
+            performLoginRefresh(true);
+            
+            return true;
+        }
+        
+        return false;
+    }
+    
+    // 执行登录状态刷新
+    function performLoginRefresh(forceRefresh = false) {
+        const currentUrl = window.location.href;
+        
+        try {
+            // 构建刷新 URL - 从当前 URL 提取基础部分
+            let baseUrl;
+            if (currentUrl.includes('njlgdx/')) {
+                baseUrl = currentUrl.substring(0, currentUrl.indexOf('njlgdx/'));
+            } else {
+                // 如果当前 URL 不包含 njlgdx，尝试从域名构建
+                const urlObj = new URL(currentUrl);
+                baseUrl = `${urlObj.protocol}//${urlObj.host}/`;
+            }
+            
+            const refreshUrl = baseUrl + 'njlgdx/pyfa/kcdgxz';
+            
+            Logger.info('🌐 准备使用隐藏 iframe 刷新登录状态:', refreshUrl);
+            
+            // 创建隐藏的 iframe 来加载刷新页面
+            const iframe = document.createElement('iframe');
+            iframe.style.cssText = `
+                position: absolute;
+                left: -9999px;
+                top: -9999px;
+                width: 1px;
+                height: 1px;
+                opacity: 0;
+                visibility: hidden;
+                border: none;
+            `;
+            iframe.src = refreshUrl;
+            
+            // 添加加载完成监听器
+            iframe.onload = function() {
+                Logger.info('✅ 登录状态刷新请求已完成');
+                
+                if (forceRefresh && UI_CONFIG.showNotifications) {
+                    StatusNotifier.show('登录状态已刷新，请重新尝试操作', 'success', 3000);
+                }
+                
+                // 延迟移除 iframe，确保请求完全处理
+                setTimeout(() => {
+                    if (iframe.parentNode) {
+                        iframe.parentNode.removeChild(iframe);
+                        Logger.debug('🗑️ 隐藏 iframe 已清理');
+                    }
+                }, 1000);
+            };
+            
+            // 添加错误处理
+            iframe.onerror = function() {
+                Logger.warn('⚠️ 登录状态刷新请求失败');
+                if (iframe.parentNode) {
+                    iframe.parentNode.removeChild(iframe);
+                }
+                
+                if (forceRefresh && UI_CONFIG.showNotifications) {
+                    StatusNotifier.show('登录状态刷新失败，请手动重新点击选课中心 - 课程总库', 'error', 5000);
+                }
+            };
+            
+            // 将 iframe 添加到页面
+            document.body.appendChild(iframe);
+            
+            // 设置超时清理，防止 iframe 长时间存在
+            setTimeout(() => {
+                if (iframe.parentNode) {
+                    iframe.parentNode.removeChild(iframe);
+                    Logger.debug('⏰ 超时清理隐藏 iframe');
+                }
+            }, 10000); // 10 秒超时
+            
+        } catch (e) {
+            Logger.error('❌ 自动刷新登录状态失败:', e);
+            if (forceRefresh && UI_CONFIG.showNotifications) {
+                StatusNotifier.show('登录状态刷新失败，请手动重新登录', 'error', 5000);
+            }
+        }
+    }
+
+    // 自动刷新登录状态功能
+    function autoRefreshLoginStatus() {
+        const currentUrl = window.location.href;
+        
+        // 检查当前页面 URL 是否包含 njlgdx/framework/main.jsp
+        if (currentUrl.includes('njlgdx/framework/main.jsp')) {
+            // 防止频繁触发 - 检查上次刷新时间
+            const lastRefreshKey = 'njust_last_login_refresh';
+            const lastRefreshTime = localStorage.getItem(lastRefreshKey);
+            const now = Date.now();
+            const refreshInterval = 5 * 60 * 1000; // 5 分钟间隔
+            
+            if (lastRefreshTime && (now - parseInt(lastRefreshTime)) < refreshInterval) {
+                Logger.debug('⏭️ 距离上次刷新不足5分钟，跳过本次刷新');
+                return;
+            }
+            
+            Logger.info('🔄 检测到主框架页面，准备刷新登录状态');
+            
+            // 记录本次刷新时间
+            localStorage.setItem(lastRefreshKey, now.toString());
+            
+            // 使用统一的刷新函数
+            performLoginRefresh(false);
+        }
+    }
+
     async function init() {
         try {
             Logger.info('🎯 开始执行主要逻辑');
@@ -1293,6 +1430,12 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                 Logger.info('🚪 强智科技页面检测完成，脚本退出');
                 return; // 如果是强智科技页面，显示提示后直接返回
             }
+
+            // 检查是否需要自动刷新登录状态
+            autoRefreshLoginStatus();
+            
+            // 检测登录错误页面并处理
+            checkLoginErrorAndRefresh();
 
             Logger.info('📥 开始加载远程数据');
          //   StatusNotifier.show('正在加载课程数据...', 'loading');
@@ -1320,7 +1463,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
             Logger.debug('👀 启动页面变化监听器');
             let isProcessing = false; // 防止死循环的标志
             const observer = new MutationObserver((mutations) => {
-                // 防止死循环：如果正在处理中，跳过
+                // 防止死循环: 如果正在处理中，跳过
                 if (isProcessing) {
                     return;
                 }
@@ -1357,7 +1500,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                         processAllTables();
                    //     StatusNotifier.show('页面表格更新完成', 'success', 1500);
                     } finally {
-                        // 延迟重置标志，确保DOM修改完成
+                        // 延迟重置标志，确保 DOM 修改完成
                         setTimeout(() => {
                             isProcessing = false;
                         }, 100);
