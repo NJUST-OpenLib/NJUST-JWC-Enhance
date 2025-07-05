@@ -46,8 +46,8 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
     // 缓存配置
     const CACHE_CONFIG = {
         enabled: true,         // 是否启用缓存
-        ttl: 30,            // 缓存生存时间 (秒) - 1 小时
-        prefix: 'njust_jwc_'  // 缓存键前缀
+        ttl: 600,            // 缓存生存时间 (秒) 
+        prefix: 'njust_jwc_enhance_'  // 缓存键前缀
     };
 
     // ==================== 调试系统 ====================
@@ -709,79 +709,87 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
 
     // 检测强智科技页面
     function checkQiangzhiPage() {
-        const currentUrl = window.location.href;
-        const pageTitle = document.title;
+        try {
+            const currentUrl = window.location.href;
+            const pageTitle = document.title || '';
 
-        Logger.debug('🔍 检测页面类型', {
-            URL: currentUrl,
-            标题: pageTitle
-        });
+            Logger.debug('🔍 检测页面类型', {
+                URL: currentUrl,
+                标题: pageTitle
+            });
 
-        // 检测是否为强智科技页面且无法登录
-        if (
-            pageTitle.includes('强智科技教务系统概念版')) {
+            // 检测是否为强智科技页面且无法登录
+            if (pageTitle.includes('强智科技教务系统概念版')) {
 
-            Logger.warn('⚠️ 检测到强智科技概念版页面，显示登录引导');
+                Logger.warn('⚠️ 检测到强智科技概念版页面，显示登录引导');
 
-            const content = `
-                <div style="text-align: center; font-size: 16px; color: #333; margin-bottom: 20px; line-height: 1.6;">
-                    <div style="font-size: 20px; margin-bottom: 15px;">🚫 该页面无法登录</div>
+                const content = `
+                    <div style="text-align: center; font-size: 16px; color: #333; margin-bottom: 20px; line-height: 1.6;">
+                        <div style="font-size: 20px; margin-bottom: 15px;">🚫 该页面无法登录</div>
 
-                    <div style="margin-top: 10px;">请转向以下正确的登录页面:</div>
-                </div>
-                <div style="text-align: center; margin: 20px 0;">
-                    <div style="margin: 10px 0;">
-                        <a href="https://www.njust.edu.cn/" target="_blank" style="
-                            display: inline-block;
-                            background: #28a745;
-                            color: white;
-                            padding: 12px 20px;
-                            text-decoration: none;
-                            border-radius: 8px;
-                            margin: 5px;
-                            font-weight: bold;
-                            transition: background-color 0.2s;
-                        " onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='#28a745'">
-                            🏫 智慧理工登录页面
-                        </a>
+                        <div style="margin-top: 10px;">请转向以下正确的登录页面:</div>
                     </div>
-                    <div style="margin: 10px 0;">
-                        <a href="http://202.119.81.113:8080/" target="_blank" style="
-                            display: inline-block;
-                            background: #007bff;
-                            color: white;
-                            padding: 12px 20px;
-                            text-decoration: none;
-                            border-radius: 8px;
-                            margin: 5px;
-                            font-weight: bold;
-                            transition: background-color 0.2s;
-                        " onmouseover="this.style.backgroundColor='#0056b3'" onmouseout="this.style.backgroundColor='#007bff'">
-                            🔗 教务处登录页面
-                        </a>
+                    <div style="text-align: center; margin: 20px 0;">
+                        <div style="margin: 10px 0;">
+                            <a href="https://www.njust.edu.cn/" target="_blank" style="
+                                display: inline-block;
+                                background: #28a745;
+                                color: white;
+                                padding: 12px 20px;
+                                text-decoration: none;
+                                border-radius: 8px;
+                                margin: 5px;
+                                font-weight: bold;
+                                transition: background-color 0.2s;
+                            " onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='#28a745'">
+                                🏫 智慧理工登录页面
+                            </a>
+                        </div>
+                        <div style="margin: 10px 0;">
+                            <a href="http://202.119.81.113:8080/" target="_blank" style="
+                                display: inline-block;
+                                background: #007bff;
+                                color: white;
+                                padding: 12px 20px;
+                                text-decoration: none;
+                                border-radius: 8px;
+                                margin: 5px;
+                                font-weight: bold;
+                                transition: background-color 0.2s;
+                            " onmouseover="this.style.backgroundColor='#0056b3'" onmouseout="this.style.backgroundColor='#007bff'">
+                                🔗 教务处登录页面
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div style="
-                    margin-top: 15px;
-                    padding: 10px;
-                    background: #f8f9fa;
-                    border-radius: 6px;
-                    font-size: 14px;
-                    color: #666;
-                    text-align: center;
-                ">
-                    💡 提示:<br>
-                    强智科技教务系统概念版是无法登陆的。<br>
-                    请使用上述链接跳转到正确的登录页面，<br>
-                    登录后可正常使用教务系统功能<br>
-                    验证码区分大小写，大部分情况下均为小写
-                </div>
-            `;
+                    <div style="
+                        margin-top: 15px;
+                        padding: 10px;
+                        background: #f8f9fa;
+                        border-radius: 6px;
+                        font-size: 14px;
+                        color: #666;
+                        text-align: center;
+                    ">
+                        💡 提示:<br>
+                        强智科技教务系统概念版是无法登陆的。<br>
+                        请使用上述链接跳转到正确的登录页面，<br>
+                        登录后可正常使用教务系统功能<br>
+                        验证码区分大小写，大部分情况下均为小写
+                    </div>
+                `;
 
-            createUnifiedModal('南理工教务增强助手', content, 'warning');
-            return true;
+                try {
+                    createUnifiedModal('南理工教务增强助手', content, 'warning');
+                } catch (e) {
+                    Logger.error('❌ 创建强智科技页面提示弹窗失败:', e);
+                }
+                return true;
+            }
+            return false;
+        } catch (e) {
+            Logger.error('❌ 检测强智科技页面失败:', e);
+            return false;
         }
-        return false;
     }
 
     function loadJSON(url) {
@@ -851,166 +859,218 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
     }
 
     function buildCourseMaps(categoryList, outlineList) {
-        Logger.debug('🔨 开始构建课程映射表');
+        try {
+            Logger.debug('🔨 开始构建课程映射表');
 
-        let categoryCount = 0;
-        let outlineCount = 0;
+            let categoryCount = 0;
+            let outlineCount = 0;
 
-        categoryList.forEach(item => {
-            if (item.course_code && item.category) {
-                courseCategoryMap[item.course_code.trim()] = item.category;
-                categoryCount++;
+            // 安全处理分类数据
+            if (Array.isArray(categoryList)) {
+                categoryList.forEach(item => {
+                    try {
+                        if (item && item.course_code && item.category) {
+                            courseCategoryMap[item.course_code.trim()] = item.category;
+                            categoryCount++;
+                        }
+                    } catch (e) {
+                        Logger.warn('⚠️ 处理分类数据项时出错:', e, item);
+                    }
+                });
+            } else {
+                Logger.warn('⚠️ 分类数据不是数组格式:', typeof categoryList);
             }
-        });
 
-        outlineList.forEach(item => {
-            if (item.course_code && item.id) {
-                courseOutlineMap[item.course_code.trim()] = item.id;
-                outlineCount++;
+            // 安全处理大纲数据
+            if (Array.isArray(outlineList)) {
+                outlineList.forEach(item => {
+                    try {
+                        if (item && item.course_code && item.id) {
+                            courseOutlineMap[item.course_code.trim()] = item.id;
+                            outlineCount++;
+                        }
+                    } catch (e) {
+                        Logger.warn('⚠️ 处理大纲数据项时出错:', e, item);
+                    }
+                });
+            } else {
+                Logger.warn('⚠️ 大纲数据不是数组格式:', typeof outlineList);
             }
-        });
 
-        Logger.info('📋 课程映射表构建完成', {
-            选修课类别: categoryCount + '条',
-            课程大纲: outlineCount + '条',
-            总数据: (categoryCount + outlineCount) + '条'
-        });
+            Logger.info('📋 课程映射表构建完成', {
+                选修课类别: categoryCount + '条',
+                课程大纲: outlineCount + '条',
+                总数据: (categoryCount + outlineCount) + '条'
+            });
+        } catch (e) {
+            Logger.error('❌ 构建课程映射表失败:', e);
+            // 确保映射表至少是空对象，避免后续访问出错
+            if (typeof courseCategoryMap !== 'object') courseCategoryMap = {};
+            if (typeof courseOutlineMap !== 'object') courseOutlineMap = {};
+        }
     }
 
     function createCreditSummaryWindow() {
-        // 使用统一的弹窗样式，但保持原有的固定位置和拖动功能
-        const container = document.createElement('div');
-        container.id = 'creditSummaryWindow';
-        container.style.cssText = `
-            position: fixed;
-            top: 40px;
-            right: 40px;
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 14px;
-            padding: 0;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.13);
-            z-index: 9999;
-            min-width: 420px;
-            max-width: 520px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            overflow: hidden;
-        `;
-
-        container.innerHTML = `
-            <div id="creditDragHandle" style="
-                background: #f5f6fa;
-                padding: 14px 22px;
-                cursor: move;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 1px solid #e0e0e0;
-            ">
-                <div style="color: #333; font-weight: 600; font-size: 17px; letter-spacing: 1px;">
-                    🎓 南理工教务增强助手
-                </div>
-                <span style="
-                    cursor: pointer;
-                    color: #888;
-                    font-size: 18px;
-                    padding: 2px 8px;
-                    border-radius: 4px;
-                    transition: background-color 0.2s;
-                "
-                onclick="this.closest('div').parentElement.remove()"
-                onmouseover="this.style.backgroundColor='#e0e0e0'"
-                onmouseout="this.style.backgroundColor='transparent'">✕</span>
-            </div>
-            <div style="
+        try {
+            // 使用统一的弹窗样式，但保持原有的固定位置和拖动功能
+            const container = document.createElement('div');
+            container.id = 'creditSummaryWindow';
+            container.style.cssText = `
+                position: fixed;
+                top: 40px;
+                right: 40px;
                 background: #fff;
-                padding: 18px 22px 10px 22px;
-                max-height: 540px;
-                overflow-y: auto;
-            ">
-                <div id="creditSummary"></div>
-                <div style="
-                    margin-top: 18px;
-                    padding-top: 12px;
-                    border-top: 1px solid #e0e0e0;
-                    font-size: 13px;
-                    color: #888;
-                    line-height: 1.6;
-                    text-align: left;
+                border: 1px solid #e0e0e0;
+                border-radius: 14px;
+                padding: 0;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+                z-index: 9999;
+                min-width: 420px;
+                max-width: 520px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                overflow: hidden;
+            `;
+
+            container.innerHTML = `
+                <div id="creditDragHandle" style="
+                    background: #f5f6fa;
+                    padding: 14px 22px;
+                    cursor: move;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-bottom: 1px solid #e0e0e0;
                 ">
-                 <div style="color: #e67e22; font-weight: 500; margin-bottom: 5px;">⚠️ 特别声明</div>
-                    <div>选修课类别可能发生变化，仅供参考。<br>本工具可能因为教务处改版而不可靠，不对数据准确性负责</div>
-                    <div style="margin-bottom: 8px;">
-                        <span>请查看 <a href="https://enhance.njust.wiki" target="_blank" style="color: #007bff; text-decoration: none;">南理工教务增强助手官方网站</a> 以获取使用说明</span>
+                    <div style="color: #333; font-weight: 600; font-size: 17px; letter-spacing: 1px;">
+                        🎓 南理工教务增强助手
+                    </div>
+                    <span style="
+                        cursor: pointer;
+                        color: #888;
+                        font-size: 18px;
+                        padding: 2px 8px;
+                        border-radius: 4px;
+                        transition: background-color 0.2s;
+                    "
+                    onclick="this.closest('div').parentElement.remove()"
+                    onmouseover="this.style.backgroundColor='#e0e0e0'"
+                    onmouseout="this.style.backgroundColor='transparent'">✕</span>
+                </div>
+                <div style="
+                    background: #fff;
+                    padding: 18px 22px 10px 22px;
+                    max-height: 540px;
+                    overflow-y: auto;
+                ">
+                    <div id="creditSummary"></div>
+                    <div style="
+                        margin-top: 18px;
+                        padding-top: 12px;
+                        border-top: 1px solid #e0e0e0;
+                        font-size: 13px;
+                        color: #888;
+                        line-height: 1.6;
+                        text-align: left;
+                    ">
+                     <div style="color: #e67e22; font-weight: 500; margin-bottom: 5px;">⚠️ 特别声明</div>
+                        <div>选修课类别可能发生变化，仅供参考。<br>本工具可能因为教务处改版而不可靠，不对数据准确性负责</div>
+                        <div style="margin-bottom: 8px;">
+                            <span>请查看 <a href="https://enhance.njust.wiki" target="_blank" style="color: #007bff; text-decoration: none;">南理工教务增强助手官方网站</a> 以获取使用说明</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
 
-        // 添加拖动功能
-        let isDragging = false;
-        let currentX, currentY, initialX, initialY;
-        let xOffset = 0, yOffset = 0;
+            // 添加拖动功能
+            let isDragging = false;
+            let currentX, currentY, initialX, initialY;
+            let xOffset = 0, yOffset = 0;
 
-        const dragHandle = container.querySelector('#creditDragHandle');
-
-        function dragStart(e) {
-            if (e.type === "touchstart") {
-                initialX = e.touches[0].clientX - xOffset;
-                initialY = e.touches[0].clientY - yOffset;
-            } else {
-                initialX = e.clientX - xOffset;
-                initialY = e.clientY - yOffset;
+            const dragHandle = container.querySelector('#creditDragHandle');
+            if (!dragHandle) {
+                Logger.warn('⚠️ 未找到拖拽句柄元素');
+                document.body.appendChild(container);
+                return container;
             }
-            if (e.target === dragHandle || dragHandle.contains(e.target)) {
-                isDragging = true;
-            }
-        }
 
-        function dragEnd(e) {
-            initialX = currentX;
-            initialY = currentY;
-            isDragging = false;
-        }
-
-        function drag(e) {
-            if (isDragging) {
-                e.preventDefault();
-                if (e.type === "touchmove") {
-                    currentX = e.touches[0].clientX - initialX;
-                    currentY = e.touches[0].clientY - initialY;
-                } else {
-                    currentX = e.clientX - initialX;
-                    currentY = e.clientY - initialY;
+            function dragStart(e) {
+                try {
+                    if (e.type === "touchstart") {
+                        initialX = e.touches[0].clientX - xOffset;
+                        initialY = e.touches[0].clientY - yOffset;
+                    } else {
+                        initialX = e.clientX - xOffset;
+                        initialY = e.clientY - yOffset;
+                    }
+                    if (e.target === dragHandle || dragHandle.contains(e.target)) {
+                        isDragging = true;
+                    }
+                } catch (err) {
+                    Logger.error('❌ 拖拽开始失败:', err);
                 }
-                xOffset = currentX;
-                yOffset = currentY;
-                container.style.transform = `translate(${currentX}px, ${currentY}px)`;
             }
+
+            function dragEnd(e) {
+                try {
+                    initialX = currentX;
+                    initialY = currentY;
+                    isDragging = false;
+                } catch (err) {
+                    Logger.error('❌ 拖拽结束失败:', err);
+                }
+            }
+
+            function drag(e) {
+                try {
+                    if (isDragging) {
+                        e.preventDefault();
+                        if (e.type === "touchmove") {
+                            currentX = e.touches[0].clientX - initialX;
+                            currentY = e.touches[0].clientY - initialY;
+                        } else {
+                            currentX = e.clientX - initialX;
+                            currentY = e.clientY - initialY;
+                        }
+                        xOffset = currentX;
+                        yOffset = currentY;
+                        container.style.transform = `translate(${currentX}px, ${currentY}px)`;
+                    }
+                } catch (err) {
+                    Logger.error('❌ 拖拽移动失败:', err);
+                }
+            }
+
+            dragHandle.addEventListener('mousedown', dragStart);
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', dragEnd);
+            dragHandle.addEventListener('touchstart', dragStart, { passive: false });
+            document.addEventListener('touchmove', drag, { passive: false });
+            document.addEventListener('touchend', dragEnd, { passive: false });
+
+            document.body.appendChild(container);
+            Logger.debug('✅ 学分统计弹窗创建完成');
+            return container;
+        } catch (e) {
+            Logger.error('❌ 创建学分统计弹窗失败:', e);
+            if (UI_CONFIG.showNotifications) {
+                StatusNotifier.show('创建学分统计弹窗失败', 'error', 3000);
+            }
+            return null;
         }
-
-        dragHandle.addEventListener('mousedown', dragStart);
-        document.addEventListener('mousemove', drag);
-        document.addEventListener('mouseup', dragEnd);
-        dragHandle.addEventListener('touchstart', dragStart, { passive: false });
-        document.addEventListener('touchmove', drag, { passive: false });
-        document.addEventListener('touchend', dragEnd, { passive: false });
-
-        document.body.appendChild(container);
-        return container;
     }
 
     function updateCreditSummary() {
-        Logger.debug('📊 开始更新学分统计');
-        const creditSummaryDiv = document.getElementById('creditSummary');
-        if (!creditSummaryDiv) {
-            Logger.warn('⚠️ 未找到学分统计容器');
-            return;
-        }
+        try {
+            Logger.debug('📊 开始更新学分统计');
+            const creditSummaryDiv = document.getElementById('creditSummary');
+            if (!creditSummaryDiv) {
+                Logger.warn('⚠️ 未找到学分统计容器');
+                return;
+            }
 
-        const creditsByType = {}; // 按课程类型（通识教育课等）统计
-        const creditsByCategory = {}; // 按选修课类别统计
-        const tables = document.querySelectorAll('table');
+            const creditsByType = {}; // 按课程类型（通识教育课等）统计
+            const creditsByCategory = {}; // 按选修课类别统计
+            const tables = document.querySelectorAll('table');
 
         tables.forEach(table => {
             const rows = table.querySelectorAll('tr');
@@ -1116,27 +1176,36 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
         }
         summaryHTML += '</div>';
 
-        creditSummaryDiv.innerHTML = summaryHTML || '暂无数据';
-        Logger.debug('✅ 学分统计更新完成');
+            creditSummaryDiv.innerHTML = summaryHTML || '暂无数据';
+            Logger.debug('✅ 学分统计更新完成');
+        } catch (e) {
+            Logger.error('❌ 更新学分统计失败:', e);
+            const creditSummaryDiv = document.getElementById('creditSummary');
+            if (creditSummaryDiv) {
+                creditSummaryDiv.innerHTML = '<div style="color: #dc3545; padding: 10px; text-align: center;">❌ 学分统计更新失败</div>';
+            }
+        }
     }
 
     function processAllTables() {
-        Logger.debug('🔍 开始处理页面表格');
-        const tables = document.querySelectorAll('table');
-        const isGradePage = window.location.pathname.includes('/njlgdx/kscj/cjcx_list');
-        const isSchedulePage = window.location.pathname.includes('xskb_list.do') &&
-                              document.title.includes('学期理论课表');
+        try {
+            Logger.debug('🔍 开始处理页面表格');
+            const tables = document.querySelectorAll('table');
+            const isGradePage = window.location.pathname.includes('/njlgdx/kscj/cjcx_list');
+            const isSchedulePage = window.location.pathname.includes('xskb_list.do') &&
+                                  document.title.includes('学期理论课表');
 
-        Logger.debug(`📋 找到 ${tables.length} 个表格`, {
-            成绩页面: isGradePage,
-            课表页面: isSchedulePage
-        });
+            Logger.debug(`📋 找到 ${tables.length} 个表格`, {
+                成绩页面: isGradePage,
+                课表页面: isSchedulePage
+            });
 
-        let processedTables = 0;
-        let processedRows = 0;
-        let enhancedCourses = 0;
+            let processedTables = 0;
+            let processedRows = 0;
+            let enhancedCourses = 0;
 
-        tables.forEach(table => {
+            tables.forEach(table => {
+                try {
             // 如果是课表页面，只处理 id="dataList" 的表格
             if (isSchedulePage && table.id !== 'dataList') {
                 Logger.debug('⏭️ 跳过非 dataList 表格');
@@ -1152,110 +1221,141 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
 
             processedTables++;
 
-            rows.forEach(row => {
-                const tds = row.querySelectorAll('td');
-                if (tds.length < 3) return;
+                rows.forEach(row => {
+                    try {
+                        const tds = row.querySelectorAll('td');
+                        if (tds.length < 3) return;
 
-                processedRows++;
+                        processedRows++;
 
-                let courseCodeTd;
-                let courseCode;
+                        let courseCodeTd;
+                        let courseCode;
 
-                if (isGradePage) {
-                    courseCodeTd = tds[2]; // 成绩页面课程代码在第3列
-                    courseCode = courseCodeTd.textContent.trim();
-                } else if (isSchedulePage) {
-                    courseCodeTd = tds[1]; // 课表页面课程代码在第2列
-                    courseCode = courseCodeTd.textContent.trim();
-                } else {
-                    courseCodeTd = tds[1];
-                    const parts = courseCodeTd.innerHTML.split('<br>');
-                    if (parts.length === 2) {
-                        courseCode = parts[1].trim();
-                    } else {
-                        return;
+                        if (isGradePage) {
+                            courseCodeTd = tds[2]; // 成绩页面课程代码在第3列
+                            courseCode = courseCodeTd ? courseCodeTd.textContent.trim() : '';
+                        } else if (isSchedulePage) {
+                            courseCodeTd = tds[1]; // 课表页面课程代码在第2列
+                            courseCode = courseCodeTd ? courseCodeTd.textContent.trim() : '';
+                        } else {
+                            courseCodeTd = tds[1];
+                            if (courseCodeTd && courseCodeTd.innerHTML) {
+                                const parts = courseCodeTd.innerHTML.split('<br>');
+                                if (parts.length === 2) {
+                                    courseCode = parts[1].trim();
+                                } else {
+                                    return;
+                                }
+                            } else {
+                                return;
+                            }
+                        }
+
+                        if (!courseCode) return;
+
+                        Logger.debug(`🔍 处理课程: ${courseCode}`);
+
+                        let courseEnhanced = false;
+
+                        // 插入类别
+                        try {
+                            if (courseCodeTd && !courseCodeTd.querySelector('[data-category-inserted]')) {
+                                const category = courseCategoryMap[courseCode];
+                                if (category) {
+                                    const catDiv = document.createElement('div');
+                                    catDiv.setAttribute('data-category-inserted', '1');
+                                    catDiv.style.color = '#28a745';
+                                    catDiv.style.fontWeight = 'bold';
+                                    catDiv.style.marginTop = '4px';
+                                    // 只显示类别名称，不显示前缀
+                                    catDiv.textContent = category;
+                                    courseCodeTd.appendChild(catDiv);
+                                    Logger.debug(`✅ 添加课程类别: ${category}`);
+                                    courseEnhanced = true;
+                                }
+                            }
+                        } catch (e) {
+                            Logger.warn('⚠️ 添加课程类别时出错:', e, courseCode);
+                        }
+
+                        // 插入老师说明（来自 title，仅在非成绩页面和非课表页面）
+                        try {
+                            if (!isGradePage && !isSchedulePage && courseCodeTd && courseCodeTd.title && !courseCodeTd.querySelector('[data-title-inserted]')) {
+                                const titleDiv = document.createElement('div');
+                                titleDiv.setAttribute('data-title-inserted', '1');
+                                titleDiv.style.color = '#666';
+                                titleDiv.style.fontSize = '13px';
+                                titleDiv.style.marginTop = '4px';
+                                titleDiv.style.fontStyle = 'italic';
+                                titleDiv.textContent = `📌 老师说明: ${courseCodeTd.title}`;
+                                courseCodeTd.appendChild(titleDiv);
+                                Logger.debug(`📝 添加老师说明`);
+                                courseEnhanced = true;
+                            }
+                        } catch (e) {
+                            Logger.warn('⚠️ 添加老师说明时出错:', e, courseCode);
+                        }
+
+                        // 插入课程大纲链接
+                        try {
+                            if (courseCodeTd && !courseCodeTd.querySelector('[data-outline-inserted]')) {
+                                const realId = courseOutlineMap[courseCode];
+                                const outlineDiv = document.createElement('div');
+                                outlineDiv.setAttribute('data-outline-inserted', '1');
+                                outlineDiv.style.marginTop = '4px';
+
+                                if (realId) {
+                                    const link = document.createElement('a');
+                                    link.href = `http://202.119.81.112:8080/kcxxAction.do?method=kcdgView&jx02id=${realId}&isentering=0`;
+                                    link.textContent = '📘 查看课程大纲';
+                                    link.target = '_blank';
+                                    link.style.color = '#0077cc';
+                                    outlineDiv.appendChild(link);
+                                    Logger.debug(`📘 添加课程大纲链接`);
+                                    courseEnhanced = true;
+                                } else {
+                                    outlineDiv.textContent = '❌ 无大纲信息';
+                                    outlineDiv.style.color = 'gray';
+                                    Logger.debug(`❌ 无大纲信息`);
+                                }
+                                courseCodeTd.appendChild(outlineDiv);
+                            }
+                        } catch (e) {
+                            Logger.warn('⚠️ 添加课程大纲链接时出错:', e, courseCode);
+                        }
+
+                        if (courseEnhanced) {
+                            enhancedCourses++;
+                        }
+                    } catch (e) {
+                        Logger.warn('⚠️ 处理表格行时出错:', e);
                     }
-                }
-
-                Logger.debug(`🔍 处理课程: ${courseCode}`);
-
-                let courseEnhanced = false;
-
-                // 插入类别
-                if (!courseCodeTd.querySelector('[data-category-inserted]')) {
-                    const category = courseCategoryMap[courseCode];
-                    if (category) {
-                        const catDiv = document.createElement('div');
-                        catDiv.setAttribute('data-category-inserted', '1');
-                        catDiv.style.color = '#28a745';
-                        catDiv.style.fontWeight = 'bold';
-                        catDiv.style.marginTop = '4px';
-                        // 只显示类别名称，不显示前缀
-                        catDiv.textContent = category;
-                        courseCodeTd.appendChild(catDiv);
-                        Logger.debug(`✅ 添加课程类别: ${category}`);
-                        courseEnhanced = true;
-                    }
-                }
-
-                // 插入老师说明（来自 title，仅在非成绩页面和非课表页面）
-                if (!isGradePage && !isSchedulePage && courseCodeTd.title && !courseCodeTd.querySelector('[data-title-inserted]')) {
-                    const titleDiv = document.createElement('div');
-                    titleDiv.setAttribute('data-title-inserted', '1');
-                    titleDiv.style.color = '#666';
-                    titleDiv.style.fontSize = '13   px';
-                    titleDiv.style.marginTop = '4px';
-                    titleDiv.style.fontStyle = 'italic';
-                    titleDiv.textContent = `📌 老师说明: ${courseCodeTd.title}`;
-                    courseCodeTd.appendChild(titleDiv);
-                    Logger.debug(`📝 添加老师说明`);
-                    courseEnhanced = true;
-                }
-
-                // 插入课程大纲链接
-                if (!courseCodeTd.querySelector('[data-outline-inserted]')) {
-                    const realId = courseOutlineMap[courseCode];
-                    const outlineDiv = document.createElement('div');
-                    outlineDiv.setAttribute('data-outline-inserted', '1');
-                    outlineDiv.style.marginTop = '4px';
-
-                    if (realId) {
-                        const link = document.createElement('a');
-                        link.href = `http://202.119.81.112:8080/kcxxAction.do?method=kcdgView&jx02id=${realId}&isentering=0`;
-                        link.textContent = '📘 查看课程大纲';
-                        link.target = '_blank';
-                        link.style.color = '#0077cc';
-                        outlineDiv.appendChild(link);
-                        Logger.debug(`📘 添加课程大纲链接`);
-                        courseEnhanced = true;
-                    } else {
-                        outlineDiv.textContent = '❌ 无大纲信息';
-                        outlineDiv.style.color = 'gray';
-                        Logger.debug(`❌ 无大纲信息`);
-                    }
-                    courseCodeTd.appendChild(outlineDiv);
-                }
-
-                if (courseEnhanced) {
-                    enhancedCourses++;
+                });
+                } catch (e) {
+                    Logger.warn('⚠️ 处理表格时出错:', e);
                 }
             });
-        });
 
-        // 输出处理统计
-        Logger.info('📊 表格处理统计', {
-            处理表格数: processedTables,
-            处理行数: processedRows,
-            增强课程数: enhancedCourses
-        });
+            // 输出处理统计
+            Logger.info('📊 表格处理统计', {
+                处理表格数: processedTables,
+                处理行数: processedRows,
+                增强课程数: enhancedCourses
+            });
 
-        // 更新学分统计（仅在成绩页面）
-        if (isGradePage) {
-            Logger.debug('📊 更新学分统计');
-            updateCreditSummary();
+            // 更新学分统计（仅在成绩页面）
+            if (isGradePage) {
+                Logger.debug('📊 更新学分统计');
+                updateCreditSummary();
+            }
+
+            Logger.debug('✅ 表格处理完成');
+        } catch (e) {
+            Logger.error('❌ 处理页面表格失败:', e);
+            if (UI_CONFIG.showNotifications) {
+                StatusNotifier.show('页面表格处理失败', 'error', 3000);
+            }
         }
-
-        Logger.debug('✅ 表格处理完成');
     }
 
     // 统计追踪请求
@@ -1283,30 +1383,35 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
 
     // 检测登录错误页面并自动处理
     function checkLoginErrorAndRefresh() {
-        const pageTitle = document.title;
-        const pageContent = document.body ? document.body.textContent : '';
-        
-        // 检测是否为登录错误页面
-        const isLoginError = pageTitle.includes('出错页面') && 
-                            (pageContent.includes('您登录后过长时间没有操作') || 
-                             pageContent.includes('您的用户名已经在别处登录') ||
-                             pageContent.includes('请重新输入帐号，密码后，继续操作'));
-        
-        if (isLoginError) {
-            Logger.warn('⚠️ 检测到登录超时或重复登录错误页面');
+        try {
+            const pageTitle = document.title || '';
+            const pageContent = document.body ? document.body.textContent : '';
             
-            // 显示用户提示
-            if (UI_CONFIG.showNotifications) {
-                StatusNotifier.show('检测到登录超时，正在自动刷新登录状态...', 'warning', 5000);
+            // 检测是否为登录错误页面
+            const isLoginError = pageTitle.includes('出错页面') && 
+                                (pageContent.includes('您登录后过长时间没有操作') || 
+                                 pageContent.includes('您的用户名已经在别处登录') ||
+                                 pageContent.includes('请重新输入帐号，密码后，继续操作'));
+            
+            if (isLoginError) {
+                Logger.warn('⚠️ 检测到登录超时或重复登录错误页面');
+                
+                // 显示用户提示
+                if (UI_CONFIG.showNotifications) {
+                    StatusNotifier.show('检测到登录超时，正在自动刷新登录状态...', 'warning', 5000);
+                }
+                
+                // 强制刷新登录状态（忽略时间间隔限制）
+                performLoginRefresh(true);
+                
+                return true;
             }
             
-            // 强制刷新登录状态（忽略时间间隔限制）
-            performLoginRefresh(true);
-            
-            return true;
+            return false;
+        } catch (e) {
+            Logger.error('❌ 检测登录错误页面失败:', e);
+            return false;
         }
-        
-        return false;
     }
     
     // 执行登录状态刷新
@@ -1392,28 +1497,32 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
 
     // 自动刷新登录状态功能
     function autoRefreshLoginStatus() {
-        const currentUrl = window.location.href;
-        
-        // 检查当前页面 URL 是否包含 njlgdx/framework/main.jsp
-        if (currentUrl.includes('njlgdx/framework/main.jsp')) {
-            // 防止频繁触发 - 检查上次刷新时间
-            const lastRefreshKey = 'njust_last_login_refresh';
-            const lastRefreshTime = localStorage.getItem(lastRefreshKey);
-            const now = Date.now();
-            const refreshInterval = 5 * 60 * 1000; // 5 分钟间隔
+        try {
+            const currentUrl = window.location.href;
             
-            if (lastRefreshTime && (now - parseInt(lastRefreshTime)) < refreshInterval) {
-                Logger.debug('⏭️ 距离上次刷新不足5分钟，跳过本次刷新');
-                return;
+            // 检查当前页面 URL 是否包含 njlgdx/framework/main.jsp
+            if (currentUrl.includes('njlgdx/framework/main.jsp')) {
+                // 防止频繁触发 - 检查上次刷新时间
+                const lastRefreshKey = 'njust_last_login_refresh';
+                const lastRefreshTime = localStorage.getItem(lastRefreshKey);
+                const now = Date.now();
+                const refreshInterval = 5 * 60 * 1000; // 5 分钟间隔
+                
+                if (lastRefreshTime && (now - parseInt(lastRefreshTime)) < refreshInterval) {
+                    Logger.debug('⏭️ 距离上次刷新不足5分钟，跳过本次刷新');
+                    return;
+                }
+                
+                Logger.info('🔄 检测到主框架页面，准备刷新登录状态');
+                
+                // 记录本次刷新时间
+                localStorage.setItem(lastRefreshKey, now.toString());
+                
+                // 使用统一的刷新函数
+                performLoginRefresh(false);
             }
-            
-            Logger.info('🔄 检测到主框架页面，准备刷新登录状态');
-            
-            // 记录本次刷新时间
-            localStorage.setItem(lastRefreshKey, now.toString());
-            
-            // 使用统一的刷新函数
-            performLoginRefresh(false);
+        } catch (e) {
+            Logger.error('❌ 自动刷新登录状态检查失败:', e);
         }
     }
 
@@ -1437,7 +1546,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
             // 检测登录错误页面并处理
             checkLoginErrorAndRefresh();
 
-            Logger.info('📥 开始加载远程数据');
+            Logger.info('📥 开始加载数据');
          //   StatusNotifier.show('正在加载课程数据...', 'loading');
 
             const [categoryData, outlineData] = await Promise.all([
@@ -1445,7 +1554,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
                 loadJSON(OUTLINE_URL)
             ]);
 
-            Logger.info('✅ 远程数据加载完成，开始初始化功能');
+            Logger.info('✅ 数据加载完成，开始初始化功能');
           //  StatusNotifier.show('正在解析数据...', 'loading');
             buildCourseMaps(categoryData, outlineData);
 
@@ -1463,51 +1572,69 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
             Logger.debug('👀 启动页面变化监听器');
             let isProcessing = false; // 防止死循环的标志
             const observer = new MutationObserver((mutations) => {
-                // 防止死循环：如果正在处理中，跳过
-                if (isProcessing) {
-                    return;
-                }
+                try {
+                    // 防止死循环：如果正在处理中，跳过
+                    if (isProcessing) {
+                        return;
+                    }
 
-                // 检查是否有实际的内容变化（排除我们自己添加的元素）
-                const hasRelevantChanges = mutations.some(mutation => {
-                    // 如果是我们添加的标记元素，忽略
-                    if (mutation.type === 'childList') {
-                        for (let node of mutation.addedNodes) {
-                            if (node.nodeType === Node.ELEMENT_NODE) {
-                                // 如果是我们添加的标记元素，忽略这个变化
-                                if (node.hasAttribute && (
-                                    node.hasAttribute('data-category-inserted') ||
-                                    node.hasAttribute('data-title-inserted') ||
-                                    node.hasAttribute('data-outline-inserted')
-                                )) {
-                                    return false;
-                                }
-                                // 如果是表格相关的重要变化，才处理
-                                if (node.tagName === 'TABLE' || node.tagName === 'TR' || node.tagName === 'TD') {
-                                    return true;
+                    // 检查是否有实际的内容变化（排除我们自己添加的元素）
+                    const hasRelevantChanges = mutations.some(mutation => {
+                        try {
+                            // 如果是我们添加的标记元素，忽略
+                            if (mutation.type === 'childList') {
+                                for (let node of mutation.addedNodes) {
+                                    if (node.nodeType === Node.ELEMENT_NODE) {
+                                        // 如果是我们添加的标记元素，忽略这个变化
+                                        if (node.hasAttribute && (
+                                            node.hasAttribute('data-category-inserted') ||
+                                            node.hasAttribute('data-title-inserted') ||
+                                            node.hasAttribute('data-outline-inserted')
+                                        )) {
+                                            return false;
+                                        }
+                                        // 如果是表格相关的重要变化，才处理
+                                        if (node.tagName === 'TABLE' || node.tagName === 'TR' || node.tagName === 'TD') {
+                                            return true;
+                                        }
+                                    }
                                 }
                             }
+                            return false;
+                        } catch (e) {
+                            Logger.warn('⚠️ 检查页面变化时出错:', e);
+                            return false;
+                        }
+                    });
+
+                    if (hasRelevantChanges && !checkQiangzhiPage()) {
+                        Logger.debug('🔄 检测到相关页面变化，重新处理表格');
+                        isProcessing = true;
+                        try {
+                      //      StatusNotifier.show('正在更新页面表格...', 'loading');
+                            processAllTables();
+                       //     StatusNotifier.show('页面表格更新完成', 'success', 1500);
+                        } catch (e) {
+                            Logger.error('❌ 重新处理表格失败:', e);
+                        } finally {
+                            // 延迟重置标志，确保 DOM 修改完成
+                            setTimeout(() => {
+                                isProcessing = false;
+                            }, 100);
                         }
                     }
-                    return false;
-                });
-
-                if (hasRelevantChanges && !checkQiangzhiPage()) {
-                    Logger.debug('🔄 检测到相关页面变化，重新处理表格');
-                    isProcessing = true;
-                    try {
-                  //      StatusNotifier.show('正在更新页面表格...', 'loading');
-                        processAllTables();
-                   //     StatusNotifier.show('页面表格更新完成', 'success', 1500);
-                    } finally {
-                        // 延迟重置标志，确保 DOM 修改完成
-                        setTimeout(() => {
-                            isProcessing = false;
-                        }, 100);
-                    }
+                } catch (e) {
+                    Logger.error('❌ MutationObserver 回调函数执行失败:', e);
+                    // 确保重置处理标志
+                    isProcessing = false;
                 }
             });
-            observer.observe(document.body, { childList: true, subtree: true });
+            
+            try {
+                observer.observe(document.body, { childList: true, subtree: true });
+            } catch (e) {
+                Logger.error('❌ 启动页面变化监听器失败:', e);
+            }
 
             Logger.info('🎉 脚本初始化完成');
             StatusNotifier.show('南理工教务增强助手加载成功！', 'success', 5000);
