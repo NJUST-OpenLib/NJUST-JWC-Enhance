@@ -21,7 +21,7 @@ const CATEGORY_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/d
 // 课程大纲数据源
 const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/data/kcdg.json';
 
-// 备用数据源（如需要可取消注释）
+// 备用数据源（如需要可取消注释）Q
 // const CATEGORY_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json';
 // const OUTLINE_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json';
 
@@ -1259,27 +1259,27 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
     }
 
     // 统计追踪请求
-    function sendTrackingRequest() {
+    /* function sendTrackingRequest() {
         try {
             // 发送追踪请求，用于统计使用情况
             GM_xmlhttpRequest({
                 method: 'GET',
                 url: 'https://manual.njust.wiki/test.html?from=enhancer',
                 timeout: 5000,
-                onload: function() {
+                onload: function () {
                     // 请求成功，不做任何处理
                 },
-                onerror: function() {
+                onerror: function () {
                     // 请求失败，静默处理
                 },
-                ontimeout: function() {
+                ontimeout: function () {
                     // 请求超时，静默处理
                 }
             });
         } catch (e) {
             // 静默处理任何错误
         }
-    }
+    } */
 
     // 检测登录错误页面并自动处理
     function checkLoginErrorAndRefresh() {
@@ -1463,7 +1463,7 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
             Logger.debug('👀 启动页面变化监听器');
             let isProcessing = false; // 防止死循环的标志
             const observer = new MutationObserver((mutations) => {
-                // 防止死循环: 如果正在处理中，跳过
+                // 防止死循环：如果正在处理中，跳过
                 if (isProcessing) {
                     return;
                 }
