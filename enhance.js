@@ -16,14 +16,23 @@
 // ==/UserScript==
 
 // ==================== 远程数据源配置 ====================
-// 选修课分类数据源
-const CATEGORY_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/data/xxk.json';
-// 课程大纲数据源
-const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/data/kcdg.json';
+// 选修课分类数据源（按优先级排序）
+const CATEGORY_URLS = [
+    'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',
+    'https://gcore.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',
+    'https://testingcf.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',
+    'https://raw.gitcode.com/Misaka10032/NJUST-JWC-Enhance/raw/main/data/xxk.json',
+    'https://enhance.njust.wiki/data/xxk.json'
+];
 
-// 备用数据源（如需要可取消注释）Q
-// const CATEGORY_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json';
-// const OUTLINE_URL = 'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json';
+// 课程大纲数据源（按优先级排序）
+const OUTLINE_URLS = [
+    'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',
+    'https://gcore.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',
+    'https://testingcf.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',
+    'https://raw.gitcode.com/Misaka10032/NJUST-JWC-Enhance/raw/main/data/kcdg.json',
+    'https://enhance.njust.wiki/data/kcdg.json',
+];
 
 (function () {
     'use strict';
@@ -38,8 +47,8 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
 
     // 调试配置
     const DEBUG_CONFIG = {
-        enabled: false,          // 是否启用调试
-        level: 0,              // 调试级别: 0=关闭，1=错误，2=警告，3=信息，4=详细
+        enabled: true,          // 是否启用调试
+        level: 4,              // 调试级别: 0=关闭，1=错误，2=警告，3=信息，4=详细
         showCache: true        // 是否显示缓存相关日志
     };
 
@@ -792,70 +801,119 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
         }
     }
 
-    function loadJSON(url) {
+    function loadJSONWithFallback(urls) {
         return new Promise((resolve, reject) => {
-            Logger.debug(`📡 请求数据: ${url}`);
+            // 确保urls是数组
+            const urlArray = Array.isArray(urls) ? urls : [urls];
+            
+            // 获取数据类型名称用于日志显示
+            const fileName = urlArray[0].includes('xxk') ? '选修课分类' : '课程大纲';
+            
+            Logger.info(`🔄 开始智能数据源切换: ${fileName}`, {
+                数据源数量: urlArray.length,
+                数据源列表: urlArray
+            });
 
-            // 尝试从缓存获取数据
-            const cachedData = CacheManager.get(url);
-            if (cachedData) {
-                Logger.debug(`🎯 使用缓存数据: ${url}`);
+            let currentIndex = 0;
+            
+            function tryNextUrl() {
+                if (currentIndex >= urlArray.length) {
+                    Logger.error(`❌ 所有数据源都不可用: ${fileName}`);
+                    StatusNotifier.show(`${fileName}数据加载失败，所有数据源都不可用`, 'error', 5000);
+                    reject(new Error(`所有数据源都不可用: ${fileName}`));
+                    return;
+                }
 
-                // 显示缓存命中状态
-                const fileName = url.includes('xxk') ? '选修课分类' : '课程大纲';
-                StatusNotifier.show(`从缓存读取${fileName}数据成功`, 'success');
+                const currentUrl = urlArray[currentIndex];
+                currentIndex++;
+                
+                Logger.info(`🌐 尝试数据源 ${currentIndex}/${urlArray.length}: ${currentUrl}`);
+                
+                // 尝试从缓存获取数据（只尝试第一个URL的缓存）
+                if (currentIndex === 1) {
+                    const cachedData = CacheManager.get(currentUrl);
+                    if (cachedData) {
+                        Logger.debug(`🎯 使用缓存数据: ${currentUrl}`);
+                        StatusNotifier.show(`从缓存读取${fileName}数据成功`, 'success');
+                        resolve(cachedData);
+                        return;
+                    }
+                }
 
-                resolve(cachedData);
-                return;
+                // 发起网络请求
+                const startTime = Date.now();
+                
+                GM_xmlhttpRequest({
+                    method: "GET",
+                    url: currentUrl,
+                    timeout: 10000, // 10秒超时
+                    onload: function (response) {
+                        const loadTime = Date.now() - startTime;
+
+                        try {
+                            const json = JSON.parse(response.responseText);
+
+                            // 保存到缓存（只缓存第一个成功请求的URL）
+                            if (currentIndex === 1) {
+                                const cached = CacheManager.set(currentUrl, json);
+                                Logger.info(`✅ 请求成功: ${currentUrl}`, {
+                                    耗时: loadTime + 'ms',
+                                    大小: response.responseText.length + ' bytes',
+                                    缓存: cached ? '已保存' : '保存失败'
+                                });
+                            } else {
+                                Logger.info(`✅ 备用数据源请求成功: ${currentUrl}`, {
+                                    耗时: loadTime + 'ms',
+                                    大小: response.responseText.length + ' bytes',
+                                    备用序号: currentIndex
+                                });
+                            }
+
+                            // 显示成功状态
+                            if (currentIndex > 1) {
+                                StatusNotifier.show(`从备用数据源${currentIndex-1}加载${fileName}成功 (${loadTime}ms)`, 'success');
+                            } else {
+                                StatusNotifier.show(`从远程加载${fileName}成功 (${loadTime}ms)`, 'success');
+                            }
+
+                            resolve(json);
+                        } catch (e) {
+                            Logger.error(`❌ JSON 解析失败: ${currentUrl}`, e);
+                            // 继续尝试下一个URL
+                            tryNextUrl();
+                        }
+                    },
+                    onerror: function (err) {
+                        const loadTime = Date.now() - startTime;
+                        Logger.warn(`⚠️ 数据源 ${currentIndex} 请求失败: ${currentUrl}`, {
+                            耗时: loadTime + 'ms',
+                            错误: err,
+                            将尝试: currentIndex < urlArray.length ? '下一个数据源' : '无更多数据源'
+                        });
+                        
+                        // 继续尝试下一个URL
+                        tryNextUrl();
+                    },
+                    ontimeout: function() {
+                        Logger.warn(`⏰ 数据源 ${currentIndex} 请求超时: ${currentUrl}`);
+                        // 继续尝试下一个URL
+                        tryNextUrl();
+                    }
+                });
             }
 
-            // 缓存未命中，发起网络请求
-            Logger.info(`🌐 发起网络请求: ${url}`);
-            const startTime = Date.now();
-
-            // 显示加载状态
-            const fileName = url.includes('xxk') ? '选修课分类' : '课程大纲';
-        //   StatusNotifier.show(`正在从远程加载${fileName}数据...`, 'info', 0);
-
-            GM_xmlhttpRequest({
-                method: "GET",
-                url,
-                onload: function (response) {
-                    const loadTime = Date.now() - startTime;
-
-                    try {
-                        const json = JSON.parse(response.responseText);
-
-                        // 保存到缓存
-                        const cached = CacheManager.set(url, json);
-
-                        Logger.info(`✅ 请求成功: ${url}`, {
-                            耗时: loadTime + 'ms',
-                            大小: response.responseText.length + ' bytes',
-                            缓存: cached ? '已保存' : '保存失败'
-                        });
-
-                        // 显示成功状态
-                        StatusNotifier.show(`从远程加载${fileName}成功 (${loadTime}ms)`, 'success');
-
-                        resolve(json);
-                    } catch (e) {
-                        Logger.error(`❌ JSON 解析失败: ${url}`, e);
-                        StatusNotifier.show(`${fileName}数据解析失败`, 'error');
-                        reject(e);
-                    }
-                },
-                onerror: function (err) {
-                    const loadTime = Date.now() - startTime;
-                    Logger.error(`❌ 网络请求失败: ${url}`, {
-                        耗时: loadTime + 'ms',
-                        错误: err
-                    });
-                    StatusNotifier.show(`${fileName}数据加载失败`, 'error', 4000);
-                    reject(err);
-                }
-            });
+            // 开始尝试第一个URL
+            tryNextUrl();
         });
+    }
+
+    function loadJSON(url) {
+        // 兼容原有的单URL调用方式
+        if (typeof url === 'string') {
+            return loadJSONWithFallback([url]);
+        }
+        // 新的多数据源调用方式
+        return loadJSONWithFallback(url);
     }
 
     function buildCourseMaps(categoryList, outlineList) {
@@ -1550,8 +1608,8 @@ const OUTLINE_URL = 'https://fastly.jsdelivr.net/npm/njust-jwc-enhance@latest/da
          //   StatusNotifier.show('正在加载课程数据...', 'loading');
 
             const [categoryData, outlineData] = await Promise.all([
-                loadJSON(CATEGORY_URL),
-                loadJSON(OUTLINE_URL)
+                loadJSON(CATEGORY_URLS),
+                loadJSON(OUTLINE_URLS)
             ]);
 
             Logger.info('✅ 数据加载完成，开始初始化功能');
