@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>南理工教务系统增强助手</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">南理工教务系统增强助手</h1>
+</header>
+<h1 id="南理工教务系统增强助手">🎓 南理工教务系统增强助手</h1>
+<blockquote>
+<p>🧩 让教务系统更顺手的浏览器脚本<br />
+💡 支持南京理工大学和其他使用“湖南强智教务系统”的高校</p>
+</blockquote>
+<div data-align="center">
+<p><img src="./docs/static/catag.png"  alt="课程分类示意图" /> <br>
+<img src="./docs/static/kczk4.png" alt="课程增强示意图" /></p>
+<p>
+<img src="https://img.shields.io/github/stars/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
+<img src="https://img.shields.io/github/forks/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
+<img src="https://img.shields.io/github/issues/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
+<img src="https://img.shields.io/github/license/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
+<img src="https://img.shields.io/github/last-commit/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
+</p>
+<h2 id="star-history">Star History</h2>
+<p><a href="https://www.star-history.com/#NJUST-OpenLib/NJUST-JWC-Enhance&Date">
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=NJUST-OpenLib/NJUST-JWC-Enhance&type=Date&theme=dark" />
+<source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=NJUST-OpenLib/NJUST-JWC-Enhance&type=Date" />
+<img alt="Star History Chart" src="https://api.star-history.com/svg?repos=NJUST-OpenLib/NJUST-JWC-Enhance&type=Date" />
+</picture> </a></p>
+</div>
+<h2 id="关注我们">关注我们</h2>
+<ul>
+<li><a href="https://manual.njust.wiki">📖 南理工生存手册</a></li>
+<li><a href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance">💻
+GitHub 仓库</a></li>
+<li><a href="https://scriptcat.org/zh-CN/users/174962">🐱 ScriptCat
+脚本猫</a></li>
+<li><a
+href="https://greasyfork.org/zh-CN/users/1491624-njust-openlib">🔧
+GreasyFork</a></li>
+</ul>
+<hr />
+<h2 id="功能概览">✨ 功能概览</h2>
+<ul>
+<li>🔗 教学大纲快捷访问</li>
+<li>🏷️ 选修类别自动显示</li>
+<li>📊 成绩页学分统计</li>
+<li>🚪 登录页面智能提示</li>
+<li>📥 配套的数据采集及处理工具</li>
+</ul>
+<hr />
+<h2 id="更多功能详解">📖 更多功能详解</h2>
+<p>详细图文说明和数据结构介绍请参见：</p>
+<ul>
+<li><p>🧩 <a href="./README.enhance.md">增强助手功能说明</a></p></li>
+<li><p>📦 <a
+href="./README.getKCDG.md">课程大纲采集流程（使用课程采集助手
+V2）</a></p></li>
+<li><p>📦 <a
+href="./README.getXXK.md">选修课采集流程（README.getXXK.md）</a></p></li>
+<li><p>🧰 <a
+href="https://enhance.njust.wiki/tools">数据格式处理工具集</a></p></li>
+</ul>
+<hr />
+<h2 id="快速开始">🚀 快速开始</h2>
+<h3 id="预备知识">0 预备知识</h3>
+<ul>
+<li><p>Tampermonkey 和 ScriptCat 都是脚本管理器，安装一个即可</p></li>
+<li><p>scriptcat.org 和 GreasyFork.org
+都是脚本仓库，选择一个即可</p></li>
+</ul>
+<hr />
+<h3 id="安装脚本管理器">1 安装脚本管理器</h3>
+<p>推荐以下浏览器插件（任选一个）：</p>
+<ul>
+<li><strong>Tampermonkey（主流推荐）</strong>
+<ul>
+<li><a
+href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo">Chrome
+商店</a></li>
+<li><a
+href="https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd">Edge
+商店（推荐）</a></li>
+<li><a
+href="https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/">Firefox
+商店</a></li>
+</ul></li>
+<li><strong>ScriptCat 脚本猫（国产开源）</strong>
+<ul>
+<li><a href="https://docs.scriptcat.org/">官方主页</a></li>
+</ul></li>
+</ul>
+<h4 id="安装脚本管理器-1">1.2 安装脚本管理器</h4>
+<p>对于在基于 Chrome 的浏览器中使用扩展（版本
+5.3+）的用户，必须启用“允许用户脚本”切换开关（在 Chrome 138+
+中可通过扩展设置找到）或 开发者模式</p>
+<p><a
+href="https://www.tampermonkey.net/faq.php?version=5.4.6227&amp;ext=gcal#Q209">Tampermonkey
+开启开发者模式</a></p>
+<p><a href="https://docs.scriptcat.org/docs/use/open-dev/">Scriptcat
+开启开发者模式</a></p>
+<hr />
+<h3 id="安装-南理工教务增强助手">2 安装
+<code>南理工教务增强助手</code></h3>
+<p>已经自带选修课数据和课程大纲数据。<br />
+两个网站找一个适合的安装脚本即可</p>
+<ul>
+<li><a href="https://scriptcat.org/zh-CN/script-show-page/3745/">📦
+ScriptCat.org</a></li>
+<li><a href="https://greasyfork.org/zh-CN/scripts/541627">📦
+GreasyFork</a></li>
+</ul>
+<h3
+id="可选功能安装数据采集助手-v2">可选功能：安装<code>数据采集助手 V2</code></h3>
+<p>用于获取课程大纲数据，仅供开发者使用</p>
+<p><a
+href="https://scriptcat.org/zh-CN/script-show-page/3744/">ScriptCat.org</a>
+<a href="https://greasyfork.org/zh-CN/scripts/541628">GreasyFork</a></p>
+<hr />
+<h3 id="启用脚本">3 启用脚本</h3>
+<p><img src="./docs/static/PixPin_2025-07-04_23-19-05.png" alt="启用" />
+<img src="./docs/static/enable.png" alt="启用" /></p>
+<p>访问 <a
+href="http://202.119.81.113:8080/">教务系统主页</a>，脚本会自动启用，无需手动配置。</p>
+<h3 id="刷新登录状态">4 刷新登录状态</h3>
+<p>如果您在点击课程大纲时遇到以下提示：</p>
+<figure>
+<img src="./docs/static/re_login.png" alt="登录状态失效提示" />
+<figcaption aria-hidden="true">登录状态失效提示</figcaption>
+</figure>
+<p>证明课程总库登陆状态无效，为应对该问题，系统将在</p>
+<ul>
+<li>首次登陆成功后每五分钟</li>
+<li>每次出现提示时</li>
+</ul>
+<p>自动尝试加载<code>http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz</code>隐藏页面来刷新课程总库的登录状态。（大概率不成功，建议使用下方手动方法）<br />
+但如果您仍然无法访问，请直接访问以下任一地址手动刷新：</p>
+<ul>
+<li><a href="http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz（教务处）"
+class="uri">http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz（教务处）</a></li>
+<li><a href="http://bkjw.njust.edu.cn/njlgdx/pyfa/kcdgxz（智慧理工）"
+class="uri">http://bkjw.njust.edu.cn/njlgdx/pyfa/kcdgxz（智慧理工）</a></li>
+</ul>
+<p>完成后您应当可以点击课程大纲。</p>
+<p>请注意，使用智慧理工登陆时无法自动加载课程大纲，这可能影响本脚本正常运行。<br />
+推荐使用教务处官网登陆。</p>
+<hr />
+<h2 id="注意事项">⚠️ 注意事项</h2>
+<p><strong>本脚本完全开源，不对可靠性做任何保证。</strong></p>
+<p><strong>因使用本脚本产生的任何后果，开发者概不负责，请自行判断风险</strong></p>
+<ul>
+<li>本脚本不会修改服务器数据，关闭插件即恢复原状</li>
+<li>所有功能均在本地执行，无任何统计功能，不会上传或收集任何信息</li>
+<li>强智系统结构复杂，因此部分功能可能随系统更新而失效</li>
+<li>附带的数据文件具有一定时效性，且开发者毕业后可能无法持续更新</li>
+<li>教务系统大量依赖前端校验，更改前端页面有风险</li>
+<li>选课统计因网络波动等原因不一定准确，请以教务处官网为准</li>
+</ul>
+<hr />
+<h2 id="参与贡献">🤝 参与贡献</h2>
+<p>欢迎提交 Issue、PR 或数据更新：</p>
+<ul>
+<li><p><code>xxk.json</code>（选修课分类）：建议每 4 年更新一次。<br />
+参考<a
+href="./README.getXXK.md">选修课采集流程（README.getXXK.md）</a></p></li>
+<li><p><code>kcdg.json</code>（教学大纲映射）：建议每年更新一次<br />
+参考 <a
+href="./README.getKCDG.md">课程大纲采集流程（README.getKCDG.md）</a></p></li>
+</ul>
+<hr />
+<h2 id="license">📄 License</h2>
+<p>本项目采用 <a href="./LICENSE">MIT License</a> 开源。</p>
+<hr />
+<h2 id="联系我们">📬 联系我们</h2>
+<ul>
+<li>邮箱：<a href="mailto:admin@njust.wiki"
+class="email">admin@njust.wiki</a><br />
+</li>
+<li>提交问题：<a
+href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/issues">GitHub
+Issues</a></li>
+</ul>
+<h2 id="常见问题">常见问题</h2>
+<h3 id="变量名">变量名</h3>
+<p>部分变量命名源于教务系统字段，例如：</p>
+<table>
+<thead>
+<tr class="header">
+<th>变量名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>kcdg</td>
+<td>课程大纲</td>
+</tr>
+<tr class="even">
+<td>xxk</td>
+<td>选修课</td>
+</tr>
+<tr class="odd">
+<td>kczk</td>
+<td>课程总库</td>
+</tr>
+</tbody>
+</table>
+<p><del>绝对不是英语水平差！</del></p>
+<h3 id="提示无课程大纲">提示无课程大纲</h3>
+<p>个别课程没有上传课程大纲信息，因此无法查看。<br />
+如果您确信课程总库里可以查看大纲信息，那么请您按上述流程更新kcdg.json信息</p>
+<h3 id="页面上提示框很烦">页面上提示框很烦</h3>
+<p>请把脚本前几行的<br />
+<code>showNotifications: true</code> 改为<br />
+<code>showNotifications: false</code></p>
+<div data-align="center" style="font-size: 0.9em; color: #666;">
+<p>
+项目由 <a href="https://github.com/NJUST-OpenLib" target="_blank">NJUST
+OpenLib</a> 社区维护
+</p>
+<p>
+made with ❤️ by <a href="https://miko.pw" target="_blank">Light</a><br/>
+版权所有 © 2024–2025
+<a href="https://njust.wiki" target="_blank">NJUST.WIKI</a><br/>
+</p>
+</div>
+</body>
+</html>
+<footer class="auto-footer">
+  <p>Last update: 2026-01-05</p>
+  <p>
+    Commit:
+    <code>d8dc0f1</code>
+    — Create style.css
+  </p>
+  <p>
+    <a href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/commit/d8dc0f1">
+      View on GitHub
+    </a>
+  </p>
+</footer>
