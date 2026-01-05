@@ -135,6 +135,9 @@
 
 完成后您应当可以点击课程大纲。
 
+请注意，使用智慧理工登陆时无法自动加载课程大纲，这可能影响本脚本正常运行。   
+推荐使用教务处官网登陆。   
+
 ---
 
 ## ⚠️ 注意事项
@@ -174,7 +177,10 @@
 
 - 邮箱：<admin@njust.wiki>  
 - 提交问题：[GitHub Issues](https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/issues)
-  
+
+## 常见问题
+
+### 变量名
 部分变量命名源于教务系统字段，例如：
 
 | 变量名 | 含义 |
@@ -184,6 +190,19 @@
 | kczk | 课程总库 |
 
 ~~绝对不是英语水平差！~~
+
+### 提示无课程大纲
+
+个别课程没有上传课程大纲信息，因此无法查看。  
+如果您确信课程总库里可以查看大纲信息，那么请您按上述流程更新kcdg.json信息
+
+### 页面上提示框很烦
+
+请把脚本前几行的  
+```showNotifications: true ```
+改为  
+```showNotifications: false ```
+
 
 <div align="center" style="font-size: 0.9em; color: #666;">
   <p>项目由 <a href="https://github.com/NJUST-OpenLib" target="_blank">NJUST OpenLib</a> 社区维护</p>
