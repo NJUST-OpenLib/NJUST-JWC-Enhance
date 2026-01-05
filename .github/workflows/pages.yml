@@ -1,0 +1,56 @@
+name: Build README to Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pandoc
+        run: sudo apt-get install -y pandoc
+
+      - name: Build HTML
+        run: |
+          mkdir -p dist
+
+          pandoc README.md \
+            -s \
+            --metadata title="南理工教务系统增强助手" \
+            -c style.css \
+            -o dist/index.html
+
+          DATE=$(git log -1 --format=%cd --date=short)
+          MSG=$(git log -1 --format=%s)
+          HASH=$(git log -1 --format=%h)
+
+          cat <<EOF >> dist/index.html
+          <footer class="auto-footer">
+            <p>Last update: ${DATE}</p>
+            <p>
+              Commit:
+              <code>${HASH}</code>
+              — ${MSG}
+            </p>
+            <p>
+              <a href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/commit/${HASH}">
+                View on GitHub
+              </a>
+            </p>
+          </footer>
+          EOF
+
+      - name: Copy assets
+        run: |
+          cp style.css dist/
+          cp -r docs dist/
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
