@@ -50,12 +50,12 @@ jobs:
             sed -i 's/\.md#/.html#/g' "dist/$name.html"
             # 追加 commit 信息
             cat >> "dist/$name.html" <<EOL
-<footer class="auto-footer" style="margin-top:40px;padding-top:20px;border-top:1px solid #d0d7de;font-size:0.9em;color:#57606a;text-align:center;">
-<p>Last update: $DATE</p>
-<p>Commit: <code>$HASH</code> — $MSG</p>
-<p><a href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/commit/$HASH">View on GitHub</a></p>
-</footer>
-EOL
+            <footer class="auto-footer" style="margin-top:40px;padding-top:20px;border-top:1px solid #d0d7de;font-size:0.9em;color:#57606a;text-align:center;">
+            <p>Last update: $DATE</p>
+            <p>Commit: <code>$HASH</code> — $MSG</p>
+            <p><a href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/commit/$HASH">View on GitHub</a></p>
+            </footer>
+            EOL
           done
 
       # 6. 复制资源文件
