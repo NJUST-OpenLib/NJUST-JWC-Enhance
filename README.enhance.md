@@ -9,8 +9,8 @@
 - 大部分课程可直接访问教学大纲页面  
 - 若未上传大纲，显示为“无信息”
 
-![教学大纲显示](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/select_class.png)
-![课表界面显示](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/time_table.png)
+![教学大纲显示](./docs/static/select_class.png)
+![课表界面显示](./docs/static/time_table.png)
 
 ---
 
@@ -18,7 +18,7 @@
 
 在“成绩”页面中，自动识别课程所属类别（如公选课、人文素养等），并按类统计已修学分。
 
-![学分统计](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/catag.png)
+![学分统计](./docs/static/catag.png)
 
 ---
 
@@ -33,7 +33,7 @@
 > ❌ 错误入口：[http://202.119.81.112:9080/](http://202.119.81.112:9080/)  
 > ❌ 错误入口：[https://bkjw.njust.edu.cn/](https://bkjw.njust.edu.cn/)
 
-![登录提示](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/login_notice.png)
+![登录提示](./docs/static/login_notice.png)
 
 ---
 
