@@ -39,26 +39,23 @@ jobs:
           EOF
 
       # 5. 批量生成 HTML 并替换 .md 链接（通配符匹配，兼容特殊字符）
+      # 5. 批量生成 HTML 并替换 .md 链接（修复 EOL 语法错误）
       - name: Build HTML from Markdown
         run: |
           for f in README*.md; do
-            # 跳过不存在的文件
+            # 先判断文件是否存在（避免通配符匹配不到文件时出错）
             [ -f "$f" ] || continue
-            
             if [ "$f" = "README.md" ]; then
               name="index"
             else
               name=$(basename "$f" .md)
             fi
-            
             pandoc "$f" -s -c style.css -o "dist/$name.html"
-            
             # 替换 .md 链接为 .html（兼容跨平台，删除备份文件）
             sed -i.bak 's/\.md"/.html"/g' "dist/$name.html" && rm -f "dist/$name.html.bak"
             sed -i.bak 's/\.md#/.html#/g' "dist/$name.html" && rm -f "dist/$name.html.bak"
-            
-            # 追加 commit 信息
-            cat >> "dist/$name.html" <<EOL
+            # 追加 commit 信息（使用 <<-EOL 支持 Tab 缩进，EOL 可顶格或 Tab 缩进）
+            cat >> "dist/$name.html" <<-EOL
             <footer class="auto-footer" style="margin-top:40px;padding-top:20px;border-top:1px solid #d0d7de;font-size:0.9em;color:#57606a;text-align:center;">
             <p>Last update: $DATE</p>
             <p>Commit: <code>$HASH</code> — $MSG</p>
