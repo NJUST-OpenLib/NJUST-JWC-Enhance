@@ -24,31 +24,38 @@ jobs:
       - name: Prepare dist
         run: mkdir -p dist
 
-      # 4. 获取最新 commit 信息
+      # 4. 获取最新 commit 信息（UTC+8 精确到秒）
       - name: Get last commit info
-        id: gitinfo
         run: |
-          echo "DATE=$(git log -1 --format=%cd --date=short)" >> $GITHUB_ENV
-          echo "MSG=$(git log -1 --format=%s)" >> $GITHUB_ENV
-          echo "HASH=$(git log -1 --format=%h)" >> $GITHUB_ENV
+          HASH=$(git log -1 --format=%h)
+          MSG=$(git log -1 --format=%s)
+          # UTC+8 时间
+          DATE=$(TZ="Asia/Shanghai" git log -1 --format=%cd --date=format:'%Y-%m-%d %H:%M:%S')
+          echo "HASH=$HASH" >> $GITHUB_ENV
+          echo "MSG=$MSG" >> $GITHUB_ENV
+          echo "DATE=$DATE" >> $GITHUB_ENV
 
-      # 5. 批量生成 HTML
+      # 5. 批量生成 HTML 并替换 .md 链接
       - name: Build HTML from Markdown
         run: |
           for f in README.md README.enhance.md README.getKCDG.md README.getXXK.md; do
-            name=$(basename "$f" .md)
+            if [ "$f" = "README.md" ]; then
+              name="index"
+            else
+              name=$(basename "$f" .md)
+            fi
             pandoc "$f" -s -c style.css -o "dist/$name.html"
             # 替换 HTML 内的 .md 链接为 .html
             sed -i 's/\.md"/.html"/g' "dist/$name.html"
             sed -i 's/\.md#/.html#/g' "dist/$name.html"
-            # 在 HTML 末尾追加 commit 信息
-            cat <<EOF >> "dist/$name.html"
+            # 追加 commit 信息
+            cat >> "dist/$name.html" <<EOL
 <footer class="auto-footer" style="margin-top:40px;padding-top:20px;border-top:1px solid #d0d7de;font-size:0.9em;color:#57606a;text-align:center;">
-<p>Last update: ${{ env.DATE }}</p>
-<p>Commit: <code>${{ env.HASH }}</code> — ${{ env.MSG }}</p>
-<p><a href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/commit/${{ env.HASH }}">View on GitHub</a></p>
+<p>Last update: $DATE</p>
+<p>Commit: <code>$HASH</code> — $MSG</p>
+<p><a href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/commit/$HASH">View on GitHub</a></p>
 </footer>
-EOF
+EOL
           done
 
       # 6. 复制资源文件
