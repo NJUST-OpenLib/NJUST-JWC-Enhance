@@ -16,92 +16,65 @@ jobs:
       # 2. 安装 Pandoc（带重试机制，容错性更强）
       - name: Install Pandoc
         run: |
-          # 重试 3 次 apt 更新，解决网络波动问题
           for i in 1 2 3; do
             sudo apt-get update && break
             echo "apt update 失败，第 $i 次重试..."
             sleep 2
           done
-          # 安装 Pandoc，失败则明确提示并退出
           sudo apt-get install -y pandoc || { echo "Pandoc 安装失败，请检查 apt 源"; exit 1; }
 
-      # 3. 创建 dist 目录（确保目录存在，避免后续步骤报错）
+      # 3. 创建 dist 目录
       - name: Prepare dist directory
         run: mkdir -p dist && echo "dist 目录创建成功"
 
-      # 4. 获取最新 commit 信息（UTC+8 时间，多行注入避免特殊字符异常）
+      # 4. 获取最新 commit 信息（UTC+8 时间）
       - name: Get last commit info
         run: |
           HASH=$(git log -1 --format=%h)
           MSG=$(git log -1 --format=%s)
-          # 转换为上海时区（UTC+8），精确到秒
           DATE=$(TZ="Asia/Shanghai" git log -1 --format=%cd --date=format:'%Y-%m-%d %H:%M:%S')
-          # 多行注入环境变量，兼容 commit 信息中的特殊字符
           cat <<EOF >> $GITHUB_ENV
-          HASH=$HASH
-          MSG=$MSG
-          DATE=$DATE
-          EOF
+HASH=$HASH
+MSG=$MSG
+DATE=$DATE
+EOF
 
-      # 5. 批量生成 HTML 并替换 .md 链接（修复 EOL 问题，通配符匹配，健壮性拉满）
+      # 5. 批量生成 HTML 并替换 .md 链接
       - name: Build HTML from Markdown
         run: |
-          # 通配符匹配所有 README 开头的 .md 文件，自动适配新增/删除文件
           for f in README*.md; do
-            # 先判断文件是否存在，避免通配符匹配不到文件时出错
             [ -f "$f" ] || continue
-            
-            # 确定输出 HTML 文件名（README.md 转为 index.html，其他保留原名称）
             if [ "$f" = "README.md" ]; then
               name="index"
             else
               name=$(basename "$f" .md)
             fi
-            
-            # 使用 Pandoc 生成 HTML 文件，引入 style.css 样式
             pandoc "$f" -s -c style.css -o "dist/$name.html"
-            echo "已生成 $dist/$name.html"
-            
-            # 替换 HTML 中的 .md 链接为 .html（兼容 Linux/macOS，删除备份文件）
+            echo "已生成 dist/$name.html"
             sed -i.bak 's/\.md"/.html"/g' "dist/$name.html" && rm -f "dist/$name.html.bak"
             sed -i.bak 's/\.md#/.html#/g' "dist/$name.html" && rm -f "dist/$name.html.bak"
-            echo "已替换 $dist/$name.html 中的 .md 链接"
-            
-            # 追加 commit 信息到 HTML 尾部（EOL 严格顶格，无任何缩进，彻底解决识别问题）
+            echo "已替换 dist/$name.html 中的 .md 链接"
             cat >> "dist/$name.html" <<EOL
-      <footer class="auto-footer" style="margin-top:40px;padding-top:20px;border-top:1px solid #d0d7de;font-size:0.9em;color:#57606a;text-align:center;">
-      <p>Last update: $DATE</p>
-      <p>Commit: <code>$HASH</code> — $MSG</p>
-      <p><a href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/commit/$HASH">View on GitHub</a></p>
-      </footer>
+<footer class="auto-footer" style="margin-top:40px;padding-top:20px;border-top:1px solid #d0d7de;font-size:0.9em;color:#57606a;text-align:center;">
+<p>Last update: $DATE</p>
+<p>Commit: <code>$HASH</code> — $MSG</p>
+<p><a href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/commit/$HASH">View on GitHub</a></p>
+</footer>
 EOL
           done
 
-      # 6. 复制资源文件（判断 docs 目录是否存在，避免复制不存在的目录报错）
+      # 6. 复制资源文件
       - name: Copy assets to dist
         run: |
-          # 复制 style.css 文件
-          if [ -f "style.css" ]; then
-            cp style.css dist/
-            echo "style.css 已复制到 dist 目录"
-          else
-            echo "style.css 文件不存在，跳过复制"
-          fi
-          
-          # 复制 docs 目录（先判断目录是否存在）
-          if [ -d "docs" ]; then
-            cp -r docs dist/
-            echo "docs 目录已复制到 dist 目录"
-          else
-            echo "docs 目录不存在，跳过复制"
-          fi
+          [ -f "style.css" ] && cp style.css dist/ && echo "style.css 已复制到 dist 目录" || echo "style.css 文件不存在，跳过复制"
+          [ -d "docs" ] && cp -r docs dist/ && echo "docs 目录已复制到 dist 目录" || echo "docs 目录不存在，跳过复制"
 
-      # 7. 部署到 GitHub Pages（带稳定配置，便于追溯和清理冗余文件）
+      # 7. 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: dist
-          keep_files: false  # 部署前清空 gh-pages 分支原有文件，避免冗余
-          commit_message: "docs: deploy from commit ${{ env.HASH }}"  # 自定义提交信息，便于追溯
-          enable_jekyll: false  # 禁用 Jekyll，避免静态文件被意外处理
+          keep_files: false
+          commit_message: "docs: deploy from commit ${{ env.HASH }}"
+          enable_jekyll: false
