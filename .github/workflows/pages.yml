@@ -3,10 +3,6 @@ name: Build Docs to Pages
 on:
   push:
     branches: [ main ]
-    paths:
-      - README*.md
-      - style.css
-      - docs/**
 
 jobs:
   build:
