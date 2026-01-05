@@ -16,25 +16,25 @@
 1. 先从登陆教务系统，再访问[课程总库](http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz)页面
 2. 配置字段显示，如下图所示：
 
-![字段配置](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kczk0.png)
-![字段选择](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kczk.png)
+![字段配置](./docs/static/kczk0.png)
+![字段选择](./docs/static/kczk.png)
 
 3. 点击“确定”保存设置  
 4. 若提示地址跳转，点击确认进入真实采集页面：
 
-![跳转提示](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kczk3.png)
+![跳转提示](./docs/static/kczk3.png)
 
 5. 点击“开始采集”，脚本会自动提取课程数据并进行结构化处理：
 
-![采集中](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kczk4.png)
+![采集中](./docs/static/kczk4.png)
 
 6. 数据采集完成后，可导出为 CSV 格式：
 
-![导出结果](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kczk5.png)
+![导出结果](./docs/static/kczk5.png)
 
 7.通过[CSV 课程数据筛选工具](https://enhance.njust.wiki/tools/csv2json.html)将 csv 中的有用数据导出为 JSON 格式：
 
-![](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kcdg_gen_json.png)
+![](./docs/static/kcdg_gen_json.png)
 
 ---
 
