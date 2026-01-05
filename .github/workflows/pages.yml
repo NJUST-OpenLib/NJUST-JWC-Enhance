@@ -1,55 +1,64 @@
-name: Build README to Pages
+name: Build Docs to Pages
 
 on:
   push:
     branches: [ main ]
+    paths:
+      - README*.md
+      - style.css
+      - docs/**
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. 检出源码
       - uses: actions/checkout@v4
 
-      - name: Install pandoc
-        run: sudo apt-get install -y pandoc
+      # 2. 安装 Pandoc
+      - name: Install Pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
 
-      - name: Build HTML
+      # 3. 创建 dist 目录
+      - name: Prepare dist
+        run: mkdir -p dist
+
+      # 4. 获取最新 commit 信息
+      - name: Get last commit info
+        id: gitinfo
         run: |
-          mkdir -p dist
+          echo "DATE=$(git log -1 --format=%cd --date=short)" >> $GITHUB_ENV
+          echo "MSG=$(git log -1 --format=%s)" >> $GITHUB_ENV
+          echo "HASH=$(git log -1 --format=%h)" >> $GITHUB_ENV
 
-          pandoc README.md \
-            -s \
-            --metadata title="南理工教务系统增强助手" \
-            -c style.css \
-            -o dist/index.html
+      # 5. 批量生成 HTML
+      - name: Build HTML from Markdown
+        run: |
+          for f in README.md README.enhance.md README.getKCDG.md README.getXXK.md; do
+            name=$(basename "$f" .md)
+            pandoc "$f" -s -c style.css -o "dist/$name.html"
+            # 替换 HTML 内的 .md 链接为 .html
+            sed -i 's/\.md"/.html"/g' "dist/$name.html"
+            sed -i 's/\.md#/.html#/g' "dist/$name.html"
+            # 在 HTML 末尾追加 commit 信息
+            cat <<EOF >> "dist/$name.html"
+<footer class="auto-footer" style="margin-top:40px;padding-top:20px;border-top:1px solid #d0d7de;font-size:0.9em;color:#57606a;text-align:center;">
+<p>Last update: ${{ env.DATE }}</p>
+<p>Commit: <code>${{ env.HASH }}</code> — ${{ env.MSG }}</p>
+<p><a href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/commit/${{ env.HASH }}">View on GitHub</a></p>
+</footer>
+EOF
+          done
 
-          DATE=$(git log -1 --format=%cd --date=short)
-          MSG=$(git log -1 --format=%s)
-          HASH=$(git log -1 --format=%h)
-
-          cat <<EOF >> dist/index.html
-          <footer class="auto-footer">
-            <p>Last update: ${DATE}</p>
-            <p>
-              Commit:
-              <code>${HASH}</code>
-              — ${MSG}
-            </p>
-            <p>
-              <a href="https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/commit/${HASH}">
-                View on GitHub
-              </a>
-            </p>
-          </footer>
-          EOF
-
+      # 6. 复制资源文件
       - name: Copy assets
         run: |
           cp style.css dist/
           cp -r docs dist/
 
-      - name: Deploy to gh-pages
+      # 7. 部署到 gh-pages
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
