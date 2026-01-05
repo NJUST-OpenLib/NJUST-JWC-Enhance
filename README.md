@@ -1,14 +1,12 @@
 # 🎓 南理工教务系统增强助手
 
-
 > 🧩 让教务系统更顺手的浏览器脚本  
 > 💡 支持南京理工大学和其他使用“湖南强智教务系统”的高校
 
 <div align="center">
-  <img src="https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/catag.png"  alt="课程分类示意图" />
+  <img src="./docs/static/catag.png"  alt="课程分类示意图" />
 <br>
-  <img src="https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/kczk4.png" alt="课程增强示意图" />
-
+  <img src="./docs/static/kczk4.png" alt="课程增强示意图" />
 
 <p>
   <img src="https://img.shields.io/github/stars/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
@@ -30,6 +28,7 @@
 </div>
 
 ## 关注我们
+
 - [📖 南理工生存手册](https://manual.njust.wiki)
 - [💻 GitHub 仓库](https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance)
 - [🐱 ScriptCat 脚本猫](https://scriptcat.org/zh-CN/users/174962)
@@ -45,8 +44,6 @@
 - 🚪 登录页面智能提示
 - 📥 配套的数据采集及处理工具
 
-
-
 ---
 
 ## 📖 更多功能详解
@@ -61,12 +58,11 @@
 
 - 🧰 [数据格式处理工具集](https://enhance.njust.wiki/tools)
   
-
 ---
 
 ## 🚀 快速开始
 
-### 0 预备知识：
+### 0 预备知识
 
 - Tampermonkey 和 ScriptCat 都是脚本管理器，安装一个即可
 
@@ -81,7 +77,7 @@
 - **Tampermonkey（主流推荐）**
   - [Chrome 商店](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
   - [Edge 商店（推荐）](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
-  -  [Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/)
+  - [Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/)
   
 - **ScriptCat 脚本猫（国产开源）**
   - [官方主页](https://docs.scriptcat.org/)
@@ -104,7 +100,6 @@
 - [📦 ScriptCat.org](https://scriptcat.org/zh-CN/script-show-page/3745/)
 - [📦 GreasyFork](https://greasyfork.org/zh-CN/scripts/541627)
 
-
 ### 可选功能：安装```数据采集助手 V2```  
 
 用于获取课程大纲数据，仅供开发者使用  
@@ -116,9 +111,8 @@
 
 ### 3 启用脚本
 
-![启用](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/PixPin_2025-07-04_23-19-05.png)
-![启用](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/enable.png)
-
+![启用](./docs/static/PixPin_2025-07-04_23-19-05.png)
+![启用](./docs/static/enable.png)
 
 访问 [教务系统主页](http://202.119.81.113:8080/)，脚本会自动启用，无需手动配置。
 
@@ -126,23 +120,22 @@
 
 如果您在点击课程大纲时遇到以下提示：
 
-![登录状态失效提示](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/re_login.png)
+![登录状态失效提示](./docs/static/re_login.png)
 
 证明课程总库登陆状态无效，为应对该问题，系统将在
 
 - 首次登陆成功后每五分钟
 - 每次出现提示时
 
-自动尝试加载```http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz```隐藏页面来刷新课程总库的登录状态。
+自动尝试加载```http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz```隐藏页面来刷新课程总库的登录状态。（大概率不成功，建议使用下方手动方法）  
 但如果您仍然无法访问，请直接访问以下任一地址手动刷新：
 
-   - http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz（教务处）
-   - http://bkjw.njust.edu.cn/njlgdx/pyfa/kcdgxz（智慧理工）
+- <http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz（教务处）>
+- <http://bkjw.njust.edu.cn/njlgdx/pyfa/kcdgxz（智慧理工）>
 
 完成后您应当可以点击课程大纲。
 
 ---
-
 
 ## ⚠️ 注意事项
 
@@ -157,8 +150,6 @@
 - 教务系统大量依赖前端校验，更改前端页面有风险
 - 选课统计因网络波动等原因不一定准确，请以教务处官网为准
   
-
-
 ---
 
 ## 🤝 参与贡献
@@ -171,7 +162,6 @@
 - `kcdg.json`（教学大纲映射）：建议每年更新一次  
  参考 [课程大纲采集流程（README.getKCDG.md）](./README.getKCDG.md)
 
-
 ---
 
 ## 📄 License
@@ -182,7 +172,7 @@
 
 ## 📬 联系我们
 
-- 邮箱：admin@njust.wiki  
+- 邮箱：<admin@njust.wiki>  
 - 提交问题：[GitHub Issues](https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance/issues)
   
 部分变量命名源于教务系统字段，例如：
@@ -202,4 +192,3 @@
     版权所有 © 2024–2025 <a href="https://njust.wiki" target="_blank">NJUST.WIKI</a><br/>
   </p>
 </div>
-
