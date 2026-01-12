@@ -332,6 +332,10 @@
     "course_code": "02040601"
   },
   {
+    "id": "4C70833F6E014A86811A2A8E7A0F356A",
+    "course_code": "02040701"
+  },
+  {
     "id": "932E9E16D28943B0BD791B4EB28C22F3",
     "course_code": "02040801"
   },
@@ -398,6 +402,10 @@
   {
     "id": "A16250AA7C1E44FB9711F69B7A44B00D",
     "course_code": "02047901"
+  },
+  {
+    "id": "8B6E27E26BAA4FC28F0780B57982072E",
+    "course_code": "02048001"
   },
   {
     "id": "18211EAB404A4EB19008A731D31281AE",
@@ -668,6 +676,10 @@
     "course_code": "03062202"
   },
   {
+    "id": "30CBEDE2C6FC4CC49711A972ECA93DCE",
+    "course_code": "03062302"
+  },
+  {
     "id": "B1150BA5E602407390D1847E8D40F596",
     "course_code": "03062906"
   },
@@ -694,10 +706,6 @@
   {
     "id": "F64989AE2029409E8F7FE6551D1B1776",
     "course_code": "03064401"
-  },
-  {
-    "id": "93F43642B6C842D6B74EE4E2069C3FF8",
-    "course_code": "03064501"
   },
   {
     "id": "EA2D9903A7854CF0ADE3B682B8583E3F",
@@ -802,10 +810,6 @@
   {
     "id": "309A17FE8E2C4FE9824B4725226C4F4D",
     "course_code": "06800901"
-  },
-  {
-    "id": "121D62F191734EE79069118E78EB6F8A",
-    "course_code": "06801101"
   },
   {
     "id": "10875205E9EF4F42929C6D1EB7C4004D",
@@ -1396,10 +1400,6 @@
     "course_code": "070555E2"
   },
   {
-    "id": "07055701",
-    "course_code": "07055701"
-  },
-  {
     "id": "0398257821574801978DC982F4588861",
     "course_code": "07056202"
   },
@@ -1638,10 +1638,6 @@
   {
     "id": "BEC1099D30754547BE1490D8884CABCF",
     "course_code": "07081501"
-  },
-  {
-    "id": "616FEC3C5DA04DAAA1CB47B2C80A55A9",
-    "course_code": "07081701"
   },
   {
     "id": "7602911E7A4F45D39D5F4E630A08086B",
@@ -2086,10 +2082,6 @@
   {
     "id": "27ACF7337A82420DA45267A61D62D622",
     "course_code": "08072201"
-  },
-  {
-    "id": "EDBDBDD3B3484259A604583E648B424A",
-    "course_code": "08072301"
   },
   {
     "id": "1D845DEE81454732BE9D32B30011E2DC",
@@ -2716,10 +2708,6 @@
     "course_code": "10054901"
   },
   {
-    "id": "913A5D799B9A4F888FA7E538DCA6CA4B",
-    "course_code": "10055001"
-  },
-  {
     "id": "6B9663072F034C63A4B4F04A3E5D459F",
     "course_code": "10055401"
   },
@@ -2808,6 +2796,10 @@
     "course_code": "10063001"
   },
   {
+    "id": "8004E2AC3CAF4F5DB8E5AA81DA1FBFF9",
+    "course_code": "10063101"
+  },
+  {
     "id": "77CC45296AE9498FB20504A726807F61",
     "course_code": "10063201"
   },
@@ -2826,6 +2818,10 @@
   {
     "id": "2D040675B89F44319523782AA1FC7D56",
     "course_code": "10063601"
+  },
+  {
+    "id": "D1070546BC2D4A5FB5EA3BCD88FE7307",
+    "course_code": "10063602"
   },
   {
     "id": "3CA5B756181C4AF8BEB1E502A58C321B",
@@ -4456,6 +4452,10 @@
     "course_code": "67000701"
   },
   {
+    "id": "328721AD5ECF47BC89745C3F024D3A50",
+    "course_code": "67000801"
+  },
+  {
     "id": "9FCD06C242574F1BB6EEF945CB671AAB",
     "course_code": "67000901"
   },
@@ -4492,6 +4492,10 @@
     "course_code": "67002701"
   },
   {
+    "id": "CAD1F595EB5B4EA689064AF83107BC28",
+    "course_code": "67002801"
+  },
+  {
     "id": "8E2B66F2B4AE45D6BB3917A7602E4563",
     "course_code": "67003001"
   },
@@ -4504,8 +4508,16 @@
     "course_code": "67003401"
   },
   {
+    "id": "3D046100D07542D89C69B49DEFAF7611",
+    "course_code": "67003501"
+  },
+  {
     "id": "153A9134C56F4C639142315509CDDDE8",
     "course_code": "67003601"
+  },
+  {
+    "id": "C7F9E182E362408EBF111E6B467B499C",
+    "course_code": "67003701"
   },
   {
     "id": "7EA5FF172BD1472AB0DF0B4ECB6D6A23",
@@ -4694,5 +4706,29 @@
   {
     "id": "03502FDF5059413FA9D19016445F17E8",
     "course_code": "YT000108"
+  },
+  {
+    "id": "93F43642B6C842D6B74EE4E2069C3FF8",
+    "course_code": "03064501"
+  },
+  {
+    "id": "121D62F191734EE79069118E78EB6F8A",
+    "course_code": "06801101"
+  },
+  {
+    "id": "07055701",
+    "course_code": "07055701"
+  },
+  {
+    "id": "616FEC3C5DA04DAAA1CB47B2C80A55A9",
+    "course_code": "07081701"
+  },
+  {
+    "id": "EDBDBDD3B3484259A604583E648B424A",
+    "course_code": "08072301"
+  },
+  {
+    "id": "913A5D799B9A4F888FA7E538DCA6CA4B",
+    "course_code": "10055001"
   }
 ]
