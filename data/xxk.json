@@ -70,6 +70,11 @@
     "category": "自然科技类"
   },
   {
+    "course_code": "00000105",
+    "course_name": "现代飞行器发展简史",
+    "category": "自然科技类"
+  },
+  {
     "course_code": "00000111",
     "course_name": "悬念与科幻电影经典",
     "category": "艺术审美类"
@@ -1327,12 +1332,87 @@
   {
     "course_code": "00000564",
     "course_name": "自动驾驶理论与技术",
-    "category": "自然技术类"
+    "category": "自然科技类"
   },
   {
     "course_code": "00000565",
     "course_name": "女子防身术",
     "category": "人文素养类"
+  },
+  {
+    "course_code": "00000566",
+    "course_name": "地球系统科学与全球变化",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000567",
+    "course_name": "人与环境",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000568",
+    "course_name": "基础日语Ⅲ",
+    "category": "人文素养类"
+  },
+  {
+    "course_code": "00000569",
+    "course_name": "治愈系手工作坊",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000570",
+    "course_name": "中日民俗风情",
+    "category": "人文素养类"
+  },
+  {
+    "course_code": "00000571",
+    "course_name": "智慧低空:无人机及其应用",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000572",
+    "course_name": "民族管弦乐艺术实践",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000573",
+    "course_name": "走进交响乐",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000574",
+    "course_name": "声乐演唱与实践",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000575",
+    "course_name": "舞台话剧表演基础与实践",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000576",
+    "course_name": "室内乐赏析与实践",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000577",
+    "course_name": "话剧《献身》与国防精神美育实践",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000578",
+    "course_name": "舞蹈表演与实践",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000579",
+    "course_name": "中国书法艺术鉴赏与实践",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000580",
+    "course_name": "非遗民乐鉴赏",
+    "category": "艺术审美类"
   },
   {
     "course_code": "00002601",
@@ -1543,6 +1623,11 @@
     "course_code": "00010624",
     "course_name": "航空航天概论",
     "category": "自然科技类"
+  },
+  {
+    "course_code": "00030401",
+    "course_name": "孔子和孟子的智慧",
+    "category": "人文素养类"
   },
   {
     "course_code": "00030501",
@@ -2331,7 +2416,7 @@
   },
   {
     "course_code": "00W00201",
-    "course_name": "中国共产党历史",
+    "course_name": "大学美育（同济大学版）",
     "category": "经济社会类（四史）"
   },
   {
@@ -2352,6 +2437,16 @@
   {
     "course_code": "00W00204",
     "course_name": "中国传统手工艺与文化创意设计",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00205",
+    "course_name": "古典诗词鉴赏",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00206",
+    "course_name": "文物精品与中华文明",
     "category": "艺术审美类"
   },
   {
@@ -3403,5 +3498,30 @@
     "course_code": "ZN000008",
     "course_name": "自动控制领域的AI漫游",
     "category": "自然科技类"
+  },
+  {
+    "course_code": "TS00001",
+    "course_name": "一滴水的使命",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "TS00002",
+    "course_name": "新时代知识产权安全与风险应付",
+    "category": "经济社会类"
+  },
+  {
+    "course_code": "TS00003",
+    "course_name": "大学生公共安全教育",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "TS00004",
+    "course_name": "电子人进化论：脑机接口技术与伦理困境",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "TS00005",
+    "course_name": "军用车辆造型美学赏析",
+    "category": "艺术审美类"
   }
 ]
