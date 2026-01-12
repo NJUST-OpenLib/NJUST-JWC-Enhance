@@ -4,9 +4,9 @@
 > 💡 支持南京理工大学和其他使用“湖南强智教务系统”的高校
 
 <div align="center">
-  <img src="./docs/static/catag.png"  alt="课程分类示意图" />
+  <img src="https://enhance.njust.wiki/docs/static/catag.png"  alt="课程分类示意图" />
 <br>
-  <img src="./docs/static/kczk4.png" alt="课程增强示意图" />
+  <img src="https://enhance.njust.wiki/docs/static/kczk4.png" alt="课程增强示意图" />
 
 <p>
   <img src="https://img.shields.io/github/stars/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
@@ -68,6 +68,18 @@
 
 - scriptcat.org 和 GreasyFork.org 都是脚本仓库，选择一个即可
 
+### 🧪 兼容性
+
+
+| 操作系统 | 系统版本 | 浏览器         | 浏览器版本       | 脚本管理器        | 测试状态 |
+| :------- | :------- | :------------- | :--------------- | :---------------- | :------- |
+| Windows  | 11       | Microsoft Edge | 143.0.3650.139   | Tampermonkey 5.4.0 | ✅ 测试通过 |
+| Windows  | -        | Google Chrome  | 143.0.7499.193   | Tampermonkey 5.4.1 | ✅ 测试通过 |
+| Windows  | -        | Google Chrome  | 143.0.7499.193   | ScriptCat v1.2.4   | ❌ 存在问题 |
+| Android  | -        | Microsoft Edge | 143.0.3650.125   | Tampermonkey 5.4.0 | ✅ 测试通过 |
+
+
+
 ---
 
 ### 1 安装脚本管理器
@@ -79,12 +91,14 @@
   - [Edge 商店（推荐）](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
   - [Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/)
   
+ [!NOTICE]ScriptCat 脚本猫在个别情况版本可能存在兼容性问题，推荐使用 Tampermonkeyy
+
 - **ScriptCat 脚本猫（国产开源）**
   - [官方主页](https://docs.scriptcat.org/)
 
 #### 1.2 安装脚本管理器
 
-对于在基于 Chrome 的浏览器中使用扩展（版本 5.3+）的用户，必须启用“允许用户脚本”切换开关（在 Chrome 138+ 中可通过扩展设置找到）或 开发者模式
+对于在基于 Chrome 的浏览器中使用扩展（版本 5.3+）的用户，必须启用“允许用户脚本”开关（在 Chrome 138+ 中可通过扩展设置找到）或启用开发者模式
 
 [Tampermonkey 开启开发者模式](https://www.tampermonkey.net/faq.php?version=5.4.6227&ext=gcal#Q209)
 
@@ -92,51 +106,50 @@
 
 ---
 
-### 2 安装 ```南理工教务增强助手```
+### 2 安装「南理工教务系统增强助手」
+脚本内置选修课数据 + 课程大纲数据，无需手动配置。
+任选下方一个平台安装即可，所有脚本管理器通用（Tampermonkey/ScriptCat 均可安装）。
 
-已经自带选修课数据和课程大纲数据。  
-两个网站找一个适合的安装脚本即可  
+- 安装地址 ①：[ScriptCat 脚本猫仓库](https://scriptcat.org/zh-CN/script-show-page/3745/)
+- 安装地址 ②：[GreasyFork 脚本库](https://greasyfork.org/zh-CN/scripts/541627)
 
-- [📦 ScriptCat.org](https://scriptcat.org/zh-CN/script-show-page/3745/)
-- [📦 GreasyFork](https://greasyfork.org/zh-CN/scripts/541627)
-
-### 可选功能：安装```数据采集助手 V2```  
+### 可选：安装「数据采集助手 V2」  
 
 用于获取课程大纲数据，仅供开发者使用  
 
-[ScriptCat.org](https://scriptcat.org/zh-CN/script-show-page/3744/)
-[GreasyFork](https://greasyfork.org/zh-CN/scripts/541628)
+- 安装地址 ①：[ScriptCat 脚本猫仓库](https://scriptcat.org/zh-CN/script-show-page/3744/)  
+- 安装地址 ②：[GreasyFork 脚本库](https://greasyfork.org/zh-CN/scripts/541628)  
 
 ---
 
 ### 3 启用脚本
 
-![启用](./docs/static/PixPin_2025-07-04_23-19-05.png)
-![启用](./docs/static/enable.png)
+![启用](https://enhance.njust.wiki/docs/static/PixPin_2025-07-04_23-19-05.png)
+![启用](https://enhance.njust.wiki/docs/static/enable.png)
 
-访问 [教务系统主页](http://202.119.81.113:8080/)，脚本会自动启用，无需手动配置。
+启用后，访问 [教务系统主页](http://202.119.81.113:8080/)，脚本会自动生效，无需手动配置。
 
 ### 4 刷新登录状态
 
 如果您在点击课程大纲时遇到以下提示：
 
-![登录状态失效提示](./docs/static/re_login.png)
+![登录状态失效提示](https://enhance.njust.wiki/docs/static/re_login.png)
 
-证明课程总库登陆状态无效，为应对该问题，系统将在
+说明课程总库登录状态已失效。为应对该问题，系统将在
 
-- 首次登陆成功后每五分钟
+- 首次登录成功后每五分钟
 - 每次出现提示时
 
-自动尝试加载```http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz```隐藏页面来刷新课程总库的登录状态。（大概率不成功，建议使用下方手动方法）  
+自动尝试加载 `http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz` 隐藏页面来刷新课程总库的登录状态（大概率不成功，建议使用下方手动方法）。  
 但如果您仍然无法访问，请直接访问以下任一地址手动刷新：
 
-- <http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz（教务处）>
-- <http://bkjw.njust.edu.cn/njlgdx/pyfa/kcdgxz（智慧理工）>
+- 适用于教务处登录：<http://202.119.81.112:9080/njlgdx/pyfa/kcdgxz>
+- 适用于智慧理工登录：<http://bkjw.njust.edu.cn/njlgdx/pyfa/kcdgxz>
 
-完成后您应当可以点击课程大纲。
+完成后您应当可以点击课程大纲以预览。
 
-请注意，使用智慧理工登陆时无法自动加载课程大纲，这可能影响本脚本正常运行。   
-推荐使用教务处官网登陆。   
+推荐使用教务处官网`http://jwc.njust.edu.cn`登录。
+![登录状态失效提示](https://enhance.njust.wiki/docs/static/jwc_login.png)
 
 ---
 
@@ -181,6 +194,7 @@
 ## 常见问题
 
 ### 变量名
+
 部分变量命名源于教务系统字段，例如：
 
 | 变量名 | 含义 |
@@ -194,20 +208,15 @@
 ### 提示无课程大纲
 
 个别课程没有上传课程大纲信息，因此无法查看。  
-如果您确信课程总库里可以查看大纲信息，那么请您按上述流程更新kcdg.json信息
+如果您确信课程总库里可以查看大纲信息，那么请您按上述流程更新 kcdg.json 信息
 
 ### 页面上提示框很烦
 
-请把脚本前几行的  
-```showNotifications: true ```
-改为  
-```showNotifications: false ```
-
+请参考注释调整脚本代码中对应的通知等级。
 
 <div align="center" style="font-size: 0.9em; color: #666;">
   <p>项目由 <a href="https://github.com/NJUST-OpenLib" target="_blank">NJUST OpenLib</a> 社区维护</p>
 
-  <p>made with ❤️ by <a href="https://miko.pw" target="_blank">Light</a><br/>
     版权所有 © 2024–2025 <a href="https://njust.wiki" target="_blank">NJUST.WIKI</a><br/>
   </p>
 </div>
