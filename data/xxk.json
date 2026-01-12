@@ -4,6 +4,11 @@
     "course_name": "课程名",
     "category": "分类"
   },
+    {
+    "course_code": "备注说明",
+    "course_name": "采集时间",
+    "category": "2026-01-12"
+  },
   {
     "course_code": "00000011",
     "course_name": "坦克学",
