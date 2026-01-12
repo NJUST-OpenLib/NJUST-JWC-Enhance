@@ -18,20 +18,20 @@
 // ==================== 远程数据源配置 ====================
 // 选修课分类数据源（按优先级排序）
 const CATEGORY_URLS = [
+    'https://enhance.njust.wiki/data/xxk.json',
     'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',
-    'https://gcore.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',
     'https://testingcf.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',
-    'https://raw.gitcode.com/Misaka10032/NJUST-JWC-Enhance/raw/main/data/xxk.json',
-    'https://enhance.njust.wiki/data/xxk.json'
+    'https://raw.githubusercontent.com/NJUST-OpenLib/NJUST-JWC-Enhance/refs/heads/main/data/xxk.json'
+
 ];
 
 // 课程大纲数据源（按优先级排序）
 const OUTLINE_URLS = [
-    'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',
-    'https://gcore.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',
-    'https://testingcf.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',
-    'https://raw.gitcode.com/Misaka10032/NJUST-JWC-Enhance/raw/main/data/kcdg.json',
     'https://enhance.njust.wiki/data/kcdg.json',
+    'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',
+    'https://testingcf.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',
+    'https://raw.githubusercontent.com/NJUST-OpenLib/NJUST-JWC-Enhance/refs/heads/main/data/kcdg.json'
+    
 ];
 
 (function () {
