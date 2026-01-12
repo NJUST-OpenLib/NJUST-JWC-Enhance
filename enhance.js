@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         南理工教务增强助手 v1.5
+// @name         南理工教务增强助手 v1.6
 // @namespace    http://tampermonkey.net/
-// @version      1.5
+// @version      1.6
 // @description  在合适的地方显示课程大纲、选修课类别及选修课学分情况，并自动刷新登录状态。
 // @match        202.119.81.112/*
 // @match        bkjw.njust.edu.cn/*
@@ -13,8 +13,8 @@
 // @author       Light
 // @license      MIT
 // @supportURL   https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance
+// // V1.6 加入多数据源自动切换功能，避免网络异常导致不可用
 // ==/UserScript==
-
 // ==================== 远程数据源配置 ====================
 // 选修课分类数据源（按优先级排序）
 const CATEGORY_URLS = [
@@ -48,14 +48,14 @@ const OUTLINE_URLS = [
     // 调试配置
     const DEBUG_CONFIG = {
         enabled: true,          // 是否启用调试
-        level: 4,              // 调试级别: 0=关闭，1=错误，2=警告，3=信息，4=详细
+        level: 1,              // 调试级别: 0=关闭，1=错误，2=警告，3=信息，4=详细
         showCache: true        // 是否显示缓存相关日志
     };
 
     // 缓存配置
     const CACHE_CONFIG = {
         enabled: true,         // 是否启用缓存
-        ttl: 600,            // 缓存生存时间 (秒) 
+        ttl: 86400,            // 缓存生存时间 (秒) 
         prefix: 'njust_jwc_enhance_'  // 缓存键前缀
     };
 
