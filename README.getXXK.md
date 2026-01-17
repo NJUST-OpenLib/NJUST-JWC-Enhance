@@ -7,13 +7,13 @@
 
 我们可以看到，这些页面展示的是标准的表格，如下图所示：
 
-![选修课分类页面](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/xxk_catag.png)
+![选修课分类页面](https://enhance.njust.wiki/docs/static/xxk_catag.png)
 
 ### 复制课程数据
 
 从页面左上角选中整个表格区域，向下拖动并复制：
 
-![复制表格数据](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/xxk_copy.png)
+![复制表格数据](https://enhance.njust.wiki/docs/static/xxk_copy.png)
 
 粘贴后得到类似如下的纯文本内容：
 
