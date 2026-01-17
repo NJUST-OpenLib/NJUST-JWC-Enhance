@@ -39,7 +39,7 @@
 
 点击“解析为 JSON”，确认输出无误后点击“下载 JSON”：
 
-![生成 JSON 数据](https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/docs/static/xxk_gen_json.png)
+![生成 JSON 数据](https://enhance.njust.wiki/docs/static/xxk_gen_json.png)
 
 ### 更新数据文件
 
