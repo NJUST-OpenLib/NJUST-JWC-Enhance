@@ -1604,7 +1604,8 @@
                         <div>③ 点击"开始评价并保存"，系统会依次打开勾选课程的评价页，自动填分并保存。</div>
                         <div>④ 保存后课程显示"待提交"，点击"提交已评课程"可批量提交。</div>
                         <div>⑤ "是否提交=是"的课程视为已完成，不会再进行任何自动操作。</div>
-                        <div><span style="flex:1"><button class="vb vb-green">注意：用户必须自行点击"确认"弹窗确认</button></span></div>
+                        <div style="color:#FF6347;font-weight:700;">重要：用户必须自行点击"确认"弹窗确认！</div>
+                        <div style="color:#FF6347;font-weight:700;">出现问题可使用“重置缓存（清除状态）”按钮重置进度</div>
                         <div style="margin-top:8px;padding-top:8px;border-top:1px dashed #cbd5e0;display:flex;align-items:center;">
                             <span style="flex:1;color:#4a5568;font-size:12px;">查看更多使用说明请点击>>>>></span>
                             <a href="https://enhance.njust.wiki" target="_blank" class="vb vb-outline vb-mini" style="text-decoration:none;">增强助手官网</a>
@@ -1660,7 +1661,7 @@
                     <button id="submit-all-btn" class="vb vb-yellow" style="flex:2" disabled>提交已评课程</button>
                 </div>
                 <div class="btn-row">
-                    <button id="reset-btn" class="vb vb-outline" style="flex:1">重置缓存</button>
+                    <button id="reset-btn" class="vb vb-outline" style="flex:1">重置缓存（清除状态）</button>
                     <button id="clear-log-btn" class="vb vb-danger" style="flex:1">清空日志</button>
                 </div>
                 <div class="btn-row">
@@ -1898,6 +1899,13 @@
                 const key = courseKey(location.href), store = loadStore();
                 editLog('准备提交...');
                 if (stopped) return;
+                
+                // 提交模式下也要计算并显示当前总分
+                const { gkeys, groups } = collectGroups();
+                const total = calcCurrentTotal(gkeys, groups);
+                const totalDisplay = document.getElementById('v8-total-display');
+                if (totalDisplay) totalDisplay.textContent = `总分 ${total}`;
+                
                 ensureValueFields();
 
                 const doSubmit = () => {
