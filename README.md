@@ -49,14 +49,15 @@
 ## 📖 更多功能详解
 
 详细图文说明和数据结构介绍请参见：
+- [一键评教](./README.ace.md)
 
-- 🧩 [增强助手功能说明](./README.enhance.md)
+- [增强助手功能说明](./README.enhance.md)
 
-- 📦 [课程大纲采集流程（使用课程采集助手 V2）](./README.getKCDG.md)
+-  [课程大纲采集流程（使用课程采集助手 V2）](./README.getKCDG.md)
 
-- 📦 [选修课采集流程（README.getXXK.md）](./README.getXXK.md)
+-  [选修课采集流程（README.getXXK.md）](./README.getXXK.md)
 
-- 🧰 [数据格式处理工具集](https://enhance.njust.wiki/tools)
+-  [数据格式处理工具集](https://enhance.njust.wiki/tools)
   
 ---
 
