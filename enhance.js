@@ -26,20 +26,21 @@
 
 (function () {
     'use strict';
-
-    // ── 数据源配置（移至 IIFE 内部，避免全局污染）──────────────────
+    // ── 数据源配置）──────────────────
+    // 选修课类别数据镜像列表，按优先级排序；首个可访问的镜像将被采用。运气再差也不会全都打不开吧
     const CATEGORY_URLS = [
-        'https://enhance.njust.wiki/data/xxk.json',
-        'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',
-        'https://testingcf.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',
-        'https://raw.githubusercontent.com/NJUST-OpenLib/NJUST-JWC-Enhance/refs/heads/main/data/xxk.json'
+        'https://enhance.njust.wiki/data/xxk.json',                                                                    // 官方主节点
+        'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',                        // jsDelivr 全球加速
+        'https://testingcf.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',                    // jsDelivr Cloudflare
+        'https://raw.githubusercontent.com/NJUST-OpenLib/NJUST-JWC-Enhance/refs/heads/main/data/xxk.json'             // GitHub 原始文件（备用）
     ];
 
+    // 课程大纲数据镜像列表，按优先级排序；首个可访问的镜像将被采用
     const OUTLINE_URLS = [
-        'https://enhance.njust.wiki/data/kcdg.json',
-        'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',
-        'https://testingcf.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',
-        'https://raw.githubusercontent.com/NJUST-OpenLib/NJUST-JWC-Enhance/refs/heads/main/data/kcdg.json'
+        'https://enhance.njust.wiki/data/kcdg.json',                                                                    // 官方主节点
+        'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',                        // jsDelivr 全球加速
+        'https://testingcf.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',                    // jsDelivr Cloudflare
+        'https://raw.githubusercontent.com/NJUST-OpenLib/NJUST-JWC-Enhance/refs/heads/main/data/kcdg.json'             // GitHub 原始文件（备用）
     ];
 
     // ==================== 配置选项 ====================
@@ -47,12 +48,17 @@
         showNotifications: true
     };
 
+    // ==================== 调试配置 ====================
+    // enabled: 是否开启调试日志；level: 日志级别（1=ERROR，2=WARN，3=INFO，4=DEBUG）；
+    // showCache: 是否打印缓存命中/过期信息
     const DEBUG_CONFIG = {
         enabled: true,
-        level: 4,
+        level: 3,
         showCache: true
     };
 
+    // ==================== 缓存配置 ====================
+    // enabled: 是否启用本地缓存；ttl: 缓存有效期（秒），86400=24小时；prefix: localStorage 键名前缀，避免冲突
     const CACHE_CONFIG = {
         enabled: true,
         ttl: 86400,
