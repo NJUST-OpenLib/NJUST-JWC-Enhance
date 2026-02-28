@@ -1,6 +1,31 @@
 # 🎓 南理工教务系统增强助手 - 支持自动评教
 
-> **⚡️ 告别繁琐，一键解脱 —— 全面支持自动评教，让教务系统真正为你服务！**
+<div style="
+  padding: 20px 24px;
+  margin: 20px 0;
+  background: linear-gradient(90deg, #e0f2fe 0%, #f0f9ff 100%);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(30, 64, 175, 0.08);
+">
+  <span style="
+    font-size: 16px;
+    color: #1e40af;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+  ">
+    🎉 功能升级 | 南京理工大学教务处增强助手V2正式加入评教助手组件
+  </span>
+  <p style="
+    margin: 8px 0 0 0;
+    font-size: 15px;
+    color: #334155;
+    font-weight: 500;
+  ">
+    支持自动评教，告别繁琐，一键解脱！
+  </p>
+</div>
 > 
 > 🧩 让教务系统更顺手的浏览器脚本 | 💡 支持南京理工大学及强智教务系统高校
 
