@@ -1137,41 +1137,48 @@
 })();
 
 // ================================================================
+// ================================================================
 //  【模块二】自动评教助手 V1
-//  功能：自动填分、批量提交、分值预览
-//  仅在评教相关页面（xspj_*.do）生效
+//  功能：自动填分、批量保存、批量提交、分值实时预览
+//  适用页面：学生评教入口 (xspj_find.do)、课程列表 (xspj_list.do)、评价详情 (xspj_edit.do)
 // ================================================================
 
 (function () {
     'use strict';
 
-    // fix⑥: 模块二同样包裹在独立 IIFE 中（原代码已是，此处保持不变）
+    // ── 常量定义 ─────────────────────────────────────────────────────
+    // 存储键名，用于跨页面同步状态
+    const KEY_STORE    = 'njust_eval_v1_store';    // 核心存储：课程状态、评分选项等
+    const KEY_RUNNING  = 'njust_eval_running';     // 全局标志：是否处于“开始评价并保存”流水线中
+    const KEY_BUSY     = 'njust_eval_busy';        // 互斥锁：防止多个窗口同时执行保存操作
+    const KEY_QUEUE    = 'njust_eval_queue';       // 队列：待处理的类别 URL 列表
+    const KEY_CURLIST  = 'njust_eval_curlist';     // 当前正在处理的类别 URL
+    const KEY_LOG      = 'njust_eval_log';         // 日志存储
+    const KEY_LOGLVL   = 'njust_eval_loglvl';      // 日志显示等级过滤
+    const KEY_SUBQUEUE = 'njust_eval_subqueue';    // 待提交课程的 URL 队列
+    const KEY_SUBRUN   = 'njust_eval_subrun';      // 全局标志：是否处于“提交已评课程”流水线中
+    const KEY_SUBBSY   = 'njust_eval_subbsy';      // 互斥锁：防止多个窗口同时执行提交操作
 
-    const KEY_STORE    = 'njust_eval_v1_store';
-    const KEY_RUNNING  = 'njust_eval_running';
-    const KEY_BUSY     = 'njust_eval_busy';
-    const KEY_QUEUE    = 'njust_eval_queue';
-    const KEY_CURLIST  = 'njust_eval_curlist';
-    const KEY_LOG      = 'njust_eval_log';
-    const KEY_LOGLVL   = 'njust_eval_loglvl';
-    const KEY_SUBQUEUE = 'njust_eval_subqueue';
-    const KEY_SUBRUN   = 'njust_eval_subrun';
-    const KEY_SUBBSY   = 'njust_eval_subbsy';
-
-    const PARAM_AUTO   = 'isAutoEval';
-    const PARAM_SUBMIT = 'isAutoSubmit';
-    const MAX_LOG      = 300;
+    // URL 参数，用于传递指令给详情页
+    const PARAM_AUTO   = 'isAutoEval';             // 详情页接收后执行自动填分+保存
+    const PARAM_SUBMIT = 'isAutoSubmit';           // 详情页接收后执行自动提交
+    const MAX_LOG      = 300;                      // 日志最大保留条数
 
     // ── 日志系统 ─────────────────────────────────────────────────────
+    // 日志级别与 UI 映射
     const LOG_LEVELS = { debug: 0, info: 1, success: 2, warn: 3, error: 4 };
     const LOG_LABELS = { debug: 'DBG', info: 'INF', success: 'OK ', warn: 'WRN', error: 'ERR' };
     const LOG_ICONS  = { debug: '🔍', info: 'ℹ️', success: '✅', warn: '⚠️', error: '❌' };
 
+    // 日志持久化与读取
     const loadLogs    = () => JSON.parse(localStorage.getItem(KEY_LOG) || '[]');
     const clearLogs   = () => { localStorage.removeItem(KEY_LOG); renderLogPanel(); };
     const getMinLevel = () => { const s = localStorage.getItem(KEY_LOGLVL); return (s && LOG_LEVELS[s] !== undefined) ? s : 'info'; };
     const setMinLevel = (l) => { localStorage.setItem(KEY_LOGLVL, l); renderLogPanel(); };
 
+    /**
+     * 推送新日志并更新面板
+     */
     const pushLog = (msg, level = 'info') => {
         const logs = loadLogs();
         logs.push({ ts: new Date().toTimeString().slice(0, 8), msg, level });
@@ -1183,6 +1190,9 @@
     const logSuccess = (m) => pushLog(m, 'success');
     const logError   = (m) => pushLog(m, 'error');
 
+    /**
+     * 渲染控制面板底部的日志区域
+     */
     const renderLogPanel = () => {
         const minP  = LOG_LEVELS[getMinLevel()] ?? 1;
         const lines = loadLogs().filter(l => (LOG_LEVELS[l.level] ?? 1) >= minP);
@@ -1201,20 +1211,24 @@
         if (sel) sel.value = getMinLevel();
     };
 
-    // ── 工具函数 ──────────────────────────────────────────────────────
+    // ── 通用工具函数 ──────────────────────────────────────────────────
+    // HTML 转义防止 XSS
     const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+    // 解析 URL 参数
     const qp = (url, key) => {
         try { return new URL(url, location.origin).searchParams.get(key) || ''; }
         catch { return url.match(new RegExp(`[?&]${key}=([^&]+)`))?.[1] || ''; }
     };
 
+    // 生成课程唯一 Key (课程ID + 教师ID)
     const courseKey    = (url) => { const cid = qp(url, 'jx02id'), tid = qp(url, 'jg0101id'); return cid && tid ? `${cid}__${tid}` : null; };
     const appendParam  = (url, key, val) => url + (url.includes('?') ? '&' : '?') + key + '=' + val;
     const withAuto     = (url, val) => appendParam(url, PARAM_AUTO, val);
     const withSubmit   = (url) => appendParam(url, PARAM_SUBMIT, 'true');
-    const roundFloat   = (n) => Math.round(n * 1e9) / 1e9;
+    const roundFloat   = (n) => Math.round(n * 1e9) / 1e9; // 解决浮点数精度误差
 
+    // 快捷访问 LocalStorage
     const loadStore    = () => JSON.parse(localStorage.getItem(KEY_STORE) || '{}');
     const saveStore    = (v) => localStorage.setItem(KEY_STORE, JSON.stringify(v));
     const loadQueue    = () => JSON.parse(localStorage.getItem(KEY_QUEUE) || '[]');
@@ -1222,25 +1236,37 @@
     const loadSubQueue = () => JSON.parse(localStorage.getItem(KEY_SUBQUEUE) || '[]');
     const saveSubQueue = (q) => localStorage.setItem(KEY_SUBQUEUE, JSON.stringify(q));
 
+    /**
+     * 在控制面板预览当前存储的课程状态
+     */
     const renderStoragePanel = () => {
         const el = document.getElementById('v80-storage-pre');
         if (el) el.textContent = JSON.stringify(loadStore(), null, 2);
     };
 
     // ── 评价页面核心逻辑 ──────────────────────────────────────────────
+    /**
+     * 收集当前评价页面的所有评分组 (Radio) 及其对应的分值
+     */
     const collectGroups = () => {
         const groups = {};
         document.querySelectorAll('input[type="radio"]').forEach(r => {
             if (!groups[r.name]) groups[r.name] = [];
             const idx  = r.id.split('_')[1];
+            // 查找隐藏域中的分值 (pj0601fz_...)
             const fzEl = document.getElementsByName(`pj0601fz_${idx}_${r.value}`)[0];
             groups[r.name].push({ el: r, score: fzEl ? parseFloat(fzEl.value) || 0 : 0 });
         });
         const gkeys = Object.keys(groups);
+        // 按分值从高到低排序，方便策略选择
         gkeys.forEach(k => groups[k].sort((a, b) => b.score - a.score));
         return { gkeys, groups };
     };
 
+    /**
+     * 寻找最适合进行分值扰动的题目索引
+     * 原则：分值差距最小的题目，扰动对总分影响最小
+     */
     const findPerturbIdx = (gkeys, groups) => {
         let minDelta = Infinity, perturbIdx = -1;
         gkeys.forEach((k, i) => {
@@ -1252,12 +1278,18 @@
         return perturbIdx;
     };
 
+    /**
+     * 计算当前页面已勾选选项的总分
+     */
     const calcCurrentTotal = (gkeys, groups) => {
         let total = 0;
         gkeys.forEach(k => { const chosen = groups[k].find(o => o.el.checked); if (chosen) total += chosen.score; });
         return roundFloat(total);
     };
 
+    /**
+     * 在详情页每个选项后标注具体分值，方便人工微调
+     */
     const ensureValueFields = () => {
         const { gkeys, groups } = collectGroups();
         gkeys.forEach(k => {
@@ -1275,6 +1307,11 @@
         });
     };
 
+    /**
+     * 应用评分策略并勾选 Radio
+     * strategy: highest (最高分), high (次高), mid (中分), low (低分)
+     * 策略中包含“选项去重”逻辑：即在保证总分尽量高的前提下，在某一道题上选择非最高分，避免全满分被系统拦截
+     */
     const applyStrategy = (strategy, gkeys, groups) => {
         const perturbIdx = findPerturbIdx(gkeys, groups);
         let total = 0;
@@ -1282,6 +1319,7 @@
             const opts = groups[k], len = opts.length;
             let pick;
             if (strategy === 'highest') {
+                // 最高分策略：在扰动项选次高，其余全选最高
                 pick = (i === perturbIdx && len >= 2) ? 1 : 0;
             } else if (strategy === 'high') {
                 pick = len < 2 ? 0 : (i === perturbIdx) ? 0 : 1;
@@ -1303,6 +1341,7 @@
         const style = document.createElement('style');
         style.id = 'v80-style';
         style.textContent = `
+            /* 控制面板主容器 */
             #v80-panel {
                 position: fixed; top: 20px; right: 20px; width: 490px;
                 background: #fff; border-radius: 10px;
@@ -1329,16 +1368,22 @@
             #v80-submit-hint.visible { display: block; }
             .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 7px; }
             #v80-body { padding: 10px 14px; overflow-y: auto; flex: 1; }
+            
+            /* 列表项卡片样式 */
             .entry-card, .ci { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 7px; border: 1px solid #e2e8f0; margin-bottom: 7px; background: #f7fafc; }
             .ci { padding: 8px 10px; margin-bottom: 6px; border-color: #edf2f7; }
             .entry-label, .ci-name { flex: 1; font-weight: 500; color: #2d3748; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
             .ci-teacher { color: #718096; white-space: nowrap; }
             .ci-zpf { color: #276749; font-size: 11px; background: #f0fff4; padding: 1px 7px; border-radius: 8px; border: 1px solid #c6f6d5; white-space: nowrap; }
+            
+            /* 状态标签 */
             .entry-st-done, .st-submitted { font-size: 11px; padding: 1px 8px; border-radius: 8px; background: #f0fff4; color: #276749; border: 1px solid #c6f6d5; white-space: nowrap; }
             .entry-st-wait, .st-wait { font-size: 11px; padding: 1px 8px; border-radius: 8px; background: #fffaf0; color: #c05621; border: 1px solid #feebc8; white-space: nowrap; }
             .entry-st-run { font-size: 11px; padding: 1px 8px; border-radius: 8px; background: #ebf4ff; color: #2b6cb0; border: 1px solid #bee3f8; }
             .st-can-submit { font-size: 11px; padding: 1px 8px; border-radius: 8px; background: #fefcbf; color: #744210; border: 1px solid #f6e05e; white-space: nowrap; }
             .st-none { font-size: 11px; padding: 1px 8px; border-radius: 8px; background: #edf2f7; color: #718096; border: 1px solid #e2e8f0; white-space: nowrap; }
+            
+            /* 按钮 */
             .vb { padding: 6px 13px; border-radius: 6px; border: none; font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
             .vb-primary { background: #ebf4ff; color: #2b6cb0; border: 1px solid #bee3f8; }
             .vb-green { background: #f0fff4; color: #276749; border: 1px solid #c6f6d5; }
@@ -1347,12 +1392,16 @@
             .vb-danger { background: #fff; color: #c53030; border: 1px solid #fed7d7; }
             .vb-mini { padding: 3px 9px; font-size: 11px; }
             .vb:disabled { opacity: 0.45; cursor: not-allowed; }
+            
+            /* 可折叠区块样式 */
             .v80-section { flex-shrink: 0; border-top: 1px solid #edf2f7; }
             .v80-sec-hd { padding: 7px 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; background: #f7fafc; }
             .v80-sec-hd .lbl { font-size: 11px; color: #4a5568; font-weight: 600; flex: 1; }
             .v80-sec-hd .arr { font-size: 13px; color: #a0aec0; }
             .v80-sec-body { display: none; }
             .v80-sec-body.open { display: block; }
+            
+            /* 日志行样式 */
             #v80-log-content, #v80-storage-pre { max-height: 200px; overflow-y: auto; padding: 4px 0 10px; font-size: 11px; line-height: 1.6; font-family: 'SFMono-Regular', Consolas, monospace; background: #f7fafc; }
             .log-line { padding: 3px 14px; border-bottom: 1px solid rgba(226, 232, 240, 0.4); display: flex; gap: 6px; align-items: flex-start; transition: background 0.1s; }
             .log-line:hover { background: rgba(226, 232, 240, 0.6); }
@@ -1372,6 +1421,9 @@
     };
 
     // ── 面板构建 ──────────────────────────────────────────────────────
+    /**
+     * 创建并注入控制面板 DOM
+     */
     const buildPanel = (titleHtml, actionBarHtml, bodyHtml) => {
         injectCSS();
         const panel = document.createElement('div');
@@ -1409,14 +1461,17 @@
         `;
         document.body.appendChild(panel);
 
+        // 最小化切换
         document.getElementById('v80-min-btn').onclick = (e) => { e.stopPropagation(); panel.classList.toggle('minimized'); };
+        // 日志区块折叠
         const logBody = document.getElementById('v80-log-content'), logArr = document.getElementById('log-arr');
         document.getElementById('log-hd').onclick = () => { logBody.classList.toggle('open'); logArr.textContent = logBody.classList.contains('open') ? '▴' : '▾'; };
         document.getElementById('log-level-sel').addEventListener('change', (e) => { e.stopPropagation(); setMinLevel(e.target.value); });
+        // 存储预览区块折叠
         const storeBody = document.getElementById('store-body'), storeArr = document.getElementById('store-arr');
         document.getElementById('store-hd').onclick = () => { storeBody.classList.toggle('open'); storeArr.textContent = storeBody.classList.contains('open') ? '▴' : '▾'; if (storeBody.classList.contains('open')) renderStoragePanel(); };
 
-        // fix②: 面板拖拽同样改用 getBoundingClientRect，避免 minimized transform 影响坐标
+        // 面板拖拽逻辑 (修正 transform 带来的坐标偏移问题)
         let drag = false, mouseStartX = 0, mouseStartY = 0, elemStartX = 0, elemStartY = 0;
         document.getElementById('v80-header').onmousedown = (e) => {
             if (e.target.id === 'v80-min-btn') return;
@@ -1437,8 +1492,11 @@
         return panel;
     };
 
-    // ── FIND 页面 ─────────────────────────────────────────────────────
+    // ── FIND 页面 (评教类别入口页) ────────────────────────────────────
     if (location.href.includes('xspj_find.do')) {
+        /**
+         * 扫描页面中所有的评价入口（如理论课程、实验课程等）
+         */
         const scanEntries = () => {
             const anchors = document.querySelectorAll('a[href*="xspj_list.do"]');
             const found = [];
@@ -1472,8 +1530,12 @@
             `,
             `<div id="entry-list"></div>`
         );
+        // 初始化布局调整
         (function(){const p=document.getElementById('v80-panel');if(p)p.classList.add('wide');const lg=document.getElementById('v80-log-content');const arr=document.getElementById('log-arr');if(lg)lg.classList.remove('open');if(arr)arr.textContent='▾';})();
 
+        /**
+         * 渲染各类别入口的卡片及完成进度
+         */
         const renderEntries = () => {
             const entries = scanEntries(), store = loadStore();
             const curList = localStorage.getItem(KEY_CURLIST) || '';
@@ -1483,6 +1545,7 @@
             box.innerHTML = '';
             entries.forEach(entry => {
                 const pj01    = qp(entry.url, 'pj01id');
+                // 从存储中筛选属于该类别的课程
                 const related = Object.values(store).filter(c => c.url && qp(c.url, 'pj01id') === pj01);
                 const doneN   = related.filter(c => c.done).length;
                 const totalN  = related.length;
@@ -1502,7 +1565,7 @@
         renderEntries();
     }
 
-    // ── LIST 页面 ─────────────────────────────────────────────────────
+    // ── LIST 页面 (课程列表页) ────────────────────────────────────────
     if (location.href.includes('xspj_list.do')) {
         buildPanel(
             '🎓 自动评教助手',
@@ -1523,6 +1586,9 @@
             `<div id="course-list"></div>`
         );
 
+        /**
+         * 解析当前页面的课程表格，提取课程信息和状态
+         */
         const parseRows = () => {
             const rows = document.querySelectorAll('#dataList tr:not(:first-child)'), result = [];
             rows.forEach(row => {
@@ -1543,6 +1609,9 @@
             return result;
         };
 
+        /**
+         * 更新“批量提交”按钮的状态和提示文字
+         */
         const updateSubmitBtn = () => {
             const btn = document.getElementById('submit-all-btn'), hint = document.getElementById('v80-submit-hint');
             if (!btn) return;
@@ -1557,11 +1626,15 @@
             } else { btn.disabled = true; hint.className = ''; hint.innerHTML = ''; }
         };
 
+        /**
+         * 渲染课程列表，包含勾选框和实时状态标签
+         */
         const renderList = () => {
             const store = loadStore(), courses = parseRows(), box = document.getElementById('course-list');
             if (!box) return;
             box.innerHTML = '';
             courses.forEach(c => {
+                // 初始化存储项
                 if (!store[c.key]) store[c.key] = { auto: true, done: false, name: c.name, teacher: c.teacher, zpf: c.zpf, url: c.rawUrl, pj01id: qp(c.rawUrl, 'pj01id') };
                 if (c.submitted) store[c.key].done = true;
                 const info = store[c.key];
@@ -1580,6 +1653,7 @@
                     `<button class="vb vb-outline vb-mini" onclick="event.stopPropagation();window.open('${esc(c.rawUrl)}','_blank','width=1200,height=800')">查看</button>`;
                 box.appendChild(el);
             });
+            // 绑定勾选框事件，更新存储
             document.querySelectorAll('.course-ck').forEach(ck => {
                 ck.onchange = (e) => { const k = e.target.getAttribute('data-key'); store[k].auto = e.target.checked; saveStore(store); updateSubmitBtn(); setTimeout(() => renderList(), 0); };
             });
@@ -1587,23 +1661,31 @@
             updateSubmitBtn();
         };
 
+        /**
+         * “自动评价并保存”流水线的调度器
+         */
         const execNext = () => {
             if (localStorage.getItem(KEY_RUNNING) !== 'true') return;
-            if (localStorage.getItem(KEY_BUSY) === 'true') return;
+            if (localStorage.getItem(KEY_BUSY) === 'true') return; // 等待当前窗口保存完毕
             const store = loadStore(), curPj01 = qp(location.href, 'pj01id');
+            // 查找属于当前类别且未完成的待评价课程
             const pending = Object.keys(store).filter(k => { const c = store[k]; return c.auto && !c.done && (!curPj01 || qp(c.url, 'pj01id') === curPj01); });
             if (pending.length > 0) {
                 const c = store[pending[0]];
-                localStorage.setItem(KEY_BUSY, 'true');
+                localStorage.setItem(KEY_BUSY, 'true'); // 上锁
                 logInfo(`▶ 正在保存：${c.name}`);
                 window.open(withAuto(c.url, 'true'), '_blank', 'width=1200,height=800');
             } else {
+                // 当前类别处理完毕，检查跨类别队列
                 const queue = loadQueue();
                 if (queue.length > 0) { const next = queue.shift(); saveQueue(queue); localStorage.setItem(KEY_CURLIST, next); localStorage.setItem(KEY_BUSY, 'false'); setTimeout(() => { location.href = next; }, 800); }
                 else { localStorage.setItem(KEY_RUNNING, 'false'); localStorage.setItem(KEY_BUSY, 'false'); logSuccess('🎉 所有类别评价已全部完成！'); renderList(); alert('🎉全部评价已完成！'); }
             }
         };
 
+        /**
+         * “自动提交”流水线的调度器
+         */
         const execNextSubmit = () => {
             if (localStorage.getItem(KEY_SUBRUN) !== 'true') return;
             if (localStorage.getItem(KEY_SUBBSY) === 'true') return;
@@ -1615,6 +1697,7 @@
             window.open(nextUrl, '_blank', 'width=1200,height=800');
         };
 
+        // 按钮点击事件绑定
         document.getElementById('start-btn').onclick      = () => { localStorage.setItem(KEY_RUNNING, 'true'); localStorage.setItem(KEY_BUSY, 'false'); renderList(); execNext(); };
         document.getElementById('submit-all-btn').onclick = () => {
             const store = loadStore(), toSubmit = parseRows().filter(c => { const info = store[c.key]; return (c.evaluated || (info && info.done)) && !c.submitted && (info ? info.auto !== false : true); });
@@ -1625,23 +1708,26 @@
         document.getElementById('reset-btn').onclick      = () => { if (confirm('重置所有缓存？')) { [KEY_STORE, KEY_RUNNING, KEY_BUSY, KEY_QUEUE, KEY_CURLIST, KEY_SUBQUEUE, KEY_SUBRUN, KEY_SUBBSY].forEach(k => localStorage.removeItem(k)); location.reload(); } };
         document.getElementById('clear-log-btn').onclick  = () => clearLogs();
 
+        // 跨页面状态监听：当其他窗口修改了 busy 标志或完成状态时，本页面及时响应并触发下一步
         window.addEventListener('storage', (e) => {
             if ([KEY_STORE, KEY_BUSY, KEY_RUNNING].includes(e.key)) { renderList(); renderLogPanel(); if (e.key === KEY_BUSY && e.newValue === 'false' && localStorage.getItem(KEY_RUNNING) === 'true') setTimeout(execNext, 800); }
             if (e.key === KEY_SUBBSY && e.newValue === 'false' && localStorage.getItem(KEY_SUBRUN) === 'true') setTimeout(execNextSubmit, 800);
         });
 
         renderList();
+        // 自动恢复执行：若页面刷新时流水线正在运行，则继续
         if (localStorage.getItem(KEY_RUNNING) === 'true' && localStorage.getItem(KEY_BUSY) !== 'true') setTimeout(execNext, 1200);
         if (localStorage.getItem(KEY_SUBRUN) === 'true' && localStorage.getItem(KEY_SUBBSY) !== 'true') setTimeout(execNextSubmit, 1200);
     }
 
-    // ── EDIT 页面 ─────────────────────────────────────────────────────
+    // ── EDIT 页面 (具体课程评价页) ────────────────────────────────────
     if (location.href.includes('xspj_edit.do')) {
         const params = new URLSearchParams(location.search);
         const isAutoSave = params.get(PARAM_AUTO) === 'true';
         const isAutoSub  = params.get(PARAM_SUBMIT) === 'true';
         const isManual   = !isAutoSave && !isAutoSub;
 
+        // 手动模式：注入顶栏快捷填分工具
         if (isManual) {
             const initManual = () => {
                 injectCSS();
@@ -1697,7 +1783,7 @@
             return;
         }
 
-        // 自动模式
+        // 自动模式（保存或提交）
         injectCSS();
         const bgColor   = isAutoSub ? '#f0fff4' : '#ebf8ff';
         const bdColor   = isAutoSub ? '#9ae6b4' : '#90cdf4';
@@ -1722,6 +1808,7 @@
         let stopped = false;
         document.getElementById('stop-btn').onclick = () => { stopped = true; editLog('已停止'); document.getElementById('stop-btn').style.display = 'none'; };
 
+        // 执行自动提交逻辑
         if (isAutoSub) {
             setTimeout(() => {
                 const key = courseKey(location.href), store = loadStore();
@@ -1733,6 +1820,7 @@
                     const tj = document.getElementById('tj');
                     if (!tj) { localStorage.setItem(KEY_SUBBSY, 'false'); setTimeout(() => window.close(), 1000); return; }
                     try {
+                        // 调用教务系统原生的提交函数
                         unsafeWindow.saveData(tj, '1');
                         if (key && store[key]) { store[key].done = true; saveStore(store); }
                         editLog('已提交！', 'success');
@@ -1740,6 +1828,7 @@
                         logError(err.message);
                         editLog('提交出错，请手动操作', 'error');
                     }
+                    // 释放互斥锁并关闭窗口
                     setTimeout(() => { localStorage.setItem(KEY_SUBBSY, 'false'); setTimeout(() => window.close(), 300); }, 800);
                 };
 
@@ -1750,6 +1839,7 @@
                 }, 500);
             }, 800);
         } else {
+            // 执行自动填分并保存逻辑
             setTimeout(() => {
                 const key = courseKey(location.href), store = loadStore();
                 const { gkeys, groups } = collectGroups();
@@ -1761,8 +1851,9 @@
                 editLog('填写完成，即将保存');
                 setTimeout(() => {
                     if (stopped) return;
-                    const bc = document.getElementById('bc');
+                    const bc = document.getElementById('bc'); // 保存按钮
                     if (bc) try { unsafeWindow.saveData(bc, '0'); } catch (err) { logError(err.message); }
+                    // 释放互斥锁并关闭窗口
                     setTimeout(() => { localStorage.setItem(KEY_BUSY, 'false'); setTimeout(() => window.close(), 300); }, 600);
                 }, 1000);
             }, 800);
