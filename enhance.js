@@ -17,17 +17,21 @@
 // ==/UserScript==
 
 // ================================================================
-//  【模块一】南理工教务增强助手 2.0
-//  功能：课程大纲、选修课类别、学分统计、自动刷新登录状态
+//  【模块一】核心增强功能模块
+//  职责：数据抓取、课程信息增强（大纲/类别）、学分统计、登录保活
+//  设计模式：单例对象（Singleton）组织各子系统
 // ================================================================
-
-// ==================== 远程数据源配置 ====================
-// fix⑥: 将常量移入 IIFE 避免全局命名空间污染
 
 (function () {
     'use strict';
-    // ── 数据源配置）──────────────────
-    // 选修课类别数据镜像列表，按优先级排序；首个可访问的镜像将被采用。运气再差也不会全都打不开吧
+
+    /**
+     * ── 数据源镜像配置 ─────────────────────────────────────────────
+     * 采用多节点冗余设计，解决部分节点在大规模访问时的稳定性问题。
+     * 优先级顺序：官方主站 > jsDelivr 加速 > jsDelivr 备用 > GitHub Raw。
+     */
+
+    // 选修课类别数据源（JSON 格式）
     const CATEGORY_URLS = [
         'https://enhance.njust.wiki/data/xxk.json',                                                                    // 官方主节点
         'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',                        // jsDelivr 全球加速
@@ -35,7 +39,7 @@
         'https://raw.githubusercontent.com/NJUST-OpenLib/NJUST-JWC-Enhance/refs/heads/main/data/xxk.json'             // GitHub 原始文件（备用）
     ];
 
-    // 课程大纲数据镜像列表，按优先级排序；首个可访问的镜像将被采用
+    // 课程大纲索引数据源（包含课程代码到 jx02id 的映射）
     const OUTLINE_URLS = [
         'https://enhance.njust.wiki/data/kcdg.json',                                                                    // 官方主节点
         'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/kcdg.json',                        // jsDelivr 全球加速
@@ -43,46 +47,59 @@
         'https://raw.githubusercontent.com/NJUST-OpenLib/NJUST-JWC-Enhance/refs/heads/main/data/kcdg.json'             // GitHub 原始文件（备用）
     ];
 
-    // ==================== 配置选项 ====================
+    /**
+     * ── 全局配置选项 ───────────────────────────────────────────────
+     */
     const UI_CONFIG = {
-        showNotifications: true
+        showNotifications: true // 是否允许弹出系统级通知（目前主要通过 LogPanel 反馈）
     };
 
-    // ==================== 调试配置 ====================
-    // enabled: 是否开启调试日志；level: 日志级别（1=ERROR，2=WARN，3=INFO，4=DEBUG）；
-    // showCache: 是否打印缓存命中/过期信息
+    /**
+     * ── 调试系统配置 ───────────────────────────────────────────────
+     * enabled: 开启后会向控制台和日志面板输出详细过程
+     * level: 4(DEBUG), 3(INFO), 2(WARN), 1(ERROR)
+     */
     const DEBUG_CONFIG = {
         enabled: true,
         level: 3,
-        showCache: true
+        showCache: true // 是否在日志中详细记录缓存的存取动作
     };
 
-    // ==================== 缓存配置 ====================
-    // enabled: 是否启用本地缓存；ttl: 缓存有效期（秒），86400=24小时；prefix: localStorage 键名前缀，避免冲突
+    /**
+     * ── 缓存系统配置 ───────────────────────────────────────────────
+     * 使用 localStorage 存储远程 JSON 数据，减少重复的网络请求，提升页面加载速度。
+     */
     const CACHE_CONFIG = {
         enabled: true,
-        ttl: 86400,
-        prefix: 'njust_jwc_enhance_'
+        ttl: 86400,                   // 缓存有效期：（单位：秒）
+        prefix: 'njust_jwc_enhance_'  // 本脚本专用的缓存键名前缀
     };
 
-    // ==================== 日志面板 UI ====================
-    // fix①②: 修复 initialized 提前置 true 导致 body 为 null 的问题；
-    //         修复标题栏只显示部分日志的问题（队列式滚动显示）
+    /**
+     * ── 日志面板 UI 系统 ────────────────────────────────────────────
+     * 这是一个右下角的悬浮面板，用于实时展示脚本运行状态，取代了侵入式的 Toast 弹窗。
+     * 特性：
+     * 1. 队列化处理：确保在 DOM 准备好之前产生的日志不会丢失。
+     * 2. 标题栏滚动：标题栏会循环展示最新的日志摘要，5秒后自动复位。
+     * 3. 级别过滤：支持在展开状态下通过下拉菜单过滤日志级别。
+     */
     const LogPanelUI = {
-        container: null,
-        body: null,
-        initialized: false,
-        queue: [],
-        // fix②: 用于标题栏滚动显示的队列
-        _statusQueue: [],
-        _statusPlaying: false,
+        container: null,    // 外部容器 DOM
+        body: null,         // 日志行容器 DOM
+        initialized: false, // 初始化状态标志
+        queue: [],          // 预初始化消息队列
+        _statusQueue: [],   // 标题栏待播放队列
+        _statusPlaying: false, // 标题栏是否正在播放动画
 
+        /**
+         * 初始化面板 DOM 并注入样式
+         */
         init() {
             if (this.initialized || !document.body) return;
-            // fix①: 不在这里提前置 true，等 DOM 全部挂载后再置
 
             const style = document.createElement('style');
             style.textContent = `
+                /* 面板主样式 */
                 #njust-enhance-log {
                     position: fixed; bottom: 0; right: 20px; width: 380px;
                     background: #fff; border: 1px solid #e2e8f0; border-bottom: none;
@@ -91,6 +108,8 @@
                     display: flex; flex-direction: column; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 }
                 #njust-enhance-log.minimized { transform: translateY(calc(100% - 38px)); }
+
+                /* 标题栏样式 */
                 #njust-enhance-log-hd {
                     padding: 10px 15px; background: #f7fafc; border-bottom: 1px solid #e2e8f0;
                     cursor: pointer; display: flex; align-items: center; justify-content: space-between;
@@ -98,6 +117,8 @@
                 }
                 #njust-enhance-log-hd b { font-size: 13px; color: #2d3748; display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; }
                 #nel-status-text { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; flex: 1; transition: color 0.2s; }
+
+                /* 日志列表样式 */
                 #njust-enhance-log-body {
                     height: 220px; overflow-y: auto; background: #fdfdfd; font-size: 11px;
                     padding: 4px 0; scroll-behavior: smooth;
@@ -106,24 +127,19 @@
                 .nel-btn:hover { background: #e2e8f0; color: #2d3748; }
                 .nel-clear { background: rgba(245, 101, 101, 0.05); color: #c53030; }
                 .nel-clear:hover { background: rgba(245, 101, 101, 0.15); color: #c53030; }
-                .nel-line {
-                    padding: 3px 12px; border-bottom: 1px solid rgba(226, 232, 240, 0.4);
-                    display: flex; gap: 8px; align-items: flex-start; transition: background 0.1s;
-                }
+
+                /* 日志行与分级颜色 */
+                .nel-line { padding: 3px 12px; border-bottom: 1px solid rgba(226, 232, 240, 0.4); display: flex; gap: 8px; align-items: flex-start; transition: background 0.1s; }
                 .nel-line:hover { background: #f7fafc; }
                 .nel-ts { color: #a0aec0; flex-shrink: 0; min-width: 55px; user-select: none; }
                 .nel-lvl { font-weight: bold; flex-shrink: 0; min-width: 42px; text-align: center; font-size: 10px; }
                 .nel-msg { color: #4a5568; word-break: break-all; flex: 1; line-height: 1.5; }
-                .nel-error { border-left: 3px solid #e53e3e; background: rgba(229, 62, 62, 0.02); }
-                .nel-error .nel-lvl { color: #e53e3e; }
-                .nel-warn { border-left: 3px solid #dd6b20; background: rgba(221, 107, 32, 0.02); }
-                .nel-warn .nel-lvl { color: #dd6b20; }
-                .nel-success { border-left: 3px solid #38a169; background: rgba(56, 161, 105, 0.02); }
-                .nel-success .nel-lvl { color: #38a169; }
-                .nel-info { border-left: 3px solid #3182ce; }
-                .nel-info .nel-lvl { color: #3182ce; }
-                .nel-debug { border-left: 3px solid #9f7aea; color: #718096; }
-                .nel-debug .nel-lvl { color: #9f7aea; }
+
+                .nel-error { border-left: 3px solid #e53e3e; background: rgba(229, 62, 62, 0.02); } .nel-error .nel-lvl { color: #e53e3e; }
+                .nel-warn { border-left: 3px solid #dd6b20; background: rgba(221, 107, 32, 0.02); } .nel-warn .nel-lvl { color: #dd6b20; }
+                .nel-success { border-left: 3px solid #38a169; background: rgba(56, 161, 105, 0.02); } .nel-success .nel-lvl { color: #38a169; }
+                .nel-info { border-left: 3px solid #3182ce; } .nel-info .nel-lvl { color: #3182ce; }
+                .nel-debug { border-left: 3px solid #9f7aea; color: #718096; } .nel-debug .nel-lvl { color: #9f7aea; }
             `;
             document.head.appendChild(style);
 
@@ -141,9 +157,9 @@
             document.body.appendChild(this.container);
             this.body = this.container.querySelector('#njust-enhance-log-body');
 
-            // fix①: DOM 完全挂载、this.body 已赋值后再置 initialized = true
             this.initialized = true;
 
+            // 绑定交互事件
             this.container.querySelector('#njust-enhance-log-hd').onclick = (e) => {
                 if (e.target.id === 'nel-clear-btn') return;
                 const isMin = this.container.classList.toggle('minimized');
@@ -160,17 +176,21 @@
                 this._statusPlaying = false;
             };
 
-            // 处理排队消息（此时 this.body 已确保可用）
+            // 处理初始化前的缓存消息
             if (this.queue.length > 0) {
                 this.queue.forEach(item => this.add(item.level, item.msg));
                 this.queue = [];
             }
         },
 
+        /**
+         * 向面板添加一条新日志
+         * @param {string} level - 级别: error, warn, success, info, debug
+         * @param {string} msg - 日志内容
+         */
         add(level, msg) {
             if (!this.initialized) {
                 this.init();
-                // init() 执行后若仍未初始化（body 尚不存在），则入队等待
                 if (!this.initialized) {
                     this.queue.push({ level, msg });
                     return;
@@ -187,26 +207,29 @@
             line.innerHTML = `<span class="nel-ts">[${ts}]</span><span class="nel-lvl">${lvlLabel}</span><span class="nel-msg">${this.esc(msg)}</span>`;
 
             this.body.appendChild(line);
+            // 限制最大行数，防止页面过重
             if (this.body.children.length > 200) this.body.removeChild(this.body.firstChild);
             this.body.scrollTop = this.body.scrollHeight;
 
-            // fix②: 将消息加入标题栏显示队列，逐条滚动展示而非立即覆盖
+            // 加入标题栏滚动显示队列
             this._statusQueue.push({ msg, level });
             if (!this._statusPlaying) {
                 this._playStatusQueue();
             }
         },
 
-        // fix②: 队列式逐条播放标题栏状态，确保每条消息都被看到
+        /**
+         * 标题栏消息队列播放器
+         */
         _playStatusQueue() {
             if (this._statusQueue.length === 0) {
                 this._statusPlaying = false;
-                // 队列耗尽后恢复默认状态
+                // 恢复默认状态文字
                 const statusText = this.container && this.container.querySelector('#nel-status-text');
                 if (statusText) {
-                    statusText.textContent = '增强助手加载成功';
+                    statusText.textContent = '南理工教务增强助手V2';
                     statusText.style.color = '#2d3748';
-                    statusText.style.opacity = '0.7';
+                    statusText.style.opacity = '0.95';
                 }
                 return;
             }
@@ -220,15 +243,17 @@
                 statusText.style.opacity = '0.5';
                 setTimeout(() => { statusText.style.opacity = '1'; }, 80);
             }
-            // 每条消息显示 200ms 后展示下一条
+            // 每 200ms 切换下一条，形成滚动感
             setTimeout(() => { this._playStatusQueue(); }, 200);
         },
 
         esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
     };
 
-    // ==================== 调试系统 ====================
-    // fix④: 移除与 LogPanelUI 职责重叠的 StatusNotifier 调用，Logger 只对接 LogPanelUI
+    /**
+     * ── 调试系统 ────────────────────────────────────────────────────
+     * 统一的日志入口，负责格式化输出并同步到 LogPanelUI。
+     */
     const Logger = {
         LEVELS: { ERROR: 1, WARN: 2, INFO: 3, DEBUG: 4 },
 
@@ -239,8 +264,10 @@
             const levelNames = ['', 'error', 'warn', 'info', 'debug'];
             const lvlName = levelNames[level] || 'info';
 
+            // 控制台原生输出
             console.log(`[${timestamp}] [南理工教务助手]`, message, ...args);
 
+            // 格式化对象参数，使其在 UI 面板中可见
             let displayMessage = message;
             if (args.length > 0) {
                 const formattedArgs = args.map(arg => {
@@ -257,6 +284,7 @@
                 displayMessage += ' ' + formattedArgs;
             }
 
+            // 同步到 UI 面板
             LogPanelUI.add(lvlName, displayMessage);
         },
 
@@ -266,20 +294,32 @@
         debug(message, ...args) { this.log(this.LEVELS.DEBUG, message, ...args); }
     };
 
-    // ==================== 缓存系统 ====================
+    /**
+     * ── 缓存系统 ────────────────────────────────────────────────────
+     * 负责远程 JSON 数据在本地 localStorage 的存取、过期判断及统计。
+     */
     const CacheManager = {
+        /**
+         * 生成 URL 对应的哈希键名
+         */
         getKey(url) {
             return CACHE_CONFIG.prefix + btoa(unescape(encodeURIComponent(url))).replace(/[^a-zA-Z0-9]/g, '');
         },
 
+        /**
+         * 存入缓存
+         */
         set(url, data) {
             if (!CACHE_CONFIG.enabled) return false;
             try {
-                const cacheData = { data, timestamp: Date.now(), ttl: CACHE_CONFIG.ttl * 1000, url };
+                const cacheData = {
+                    data,
+                    timestamp: Date.now(),
+                    ttl: CACHE_CONFIG.ttl * 1000,
+                    url
+                };
                 localStorage.setItem(this.getKey(url), JSON.stringify(cacheData));
-                if (DEBUG_CONFIG.showCache) {
-                    Logger.info(`💾 缓存已保存: ${url}`);
-                }
+                if (DEBUG_CONFIG.showCache) Logger.info(`💾 缓存已保存: ${url}`);
                 return true;
             } catch (e) {
                 Logger.error('缓存保存失败: ', e);
@@ -287,6 +327,9 @@
             }
         },
 
+        /**
+         * 读取缓存（包含过期校验）
+         */
         get(url) {
             if (!CACHE_CONFIG.enabled) return null;
             try {
@@ -298,6 +341,7 @@
                 }
                 const cacheData = JSON.parse(cached);
                 const now = Date.now();
+                // 过期判断
                 if (now - cacheData.timestamp > cacheData.ttl) {
                     localStorage.removeItem(key);
                     if (DEBUG_CONFIG.showCache) Logger.warn(`⏰ 缓存已过期: ${url}`);
@@ -313,6 +357,9 @@
             }
         },
 
+        /**
+         * 清空本脚本产生的所有缓存
+         */
         clear() {
             try {
                 const keys = Object.keys(localStorage).filter(k => k.startsWith(CACHE_CONFIG.prefix));
@@ -325,6 +372,9 @@
             }
         },
 
+        /**
+         * 获取缓存占用情况统计
+         */
         getStats() {
             try {
                 const keys = Object.keys(localStorage).filter(k => k.startsWith(CACHE_CONFIG.prefix));
@@ -831,10 +881,14 @@
         }
     }
 
-    // ==================== 处理页面表格 ====================
+    /**
+     * ── 课程信息增强核心逻辑 ───────────────────────────────────────
+     * 负责解析教务系统的表格 DOM，并根据映射表插入大纲链接、选修课类别等信息。
+     */
     function processAllTables() {
         try {
             const tables = document.querySelectorAll('table');
+            // 页面类型识别
             const isGradePage    = window.location.pathname.includes('/njlgdx/kscj/cjcx_list');
             const isSchedulePage = window.location.pathname.includes('xskb_list.do') &&
                                    document.title.includes('学期理论课表');
@@ -844,6 +898,7 @@
 
             tables.forEach(table => {
                 try {
+                    // 课表页面只处理 id 为 dataList 的主表格
                     if (isSchedulePage && table.id !== 'dataList') return;
                     const rows = table.querySelectorAll('tr');
                     processedTables++;
@@ -851,11 +906,12 @@
                     rows.forEach(row => {
                         try {
                             const tds = row.querySelectorAll('td');
-                            if (tds.length < 3) return;
+                            if (tds.length < 3) return; // 略过非数据行
                             processedRows++;
 
                             let courseCodeTd, courseCode;
 
+                            // 不同页面的课程代码提取逻辑差异化处理
                             if (isGradePage) {
                                 courseCodeTd = tds[2];
                                 courseCode   = courseCodeTd ? courseCodeTd.textContent.trim() : '';
@@ -863,6 +919,7 @@
                                 courseCodeTd = tds[1];
                                 courseCode   = courseCodeTd ? courseCodeTd.textContent.trim() : '';
                             } else {
+                                // 通用逻辑：提取形如 "课程名<br>课程代码" 的结构
                                 courseCodeTd = tds[1];
                                 if (courseCodeTd && courseCodeTd.innerHTML) {
                                     const parts = courseCodeTd.innerHTML.split('<br>');
@@ -874,7 +931,7 @@
                             if (!courseCode) return;
                             let courseEnhanced = false;
 
-                            // 插入类别
+                            // 1. 插入选修课类别（如：人文素养、自然科学等）
                             try {
                                 if (courseCodeTd && !courseCodeTd.querySelector('[data-category-inserted]')) {
                                     const category = courseCategoryMap[courseCode];
@@ -891,7 +948,7 @@
                                 }
                             } catch (e) { Logger.warn('添加课程类别时出错:', e); }
 
-                            // 插入老师说明
+                            // 2. 插入老师说明（将 <td> 的 title 属性显性化）
                             try {
                                 if (!isGradePage && !isSchedulePage && courseCodeTd &&
                                     courseCodeTd.title && !courseCodeTd.querySelector('[data-title-inserted]')) {
@@ -907,7 +964,7 @@
                                 }
                             } catch (e) { Logger.warn('添加老师说明时出错:', e); }
 
-                            // 插入课程大纲链接
+                            // 3. 插入教学大纲链接
                             try {
                                 if (courseCodeTd && !courseCodeTd.querySelector('[data-outline-inserted]')) {
                                     const outlineDiv = document.createElement('div');
@@ -915,6 +972,7 @@
                                     outlineDiv.style.marginTop = '4px';
 
                                     if (isSmartCampus) {
+                                        // 智慧理工平台因跨域和权限限制，无法直接预览官网大纲
                                         outlineDiv.textContent      = '⚠️ 课程大纲功能受限';
                                         outlineDiv.style.color      = '#ff9800';
                                         outlineDiv.style.fontWeight = 'bold';
@@ -924,6 +982,7 @@
                                         const realId = courseOutlineMap[courseCode];
                                         if (realId) {
                                             const link  = document.createElement('a');
+                                            // 拼接教务处官网预览链接
                                             link.href   = `http://202.119.81.112:8080/kcxxAction.do?method=kcdgView&jx02id=${realId}&isentering=0`;
                                             link.textContent = '📘 查看课程大纲';
                                             link.target = '_blank';
@@ -947,17 +1006,22 @@
 
             Logger.info(`表格处理完成: ${processedTables}个表格, ${processedRows}行, 增强${enhancedCourses}门课程`);
 
+            // 成绩页面额外执行学分实时汇总
             if (isGradePage) updateCreditSummary();
         } catch (e) {
             Logger.error('处理页面表格失败:', e);
         }
     }
 
-    // ==================== 登录状态检测与刷新 ====================
+    /**
+     * ── 登录保活与自动修复系统 ───────────────────────────────────────
+     * 解决教务系统频繁掉线、重复登录导致的报错页面。
+     */
     function checkLoginErrorAndRefresh() {
         try {
             const pageTitle   = document.title || '';
             const pageContent = document.body ? document.body.textContent : '';
+            // 匹配典型的教务处报错关键词
             const isLoginError = pageTitle.includes('出错页面') &&
                 (pageContent.includes('您登录后过长时间没有操作') ||
                  pageContent.includes('您的用户名已经在别处登录') ||
@@ -975,6 +1039,10 @@
         }
     }
 
+    /**
+     * 执行静默登录刷新
+     * 原理：通过一个隐藏的 iframe 请求教务系统的一个轻量级页面，利用浏览器自动携带的 Cookie 维持/刷新 Session。
+     */
     function performLoginRefresh(forceRefresh = false) {
         const currentUrl = window.location.href;
         try {
@@ -985,6 +1053,7 @@
                 const urlObj = new URL(currentUrl);
                 baseUrl = `${urlObj.protocol}//${urlObj.host}/`;
             }
+            // 使用“课程大纲查询”作为刷新页面（权限要求低且加载快）
             const refreshUrl = baseUrl + 'njlgdx/pyfa/kcdgxz';
             Logger.info('使用隐藏 iframe 刷新登录状态:', refreshUrl);
 
@@ -1003,13 +1072,17 @@
             };
 
             document.body.appendChild(iframe);
+            // 10秒兜底清理，防止网络挂起
             setTimeout(() => { if (iframe.parentNode) iframe.parentNode.removeChild(iframe); }, 10000);
         } catch (e) {
             Logger.error('自动刷新登录状态失败:', e);
         }
     }
 
-    // fix⑦: 多标签页并发防护：使用 BroadcastChannel 广播刷新事件，避免同时触发
+    /**
+     * 定时自动保活逻辑
+     * 策略：仅在主框架页面执行，且 5 分钟内不重复触发。
+     */
     function autoRefreshLoginStatus() {
         try {
             const currentUrl = window.location.href;
@@ -1018,17 +1091,17 @@
             const lastRefreshKey = 'njust_last_login_refresh';
             const lastRefreshTime = localStorage.getItem(lastRefreshKey);
             const now = Date.now();
-            const refreshInterval = 5 * 60 * 1000;
+            const refreshInterval = 5 * 60 * 1000; // 5分钟间隔
 
             if (lastRefreshTime && (now - parseInt(lastRefreshTime)) < refreshInterval) {
                 Logger.debug('距上次刷新不足5分钟，跳过');
                 return;
             }
 
-            // fix⑦: 先写入时间戳（抢锁），再通过 BroadcastChannel 通知其他同源标签页
+            // 更新最后刷新时间戳
             localStorage.setItem(lastRefreshKey, now.toString());
 
-            // 若浏览器支持 BroadcastChannel，通知其他标签页跳过刷新
+            // fix⑦: 使用 BroadcastChannel 通知其他同源标签页同步刷新时间，避免多标签页并发请求
             if (typeof BroadcastChannel !== 'undefined') {
                 const bc = new BroadcastChannel('njust_login_refresh');
                 bc.postMessage({ type: 'refreshing', ts: now });
@@ -1042,11 +1115,14 @@
         }
     }
 
-    // ==================== 主初始化 ====================
+    /**
+     * ── 脚本入口初始化 ──────────────────────────────────────────────
+     */
     async function init() {
         try {
             Logger.info('开始执行主要逻辑');
 
+            // 强智概念版拦截
             if (checkQiangzhiPage()) {
                 Logger.info('强智科技页面检测完成，脚本退出');
                 return;
@@ -1058,15 +1134,18 @@
                 Logger.warn('检测到智慧理工平台，课程大纲功能将受限');
             }
 
+            // 1. 登录保活与状态检查
             autoRefreshLoginStatus();
             checkLoginErrorAndRefresh();
 
+            // 2. 加载远程配置数据
             Logger.info('开始加载数据');
             const [categoryData, outlineData] = await Promise.all([
                 loadJSON(CATEGORY_URLS),
                 loadJSON(OUTLINE_URLS)
             ]);
 
+            // 3. 构建索引并执行初次处理
             Logger.info('数据加载完成，构建映射表');
             buildCourseMaps(categoryData, outlineData);
 
@@ -1076,9 +1155,10 @@
 
             processAllTables();
 
-            // fix③: 修正 MutationObserver 的 isProcessing 锁逻辑，
-            //        在 finally 中同步重置（而非放在 setTimeout 里），
-            //        并在 setTimeout 延迟中再次检查以确保 DOM 变更已完成
+            /**
+             * 4. 动态监听系统
+             * 解决教务系统通过 AJAX 异步切换页面（如点击菜单）导致脚本失效的问题。
+             */
             let isProcessing = false;
             const observer = new MutationObserver((mutations) => {
                 try {
@@ -1089,12 +1169,14 @@
                             if (mutation.type !== 'childList') return false;
                             for (const node of mutation.addedNodes) {
                                 if (node.nodeType !== Node.ELEMENT_NODE) continue;
+                                // 忽略脚本自己插入的 DOM
                                 if (node.hasAttribute &&
                                     (node.hasAttribute('data-category-inserted') ||
                                      node.hasAttribute('data-title-inserted') ||
                                      node.hasAttribute('data-outline-inserted'))) {
                                     return false;
                                 }
+                                // 只关注表格类变更
                                 if (node.tagName === 'TABLE' || node.tagName === 'TR' || node.tagName === 'TD') {
                                     return true;
                                 }
@@ -1107,22 +1189,18 @@
                     });
 
                     if (hasRelevantChanges && !checkQiangzhiPage()) {
-                        // fix③: 先同步置锁，执行完成后同步释放
-                        //        用 setTimeout 仅作为 DOM 渲染的等待，不负责释放锁
                         isProcessing = true;
                         try {
                             processAllTables();
                         } catch (e) {
                             Logger.error('重新处理表格失败:', e);
                         } finally {
-                            // fix③: 同步释放锁（DOM 修改已在 processAllTables 内完成）
-                            //        延迟仅用于防止同一批次 mutation 触发重复处理
+                            // 节流处理，防止频繁触发
                             setTimeout(() => { isProcessing = false; }, 100);
                         }
                     }
                 } catch (e) {
                     Logger.error('MutationObserver 回调执行失败:', e);
-                    // fix③: 异常时也要确保锁被释放
                     isProcessing = false;
                 }
             });
@@ -1139,6 +1217,7 @@
         }
     }
 
+    // 延迟 1 秒执行初始化，确保教务系统原始 JS 框架加载完成
     setTimeout(init, 1000);
 })();
 
@@ -1373,21 +1452,21 @@
             #v80-submit-hint.visible { display: block; }
             .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 7px; }
             #v80-body { padding: 10px 14px; overflow-y: auto; flex: 1; }
-            
+
             /* 列表项卡片样式 */
             .entry-card, .ci { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 7px; border: 1px solid #e2e8f0; margin-bottom: 7px; background: #f7fafc; }
             .ci { padding: 8px 10px; margin-bottom: 6px; border-color: #edf2f7; }
             .entry-label, .ci-name { flex: 1; font-weight: 500; color: #2d3748; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
             .ci-teacher { color: #718096; white-space: nowrap; }
             .ci-zpf { color: #276749; font-size: 11px; background: #f0fff4; padding: 1px 7px; border-radius: 8px; border: 1px solid #c6f6d5; white-space: nowrap; }
-            
+
             /* 状态标签 */
             .entry-st-done, .st-submitted { font-size: 11px; padding: 1px 8px; border-radius: 8px; background: #f0fff4; color: #276749; border: 1px solid #c6f6d5; white-space: nowrap; }
             .entry-st-wait, .st-wait { font-size: 11px; padding: 1px 8px; border-radius: 8px; background: #fffaf0; color: #c05621; border: 1px solid #feebc8; white-space: nowrap; }
             .entry-st-run { font-size: 11px; padding: 1px 8px; border-radius: 8px; background: #ebf4ff; color: #2b6cb0; border: 1px solid #bee3f8; }
             .st-can-submit { font-size: 11px; padding: 1px 8px; border-radius: 8px; background: #fefcbf; color: #744210; border: 1px solid #f6e05e; white-space: nowrap; }
             .st-none { font-size: 11px; padding: 1px 8px; border-radius: 8px; background: #edf2f7; color: #718096; border: 1px solid #e2e8f0; white-space: nowrap; }
-            
+
             /* 按钮 */
             .vb { padding: 6px 13px; border-radius: 6px; border: none; font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
             .vb-primary { background: #ebf4ff; color: #2b6cb0; border: 1px solid #bee3f8; }
@@ -1397,7 +1476,7 @@
             .vb-danger { background: #fff; color: #c53030; border: 1px solid #fed7d7; }
             .vb-mini { padding: 3px 9px; font-size: 11px; }
             .vb:disabled { opacity: 0.45; cursor: not-allowed; }
-            
+
             /* 可折叠区块样式 */
             .v80-section { flex-shrink: 0; border-top: 1px solid #edf2f7; }
             .v80-sec-hd { padding: 7px 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; background: #f7fafc; }
@@ -1405,7 +1484,7 @@
             .v80-sec-hd .arr { font-size: 13px; color: #a0aec0; }
             .v80-sec-body { display: none; }
             .v80-sec-body.open { display: block; }
-            
+
             /* 日志行样式 */
             #v80-log-content, #v80-storage-pre { max-height: 200px; overflow-y: auto; padding: 4px 0 10px; font-size: 11px; line-height: 1.6; font-family: 'SFMono-Regular', Consolas, monospace; background: #f7fafc; }
             .log-line { padding: 3px 14px; border-bottom: 1px solid rgba(226, 232, 240, 0.4); display: flex; gap: 6px; align-items: flex-start; transition: background 0.1s; }
