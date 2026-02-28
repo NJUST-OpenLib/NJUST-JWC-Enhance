@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         南理工教务增强助手 2.0
+// @name         南理工教务增强助手 V2
 // @namespace    http://tampermonkey.net/
-// @version      2.1
+// @version      2.0.1
 // @description  在合适的地方显示课程大纲、选修课类别及选修课学分情况，并自动刷新登录状态。同时支持评教自动填分与批量提交。
 // @match        http://202.119.81.112/*
 // @match        http://bkjw.njust.edu.cn/*
