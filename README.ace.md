@@ -270,6 +270,7 @@ A：面板底部「📋 运行日志」区域记录了全部操作日志，可�
 
 > 更多信息请访问 [enhance.njust.wiki](https://enhance.njust.wiki)
 > 本工具仅供学习交流使用，数据仅供参考，请以教务处官网信息为准。
+> 本站点与南京理工大学无关
 
 <div align="center" style="font-size: 0.9em; color: #666;">
   <p>项目由 <a href="https://github.com/NJUST-OpenLib" target="_blank">NJUST OpenLib</a> 社区维护 &nbsp; 
