@@ -1,5 +1,6 @@
 # 南理工教务系统增强助手V2 - 现已支持自动评教
 
+
 <div style="
   padding: 20px 24px;
   margin: 20px 0;
@@ -28,7 +29,8 @@
 </div>
 
 
-> 🧩 让教务系统更顺手的浏览器脚本 | 💡 支持南京理工大学及强智教务系统高校
+> 🧩 让教务系统更顺手的浏览器脚本 | 💡 支持南京理工大学及强智教务系统高校 
+> 本站点与南京理工大学无关
 
 <div align="center">
   <img src="https://enhance.njust.wiki/docs/static/catag.png"  alt="课程分类示意图" />
