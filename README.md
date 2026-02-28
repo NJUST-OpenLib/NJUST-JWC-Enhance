@@ -7,6 +7,8 @@
   <img src="https://enhance.njust.wiki/docs/static/catag.png"  alt="课程分类示意图" />
 <br>
   <img src="https://enhance.njust.wiki/docs/static/kczk4.png" alt="课程增强示意图" />
+<br>
+<img src="https://enhance.njust.wiki/docs/static/eval_use3.png" alt="自动评教功能" />
 
 <p>
   <img src="https://img.shields.io/github/stars/NJUST-OpenLib/NJUST-JWC-Enhance?style=flat-square" />
@@ -38,20 +40,21 @@
 
 ## ✨ 功能概览
 
+- 🎯 一键评教
 - 🔗 教学大纲快捷访问
 - 🏷️ 选修类别自动显示
 - 📊 成绩页学分统计
 - 🚪 登录页面智能提示
 - 📥 配套的数据采集及处理工具
-
 ---
 
 ## 📖 更多功能详解
 
 详细图文说明和数据结构介绍请参见：
-- [一键评教](./README.ace.md)
 
-- [增强助手功能说明](./README.enhance.md)
+-  [一键评教](./README.ace.md)
+
+-  [增强助手功能说明](./README.enhance.md)
 
 -  [课程大纲采集流程（使用课程采集助手 V2）](./README.getKCDG.md)
 
