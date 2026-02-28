@@ -1,4 +1,4 @@
-# 🎓 南理工教务系统增强助手 - 支持自动评教
+# 🎓 南理工教务系统增强助手V2 - 现已支持自动评教
 
 <div style="
   padding: 20px 24px;
@@ -23,10 +23,11 @@
     color: #334155;
     font-weight: 500;
   ">
-    支持自动评教，告别繁琐，一键解脱！
+    支持自动评教，告别繁琐，一键完成！
   </p>
 </div>
-> 
+
+
 > 🧩 让教务系统更顺手的浏览器脚本 | 💡 支持南京理工大学及强智教务系统高校
 
 <div align="center">
@@ -78,9 +79,9 @@
 
 详细图文说明和数据结构介绍请参见：
 
--  [一键评教](./README.ace.md)
-
 -  [增强助手功能说明](./README.enhance.md)
+
+-  [🎉一键评教使用说明🎉](./README.ace.md)
 
 -  [课程大纲采集流程（使用课程采集助手 V2）](./README.getKCDG.md)
 
@@ -94,7 +95,7 @@
 
 ### 0 预备知识
 
-- Tampermonkey 和 ScriptCat 都是脚本管理器，安装一个即可
+- Tampermonkey 和 ScriptCat 都是脚本管理器，安装一个即可（推荐使用Tampermonkey）
 
 - scriptcat.org 和 GreasyFork.org 都是脚本仓库，选择一个即可
 
