@@ -2,12 +2,12 @@
   {
     "course_code": "课程号",
     "course_name": "课程名",
-    "category": "分类"
+    "category": "2026版分类"
   },
-    {
+  {
     "course_code": "备注说明",
     "course_name": "采集时间",
-    "category": "2026-01-12"
+    "category": "2026-09-08"
   },
   {
     "course_code": "00000011",
@@ -177,7 +177,7 @@
   {
     "course_code": "00000221",
     "course_name": "音乐乐理与音乐声学",
-    "category": "自然科技类"
+    "category": "艺术审美类"
   },
   {
     "course_code": "00000223",
@@ -312,7 +312,7 @@
   {
     "course_code": "00000306",
     "course_name": "材料微观之美",
-    "category": "自然科技类"
+    "category": "艺术审美类"
   },
   {
     "course_code": "00000311",
@@ -452,7 +452,7 @@
   {
     "course_code": "00000364",
     "course_name": "漫画艺术赏析与创作",
-    "category": "人文素养类"
+    "category": "艺术审美类"
   },
   {
     "course_code": "00000365",
@@ -477,7 +477,7 @@
   {
     "course_code": "00000369",
     "course_name": "生活中的材料之美",
-    "category": "自然科技类"
+    "category": "艺术审美类"
   },
   {
     "course_code": "00000370",
@@ -672,7 +672,7 @@
   {
     "course_code": "00000424",
     "course_name": "美学与人生",
-    "category": "人文素养类"
+    "category": "艺术审美类"
   },
   {
     "course_code": "00000425",
@@ -750,16 +750,6 @@
     "category": "自然科技类"
   },
   {
-    "course_code": "00000442",
-    "course_name": "电子电路设计制作的国产化实战",
-    "category": "自然科技类"
-  },
-  {
-    "course_code": "00000443",
-    "course_name": "材料动态响应的表征与模拟概论",
-    "category": "自然科技类"
-  },
-  {
     "course_code": "00000444",
     "course_name": "知识产权保护与安全",
     "category": "经济社会类"
@@ -797,16 +787,6 @@
   {
     "course_code": "00000451",
     "course_name": "软体机器人",
-    "category": "自然科技类"
-  },
-  {
-    "course_code": "00000452",
-    "course_name": "公共安全与灾害防治",
-    "category": "自然科技类"
-  },
-  {
-    "course_code": "00000453",
-    "course_name": "微惯性基组合导航",
     "category": "自然科技类"
   },
   {
@@ -1172,7 +1152,7 @@
   {
     "course_code": "00000529",
     "course_name": "陶艺制作及釉下彩烧成实践",
-    "category": "自然科技类"
+    "category": "艺术审美类"
   },
   {
     "course_code": "00000530",
@@ -1417,6 +1397,141 @@
   {
     "course_code": "00000580",
     "course_name": "非遗民乐鉴赏",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000581",
+    "course_name": "量子波澜与量子计算",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000582",
+    "course_name": "文创产品赏析及实践",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000583",
+    "course_name": "力学的艺术：超材料之美",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000584",
+    "course_name": "人与AI协同创新引论",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000585",
+    "course_name": "动能、电磁与智能：前沿发射技术解码",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000586",
+    "course_name": "无人机设计与控制导论",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000587",
+    "course_name": "漫谈储能电池技术",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000588",
+    "course_name": "人机共生：智能时代人因工程通识探索",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000589",
+    "course_name": "城市的远见",
+    "category": "人文素养类"
+  },
+  {
+    "course_code": "00000590",
+    "course_name": "文创产品数字化设计与制造实践",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000591",
+    "course_name": "东西方文明交流史",
+    "category": "人文素养类"
+  },
+  {
+    "course_code": "00000592",
+    "course_name": "中日民间故事比较",
+    "category": "人文素养类"
+  },
+  {
+    "course_code": "00000593",
+    "course_name": "走进德意志（一）",
+    "category": "人文素养类"
+  },
+  {
+    "course_code": "00000594",
+    "course_name": "中国美术的历史与鉴赏",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000595",
+    "course_name": "艺术学中的心理学",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00000596",
+    "course_name": "创新者的专利战略：从技术到权利",
+    "category": "经济社会类"
+  },
+  {
+    "course_code": "00000597",
+    "course_name": "AI时代的商业洞察与竞争分析",
+    "category": "经济社会类"
+  },
+  {
+    "course_code": "00000598",
+    "course_name": "快到离谱：高超音速动力黑科技探秘",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000599",
+    "course_name": "弹道学与人类文明",
+    "category": "人文素养类"
+  },
+  {
+    "course_code": "00000600",
+    "course_name": "畅行城市：从地铁到步行，读懂出行之道",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000602",
+    "course_name": "储能密码：电池的“心脏”与“血液”",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000603",
+    "course_name": "舌尖上的分子：食物中的化学与感知",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000604",
+    "course_name": "脑洞造物：合成生物学与未来生活",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000605",
+    "course_name": "柔性电子：可折叠的未来",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000606",
+    "course_name": "诺贝尔化学奖漫谈",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000607",
+    "course_name": "榫卯里的智慧分子间的艺术",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "00000608",
+    "course_name": "表达性艺术与心理调适",
     "category": "艺术审美类"
   },
   {
@@ -2422,7 +2537,7 @@
   {
     "course_code": "00W00201",
     "course_name": "大学美育（同济大学版）",
-    "category": "经济社会类（四史）"
+    "category": "艺术审美类"
   },
   {
     "course_code": "00W00202",
@@ -2452,6 +2567,76 @@
   {
     "course_code": "00W00206",
     "course_name": "文物精品与中华文明",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00207",
+    "course_name": "航天、人文与艺术",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00208",
+    "course_name": "珠宝鉴赏与珠宝文化",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00209",
+    "course_name": "艺术感知与表达",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00210",
+    "course_name": "建筑·文化·生活",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00211",
+    "course_name": "民歌鉴赏",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00212",
+    "course_name": "倾听——音乐的形式与审美",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00213",
+    "course_name": "美学原理",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00214",
+    "course_name": "艺术鉴赏",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00215",
+    "course_name": "艺术导论",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00216",
+    "course_name": "中国古建筑欣赏与设计",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00217",
+    "course_name": "人工智能与创业智慧",
+    "category": "经济社会类"
+  },
+  {
+    "course_code": "00W00218",
+    "course_name": "创业创新执行力",
+    "category": "经济社会类"
+  },
+  {
+    "course_code": "00W00219",
+    "course_name": "文艺学名著导读",
+    "category": "艺术审美类"
+  },
+  {
+    "course_code": "00W00220",
+    "course_name": "艺术哲学：美是如何诞生的",
     "category": "艺术审美类"
   },
   {
@@ -2517,7 +2702,7 @@
   {
     "course_code": "HX000014",
     "course_name": "艺术概论",
-    "category": "人文素养类"
+    "category": "艺术审美类"
   },
   {
     "course_code": "HX000016",
@@ -2912,6 +3097,11 @@
   {
     "course_code": "YT000078",
     "course_name": "智能科学与技术漫谈",
+    "category": "自然科技类"
+  },
+  {
+    "course_code": "YT000079",
+    "course_name": "物联云计算技术",
     "category": "自然科技类"
   },
   {
@@ -3505,27 +3695,27 @@
     "category": "自然科技类"
   },
   {
-    "course_code": "TS00001",
+    "course_code": "TS000001",
     "course_name": "一滴水的使命",
     "category": "自然科技类"
   },
   {
-    "course_code": "TS00002",
+    "course_code": "TS000002",
     "course_name": "新时代知识产权安全与风险应付",
     "category": "经济社会类"
   },
   {
-    "course_code": "TS00003",
+    "course_code": "TS000003",
     "course_name": "大学生公共安全教育",
     "category": "自然科技类"
   },
   {
-    "course_code": "TS00004",
+    "course_code": "TS000004",
     "course_name": "电子人进化论：脑机接口技术与伦理困境",
     "category": "自然科技类"
   },
   {
-    "course_code": "TS00005",
+    "course_code": "TS000005",
     "course_name": "军用车辆造型美学赏析",
     "category": "艺术审美类"
   }

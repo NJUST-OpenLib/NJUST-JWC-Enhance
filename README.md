@@ -140,7 +140,7 @@
 ---
 
 ### 2 安装「南理工教务系统增强助手」
-脚本内置选修课数据 + 课程大纲数据，无需手动配置。
+脚本内置 2026 版选修课分类数据 + 2022 版课程大纲数据，无需手动配置。
 任选下方一个平台安装即可，所有脚本管理器通用（Tampermonkey/ScriptCat 均可安装）。
 
 - 安装地址 ①：[ScriptCat 脚本猫仓库](https://scriptcat.org/zh-CN/script-show-page/3745/)
@@ -205,8 +205,8 @@
 
 欢迎提交 Issue、PR 或数据更新：
 
-- `xxk.json`（选修课分类）：建议每 4 年更新一次。  
-  参考[选修课采集流程（README.getXXK.md）](./README.getXXK.md)
+- `xxk.json`（选修课分类）：当前内置 **2026 版**（2026-09-08 采集），建议每 4 年更新一次（下次约 2030 年）。  
+  参考[选修课采集流程（README.getXXK.md）](./README.getXXK.md)，完整变更见[2026 版更新记录](./README.getXXK.md#数据版本与更新记录)
 
 - `kcdg.json`（教学大纲映射）：建议每年更新一次  
  参考 [课程大纲采集流程（README.getKCDG.md）](./README.getKCDG.md)
