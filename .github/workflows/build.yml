@@ -6,6 +6,12 @@ on:
     tags: ['v*']
   pull_request:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: '要发布的 Release tag（例如 v2.0.2.0）；留空则仅构建不发布'
+        required: false
+        default: ''
 
 jobs:
   build:
@@ -43,7 +49,8 @@ jobs:
 
   release:
     name: 发布 Release 附件
-    if: startsWith(github.ref, 'refs/tags/v')
+    # 打 v* tag 时自动发布；也可在 Actions 页面手动触发并指定 tag 补发
+    if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.tag != '')
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -60,7 +67,11 @@ jobs:
       - name: 构建单个脚本
         run: npm run build
 
+      - name: 列出产物（便于排查）
+        run: ls -l dist
+
       - name: 上传 Release 附件
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || inputs.tag }}
           files: dist/enhance.user.js
