@@ -5,91 +5,53 @@
             container.id = 'creditSummaryWindow';
             container.style.cssText = `
                 position: fixed; top: 40px; right: 40px;
-                background: #fff; border: 1px solid #e0e0e0; border-radius: 14px;
-                padding: 0; box-shadow: 0 8px 32px rgba(0,0,0,0.13);
-                z-index: 9999; min-width: 420px; max-width: 520px;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                background: var(--nju-bg); border: 1px solid var(--nju-border); border-radius: var(--nju-radius-lg);
+                padding: 0; box-shadow: var(--nju-shadow-md);
+                z-index: var(--nju-z-panel); min-width: 420px; max-width: 520px;
+                font-family: var(--nju-font);
                 overflow: hidden;
             `;
 
             container.innerHTML = `
                 <div id="creditDragHandle" style="
-                    background: #f5f6fa; padding: 14px 22px; cursor: move;
+                    background: var(--nju-bg-subtle); padding: 14px 22px; cursor: move;
                     display: flex; justify-content: space-between; align-items: center;
-                    border-bottom: 1px solid #e0e0e0;">
-                    <div style="color: #333; font-weight: 600; font-size: 17px; letter-spacing: 1px;">
+                    border-bottom: 1px solid var(--nju-border);">
+                    <div style="color: var(--nju-text); font-weight: 600; font-size: var(--nju-fs-xl); letter-spacing: 1px;">
                         🎓 南理工教务增强助手 V2
                     </div>
-                    <span id="creditCloseBtn" style="cursor: pointer; color: #888; font-size: 18px;
-                        padding: 2px 8px; border-radius: 4px; transition: background-color 0.2s;">✕</span>
+                    <span id="creditCloseBtn" class="nju-close">✕</span>
                 </div>
-                <div style="background: #fff; padding: 18px 22px 10px 22px; max-height: 540px; overflow-y: auto;">
+                <div style="background: var(--nju-bg); padding: 18px 22px 10px 22px; max-height: 540px; overflow-y: auto;">
                     <div id="creditSummary"></div>
-                    <div id="xxkVersionBar" style="margin-top: 14px; padding: 9px 12px; background: #f0f7ff;
-                        border: 1px solid #d6e6ff; border-radius: 8px; font-size: 13px; color: #33557a;
+                    <div id="xxkVersionBar" style="margin-top: 14px; padding: 9px 12px; background: var(--nju-primary-soft);
+                        border: 1px solid rgba(0, 122, 255, 0.25); border-radius: var(--nju-radius-sm); font-size: var(--nju-fs-md); color: var(--nju-text-2);
                         display: flex; align-items: center;">
                         <span id="xxkVersionText">📦 分类口径：加载中…</span>
                         <select id="xxkVersionSelect" title="选择学分统计所依据的培养方案版本"
-                            style="margin-left: auto; font-size: 12px; padding: 2px 6px; border: 1px solid #c9d8ea;
-                            border-radius: 6px; background: #fff; color: #33557a;">
+                            style="margin-left: auto; font-size: var(--nju-fs-sm); padding: 2px 6px; border: 1px solid var(--nju-border);
+                            border-radius: var(--nju-radius-sm); background: var(--nju-bg); color: var(--nju-text-2);">
                             <option value="">按学号自动</option>
                             <option value="2018">2018 版</option>
                             <option value="2022">2022 版</option>
                             <option value="2026">2026 版</option>
                         </select>
                     </div>
-                    <div style="margin-top: 18px; padding-top: 12px; border-top: 1px solid #e0e0e0;
-                        font-size: 13px; color: #888; line-height: 1.6; text-align: left;">
+                    <div style="margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--nju-border);
+                        font-size: var(--nju-fs-md); color: var(--nju-text-3); line-height: 1.6; text-align: left;">
                         <li>对照个人培养方案核实具体修课要求</li>
                         <li>选修课类别统计仅包含已知分类的通识教育选修课</li>
                         <li>课程分类信息可能随时更新，请以教务处最新通知为准</li>
                         <div style="margin-bottom: 8px;">
                             <span>请查看 <a href="https://enhance.njust.wiki" target="_blank"
-                                style="color: #007bff; text-decoration: none;">增强助手官网</a> 获取使用说明</span>
+                                style="color: var(--nju-primary); text-decoration: none;">增强助手官网</a> 获取使用说明</span>
                         </div>
                     </div>
                 </div>
             `;
 
-            // fix②: 学分窗拖拽也使用修正后的 addDragFunctionality
-            // 注意：该容器的拖拽句柄 id 为 creditDragHandle，与 addDragFunctionality 查找 #dragHandle 不符，
-            // 故在此单独实现，逻辑与修正后的 addDragFunctionality 一致
-            let isDragging = false;
-            let mouseStartX, mouseStartY, elemStartX, elemStartY;
-            const dragHandle = container.querySelector('#creditDragHandle');
-
-            if (dragHandle) {
-                const dragStart = (e) => {
-                    const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-                    const clientY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-                    if (e.target === dragHandle || dragHandle.contains(e.target)) {
-                        const rect = container.getBoundingClientRect();
-                        elemStartX = rect.left;
-                        elemStartY = rect.top;
-                        mouseStartX = clientX;
-                        mouseStartY = clientY;
-                        isDragging = true;
-                        e.preventDefault();
-                    }
-                };
-                const drag = (e) => {
-                    if (!isDragging) return;
-                    e.preventDefault();
-                    const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-                    const clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
-                    container.style.right = 'auto';
-                    container.style.left = (elemStartX + clientX - mouseStartX) + 'px';
-                    container.style.top = (elemStartY + clientY - mouseStartY) + 'px';
-                };
-                const dragEnd = () => { isDragging = false; };
-
-                dragHandle.addEventListener('mousedown', dragStart);
-                document.addEventListener('mousemove', drag);
-                document.addEventListener('mouseup', dragEnd);
-                dragHandle.addEventListener('touchstart', dragStart, { passive: false });
-                document.addEventListener('touchmove', drag, { passive: false });
-                document.addEventListener('touchend', dragEnd, { passive: false });
-            }
+            // 统一使用公共拖拽实现（句柄为本窗体的 creditDragHandle）
+            makeDraggable(container.querySelector('#creditDragHandle'), container);
 
             document.body.appendChild(container);
 
@@ -97,8 +59,7 @@
             const creditCloseBtn = container.querySelector('#creditCloseBtn');
             if (creditCloseBtn) {
                 creditCloseBtn.addEventListener('click', () => container.remove());
-                creditCloseBtn.addEventListener('mouseenter', () => creditCloseBtn.style.backgroundColor = '#e0e0e0');
-                creditCloseBtn.addEventListener('mouseleave', () => creditCloseBtn.style.backgroundColor = 'transparent');
+                // hover 样式由 base.css 的 .nju-close 统一提供
             }
 
             // 培养方案口径显示与手动切换
@@ -174,35 +135,35 @@
             const totalCreditsByCategory = Object.values(creditsByCategory).reduce((s, d) => s + d.credits, 0);
             const totalCountByCategory = Object.values(creditsByCategory).reduce((s, d) => s + d.count, 0);
 
-            let summaryHTML = `<div style="border-bottom: 1px solid #e0e0e0; margin-bottom: 12px; padding-bottom: 10px;">`;
-            summaryHTML += `<div style="margin-bottom: 8px; font-size: 15px; color: #222; font-weight: 600;">📊 按课程性质统计</div>`;
-            summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; background: #f7f7fa; border-radius: 4px; padding: 4px 6px; margin-bottom: 4px;">
-                <span style="color: #007bff; font-weight: 600; font-size: 13px;">总计</span>
-                <span style="font-weight: 600; color: #007bff; font-size: 13px;">${totalCreditsByType.toFixed(1)} 学分</span>
-                <span style="color: #007bff; font-weight: 600; font-size: 13px;">${totalCountByType} 门</span>
+            let summaryHTML = `<div style="border-bottom: 1px solid var(--nju-border); margin-bottom: 12px; padding-bottom: 10px;">`;
+            summaryHTML += `<div style="margin-bottom: 8px; font-size: var(--nju-fs-lg); color: var(--nju-text); font-weight: 600;">📊 按课程性质统计</div>`;
+            summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; background: var(--nju-bg-subtle); border-radius: var(--nju-radius-sm); padding: 4px 6px; margin-bottom: 4px;">
+                <span style="color: var(--nju-primary); font-weight: 600; font-size: var(--nju-fs-md);">总计</span>
+                <span style="font-weight: 600; color: var(--nju-primary); font-size: var(--nju-fs-md);">${totalCreditsByType.toFixed(1)} 学分</span>
+                <span style="color: var(--nju-primary); font-weight: 600; font-size: var(--nju-fs-md);">${totalCountByType} 门</span>
             </div><div style="display: grid; gap: 2px;">`;
             for (const [type, data] of Object.entries(creditsByType)) {
                 summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; padding: 2px 0; align-items: center;">
-                    <span style="color: #444; font-size: 13px;">${type}</span>
-                    <span style="color: #333; font-size: 13px;">${data.credits.toFixed(1)} 学分</span>
-                    <span style="color: #888; font-size: 13px;">${data.count} 门</span>
+                    <span style="color: var(--nju-text-2); font-size: var(--nju-fs-md);">${type}</span>
+                    <span style="color: var(--nju-text); font-size: var(--nju-fs-md);">${data.credits.toFixed(1)} 学分</span>
+                    <span style="color: var(--nju-text-3); font-size: var(--nju-fs-md);">${data.count} 门</span>
                 </div>`;
             }
             summaryHTML += `</div></div>`;
 
             if (Object.keys(creditsByCategory).length > 0) {
                 summaryHTML += `<div style="margin-top: 16px;">`;
-                summaryHTML += `<div style="margin-bottom: 8px; font-size: 15px; color: #222; font-weight: 600;">🏷️ 按选修课类别统计</div>`;
-                summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; background: #f7f7fa; border-radius: 4px; padding: 4px 6px; margin-bottom: 4px;">
-                    <span style="color: #007bff; font-weight: 600; font-size: 13px;">总计</span>
-                    <span style="font-weight: 600; color: #007bff; font-size: 13px;">${totalCreditsByCategory.toFixed(1)} 学分</span>
-                    <span style="color: #007bff; font-weight: 600; font-size: 13px;">${totalCountByCategory} 门</span>
+                summaryHTML += `<div style="margin-bottom: 8px; font-size: var(--nju-fs-lg); color: var(--nju-text); font-weight: 600;">🏷️ 按选修课类别统计</div>`;
+                summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; background: var(--nju-bg-subtle); border-radius: var(--nju-radius-sm); padding: 4px 6px; margin-bottom: 4px;">
+                    <span style="color: var(--nju-primary); font-weight: 600; font-size: var(--nju-fs-md);">总计</span>
+                    <span style="font-weight: 600; color: var(--nju-primary); font-size: var(--nju-fs-md);">${totalCreditsByCategory.toFixed(1)} 学分</span>
+                    <span style="color: var(--nju-primary); font-weight: 600; font-size: var(--nju-fs-md);">${totalCountByCategory} 门</span>
                 </div><div style="display: grid; gap: 2px;">`;
                 for (const [category, data] of Object.entries(creditsByCategory)) {
                     summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; padding: 2px 0; align-items: center;">
-                        <span style="color: #444; font-size: 13px;">${category}</span>
-                        <span style="color: #333; font-size: 13px;">${data.credits.toFixed(1)} 学分</span>
-                        <span style="color: #888; font-size: 13px;">${data.count} 门</span>
+                        <span style="color: var(--nju-text-2); font-size: var(--nju-fs-md);">${category}</span>
+                        <span style="color: var(--nju-text); font-size: var(--nju-fs-md);">${data.credits.toFixed(1)} 学分</span>
+                        <span style="color: var(--nju-text-3); font-size: var(--nju-fs-md);">${data.count} 门</span>
                     </div>`;
                 }
                 summaryHTML += `</div></div>`;
@@ -213,7 +174,7 @@
         } catch (e) {
             Logger.error('更新学分统计失败:', e);
             const el = document.getElementById('creditSummary');
-            if (el) el.innerHTML = '<div style="color:#dc3545;padding:10px;text-align:center;">❌ 学分统计更新失败</div>';
+            if (el) el.innerHTML = '<div style="color:var(--nju-danger);padding:10px;text-align:center;">❌ 学分统计更新失败</div>';
         }
     }
 

@@ -1,0 +1,56 @@
+/* =============================================================
+   设计变量（Design Tokens）
+   全脚本统一的色彩 / 圆角 / 阴影 / 字号 / 层级体系。
+   组件样式一律通过 var() 引用，禁止再硬编码色值。
+   ============================================================= */
+:root {
+    /* ── 语义色 ── */
+    --nju-primary: #007AFF;
+    --nju-primary-hover: #0A6EDC;
+    --nju-primary-soft: rgba(0, 122, 255, 0.12);
+    --nju-success: #34C759;
+    --nju-success-soft: rgba(52, 199, 89, 0.12);
+    --nju-warning: #FF9500;
+    --nju-warning-soft: rgba(255, 149, 0, 0.12);
+    --nju-danger: #FF3B30;
+    --nju-danger-soft: rgba(255, 59, 48, 0.12);
+
+    /* ── 中性色 ── */
+    --nju-bg: #ffffff;
+    --nju-bg-subtle: #f5f6f8;
+    --nju-bg-hover: #eef0f3;
+    --nju-border: #e3e5e8;
+    --nju-border-strong: #d2d2d7;
+    --nju-text: #1d1d1f;
+    --nju-text-2: #5f6368;
+    --nju-text-3: #9aa0a6;
+
+    /* ── 圆角 ── */
+    --nju-radius-sm: 6px;
+    --nju-radius-md: 10px;
+    --nju-radius-lg: 14px;
+    --nju-radius-full: 999px;
+
+    /* ── 阴影 ── */
+    --nju-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --nju-shadow-md: 0 8px 28px rgba(0, 0, 0, 0.13);
+    --nju-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.18);
+
+    /* ── 字体 ── */
+    --nju-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+        Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+    --nju-font-mono: "SFMono-Regular", Consolas, "Lucida Console", monospace;
+
+    /* ── 字号 ── */
+    --nju-fs-xs: 11px;
+    --nju-fs-sm: 12px;
+    --nju-fs-md: 13px;
+    --nju-fs-lg: 15px;
+    --nju-fs-xl: 17px;
+
+    /* ── 层级：统一分档，避免各面板自行定义 ── */
+    --nju-z-float: 9000;   /* 常驻浮层（日志抽屉等） */
+    --nju-z-panel: 10000;  /* 功能面板（学分统计、评教面板） */
+    --nju-z-modal: 11000;  /* 模态弹窗 */
+    --nju-z-topbar: 12000; /* 页面顶栏（评教自动条） */
+}

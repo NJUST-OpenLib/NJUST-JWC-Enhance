@@ -46,10 +46,10 @@ const SOURCES = [
     'evaluate/editPage.js'       // 课程评价页
 ];
 
-/** 样式文件（编写顺序即注入顺序） */
+/** 样式文件（编写顺序即注入顺序；theme 必须排在 base 之前） */
 const STYLES = [
-    // 'ui/theme.css',
-    // 'ui/base.css'
+    'ui/theme.css',
+    'ui/base.css'
 ];
 
 const BUILD_NOTE = [

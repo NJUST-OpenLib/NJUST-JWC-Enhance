@@ -20,6 +20,15 @@
  * ⚠️ 本文件由 build.js 自动生成，请勿直接修改。
  * 源码位于 src/ 目录，修改后请执行：npm run build
  */
+// ===== 以下内容由 src/**/*.css 自动注入 =====
+(function () {
+    const njustCssText = "/* =============================================================\n   设计变量（Design Tokens）\n   全脚本统一的色彩 / 圆角 / 阴影 / 字号 / 层级体系。\n   组件样式一律通过 var() 引用，禁止再硬编码色值。\n   ============================================================= */\n:root {\n    /* ── 语义色 ── */\n    --nju-primary: #007AFF;\n    --nju-primary-hover: #0A6EDC;\n    --nju-primary-soft: rgba(0, 122, 255, 0.12);\n    --nju-success: #34C759;\n    --nju-success-soft: rgba(52, 199, 89, 0.12);\n    --nju-warning: #FF9500;\n    --nju-warning-soft: rgba(255, 149, 0, 0.12);\n    --nju-danger: #FF3B30;\n    --nju-danger-soft: rgba(255, 59, 48, 0.12);\n\n    /* ── 中性色 ── */\n    --nju-bg: #ffffff;\n    --nju-bg-subtle: #f5f6f8;\n    --nju-bg-hover: #eef0f3;\n    --nju-border: #e3e5e8;\n    --nju-border-strong: #d2d2d7;\n    --nju-text: #1d1d1f;\n    --nju-text-2: #5f6368;\n    --nju-text-3: #9aa0a6;\n\n    /* ── 圆角 ── */\n    --nju-radius-sm: 6px;\n    --nju-radius-md: 10px;\n    --nju-radius-lg: 14px;\n    --nju-radius-full: 999px;\n\n    /* ── 阴影 ── */\n    --nju-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);\n    --nju-shadow-md: 0 8px 28px rgba(0, 0, 0, 0.13);\n    --nju-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.18);\n\n    /* ── 字体 ── */\n    --nju-font: -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\",\n        Roboto, \"Helvetica Neue\", Arial, \"Microsoft YaHei\", sans-serif;\n    --nju-font-mono: \"SFMono-Regular\", Consolas, \"Lucida Console\", monospace;\n\n    /* ── 字号 ── */\n    --nju-fs-xs: 11px;\n    --nju-fs-sm: 12px;\n    --nju-fs-md: 13px;\n    --nju-fs-lg: 15px;\n    --nju-fs-xl: 17px;\n\n    /* ── 层级：统一分档，避免各面板自行定义 ── */\n    --nju-z-float: 9000;   /* 常驻浮层（日志抽屉等） */\n    --nju-z-panel: 10000;  /* 功能面板（学分统计、评教面板） */\n    --nju-z-modal: 11000;  /* 模态弹窗 */\n    --nju-z-topbar: 12000; /* 页面顶栏（评教自动条） */\n}\n\n\n/* =============================================================\n   基础原子类\n   依赖 theme.css 中定义的设计变量；所有面板共用同一套控件外观。\n   ============================================================= */\n\n/* ── 按钮 ── */\n.nju-btn {\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    gap: 4px;\n    padding: 5px 12px;\n    border: 1px solid var(--nju-border);\n    border-radius: var(--nju-radius-sm);\n    background: var(--nju-bg);\n    color: var(--nju-text-2);\n    font-family: var(--nju-font);\n    font-size: var(--nju-fs-sm);\n    line-height: 1.4;\n    cursor: pointer;\n    transition: background-color .15s ease, border-color .15s ease, color .15s ease;\n}\n\n.nju-btn:hover { background: var(--nju-bg-hover); color: var(--nju-text); }\n.nju-btn:focus-visible { outline: 2px solid var(--nju-primary); outline-offset: 2px; }\n.nju-btn:disabled, .nju-btn[disabled] { opacity: .5; cursor: not-allowed; }\n\n.nju-btn-primary {\n    background: var(--nju-primary);\n    border-color: var(--nju-primary);\n    color: #fff;\n}\n.nju-btn-primary:hover { background: var(--nju-primary-hover); border-color: var(--nju-primary-hover); color: #fff; }\n\n.nju-btn-danger {\n    background: var(--nju-danger);\n    border-color: var(--nju-danger);\n    color: #fff;\n}\n.nju-btn-danger:hover { filter: brightness(.94); color: #fff; }\n\n.nju-btn-ghost { background: transparent; border-color: transparent; }\n.nju-btn-ghost:hover { background: var(--nju-bg-hover); }\n\n.nju-btn-mini { padding: 2px 8px; font-size: var(--nju-fs-xs); }\n\n/* 兼容评教模块的既有按钮类名，统一补齐交互态 */\n.vb:hover { filter: brightness(.96); }\n.vb:focus-visible { outline: 2px solid var(--nju-primary); outline-offset: 2px; }\n.vb:disabled, .vb[disabled] { opacity: .5; cursor: not-allowed; }\n\n/* ── 关闭按钮 ── */\n.nju-close {\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    width: 24px;\n    height: 24px;\n    padding: 0;\n    border: none;\n    border-radius: var(--nju-radius-full);\n    background: transparent;\n    color: var(--nju-text-3);\n    font-size: 15px;\n    line-height: 1;\n    cursor: pointer;\n    transition: background-color .15s ease, color .15s ease;\n}\n.nju-close:hover { background: var(--nju-bg-hover); color: var(--nju-text); }\n.nju-close:focus-visible { outline: 2px solid var(--nju-primary); outline-offset: 2px; }\n\n/* ── 面板骨架 ── */\n.nju-panel {\n    background: var(--nju-bg);\n    border: 1px solid var(--nju-border);\n    border-radius: var(--nju-radius-lg);\n    box-shadow: var(--nju-shadow-md);\n    font-family: var(--nju-font);\n    color: var(--nju-text);\n}\n\n.nju-panel-hd {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 12px 18px;\n    border-bottom: 1px solid var(--nju-border);\n    background: var(--nju-bg-subtle);\n    border-radius: var(--nju-radius-lg) var(--nju-radius-lg) 0 0;\n    font-size: var(--nju-fs-xl);\n    font-weight: 600;\n    color: var(--nju-text);\n}\n\n.nju-panel-bd { padding: 16px 18px; font-size: var(--nju-fs-md); }\n\n/* ── 徽章 ── */\n.nju-badge {\n    display: inline-flex;\n    align-items: center;\n    padding: 1px 8px;\n    border-radius: var(--nju-radius-full);\n    background: var(--nju-bg-subtle);\n    color: var(--nju-text-2);\n    font-size: var(--nju-fs-xs);\n    line-height: 1.6;\n}\n.nju-badge-primary { background: var(--nju-primary-soft); color: var(--nju-primary); }\n.nju-badge-success { background: var(--nju-success-soft); color: #248A3D; }\n.nju-badge-warning { background: var(--nju-warning-soft); color: #B25000; }\n.nju-badge-danger { background: var(--nju-danger-soft); color: #C0291D; }\n\n/* ── 提示条 ── */\n.nju-note {\n    padding: 9px 12px;\n    border: 1px solid var(--nju-border);\n    border-radius: var(--nju-radius-md);\n    background: var(--nju-primary-soft);\n    color: var(--nju-text-2);\n    font-size: var(--nju-fs-sm);\n}\n";
+    const styleEl = document.createElement("style");
+    styleEl.id = "njust-injected-style";
+    styleEl.textContent = njustCssText;
+    (document.head || document.documentElement).appendChild(styleEl);
+})();
+
 // ===== src/core/config.js ==============================================
 // ================================================================
 //  【模块一】核心增强功能模块
@@ -205,38 +214,38 @@
                 /* 面板主样式 */
                 #njust-enhance-log {
                     position: fixed; bottom: 0; right: 20px; width: 380px;
-                    background: #fff; border: 1px solid #e2e8f0; border-bottom: none;
-                    border-radius: 10px 10px 0 0; box-shadow: 0 -2px 15px rgba(0,0,0,0.08);
-                    z-index: 10001; font-family: 'SFMono-Regular', Consolas, monospace;
+                    background: var(--nju-bg); border: 1px solid var(--nju-border); border-bottom: none;
+                    border-radius: var(--nju-radius-md) var(--nju-radius-md) 0 0; box-shadow: var(--nju-shadow-sm);
+                    z-index: var(--nju-z-float); font-family: var(--nju-font-mono);
                     display: flex; flex-direction: column; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 }
                 #njust-enhance-log.minimized { transform: translateY(calc(100% - 38px)); }
 
                 /* 标题栏样式 */
                 #njust-enhance-log-hd {
-                    padding: 10px 15px; background: #f7fafc; border-bottom: 1px solid #e2e8f0;
+                    padding: 10px 15px; background: var(--nju-bg-subtle); border-bottom: 1px solid var(--nju-border);
                     cursor: pointer; display: flex; align-items: center; justify-content: space-between;
-                    border-radius: 10px 10px 0 0; user-select: none; gap: 10px;
+                    border-radius: var(--nju-radius-md) var(--nju-radius-md) 0 0; user-select: none; gap: 10px;
                 }
-                #njust-enhance-log-hd b { font-size: 13px; color: #2d3748; display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; }
+                #njust-enhance-log-hd b { font-size: var(--nju-fs-md); color: var(--nju-text); display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; }
                 #nel-status-text { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; flex: 1; }
 
                 /* 日志列表样式 */
                 #njust-enhance-log-body {
-                    height: 220px; overflow-y: auto; background: #fdfdfd; font-size: 11px;
+                    height: 220px; overflow-y: auto; background: var(--nju-bg); font-size: var(--nju-fs-xs);
                     padding: 4px 0; scroll-behavior: smooth;
                 }
-                .nel-btn { font-size: 11px; color: #718096; background: #edf2f7; padding: 2px 8px; border-radius: 4px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-                .nel-btn:hover { background: #e2e8f0; color: #2d3748; }
-                .nel-clear { background: rgba(245, 101, 101, 0.05); color: #c53030; }
-                .nel-clear:hover { background: rgba(245, 101, 101, 0.15); color: #c53030; }
+                .nel-btn { font-size: var(--nju-fs-xs); color: var(--nju-text-2); background: var(--nju-bg-subtle); padding: 2px 8px; border-radius: var(--nju-radius-sm); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+                .nel-btn:hover { background: var(--nju-bg-hover); color: var(--nju-text); }
+                .nel-clear { background: var(--nju-danger-soft); color: var(--nju-danger); }
+                .nel-clear:hover { background: rgba(255, 59, 48, 0.18); color: var(--nju-danger); }
 
                 /* 日志行与分级颜色 */
-                .nel-line { padding: 3px 12px; border-bottom: 1px solid rgba(226, 232, 240, 0.4); display: flex; gap: 8px; align-items: flex-start; }
-                .nel-line:hover { background: #f7fafc; }
-                .nel-ts { color: #a0aec0; flex-shrink: 0; min-width: 55px; user-select: none; }
+                .nel-line { padding: 3px 12px; border-bottom: 1px solid var(--nju-border); display: flex; gap: 8px; align-items: flex-start; }
+                .nel-line:hover { background: var(--nju-bg-subtle); }
+                .nel-ts { color: var(--nju-text-3); flex-shrink: 0; min-width: 55px; user-select: none; }
                 .nel-lvl { font-weight: bold; flex-shrink: 0; min-width: 42px; text-align: center; font-size: 10px; }
-                .nel-msg { color: #4a5568; word-break: break-all; flex: 1; line-height: 1.5; }
+                .nel-msg { color: var(--nju-text-2); word-break: break-all; flex: 1; line-height: 1.5; }
 
                 .nel-error { border-left: 3px solid #e53e3e; background: rgba(229, 62, 62, 0.02); } .nel-error .nel-lvl { color: #e53e3e; }
                 .nel-warn { border-left: 3px solid #dd6b20; background: rgba(221, 107, 32, 0.02); } .nel-warn .nel-lvl { color: #dd6b20; }
@@ -584,45 +593,38 @@
         const container = document.createElement('div');
         container.id = 'njustAssistantModal';
 
-        // Apple 风格主题色彩配置
+        // 主题色彩统一取自设计变量（src/ui/theme.css）
         const themeConfig = {
-            warning: { accent: '#FF9500', accentLight: 'rgba(255,149,0,0.12)' },
-            success: { accent: '#34C759', accentLight: 'rgba(52,199,89,0.12)' },
-            info: { accent: '#007AFF', accentLight: 'rgba(0,122,255,0.12)' }
+            warning: { accent: 'var(--nju-warning)', accentLight: 'var(--nju-warning-soft)' },
+            success: { accent: 'var(--nju-success)', accentLight: 'var(--nju-success-soft)' },
+            info: { accent: 'var(--nju-primary)', accentLight: 'var(--nju-primary-soft)' }
         };
         const theme = themeConfig[type] || themeConfig.info;
 
         container.style.cssText = `
             position: fixed; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            background: #ffffff;
-            border: none; border-radius: 20px; padding: 0;
-            box-shadow: 0 24px 80px rgba(0,0,0,0.18), 0 0 0 0.5px rgba(0,0,0,0.08);
-            z-index: 10000; min-width: 340px; max-width: 460px;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+            background: var(--nju-bg);
+            border: none; border-radius: var(--nju-radius-lg); padding: 0;
+            box-shadow: var(--nju-shadow-lg);
+            z-index: var(--nju-z-modal); min-width: 340px; max-width: 460px;
+            font-family: var(--nju-font);
             overflow: hidden; animation: njustFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         `;
 
         container.innerHTML = `
             <div id="dragHandle" style="padding: 24px 28px 20px 28px; cursor: move;">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
-                    <div style="font-size: 20px; font-weight: 600; color: #1d1d1f; letter-spacing: -0.3px;">
+                    <div style="font-size: 20px; font-weight: 600; color: var(--nju-text); letter-spacing: -0.3px;">
                         ${title}
                     </div>
-                    <button id="closeModalBtn" style="
-                        width: 28px; height: 28px; border-radius: 50%;
-                        border: none; background: #f5f5f7;
-                        cursor: pointer; display: flex; align-items: center;
-                        justify-content: center; color: #86868b;
-                        font-size: 16px; transition: all 0.15s;
-                        margin-left: 16px; flex-shrink: 0;
-                    ">×</button>
+                    <button id="closeModalBtn" class="nju-close" style="margin-left: 16px; flex-shrink: 0;">×</button>
                 </div>
-                <div style="color: #424245; font-size: 14px; line-height: 1.65; font-weight: 400;">
+                <div style="color: var(--nju-text-2); font-size: 14px; line-height: 1.65; font-weight: 400;">
                     ${content}
                 </div>
             </div>
-            <div style="padding: 16px 28px 22px 28px; background: #f5f5f7; border-top: 1px solid #e5e5ea;">
+            <div style="padding: 16px 28px 22px 28px; background: var(--nju-bg-subtle); border-top: 1px solid var(--nju-border);">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
                     <a href="https://enhance.njust.wiki" target="_blank"
                         style="color: ${theme.accent}; text-decoration: none; font-weight: 500; font-size: 14px;">
@@ -631,9 +633,9 @@
                 </div>
                 <div style="
                     padding: 12px 14px;
-                    background: ${theme.accentLight}; border-radius: 10px;
+                    background: ${theme.accentLight}; border-radius: var(--nju-radius-md);
                 ">
-                    <div style="font-size: 12px; color: #424245; line-height: 1.5;">
+                    <div style="font-size: var(--nju-fs-sm); color: var(--nju-text-2); line-height: 1.5;">
                         <strong style="color: ${theme.accent};">免责声明</strong> — 本工具仅供学习交流，数据仅供参考。请以教务处官网信息为准，使用本工具产生的任何后果由用户自行承担。
                     </div>
                 </div>
@@ -648,7 +650,7 @@
                     from { opacity: 0; transform: translate(-50%, -50%) scale(0.96); }
                     to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
                 }
-                #closeModalBtn:hover { background: #e8e8ed; color: #1d1d1f; }
+                /* 关闭按钮交互态由 base.css 的 .nju-close 统一提供 */
             `;
             document.head.appendChild(style);
         }
@@ -667,51 +669,73 @@
 
 // ===== src/ui/drag.js ==================================================
     // ==================== 拖动功能 ====================
-    // fix②: 使用 getBoundingClientRect 获取视觉位置，修复折叠动画后拖拽跳位问题
-    function addDragFunctionality(container) {
+    /**
+     * 统一拖拽实现 —— 全脚本唯一的拖拽入口
+     *
+     * 说明：
+     * - 使用 getBoundingClientRect 读取视觉位置，避免折叠/动画 transform 造成的坐标跳变
+     * - 同时支持鼠标与触摸事件
+     * - 只使用 addEventListener，不会覆盖页面上的其它监听器
+     *
+     * @param {HTMLElement} handle 拖拽句柄
+     * @param {HTMLElement} target 被移动的元素（通常为句柄所属容器）
+     * @param {Object} [options]
+     * @param {(e: Event) => boolean} [options.shouldIgnore] 返回 true 时忽略本次拖拽
+     */
+    function makeDraggable(handle, target, options = {}) {
+        if (!handle || !target) return;
+
         let isDragging = false;
-        let mouseStartX, mouseStartY, elemStartX, elemStartY;
+        let mouseStartX = 0, mouseStartY = 0, elemStartX = 0, elemStartY = 0;
 
-        const dragHandle = container.querySelector('#dragHandle');
+        const getPoint = (e) =>
+            (e.touches && e.touches[0])
+                ? { x: e.touches[0].clientX, y: e.touches[0].clientY }
+                : { x: e.clientX, y: e.clientY };
 
-        function dragStart(e) {
-            const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-            const clientY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-            if (e.target === dragHandle || dragHandle.contains(e.target)) {
-                // 读取当前视觉位置（考虑 transform 的影响）
-                const rect = container.getBoundingClientRect();
-                elemStartX = rect.left;
-                elemStartY = rect.top;
-                mouseStartX = clientX;
-                mouseStartY = clientY;
-                isDragging = true;
-                e.preventDefault();
-            }
-        }
+        const dragStart = (e) => {
+            if (options.shouldIgnore && options.shouldIgnore(e)) return;
+            const point = getPoint(e);
+            const rect = target.getBoundingClientRect();
+            elemStartX = rect.left;
+            elemStartY = rect.top;
+            mouseStartX = point.x;
+            mouseStartY = point.y;
+            isDragging = true;
+            e.preventDefault();
+        };
 
-        function drag(e) {
+        const drag = (e) => {
             if (!isDragging) return;
             e.preventDefault();
-            const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-            const clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
-            const newLeft = elemStartX + (clientX - mouseStartX);
-            const newTop = elemStartY + (clientY - mouseStartY);
-            container.style.transform = 'none';  // 清除动画 transform
-            container.style.left = newLeft + 'px';
-            container.style.top = newTop + 'px';
-            // 若原来用 translate(-50%,-50%) 定位，拖动后改为绝对位置
-            container.style.margin = '0';
-        }
+            const point = getPoint(e);
+            // 清除动画 transform 与原有定位，改用绝对坐标
+            target.style.transform = 'none';
+            target.style.margin = '0';
+            target.style.right = 'auto';
+            target.style.left = (elemStartX + point.x - mouseStartX) + 'px';
+            target.style.top = (elemStartY + point.y - mouseStartY) + 'px';
+        };
 
-        function dragEnd() { isDragging = false; }
+        const dragEnd = () => { isDragging = false; };
 
-        dragHandle.addEventListener('mousedown', dragStart);
+        handle.addEventListener('mousedown', dragStart);
         document.addEventListener('mousemove', drag);
         document.addEventListener('mouseup', dragEnd);
-        dragHandle.addEventListener('touchstart', dragStart, { passive: false });
+        handle.addEventListener('touchstart', dragStart, { passive: false });
         document.addEventListener('touchmove', drag, { passive: false });
         document.addEventListener('touchend', dragEnd, { passive: false });
     }
+
+    /** 兼容旧调用：句柄默认为容器内的 #dragHandle */
+    function addDragFunctionality(container) {
+        makeDraggable(container && container.querySelector('#dragHandle'), container);
+    }
+
+    // 挂载到公共 UI 层：模块一与模块二是相互隔离的作用域，
+    // 模块二（自动评教）通过 window.NJUI.makeDraggable 复用同一份拖拽实现
+    window.NJUI = window.NJUI || {};
+    window.NJUI.makeDraggable = makeDraggable;
 
 // ===== src/core/qiangzhi.js ============================================
     // ==================== 检测强智科技页面 ====================
@@ -732,26 +756,26 @@
                     <div style="display: flex; flex-direction: column; gap: 10px;">
                         <a href="http://202.119.81.113:8080/" target="_blank" style="
                             display: flex; align-items: center; justify-content: center;
-                            background: #007AFF; color: white;
-                            padding: 13px 20px; text-decoration: none; border-radius: 12px;
-                            font-weight: 500; font-size: 15px; text-align: center;
+                            background: var(--nju-primary); color: white;
+                            padding: 13px 20px; text-decoration: none; border-radius: var(--nju-radius-md);
+                            font-weight: 500; font-size: var(--nju-fs-lg); text-align: center;
                             transition: background 0.15s;"
-                            onmouseover="this.style.background='#0066d6'" onmouseout="this.style.background='#007AFF'">
+                            onmouseover="this.style.background='var(--nju-primary-hover)'" onmouseout="this.style.background='var(--nju-primary)'">
                             教务处登录入口
                             <span style="margin-left: 8px; font-size: 11px; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 6px;">推荐</span>
                         </a>
                         <a href="https://www.njust.edu.cn/" target="_blank" style="
-                            display: block; background: #f5f5f7; color: #1d1d1f;
-                            padding: 13px 20px; text-decoration: none; border-radius: 12px;
-                            font-weight: 500; font-size: 15px; text-align: center;
-                            border: 1px solid #d2d2d7; transition: background 0.15s;"
-                            onmouseover="this.style.background='#e8e8ed'" onmouseout="this.style.background='#f5f5f7'">
+                            display: block; background: var(--nju-bg-subtle); color: var(--nju-text);
+                            padding: 13px 20px; text-decoration: none; border-radius: var(--nju-radius-md);
+                            font-weight: 500; font-size: var(--nju-fs-lg); text-align: center;
+                            border: 1px solid var(--nju-border-strong); transition: background 0.15s;"
+                            onmouseover="this.style.background='var(--nju-bg-hover)'" onmouseout="this.style.background='var(--nju-bg-subtle)'">
                             智慧理工登录入口
                         </a>
                     </div>
-                    <div style="margin-top: 18px; padding: 14px; background: #f5f5f7; border-radius: 10px;">
-                        <div style="font-size: 13px; color: #424245; line-height: 1.6;">
-                            <strong style="color: #1d1d1f;">温馨提示</strong><br>
+                    <div style="margin-top: 18px; padding: 14px; background: var(--nju-bg-subtle); border-radius: var(--nju-radius-md);">
+                        <div style="font-size: var(--nju-fs-md); color: var(--nju-text-2); line-height: 1.6;">
+                            <strong style="color: var(--nju-text);">温馨提示</strong><br>
                             验证码区分大小写，通常为小写字母。如遇登录问题，建议使用教务处入口。
                         </div>
                     </div>
@@ -942,91 +966,53 @@
             container.id = 'creditSummaryWindow';
             container.style.cssText = `
                 position: fixed; top: 40px; right: 40px;
-                background: #fff; border: 1px solid #e0e0e0; border-radius: 14px;
-                padding: 0; box-shadow: 0 8px 32px rgba(0,0,0,0.13);
-                z-index: 9999; min-width: 420px; max-width: 520px;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                background: var(--nju-bg); border: 1px solid var(--nju-border); border-radius: var(--nju-radius-lg);
+                padding: 0; box-shadow: var(--nju-shadow-md);
+                z-index: var(--nju-z-panel); min-width: 420px; max-width: 520px;
+                font-family: var(--nju-font);
                 overflow: hidden;
             `;
 
             container.innerHTML = `
                 <div id="creditDragHandle" style="
-                    background: #f5f6fa; padding: 14px 22px; cursor: move;
+                    background: var(--nju-bg-subtle); padding: 14px 22px; cursor: move;
                     display: flex; justify-content: space-between; align-items: center;
-                    border-bottom: 1px solid #e0e0e0;">
-                    <div style="color: #333; font-weight: 600; font-size: 17px; letter-spacing: 1px;">
+                    border-bottom: 1px solid var(--nju-border);">
+                    <div style="color: var(--nju-text); font-weight: 600; font-size: var(--nju-fs-xl); letter-spacing: 1px;">
                         🎓 南理工教务增强助手 V2
                     </div>
-                    <span id="creditCloseBtn" style="cursor: pointer; color: #888; font-size: 18px;
-                        padding: 2px 8px; border-radius: 4px; transition: background-color 0.2s;">✕</span>
+                    <span id="creditCloseBtn" class="nju-close">✕</span>
                 </div>
-                <div style="background: #fff; padding: 18px 22px 10px 22px; max-height: 540px; overflow-y: auto;">
+                <div style="background: var(--nju-bg); padding: 18px 22px 10px 22px; max-height: 540px; overflow-y: auto;">
                     <div id="creditSummary"></div>
-                    <div id="xxkVersionBar" style="margin-top: 14px; padding: 9px 12px; background: #f0f7ff;
-                        border: 1px solid #d6e6ff; border-radius: 8px; font-size: 13px; color: #33557a;
+                    <div id="xxkVersionBar" style="margin-top: 14px; padding: 9px 12px; background: var(--nju-primary-soft);
+                        border: 1px solid rgba(0, 122, 255, 0.25); border-radius: var(--nju-radius-sm); font-size: var(--nju-fs-md); color: var(--nju-text-2);
                         display: flex; align-items: center;">
                         <span id="xxkVersionText">📦 分类口径：加载中…</span>
                         <select id="xxkVersionSelect" title="选择学分统计所依据的培养方案版本"
-                            style="margin-left: auto; font-size: 12px; padding: 2px 6px; border: 1px solid #c9d8ea;
-                            border-radius: 6px; background: #fff; color: #33557a;">
+                            style="margin-left: auto; font-size: var(--nju-fs-sm); padding: 2px 6px; border: 1px solid var(--nju-border);
+                            border-radius: var(--nju-radius-sm); background: var(--nju-bg); color: var(--nju-text-2);">
                             <option value="">按学号自动</option>
                             <option value="2018">2018 版</option>
                             <option value="2022">2022 版</option>
                             <option value="2026">2026 版</option>
                         </select>
                     </div>
-                    <div style="margin-top: 18px; padding-top: 12px; border-top: 1px solid #e0e0e0;
-                        font-size: 13px; color: #888; line-height: 1.6; text-align: left;">
+                    <div style="margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--nju-border);
+                        font-size: var(--nju-fs-md); color: var(--nju-text-3); line-height: 1.6; text-align: left;">
                         <li>对照个人培养方案核实具体修课要求</li>
                         <li>选修课类别统计仅包含已知分类的通识教育选修课</li>
                         <li>课程分类信息可能随时更新，请以教务处最新通知为准</li>
                         <div style="margin-bottom: 8px;">
                             <span>请查看 <a href="https://enhance.njust.wiki" target="_blank"
-                                style="color: #007bff; text-decoration: none;">增强助手官网</a> 获取使用说明</span>
+                                style="color: var(--nju-primary); text-decoration: none;">增强助手官网</a> 获取使用说明</span>
                         </div>
                     </div>
                 </div>
             `;
 
-            // fix②: 学分窗拖拽也使用修正后的 addDragFunctionality
-            // 注意：该容器的拖拽句柄 id 为 creditDragHandle，与 addDragFunctionality 查找 #dragHandle 不符，
-            // 故在此单独实现，逻辑与修正后的 addDragFunctionality 一致
-            let isDragging = false;
-            let mouseStartX, mouseStartY, elemStartX, elemStartY;
-            const dragHandle = container.querySelector('#creditDragHandle');
-
-            if (dragHandle) {
-                const dragStart = (e) => {
-                    const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-                    const clientY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-                    if (e.target === dragHandle || dragHandle.contains(e.target)) {
-                        const rect = container.getBoundingClientRect();
-                        elemStartX = rect.left;
-                        elemStartY = rect.top;
-                        mouseStartX = clientX;
-                        mouseStartY = clientY;
-                        isDragging = true;
-                        e.preventDefault();
-                    }
-                };
-                const drag = (e) => {
-                    if (!isDragging) return;
-                    e.preventDefault();
-                    const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-                    const clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
-                    container.style.right = 'auto';
-                    container.style.left = (elemStartX + clientX - mouseStartX) + 'px';
-                    container.style.top = (elemStartY + clientY - mouseStartY) + 'px';
-                };
-                const dragEnd = () => { isDragging = false; };
-
-                dragHandle.addEventListener('mousedown', dragStart);
-                document.addEventListener('mousemove', drag);
-                document.addEventListener('mouseup', dragEnd);
-                dragHandle.addEventListener('touchstart', dragStart, { passive: false });
-                document.addEventListener('touchmove', drag, { passive: false });
-                document.addEventListener('touchend', dragEnd, { passive: false });
-            }
+            // 统一使用公共拖拽实现（句柄为本窗体的 creditDragHandle）
+            makeDraggable(container.querySelector('#creditDragHandle'), container);
 
             document.body.appendChild(container);
 
@@ -1034,8 +1020,7 @@
             const creditCloseBtn = container.querySelector('#creditCloseBtn');
             if (creditCloseBtn) {
                 creditCloseBtn.addEventListener('click', () => container.remove());
-                creditCloseBtn.addEventListener('mouseenter', () => creditCloseBtn.style.backgroundColor = '#e0e0e0');
-                creditCloseBtn.addEventListener('mouseleave', () => creditCloseBtn.style.backgroundColor = 'transparent');
+                // hover 样式由 base.css 的 .nju-close 统一提供
             }
 
             // 培养方案口径显示与手动切换
@@ -1111,35 +1096,35 @@
             const totalCreditsByCategory = Object.values(creditsByCategory).reduce((s, d) => s + d.credits, 0);
             const totalCountByCategory = Object.values(creditsByCategory).reduce((s, d) => s + d.count, 0);
 
-            let summaryHTML = `<div style="border-bottom: 1px solid #e0e0e0; margin-bottom: 12px; padding-bottom: 10px;">`;
-            summaryHTML += `<div style="margin-bottom: 8px; font-size: 15px; color: #222; font-weight: 600;">📊 按课程性质统计</div>`;
-            summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; background: #f7f7fa; border-radius: 4px; padding: 4px 6px; margin-bottom: 4px;">
-                <span style="color: #007bff; font-weight: 600; font-size: 13px;">总计</span>
-                <span style="font-weight: 600; color: #007bff; font-size: 13px;">${totalCreditsByType.toFixed(1)} 学分</span>
-                <span style="color: #007bff; font-weight: 600; font-size: 13px;">${totalCountByType} 门</span>
+            let summaryHTML = `<div style="border-bottom: 1px solid var(--nju-border); margin-bottom: 12px; padding-bottom: 10px;">`;
+            summaryHTML += `<div style="margin-bottom: 8px; font-size: var(--nju-fs-lg); color: var(--nju-text); font-weight: 600;">📊 按课程性质统计</div>`;
+            summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; background: var(--nju-bg-subtle); border-radius: var(--nju-radius-sm); padding: 4px 6px; margin-bottom: 4px;">
+                <span style="color: var(--nju-primary); font-weight: 600; font-size: var(--nju-fs-md);">总计</span>
+                <span style="font-weight: 600; color: var(--nju-primary); font-size: var(--nju-fs-md);">${totalCreditsByType.toFixed(1)} 学分</span>
+                <span style="color: var(--nju-primary); font-weight: 600; font-size: var(--nju-fs-md);">${totalCountByType} 门</span>
             </div><div style="display: grid; gap: 2px;">`;
             for (const [type, data] of Object.entries(creditsByType)) {
                 summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; padding: 2px 0; align-items: center;">
-                    <span style="color: #444; font-size: 13px;">${type}</span>
-                    <span style="color: #333; font-size: 13px;">${data.credits.toFixed(1)} 学分</span>
-                    <span style="color: #888; font-size: 13px;">${data.count} 门</span>
+                    <span style="color: var(--nju-text-2); font-size: var(--nju-fs-md);">${type}</span>
+                    <span style="color: var(--nju-text); font-size: var(--nju-fs-md);">${data.credits.toFixed(1)} 学分</span>
+                    <span style="color: var(--nju-text-3); font-size: var(--nju-fs-md);">${data.count} 门</span>
                 </div>`;
             }
             summaryHTML += `</div></div>`;
 
             if (Object.keys(creditsByCategory).length > 0) {
                 summaryHTML += `<div style="margin-top: 16px;">`;
-                summaryHTML += `<div style="margin-bottom: 8px; font-size: 15px; color: #222; font-weight: 600;">🏷️ 按选修课类别统计</div>`;
-                summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; background: #f7f7fa; border-radius: 4px; padding: 4px 6px; margin-bottom: 4px;">
-                    <span style="color: #007bff; font-weight: 600; font-size: 13px;">总计</span>
-                    <span style="font-weight: 600; color: #007bff; font-size: 13px;">${totalCreditsByCategory.toFixed(1)} 学分</span>
-                    <span style="color: #007bff; font-weight: 600; font-size: 13px;">${totalCountByCategory} 门</span>
+                summaryHTML += `<div style="margin-bottom: 8px; font-size: var(--nju-fs-lg); color: var(--nju-text); font-weight: 600;">🏷️ 按选修课类别统计</div>`;
+                summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; background: var(--nju-bg-subtle); border-radius: var(--nju-radius-sm); padding: 4px 6px; margin-bottom: 4px;">
+                    <span style="color: var(--nju-primary); font-weight: 600; font-size: var(--nju-fs-md);">总计</span>
+                    <span style="font-weight: 600; color: var(--nju-primary); font-size: var(--nju-fs-md);">${totalCreditsByCategory.toFixed(1)} 学分</span>
+                    <span style="color: var(--nju-primary); font-weight: 600; font-size: var(--nju-fs-md);">${totalCountByCategory} 门</span>
                 </div><div style="display: grid; gap: 2px;">`;
                 for (const [category, data] of Object.entries(creditsByCategory)) {
                     summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; padding: 2px 0; align-items: center;">
-                        <span style="color: #444; font-size: 13px;">${category}</span>
-                        <span style="color: #333; font-size: 13px;">${data.credits.toFixed(1)} 学分</span>
-                        <span style="color: #888; font-size: 13px;">${data.count} 门</span>
+                        <span style="color: var(--nju-text-2); font-size: var(--nju-fs-md);">${category}</span>
+                        <span style="color: var(--nju-text); font-size: var(--nju-fs-md);">${data.credits.toFixed(1)} 学分</span>
+                        <span style="color: var(--nju-text-3); font-size: var(--nju-fs-md);">${data.count} 门</span>
                     </div>`;
                 }
                 summaryHTML += `</div></div>`;
@@ -1150,7 +1135,7 @@
         } catch (e) {
             Logger.error('更新学分统计失败:', e);
             const el = document.getElementById('creditSummary');
-            if (el) el.innerHTML = '<div style="color:#dc3545;padding:10px;text-align:center;">❌ 学分统计更新失败</div>';
+            if (el) el.innerHTML = '<div style="color:var(--nju-danger);padding:10px;text-align:center;">❌ 学分统计更新失败</div>';
         }
     }
 
@@ -1710,29 +1695,31 @@
             /* 控制面板主容器 */
             #v80-panel {
                 position: fixed; top: 20px; right: 20px; width: 490px;
-                background: #fff; border-radius: 10px;
-                box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-                z-index: 99999; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-                display: flex; flex-direction: column; border: 1px solid #e2e8f0;
+                background: var(--nju-bg); border-radius: var(--nju-radius-md);
+                box-shadow: var(--nju-shadow-md);
+                z-index: var(--nju-z-panel); font-family: var(--nju-font);
+                display: flex; flex-direction: column; border: 1px solid var(--nju-border);
                 max-height: 90vh; overflow: hidden;
-                transition: transform 0.25s ease; font-size: 13px; color: #2d3748;
+                transition: transform 0.25s ease; font-size: var(--nju-fs-md); color: var(--nju-text);
             }
             #v80-panel.wide { width: 640px; }
             #v80-header {
-                padding: 11px 14px; background: #f7fafc; border-bottom: 1px solid #e2e8f0;
+                padding: 11px 14px; background: var(--nju-bg-subtle); border-bottom: 1px solid var(--nju-border);
                 cursor: move; display: flex; align-items: center; gap: 8px; user-select: none; flex-shrink: 0;
             }
-            #v80-header b { flex: 1; font-size: 14px; color: #2d3748; }
-            #v80-action-bar { padding: 10px 14px 8px; border-bottom: 1px solid #edf2f7; background: #fff; flex-shrink: 0; }
+            #v80-header b { flex: 1; font-size: 14px; color: var(--nju-text); }
+            #v80-action-bar { padding: 10px 14px 8px; border-bottom: 1px solid var(--nju-border); background: var(--nju-bg); flex-shrink: 0; }
             #v80-submit-hint { font-size: 11px; padding: 6px 10px; border-radius: 6px; margin-bottom: 8px; background: #f0fff4; color: #276749; border: 1px solid #c6f6d5; display: none; line-height: 1.6; }
             #v80-submit-hint.visible { display: block; }
             .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 7px; }
             #v80-body { padding: 10px 14px; overflow-y: auto; flex: 1; }
 
             /* 列表项卡片样式 */
-            .entry-card, .ci { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 7px; border: 1px solid #e2e8f0; margin-bottom: 7px; background: #f7fafc; }
-            .ci { padding: 8px 10px; margin-bottom: 6px; border-color: #edf2f7; }
-            .entry-label, .ci-name { flex: 1; font-weight: 500; color: #2d3748; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            .entry-card, .ci { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: var(--nju-radius-sm); border: 1px solid var(--nju-border); margin-bottom: 7px; background: var(--nju-bg-subtle); }
+            .ci { padding: 8px 10px; margin-bottom: 6px; border-color: var(--nju-border); }
+            .entry-label, .ci-name { flex: 1; font-weight: 500; color: var(--nju-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            /* 入口数量统计（此前缺少对应规则） */
+            .entry-count { font-size: var(--nju-fs-xs); color: var(--nju-text-3); }
             .ci-teacher { color: #718096; white-space: nowrap; }
             .ci-zpf { color: #276749; font-size: 11px; background: #f0fff4; padding: 1px 7px; border-radius: 8px; border: 1px solid #c6f6d5; white-space: nowrap; }
 
@@ -1754,16 +1741,16 @@
             .vb:disabled { opacity: 0.45; cursor: not-allowed; }
 
             /* 可折叠区块样式 */
-            .v80-section { flex-shrink: 0; border-top: 1px solid #edf2f7; }
-            .v80-sec-hd { padding: 7px 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; background: #f7fafc; }
-            .v80-sec-hd .lbl { font-size: 11px; color: #4a5568; font-weight: 600; flex: 1; }
-            .v80-sec-hd .arr { font-size: 13px; color: #a0aec0; }
+            .v80-section { flex-shrink: 0; border-top: 1px solid var(--nju-border); }
+            .v80-sec-hd { padding: 7px 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; background: var(--nju-bg-subtle); }
+            .v80-sec-hd .lbl { font-size: var(--nju-fs-xs); color: var(--nju-text-2); font-weight: 600; flex: 1; }
+            .v80-sec-hd .arr { font-size: var(--nju-fs-md); color: var(--nju-text-3); }
             .v80-sec-body { display: none; }
             .v80-sec-body.open { display: block; }
 
             /* Storage 预览样式 */
-            #v80-storage-pre { max-height: 200px; overflow-y: auto; padding: 4px 10px; font-size: 11px; line-height: 1.6; font-family: 'SFMono-Regular', Consolas, monospace; background: #f7fafc; }
-            .v80-value-chip { display: inline-block; margin-left: 6px; font-size: 11px; color: #4a5568; }
+            #v80-storage-pre { max-height: 200px; overflow-y: auto; padding: 4px 10px; font-size: var(--nju-fs-xs); line-height: 1.6; font-family: var(--nju-font-mono); background: var(--nju-bg-subtle); }
+            .v80-value-chip { display: inline-block; margin-left: 6px; font-size: var(--nju-fs-xs); color: var(--nju-text-2); }
         `;
         document.head.appendChild(style);
     };
@@ -1780,7 +1767,7 @@
         panel.innerHTML = `
             <div id="v80-header">
                 <b>${titleHtml}</b>
-                <span id="v80-close-btn" style="cursor:pointer;color:#718096;font-size:16px;padding:2px 8px;border-radius:4px;transition:background 0.2s;margin-left:8px;" title="关闭">✕</span>
+                <span id="v80-close-btn" class="nju-close" title="关闭">✕</span>
             </div>
             <div id="v80-action-bar">${actionBarHtml}</div>
             <div id="v80-body">${bodyHtml}</div>
@@ -1803,29 +1790,16 @@
                 e.stopPropagation();
                 panel.remove();
             });
-            closeBtn.addEventListener('mouseenter', () => closeBtn.style.backgroundColor = '#e2e8f0');
-            closeBtn.addEventListener('mouseleave', () => closeBtn.style.backgroundColor = 'transparent');
+            // hover 样式由 base.css 的 .nju-close 统一提供
         }
         // 存储预览区块折叠
         const storeBody = document.getElementById('store-body'), storeArr = document.getElementById('store-arr');
         document.getElementById('store-hd').onclick = () => { storeBody.classList.toggle('open'); storeArr.textContent = storeBody.classList.contains('open') ? '▴' : '▾'; if (storeBody.classList.contains('open')) renderStoragePanel(); };
 
-        // 面板拖拽逻辑 (修正 transform 带来的坐标偏移问题)
-        let drag = false, mouseStartX = 0, mouseStartY = 0, elemStartX = 0, elemStartY = 0;
-        document.getElementById('v80-header').onmousedown = (e) => {
-            if (e.target.id === 'v80-close-btn') return;
-            const rect = panel.getBoundingClientRect();
-            elemStartX = rect.left; elemStartY = rect.top;
-            mouseStartX = e.clientX; mouseStartY = e.clientY;
-            drag = true;
-        };
-        document.onmousemove = (e) => {
-            if (!drag) return;
-            panel.style.left = (elemStartX + e.clientX - mouseStartX) + 'px';
-            panel.style.top = (elemStartY + e.clientY - mouseStartY) + 'px';
-            panel.style.right = 'auto';
-        };
-        document.onmouseup = () => { drag = false; };
+        // 复用公共拖拽实现（避免直接赋值 document.onmousemove 覆盖页面其它监听器）
+        window.NJUI.makeDraggable(document.getElementById('v80-header'), panel, {
+            shouldIgnore: (e) => e.target.id === 'v80-close-btn'
+        });
 
         return panel;
     };
@@ -2095,7 +2069,7 @@
 
                 const bar = document.createElement('div');
                 bar.id = 'v80-manual-bar';
-                bar.style.cssText = 'position:sticky;top:0;left:0;width:100%;z-index:99999;box-sizing:border-box;background:#ebf8ff;border-bottom:2px solid #90cdf4;color:#2c5282;padding:10px 18px;font-family:sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.08);';
+                bar.style.cssText = 'position:sticky;top:0;left:0;width:100%;z-index:var(--nju-z-topbar);box-sizing:border-box;background:#ebf8ff;border-bottom:2px solid #90cdf4;color:#2c5282;padding:10px 18px;font-family:var(--nju-font);box-shadow:var(--nju-shadow-sm);';
                 bar.innerHTML = `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
                     <span style="font-weight:700;font-size:13px;">🎓 南理工教务增强助手 V2</span>
                     <span style="font-size:11px;padding:2px 9px;border-radius:7px;background:#edf2f7;color:#718096;border:1px solid #cbd5e0;">手动模式</span>
@@ -2149,7 +2123,7 @@
         const modeName = isAutoSub ? '✅ 提交模式' : '💾 保存模式';
 
         const bar = document.createElement('div');
-        bar.style.cssText = `position:sticky;top:0;left:0;width:100%;z-index:99999;box-sizing:border-box;background:${bgColor};color:${textColor};border-bottom:2px solid ${bdColor};box-shadow:0 2px 8px rgba(0,0,0,0.08);font-family:sans-serif;`;
+        bar.style.cssText = `position:sticky;top:0;left:0;width:100%;z-index:var(--nju-z-topbar);box-sizing:border-box;background:${bgColor};color:${textColor};border-bottom:2px solid ${bdColor};box-shadow:var(--nju-shadow-sm);font-family:var(--nju-font);`;
         bar.innerHTML = `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 20px;">
             <span style="font-weight:700;font-size:13px;">🎓 南理工教务增强助手 V2</span>
             <span style="font-size:11px;padding:2px 10px;border-radius:8px;background:rgba(255,255,255,0.5);border:1px solid ${bdColor};">${modeName}</span>
