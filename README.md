@@ -165,7 +165,12 @@
 ![启用](https://enhance.njust.wiki/docs/static/PixPin_2025-07-04_23-19-05.png)
 ![启用](https://enhance.njust.wiki/docs/static/enable.png)
 
-启用后，访问 [教务系统主页](http://202.119.81.113:8080/)，脚本会自动生效，无需手动配置。
+启用后，访问教务系统即可自动生效，无需手动配置：
+
+- 校内：[教务系统主页](http://202.119.81.113:8080/)
+- 校外（推荐）：[智慧理工门户](https://bkjw.njust.edu.cn/njlgdx/indexsso.jsp)
+
+> ⚠️ 教务处直连入口（202.119.81.112 / 113）已限制为**仅校园网**访问，校外请使用智慧理工门户登录。
 
 ### 4 刷新登录状态
 

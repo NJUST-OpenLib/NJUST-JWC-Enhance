@@ -28,10 +28,12 @@
 
 > 南理工教务系统入口说明：
 > 
-> ✅ 正确入口：[http://202.119.81.113:8080/](http://202.119.81.113:8080/)  
-> ✅ 智慧理工平台：[https://ehall2.njust.edu.cn/](https://ehall2.njust.edu.cn/)（初次跳转可能报 SSL 错）  
-> ❌ 错误入口：[http://202.119.81.112:9080/](http://202.119.81.112:9080/)  
-> ❌ 错误入口：[https://bkjw.njust.edu.cn/](https://bkjw.njust.edu.cn/)
+> ✅ **推荐（校外可用）**：[智慧理工门户 https://bkjw.njust.edu.cn/njlgdx/indexsso.jsp](https://bkjw.njust.edu.cn/njlgdx/indexsso.jsp)  
+> ✅ 校内入口：[http://202.119.81.113:8080/](http://202.119.81.113:8080/) —— **仅限校园网**  
+> ❌ 错误入口：[http://202.119.81.112:9080/](http://202.119.81.112:9080/)
+> 
+> ⚠️ **教务处直连入口（202.119.81.112 / 113）已限制为仅校园网访问**，
+> 校外请通过智慧理工门户登录。需注意：在智慧理工平台上「课程大纲」功能会受限。
 
 ![登录提示](./docs/static/login_notice.png)
 

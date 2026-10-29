@@ -30,6 +30,7 @@ const SOURCES = [
     'ui/modal.js',               // 统一弹窗
     'ui/drag.js',                // 拖拽能力
     'core/qiangzhi.js',          // 强智科技页面检测
+    'core/networkNotice.js',     // 校园网访问限制提示
     'ui/promoBanner.js',         // 梨课程推荐提示
     'core/dataSource.js',        // 远程数据加载与课程映射构建
     'ui/creditsPanel.js',        // 学分统计悬浮窗

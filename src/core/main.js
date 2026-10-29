@@ -14,6 +14,9 @@
                 Logger.warn('检测到智慧理工平台，课程大纲功能将受限');
             }
 
+            // 教务处直连入口仅限校园网，提示校外改走智慧理工门户
+            showCampusNetworkNotice();
+
             // 1. 登录保活与状态检查
             autoRefreshLoginStatus();
             checkLoginErrorAndRefresh();
