@@ -104,7 +104,9 @@ function build() {
         chunks.push(`// ===== src/${file} ${'='.repeat(Math.max(0, 60 - file.length))}\n${body}`);
     }
 
-    const output = chunks.join('\n');
+    // 统一换行符为 LF：保证 Windows / Linux 下构建出的字节完全一致，
+    // 否则 CI 的「产物同步校验」会因 CRLF 差异误报
+    const output = chunks.join('\n').replace(/\r\n/g, '\n');
 
     fs.mkdirSync(DIST, { recursive: true });
     fs.writeFileSync(path.join(DIST, 'enhance.user.js'), output, 'utf8');

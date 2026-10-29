@@ -34,8 +34,11 @@ jobs:
 
       - name: 校验产物与源码是否同步
         run: |
-          if ! git diff --quiet -- dist enhance.js; then
+          # 仅比较有效内容，忽略行尾差异（Windows / Linux 换行不同不应判为失败）
+          if ! git diff --quiet --ignore-cr-at-eol -- dist enhance.js; then
             echo "::error::构建产物与源码不同步。请在本地执行 npm run build 并提交 dist/enhance.user.js 与 enhance.js"
+            git diff --stat -- dist enhance.js
+            git diff --ignore-cr-at-eol -- dist enhance.js | head -60
             exit 1
           fi
           echo "产物已是最新"
