@@ -15,7 +15,7 @@
 
                 const bar = document.createElement('div');
                 bar.id = 'v80-manual-bar';
-                bar.style.cssText = 'position:sticky;top:0;left:0;width:100%;z-index:99999;box-sizing:border-box;background:#ebf8ff;border-bottom:2px solid #90cdf4;color:#2c5282;padding:10px 18px;font-family:sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.08);';
+                bar.style.cssText = 'position:sticky;top:0;left:0;width:100%;z-index:var(--nju-z-topbar);box-sizing:border-box;background:#ebf8ff;border-bottom:2px solid #90cdf4;color:#2c5282;padding:10px 18px;font-family:var(--nju-font);box-shadow:var(--nju-shadow-sm);';
                 bar.innerHTML = `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
                     <span style="font-weight:700;font-size:13px;">🎓 南理工教务增强助手 V2</span>
                     <span style="font-size:11px;padding:2px 9px;border-radius:7px;background:#edf2f7;color:#718096;border:1px solid #cbd5e0;">手动模式</span>
@@ -69,7 +69,7 @@
         const modeName = isAutoSub ? '✅ 提交模式' : '💾 保存模式';
 
         const bar = document.createElement('div');
-        bar.style.cssText = `position:sticky;top:0;left:0;width:100%;z-index:99999;box-sizing:border-box;background:${bgColor};color:${textColor};border-bottom:2px solid ${bdColor};box-shadow:0 2px 8px rgba(0,0,0,0.08);font-family:sans-serif;`;
+        bar.style.cssText = `position:sticky;top:0;left:0;width:100%;z-index:var(--nju-z-topbar);box-sizing:border-box;background:${bgColor};color:${textColor};border-bottom:2px solid ${bdColor};box-shadow:var(--nju-shadow-sm);font-family:var(--nju-font);`;
         bar.innerHTML = `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 20px;">
             <span style="font-weight:700;font-size:13px;">🎓 南理工教务增强助手 V2</span>
             <span style="font-size:11px;padding:2px 10px;border-radius:8px;background:rgba(255,255,255,0.5);border:1px solid ${bdColor};">${modeName}</span>

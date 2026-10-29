@@ -17,38 +17,38 @@
                 /* 面板主样式 */
                 #njust-enhance-log {
                     position: fixed; bottom: 0; right: 20px; width: 380px;
-                    background: #fff; border: 1px solid #e2e8f0; border-bottom: none;
-                    border-radius: 10px 10px 0 0; box-shadow: 0 -2px 15px rgba(0,0,0,0.08);
-                    z-index: 10001; font-family: 'SFMono-Regular', Consolas, monospace;
+                    background: var(--nju-bg); border: 1px solid var(--nju-border); border-bottom: none;
+                    border-radius: var(--nju-radius-md) var(--nju-radius-md) 0 0; box-shadow: var(--nju-shadow-sm);
+                    z-index: var(--nju-z-float); font-family: var(--nju-font-mono);
                     display: flex; flex-direction: column; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 }
                 #njust-enhance-log.minimized { transform: translateY(calc(100% - 38px)); }
 
                 /* 标题栏样式 */
                 #njust-enhance-log-hd {
-                    padding: 10px 15px; background: #f7fafc; border-bottom: 1px solid #e2e8f0;
+                    padding: 10px 15px; background: var(--nju-bg-subtle); border-bottom: 1px solid var(--nju-border);
                     cursor: pointer; display: flex; align-items: center; justify-content: space-between;
-                    border-radius: 10px 10px 0 0; user-select: none; gap: 10px;
+                    border-radius: var(--nju-radius-md) var(--nju-radius-md) 0 0; user-select: none; gap: 10px;
                 }
-                #njust-enhance-log-hd b { font-size: 13px; color: #2d3748; display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; }
+                #njust-enhance-log-hd b { font-size: var(--nju-fs-md); color: var(--nju-text); display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; }
                 #nel-status-text { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; flex: 1; }
 
                 /* 日志列表样式 */
                 #njust-enhance-log-body {
-                    height: 220px; overflow-y: auto; background: #fdfdfd; font-size: 11px;
+                    height: 220px; overflow-y: auto; background: var(--nju-bg); font-size: var(--nju-fs-xs);
                     padding: 4px 0; scroll-behavior: smooth;
                 }
-                .nel-btn { font-size: 11px; color: #718096; background: #edf2f7; padding: 2px 8px; border-radius: 4px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-                .nel-btn:hover { background: #e2e8f0; color: #2d3748; }
-                .nel-clear { background: rgba(245, 101, 101, 0.05); color: #c53030; }
-                .nel-clear:hover { background: rgba(245, 101, 101, 0.15); color: #c53030; }
+                .nel-btn { font-size: var(--nju-fs-xs); color: var(--nju-text-2); background: var(--nju-bg-subtle); padding: 2px 8px; border-radius: var(--nju-radius-sm); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+                .nel-btn:hover { background: var(--nju-bg-hover); color: var(--nju-text); }
+                .nel-clear { background: var(--nju-danger-soft); color: var(--nju-danger); }
+                .nel-clear:hover { background: rgba(255, 59, 48, 0.18); color: var(--nju-danger); }
 
                 /* 日志行与分级颜色 */
-                .nel-line { padding: 3px 12px; border-bottom: 1px solid rgba(226, 232, 240, 0.4); display: flex; gap: 8px; align-items: flex-start; }
-                .nel-line:hover { background: #f7fafc; }
-                .nel-ts { color: #a0aec0; flex-shrink: 0; min-width: 55px; user-select: none; }
+                .nel-line { padding: 3px 12px; border-bottom: 1px solid var(--nju-border); display: flex; gap: 8px; align-items: flex-start; }
+                .nel-line:hover { background: var(--nju-bg-subtle); }
+                .nel-ts { color: var(--nju-text-3); flex-shrink: 0; min-width: 55px; user-select: none; }
                 .nel-lvl { font-weight: bold; flex-shrink: 0; min-width: 42px; text-align: center; font-size: 10px; }
-                .nel-msg { color: #4a5568; word-break: break-all; flex: 1; line-height: 1.5; }
+                .nel-msg { color: var(--nju-text-2); word-break: break-all; flex: 1; line-height: 1.5; }
 
                 .nel-error { border-left: 3px solid #e53e3e; background: rgba(229, 62, 62, 0.02); } .nel-error .nel-lvl { color: #e53e3e; }
                 .nel-warn { border-left: 3px solid #dd6b20; background: rgba(221, 107, 32, 0.02); } .nel-warn .nel-lvl { color: #dd6b20; }
