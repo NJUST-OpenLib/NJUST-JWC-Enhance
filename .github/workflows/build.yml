@@ -1,0 +1,59 @@
+name: 构建油猴脚本
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: 构建与校验
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 配置 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 构建单个脚本
+        run: npm run build
+
+      - name: 语法检查
+        run: node --check dist/enhance.user.js
+
+      - name: 校验产物与源码是否同步
+        run: |
+          if ! git diff --quiet -- dist enhance.js; then
+            echo "::error::构建产物与源码不同步。请在本地执行 npm run build 并提交 dist/enhance.user.js 与 enhance.js"
+            exit 1
+          fi
+          echo "产物已是最新"
+
+  release:
+    name: 发布 Release 附件
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 配置 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 构建单个脚本
+        run: npm run build
+
+      - name: 上传 Release 附件
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/enhance.user.js

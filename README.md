@@ -218,7 +218,21 @@
   详见[多版本数据文件说明](./README.getXXK.md#多版本数据文件说明与适用场景)
 
 - `kcdg.json`（教学大纲映射）：建议每年更新一次  
- 参考 [课程大纲采集流程（README.getKCDG.md）](./README.getKCDG.md)
+  参考 [课程大纲采集流程（README.getKCDG.md）](./README.getKCDG.md)
+
+### 🛠️ 修改脚本代码
+
+脚本源码位于 [`src/`](./src) 目录，已按功能拆分为多个文件；根目录的 `enhance.js` 是构建产物副本，**不要直接修改**。
+
+```bash
+npm run build      # 构建 → dist/enhance.user.js（同时生成根目录副本）
+npm run verify     # 校验构建产物是否丢失代码
+```
+
+改动 `src/` 后请执行 `npm run build`，并把 `dist/enhance.user.js` 一并提交（CI 会校验二者是否同步）。
+目录结构与后续迁移计划见[代码结构重构方案](./docs/REFACTOR-PLAN.md)。
+
+> 开发请在独立分支上进行，完成后向 `main` 发起 Pull Request。
 
 ---
 
