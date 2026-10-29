@@ -754,29 +754,33 @@
                         </div>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <a href="http://202.119.81.113:8080/" target="_blank" style="
+                        <a href="https://bkjw.njust.edu.cn/njlgdx/indexsso.jsp" target="_blank" style="
                             display: flex; align-items: center; justify-content: center;
                             background: var(--nju-primary); color: white;
                             padding: 13px 20px; text-decoration: none; border-radius: var(--nju-radius-md);
                             font-weight: 500; font-size: var(--nju-fs-lg); text-align: center;
                             transition: background 0.15s;"
                             onmouseover="this.style.background='var(--nju-primary-hover)'" onmouseout="this.style.background='var(--nju-primary)'">
-                            教务处登录入口
-                            <span style="margin-left: 8px; font-size: 11px; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 6px;">推荐</span>
+                            智慧理工门户登录
+                            <span style="margin-left: 8px; font-size: 11px; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 6px;">校外可用 · 推荐</span>
                         </a>
-                        <a href="https://www.njust.edu.cn/" target="_blank" style="
+                        <a href="http://202.119.81.113:8080/" target="_blank" style="
                             display: block; background: var(--nju-bg-subtle); color: var(--nju-text);
                             padding: 13px 20px; text-decoration: none; border-radius: var(--nju-radius-md);
                             font-weight: 500; font-size: var(--nju-fs-lg); text-align: center;
                             border: 1px solid var(--nju-border-strong); transition: background 0.15s;"
                             onmouseover="this.style.background='var(--nju-bg-hover)'" onmouseout="this.style.background='var(--nju-bg-subtle)'">
-                            智慧理工登录入口
+                            教务处登录入口
+                            <span style="margin-left: 8px; font-size: 11px; color: var(--nju-text-3);">仅限校园网</span>
                         </a>
                     </div>
                     <div style="margin-top: 18px; padding: 14px; background: var(--nju-bg-subtle); border-radius: var(--nju-radius-md);">
                         <div style="font-size: var(--nju-fs-md); color: var(--nju-text-2); line-height: 1.6;">
                             <strong style="color: var(--nju-text);">温馨提示</strong><br>
-                            验证码区分大小写，通常为小写字母。如遇登录问题，建议使用教务处入口。
+                            教务处直连入口（202.119.81.112 / 113）已限制为<strong>仅校园网</strong>可访问，
+                            校外请优先使用<a href="https://bkjw.njust.edu.cn/njlgdx/indexsso.jsp" target="_blank"
+                            style="color: var(--nju-primary); text-decoration: none;">智慧理工门户</a>登录。<br>
+                            验证码区分大小写，通常为小写字母。
                         </div>
                     </div>
                 `;
@@ -788,6 +792,63 @@
         } catch (e) {
             Logger.error('检测强智科技页面失败:', e);
             return false;
+        }
+    }
+
+// ===== src/core/networkNotice.js =======================================
+    // ==================== 校园网访问限制提示 ====================
+    /**
+     * 教务处直连入口（202.119.81.112 / 202.119.81.113）已调整为仅校园网可访问。
+     * 在校内访问成功时给出一次轻量提示，引导校外用户改用智慧理工门户登录。
+     * 提示每天最多出现一次，关闭后当天不再显示。
+     */
+    const SMART_CAMPUS_LOGIN_URL = 'https://bkjw.njust.edu.cn/njlgdx/indexsso.jsp';
+
+    function showCampusNetworkNotice() {
+        try {
+            const host = window.location.hostname;
+            const isDirectJwc = (host === '202.119.81.112' || host === '202.119.81.113');
+            if (!isDirectJwc) return;
+
+            const KEY = 'njust_campus_notice_date';
+            const today = new Date().toISOString().slice(0, 10);
+            if (localStorage.getItem(KEY) === today) return; // 当天已提示过
+
+            if (document.getElementById('njust-network-notice')) return;
+
+            const bar = document.createElement('div');
+            bar.id = 'njust-network-notice';
+            bar.style.cssText = `
+                position: fixed; top: 0; left: 0; right: 0;
+                z-index: var(--nju-z-topbar);
+                background: var(--nju-warning-soft); color: var(--nju-text);
+                border-bottom: 1px solid rgba(255, 149, 0, 0.35);
+                padding: 9px 16px; font-family: var(--nju-font); font-size: var(--nju-fs-md);
+                display: flex; align-items: center; justify-content: center; gap: 10px;
+                box-shadow: var(--nju-shadow-sm);
+            `;
+            bar.innerHTML = `
+                <span>⚠️ 教务处直连入口（202.119.81.112 / 113）仅限校园网访问，校外请使用
+                    <a href="${SMART_CAMPUS_LOGIN_URL}" target="_blank"
+                       style="color: var(--nju-primary); font-weight: 600; text-decoration: none;">智慧理工门户</a>
+                    登录教务系统。
+                </span>
+                <button id="njust-network-notice-close" class="nju-close" title="今日不再提示">✕</button>
+            `;
+
+            (document.body || document.documentElement).appendChild(bar);
+
+            const closeBtn = bar.querySelector('#njust-network-notice-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    localStorage.setItem(KEY, today);
+                    bar.remove();
+                });
+            }
+
+            Logger.info('已显示校园网访问限制提示');
+        } catch (e) {
+            Logger.warn('显示校园网访问限制提示失败:', e);
         }
     }
 
@@ -1397,6 +1458,9 @@
             if (isSmartCampus) {
                 Logger.warn('检测到智慧理工平台，课程大纲功能将受限');
             }
+
+            // 教务处直连入口仅限校园网，提示校外改走智慧理工门户
+            showCampusNetworkNotice();
 
             // 1. 登录保活与状态检查
             autoRefreshLoginStatus();
