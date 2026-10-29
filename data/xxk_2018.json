@@ -1,0 +1,5332 @@
+[
+    {
+        "course_code": "14020703",
+        "course_name": "科技英语",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000005",
+        "course_name": "走进俄罗斯",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000006",
+        "course_name": "健康心理学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000007",
+        "course_name": "西洋歌剧名作赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000011",
+        "course_name": "坦克学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000014",
+        "course_name": "文学创作",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000015",
+        "course_name": "中国文化概论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000020",
+        "course_name": "化学与社会",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000022",
+        "course_name": "药物化学导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000023",
+        "course_name": "大气颗粒物（PM2.5）的形成与控制",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000025",
+        "course_name": "核与辐射热点问题分析",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000028",
+        "course_name": "现代通信新技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000031",
+        "course_name": "供配电技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000032",
+        "course_name": "Matlab与系统仿真",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000034",
+        "course_name": "现代航空航天概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000037",
+        "course_name": "儒.释.道-中国传统思想概说",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000039",
+        "course_name": "现代汽车新技术概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000040",
+        "course_name": "SOLIDWORKS实体建模与工程制图",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000043",
+        "course_name": "保密概论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000044",
+        "course_name": "公共管理概论与案例赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000045",
+        "course_name": "汽车原理",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000051",
+        "course_name": "中国戏曲艺术及鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000052",
+        "course_name": "艺术与美育",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000061",
+        "course_name": "网络经济学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000062",
+        "course_name": "《黄帝内经》养生智慧",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000063",
+        "course_name": "婚恋与家庭心理",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000065",
+        "course_name": "光电检测技术与系统",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000067",
+        "course_name": "化妆品化学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000070",
+        "course_name": "创意营销【英】",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000071",
+        "course_name": "经济博弈论【英】",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000074",
+        "course_name": "电子产品制作【英】",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000075",
+        "course_name": "地球系统中的化学【英】",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000076",
+        "course_name": "光电对抗与烟火技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000083",
+        "course_name": "好莱坞类型电影赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000084",
+        "course_name": "交响音乐文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000085",
+        "course_name": "智能机器人技术基础",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000091",
+        "course_name": "兵器试验工程概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000092",
+        "course_name": "Midas NFX 有限元分析软件",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000093",
+        "course_name": "科学流言辨析",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000095",
+        "course_name": "中外法律思想史",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000096",
+        "course_name": "中国书法艺术鉴赏与投资",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000097",
+        "course_name": "健康与医药知识",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000098",
+        "course_name": "科学研究与论文撰写",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000099",
+        "course_name": "百年奥斯卡经典电影赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000102",
+        "course_name": "绩效管理理论与实务",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000103",
+        "course_name": "国际市场营销【英】",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000104",
+        "course_name": "中国电力与能源",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000105",
+        "course_name": "现代飞行器发展简史",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000107",
+        "course_name": "核战争与反恐科技",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000111",
+        "course_name": "悬念与科幻电影经典",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000112",
+        "course_name": "中国当代电影史优秀作品研究",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000113",
+        "course_name": "舞蹈艺术与形体实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000114",
+        "course_name": "专利法学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000116",
+        "course_name": "生物医学与人类健康",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000117",
+        "course_name": "花炮技术与安全",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000118",
+        "course_name": "人造器官",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000119",
+        "course_name": "计算机、网络与影视多媒体技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000120",
+        "course_name": "DELPHI程序设计与数据库开发",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000121",
+        "course_name": "拼装机器人的设计与开发",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000122",
+        "course_name": "电子设计竞赛单片机应用技能训练",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000123",
+        "course_name": "电子设计竞赛基本技能训练",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000124",
+        "course_name": "食物、药物与生活",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000125",
+        "course_name": "“后天”之后-生态环境问题解析",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000126",
+        "course_name": "多彩的生物世界",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000127",
+        "course_name": "电动汽车概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000128",
+        "course_name": "Matlab基础及应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000129",
+        "course_name": "赛车文化与FSAE赛车设计",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000130",
+        "course_name": "求职攻略",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000131",
+        "course_name": "火炮技术及其发展概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000132",
+        "course_name": "Java程序设计",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000133",
+        "course_name": "C#程序设计",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000134",
+        "course_name": "网页设计与开发—HTML、CSS、JavaScript",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000135",
+        "course_name": "物联网技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000136",
+        "course_name": "企业沙盘模拟营销",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000137",
+        "course_name": "工程经济学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000138",
+        "course_name": "财务管理",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000139",
+        "course_name": "金融学基础",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000140",
+        "course_name": "市场营销学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000141",
+        "course_name": "国际投资与跨国公司（英）",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000142",
+        "course_name": "技术经济与管理",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000143",
+        "course_name": "趣味经济学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000144",
+        "course_name": "影视编辑制作与特效",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000145",
+        "course_name": "国学管窥",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000146",
+        "course_name": "应用伦理学概论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000147",
+        "course_name": "Visual C++ MFC编程及应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000148",
+        "course_name": "Flash网页动画",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000149",
+        "course_name": "国际争端解决实务",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000150",
+        "course_name": "职场必备法律常识——以案说法",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000151",
+        "course_name": "法律与文学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000152",
+        "course_name": "经济领域中的犯罪问题",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000153",
+        "course_name": "基础日语I",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000154",
+        "course_name": "基础德语I",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000155",
+        "course_name": "基础俄语I",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000156",
+        "course_name": "基础日语II",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000157",
+        "course_name": "基础俄语II",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000158",
+        "course_name": "基础德语II",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000159",
+        "course_name": "英语辩论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000160",
+        "course_name": "雅思阅读",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000161",
+        "course_name": "雅思口语",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000162",
+        "course_name": "雅思听力",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000163",
+        "course_name": "雅思写作",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000164",
+        "course_name": "英美文学与电影",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000165",
+        "course_name": "中国文化导论（英文）",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000166",
+        "course_name": "英美文学与实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000167",
+        "course_name": "中国文化ABC",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000168",
+        "course_name": "基础法语I",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000169",
+        "course_name": "基础法语II",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000170",
+        "course_name": "中国现代作家研究",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000171",
+        "course_name": "歌唱技术理论基础",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000172",
+        "course_name": "认识媒体",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000173",
+        "course_name": "妙趣横生博弈论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000174",
+        "course_name": "初级西班牙语",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000175",
+        "course_name": "英语报刊阅读",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000176",
+        "course_name": "商务英语",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000177",
+        "course_name": "大学英语六级备考精讲",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000178",
+        "course_name": "托福GRE英语词汇速记法",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000179",
+        "course_name": "职场英语",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000180",
+        "course_name": "英美文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000181",
+        "course_name": "食品与健康",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000182",
+        "course_name": "算法竞赛专题讲座",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000183",
+        "course_name": "兵器中的美学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000185",
+        "course_name": "计算机测控技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000186",
+        "course_name": "高超声速飞行器技术概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000187",
+        "course_name": "未知的流动世界",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000188",
+        "course_name": "空化科学技术的应用与发展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000189",
+        "course_name": "环境伦理学概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000190",
+        "course_name": "发明创造学导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000191",
+        "course_name": "社会热点的知识产权解读",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000192",
+        "course_name": "现代工程认识实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000193",
+        "course_name": "Matlab建模计算与电路仿真",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000194",
+        "course_name": "数字化设计及制作体验",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000195",
+        "course_name": "引导性物理实验",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000196",
+        "course_name": "枪弹威力揭秘",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000197",
+        "course_name": "自动编程软件的应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000198",
+        "course_name": "基于Creo2.0的产品开发流程认知体验",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000199",
+        "course_name": "基于MBD的Creo产品数字化建模",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000200",
+        "course_name": "逆向设计体验",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000204",
+        "course_name": "《孙子兵法》与三十六计",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000205",
+        "course_name": "漫谈校史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000206",
+        "course_name": "可编程逻辑控制器的编程与应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000207",
+        "course_name": "汽车鉴赏",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000208",
+        "course_name": "基于ALTIUM DESIGNER 的电路设计和PCB制作",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000209",
+        "course_name": "生物医学微系统",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000210",
+        "course_name": "战略管理与成本控制",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000211",
+        "course_name": "证券投资知识与案例分析",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000212",
+        "course_name": "欧洲近代史概论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000213",
+        "course_name": "国学概论与经典阅读",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000214",
+        "course_name": "Photoshop 图像处理",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000215",
+        "course_name": "专利运营",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000216",
+        "course_name": "Creo 三维实体建模技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000217",
+        "course_name": "Creo 曲面建模技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000218",
+        "course_name": "计算机测控技术概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000219",
+        "course_name": "人工神经网络导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000220",
+        "course_name": "Creo工程制图",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000221",
+        "course_name": "音乐乐理与音乐声学",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000222",
+        "course_name": "理论研究中的操作系统基础",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000223",
+        "course_name": "电子产品设计CAD基础",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000224",
+        "course_name": "金融学基础",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000225",
+        "course_name": "电磁辐射防护与治理",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000226",
+        "course_name": "实用电气安全技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000227",
+        "course_name": "智能交通与安全",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000228",
+        "course_name": "网络防火墙原理与综合实验",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000229",
+        "course_name": "新材料概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000230",
+        "course_name": "智能材料、器件及系统",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000231",
+        "course_name": "神奇的界面科学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000232",
+        "course_name": "轻武器火力真相",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000233",
+        "course_name": "可编程逻辑器件及quartus II软件仿真",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000234",
+        "course_name": "新概念战斗部简论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000235",
+        "course_name": "基于嵌入式实时操作的程序设计技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000236",
+        "course_name": "应用软件与数学建模",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000237",
+        "course_name": "数学文化选讲",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000238",
+        "course_name": "金融市场学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000239",
+        "course_name": "流行音乐与广告",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000240",
+        "course_name": "商业模式新发展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000241",
+        "course_name": "科技创新思维与方法",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000242",
+        "course_name": "生物钟与健康",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000243",
+        "course_name": "志愿服务导论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000245",
+        "course_name": "创新与创业",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000246",
+        "course_name": "创业管理技能开发",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000247",
+        "course_name": "创新思维与创新行动",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000248",
+        "course_name": "互联网下的创业商业模式",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000249",
+        "course_name": "创业经济学",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000250",
+        "course_name": "创业市场调研",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000251",
+        "course_name": "新创企业人力资源管理",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000252",
+        "course_name": "专利检索与分析能力训练",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000253",
+        "course_name": "大学生GYB课程",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000254",
+        "course_name": "创新思维与方法",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000255",
+        "course_name": "产品创新研发模式实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000256",
+        "course_name": "智能制造基础实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000257",
+        "course_name": "C语言程序设计",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000258",
+        "course_name": "围棋入门",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000259",
+        "course_name": "创新与发明",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000260",
+        "course_name": "计算光子学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000261",
+        "course_name": "信息技术与国防现代化",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000262",
+        "course_name": "计算机视觉基础及应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000263",
+        "course_name": "新媒体态势下的信息融合与自我表达",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000264",
+        "course_name": "几何趣谈",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000265",
+        "course_name": "嵌入式实时操作系统μC/OS-II原理及应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000266",
+        "course_name": "面向对象编程技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000267",
+        "course_name": "企业经营沙盘实训",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000268",
+        "course_name": "舞蹈团排练课",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000269",
+        "course_name": "哲学与人生",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000270",
+        "course_name": "火炸药的发展史与应用概述",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000271",
+        "course_name": "材料科学史",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000272",
+        "course_name": "中国货币史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000273",
+        "course_name": "Java基础入门",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000274",
+        "course_name": "无人驾驶技术概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000275",
+        "course_name": "传统陈式太极拳精要十三式",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000276",
+        "course_name": "影视/文学作品中的生物黑科技",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000277",
+        "course_name": "ANSYS软件建模基础及应用技巧",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000278",
+        "course_name": "企业经营决策模拟",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000279",
+        "course_name": "大学理工科专业的发展与分析",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000280",
+        "course_name": "纳米技术与保健品化妆品",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000281",
+        "course_name": "微系统与人工智能",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000282",
+        "course_name": "科研创新中的信息技术及实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000283",
+        "course_name": "创办你的企业",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000284",
+        "course_name": "无处不在的化学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000285",
+        "course_name": "无人驾驶汽车概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000286",
+        "course_name": "近代中外文化交流史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000287",
+        "course_name": "仿生智能计算",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000288",
+        "course_name": "大学生财商培养",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000289",
+        "course_name": "现代生活与科技中的高分子材料",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000290",
+        "course_name": "生物光子学漫谈",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000291",
+        "course_name": "宝石学基础",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000292",
+        "course_name": "数学建模",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000293",
+        "course_name": "创业思维与训练",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000294",
+        "course_name": "军工文化概论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000295",
+        "course_name": "英文流行作品选读与赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000296",
+        "course_name": "科技创新与知识产权战略",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000297",
+        "course_name": "管理心理学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000298",
+        "course_name": "核与辐射科学漫谈",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000299",
+        "course_name": "环境保护与可持续发展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000300",
+        "course_name": "无处不在的表面活性剂",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000302",
+        "course_name": "思维导图与思维拓展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000303",
+        "course_name": "数学建模与系统仿真",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000304",
+        "course_name": "向死而生--大学生生命教育",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000305",
+        "course_name": "学术研究与论文写作导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000306",
+        "course_name": "材料微观之美",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000307",
+        "course_name": "英语表演",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000308",
+        "course_name": "跨文化英语口语",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000309",
+        "course_name": "制造方法与机械结构设计",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000310",
+        "course_name": "CPU设计入门",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000311",
+        "course_name": "创新管理前沿理论与案例",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000312",
+        "course_name": "企业员工权益和维护",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000313",
+        "course_name": "智能弹药在现代化战争中的应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000314",
+        "course_name": "现代战争中的智能打击技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000315",
+        "course_name": "微纳卫星技术与应用概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000316",
+        "course_name": "基于AutoCAD计算机辅助绘图技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000317",
+        "course_name": "量纲与模型相似性分析",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000318",
+        "course_name": "中外著名建筑结构赏析",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000319",
+        "course_name": "现代生物技术与社会发展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000320",
+        "course_name": "多体系统传递矩阵法研究进展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000321",
+        "course_name": "创业设计沙盘推演",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000322",
+        "course_name": "中外著名土木工程赏析",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000323",
+        "course_name": "智能车无人驾驶技术前沿",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000324",
+        "course_name": "神奇的氟碳表面活性剂",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000325",
+        "course_name": "英语语音与朗读",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000326",
+        "course_name": "环境科学技术发展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000327",
+        "course_name": "习近平新时代中国特色社会主义思想选讲",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000328",
+        "course_name": "海洋与人类文明",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000329",
+        "course_name": "习近平用典",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000330",
+        "course_name": "经济思想与社会发展",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000331",
+        "course_name": "地球生命简史",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000332",
+        "course_name": "单兵可穿戴智能装备概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000333",
+        "course_name": "火药中国",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000334",
+        "course_name": "地面无人装备技术前沿",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000335",
+        "course_name": "气溶胶科学与技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000336",
+        "course_name": "室内空气污染与净化概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000337",
+        "course_name": "衣食住行与大气污染",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000338",
+        "course_name": "病毒的世界",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000339",
+        "course_name": "大学生就业创业法律实务",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000340",
+        "course_name": "创新创业与合同法",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000341",
+        "course_name": "飞行器设计与制作",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000342",
+        "course_name": "模具智能制造创新实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000343",
+        "course_name": "物流工程创新创业综合实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000344",
+        "course_name": "智能制造物联网基础与双创实践课程",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000345",
+        "course_name": "智慧物流机器人原理与实战",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000346",
+        "course_name": "智慧城市创新创业实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000347",
+        "course_name": "智能机器人创新创业实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000348",
+        "course_name": "智能感知系统设计与实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000349",
+        "course_name": "无人机飞控设计与实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000350",
+        "course_name": "智能硬件创新实践与创业启蒙",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000351",
+        "course_name": "大数据与信息安全",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000352",
+        "course_name": "科技创业商业计划",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000353",
+        "course_name": "人工智能、区块链技术与创新创业知识产权保护",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000354",
+        "course_name": "高效高精高性能增材制造创新技术与创业实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000355",
+        "course_name": "制造单元智能化车间数字化创新技术与创业实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000356",
+        "course_name": "产品服务设计",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000357",
+        "course_name": "智慧设计与创客实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000358",
+        "course_name": "智能检测与质量控制",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000359",
+        "course_name": "智能制造技术基础及实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000360",
+        "course_name": "智能安全技术及应用",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000361",
+        "course_name": "智能产品创新开发与实践",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000362",
+        "course_name": "数学桥：小学到大学有多远",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000363",
+        "course_name": "品牌设计",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000364",
+        "course_name": "漫画艺术赏析与创作",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000365",
+        "course_name": "垃圾处理与资源化",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000366",
+        "course_name": "物理之美",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000367",
+        "course_name": "习近平总书记关于教育重要论述研究概论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000368",
+        "course_name": "交通安全概论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000369",
+        "course_name": "生活中的材料之美",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000370",
+        "course_name": "形体健康管理",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000371",
+        "course_name": "食品安全概论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000372",
+        "course_name": "工程与社会",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000373",
+        "course_name": "工程伦理",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000374",
+        "course_name": "纳米科学概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000375",
+        "course_name": "现代战争中的防护工程",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000376",
+        "course_name": "现代科学与工程伦理",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000377",
+        "course_name": "医食中的聚合物及其发展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000378",
+        "course_name": "环境科学与人类健康",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000379",
+        "course_name": "党史人物的生涯故事",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000380",
+        "course_name": "兵博火炮鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000382",
+        "course_name": "知己知彼：人格心理学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000383",
+        "course_name": "大学适应与自我成长",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000384",
+        "course_name": "摄影创作",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000385",
+        "course_name": "发明创造的奥秘",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00000386",
+        "course_name": "绿色家居与健康",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000387",
+        "course_name": "大数据挖掘：R语言的应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000388",
+        "course_name": "濒危生物的世界：日暮途穷",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000389",
+        "course_name": "碳达峰碳中和概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000390",
+        "course_name": "超快激光书写微纳世界之美",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000391",
+        "course_name": "基于树莓派系统嵌入式应用训练",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000392",
+        "course_name": "激光加工原理及应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000393",
+        "course_name": "红色艺术",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000394",
+        "course_name": "传播学入门",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000395",
+        "course_name": "大学适应与自我成长",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000396",
+        "course_name": "中国文化经典与人生智慧",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000397",
+        "course_name": "论文写作与绘图技巧",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000398",
+        "course_name": "航天技术漫谈",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000399",
+        "course_name": "氢能与燃料电池",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000400",
+        "course_name": "生活中的光化学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000403",
+        "course_name": "太阳能科技与“双碳”",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000404",
+        "course_name": "中国饮食文化与健康",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000405",
+        "course_name": "中华龙舟",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000406",
+        "course_name": "民族健身操鉴赏与实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000407",
+        "course_name": "奥运趣史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000408",
+        "course_name": "体能训练理论与方法",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000409",
+        "course_name": "全球气候治理与低碳经济学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000410",
+        "course_name": "中国传统哲学智慧精华",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000411",
+        "course_name": "自动驾驶人因工程",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000412",
+        "course_name": "新型轨道交通系统",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000413",
+        "course_name": "高超声速飞行的技术和艺术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000414",
+        "course_name": "天空之旅：飞行的奥秘",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000415",
+        "course_name": "设计手绘",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000416",
+        "course_name": "新型功能电子器件",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000417",
+        "course_name": "新兴科学技术的风险治理",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000418",
+        "course_name": "人类学与人类命运共同体",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000419",
+        "course_name": "常微分方程及其在工程和物理中的应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000420",
+        "course_name": "明明白白看懂医学检验报告",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000421",
+        "course_name": "仿生：以自然为师",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000424",
+        "course_name": "美学与人生",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000425",
+        "course_name": "学术论文入门必备：从选题到发表",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000426",
+        "course_name": "微观世界：细胞战场",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000427",
+        "course_name": "智能光电仪器设计与实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000428",
+        "course_name": "储能技术与电化学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000430",
+        "course_name": "运营管理中的数据分析与机器学习",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000431",
+        "course_name": "单兵筒式武器赏析",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000432",
+        "course_name": "气溶胶科技与中国传统文化",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000433",
+        "course_name": "生命科学的规范",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000435",
+        "course_name": "组织管理与领导力",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000436",
+        "course_name": "图像分析与机器学习",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000437",
+        "course_name": "大学生活：困惑、反思与行动",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000438",
+        "course_name": "当激光遇见生命体",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000439",
+        "course_name": "集成电路芯片概述",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000440",
+        "course_name": "MATLAB语言入门及其在工程中的应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000441",
+        "course_name": "核聚变能导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000444",
+        "course_name": "知识产权保护与安全",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000445",
+        "course_name": "健康管理与健康促进",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000446",
+        "course_name": "现代数学初步",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000447",
+        "course_name": "大数据分析中的优化算法",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000448",
+        "course_name": "碳中和与可持续发展概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000449",
+        "course_name": "python语言在科学计算与人工智能领域中的跨学科应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000451",
+        "course_name": "软体机器人",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000454",
+        "course_name": "风力发电技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000455",
+        "course_name": "档案见证江苏红色历史",
+        "category": "经济与社会类（四史）"
+    },
+    {
+        "course_code": "00000456",
+        "course_name": "新中国工业史",
+        "category": "经济与社会类（四史）"
+    },
+    {
+        "course_code": "00000457",
+        "course_name": "先进结构陶瓷材料",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000458",
+        "course_name": "人工智能技术与应用漫谈",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000459",
+        "course_name": "ChatGPT时代的科技论文检索与写作",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000461",
+        "course_name": "健康评估与指导",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000462",
+        "course_name": "新型储能技术原理及产业化开发",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000463",
+        "course_name": "储能电池与人类生活",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000464",
+        "course_name": "音乐乐律",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000465",
+        "course_name": "现代大学概论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000466",
+        "course_name": "量子物理",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000467",
+        "course_name": "大学生社会安全实务",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000468",
+        "course_name": "中国音乐的历史与鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000469",
+        "course_name": "数据可视化之美：基于R语言",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000470",
+        "course_name": "军事作战中的人工智能技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000471",
+        "course_name": "中国风电发展史",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000472",
+        "course_name": "微惯性基导航概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000473",
+        "course_name": "量子信息概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000474",
+        "course_name": "人民科学家钱学森",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000475",
+        "course_name": "智能材料与物联感知",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000476",
+        "course_name": "化学24小时",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000477",
+        "course_name": "科技竞赛与创新创业实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000478",
+        "course_name": "教育法学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000479",
+        "course_name": "多民族非遗与铸牢中华民族共同体意识",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000480",
+        "course_name": "新污染物与健康风险",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000481",
+        "course_name": "如何打造成功的科技产品——科技营销案例与实务",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000482",
+        "course_name": "漫谈光电精确制导技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000483",
+        "course_name": "中外园林美学对比研究",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000484",
+        "course_name": "中国古典园林美学赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000485",
+        "course_name": "金相分析与鉴赏",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000486",
+        "course_name": "基于竞赛电动车的数字化创新设计与制造",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000487",
+        "course_name": "无人驾驶智能车",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000488",
+        "course_name": "创新思维与方法实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000489",
+        "course_name": "空地机器人竞赛基础与实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000490",
+        "course_name": "木工工艺与艺术实现",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000491",
+        "course_name": "创新管理：赢得持续竞争优势",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000492",
+        "course_name": "技术的本质、变化与建模分析概论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000493",
+        "course_name": "物联网技术导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000494",
+        "course_name": "战争、武器、科技与科研",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000495",
+        "course_name": "从万物感知到网联天下",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000496",
+        "course_name": "火灾科学导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000497",
+        "course_name": "中华民族共同体概论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000498",
+        "course_name": "声与振动控制概述",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000502",
+        "course_name": "数字化智能设计",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000503",
+        "course_name": "新能源汽车概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000504",
+        "course_name": "纳米科技与人类生活",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000505",
+        "course_name": "车轮上的空气变迁",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000506",
+        "course_name": "催化开天地",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000507",
+        "course_name": "纳米材料与新材料导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000508",
+        "course_name": "知识产权理论与实务",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000509",
+        "course_name": "奇妙的等离子体",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000510",
+        "course_name": "感官的化学密码",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000511",
+        "course_name": "纸的科学与应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000512",
+        "course_name": "微纳米材料制备新方法及应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000513",
+        "course_name": "人工智能化学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000514",
+        "course_name": "兵器与军事技术演化概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000515",
+        "course_name": "数值风洞导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000516",
+        "course_name": "智能材料的科技魅力",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000517",
+        "course_name": "惯性导航原理",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000518",
+        "course_name": "电力人工智能技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000519",
+        "course_name": "城市空间美学及其环境设计",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000520",
+        "course_name": "世界文明地标博览",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000521",
+        "course_name": "走进法兰西",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000522",
+        "course_name": "金陵风华：山水人文中的南京",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000523",
+        "course_name": "综合日语入门",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000524",
+        "course_name": "企业数字化经营实训",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000525",
+        "course_name": "先进测量与检测技术设计与实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000526",
+        "course_name": "基于SolidWorks的3D打印创意设计与实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000527",
+        "course_name": "金工新纪元——从绘图设计到3D打印",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000528",
+        "course_name": "无人机作品鉴赏与飞行航拍实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000529",
+        "course_name": "陶艺制作及釉下彩烧成实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000530",
+        "course_name": "特种焊接技术及运用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000531",
+        "course_name": "人工智能物联网开发与应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000532",
+        "course_name": "汽车发动机装配与维修",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000533",
+        "course_name": "特种机器人应用及实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000534",
+        "course_name": "中国工业发展史及文化实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000535",
+        "course_name": "工程师文化",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000536",
+        "course_name": "工艺的审美与实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000537",
+        "course_name": "海洋生物学基础",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000538",
+        "course_name": "思辨之光—— 大学辩论探索",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000539",
+        "course_name": "网络空间安全前沿探索与创新实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000540",
+        "course_name": "动力系统初步",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000541",
+        "course_name": "基于MWorks的AI算法入门与实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000542",
+        "course_name": "数字化设计与制作实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000543",
+        "course_name": "火炮鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000544",
+        "course_name": "汽车应用技术赏析",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000546",
+        "course_name": "工程动画艺术创作实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000548",
+        "course_name": "中外建筑欣赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000549",
+        "course_name": "模拟集成电路芯片基础概述",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000550",
+        "course_name": "人机共融协同制造",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000551",
+        "course_name": "基于Rust的操作系统设计",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000552",
+        "course_name": "人工智能中的优化算法",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000553",
+        "course_name": "中国音乐与民族精神",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000554",
+        "course_name": "大数据时代与信息社会",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000555",
+        "course_name": "创新管理：理论与实践",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000556",
+        "course_name": "国防动员理论与实践",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00000557",
+        "course_name": "公共安全与灾害防治",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000558",
+        "course_name": "学术写作与科研方法漫谈",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000559",
+        "course_name": "综合日语进阶",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00000560",
+        "course_name": "聚焦新能源二维材料能怎么玩",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000561",
+        "course_name": "万物智联：从传感器到云端",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000562",
+        "course_name": "多源信息融合及仿真应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000563",
+        "course_name": "液压系统与控制概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000564",
+        "course_name": "自动驾驶理论与技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00000565",
+        "course_name": "女子防身术",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00002301",
+        "course_name": "日常生活中的精细化工品",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00002601",
+        "course_name": "现代公司人力资源管理",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00002701",
+        "course_name": "经济学原理",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00003001",
+        "course_name": "现代国际商务法律基础",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00003601",
+        "course_name": "建筑文化与鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00004001",
+        "course_name": "金庸小说研究",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00004201",
+        "course_name": "普通话语音训练",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00004601",
+        "course_name": "交响乐欣赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00004701",
+        "course_name": "世界著名歌剧欣赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00005101",
+        "course_name": "实用英语写作",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00005201",
+        "course_name": "欧美文学名著选读",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00005301",
+        "course_name": "第二次世界大战史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00005401",
+        "course_name": "军事地形学与定向越野",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00006101",
+        "course_name": "中外音乐名作赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00006201",
+        "course_name": "大学生实用心理学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00006801",
+        "course_name": "大学生健康教育",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00007101",
+        "course_name": "汽车构造及驾驶知识",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00007401",
+        "course_name": "纳米材料与新材料导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00007801",
+        "course_name": "爆破技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00008201",
+        "course_name": "合同法实务",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00008801",
+        "course_name": "大学美育",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00009301",
+        "course_name": "大学语文",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010004",
+        "course_name": "汽车概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010021",
+        "course_name": "大学生实用经济法律基础",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010031",
+        "course_name": "音乐基础理论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010033",
+        "course_name": "现代派文学大师作品欣赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010036",
+        "course_name": "世界电影史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010038",
+        "course_name": "中外旅游知识",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010039",
+        "course_name": "管理学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010040",
+        "course_name": "中国世界遗产赏萃",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010058",
+        "course_name": "公司法实务",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010062",
+        "course_name": "消费行为学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010072",
+        "course_name": "数学思想简史",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010074",
+        "course_name": "管理经济学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010076",
+        "course_name": "歌唱艺术与实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010081",
+        "course_name": "人类行为与社会环境",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010085",
+        "course_name": "韩国影视剧的繁荣与流变",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010086",
+        "course_name": "演讲与口才",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010103",
+        "course_name": "知识产权法",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010108",
+        "course_name": "美国文化史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010109",
+        "course_name": "犹太人的文明",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010113",
+        "course_name": "摄影艺术",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010114",
+        "course_name": "二战后局部战争史研究",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010116",
+        "course_name": "漫谈科学技术史",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010117",
+        "course_name": "漫谈科学技术方法论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010127",
+        "course_name": "汽车电子学概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010130",
+        "course_name": "常用医学与医药概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010178",
+        "course_name": "20世纪世界艺术大师作品欣赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010188",
+        "course_name": "美国精神与流行文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010192",
+        "course_name": "绿色生活与绿色技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010195",
+        "course_name": "智慧与成功",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010199",
+        "course_name": "汽车文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010249",
+        "course_name": "电视节目研究",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010254",
+        "course_name": "AutoCAD之实体造型技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010269",
+        "course_name": "现代旅游与审美文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010270",
+        "course_name": "台港电影赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010273",
+        "course_name": "中国历史变迁—疆域、民族与文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010278",
+        "course_name": "创造学基础",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00010284",
+        "course_name": "数学建模",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010308",
+        "course_name": "AutoCAD计算机二维绘图及实体造型",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010319",
+        "course_name": "社会心理学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010333",
+        "course_name": "旅游英语",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010334",
+        "course_name": "英语口译入门",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010337",
+        "course_name": "英语演讲",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010350",
+        "course_name": "Internet技术及应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010360",
+        "course_name": "空间电子技术与天文史话",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010365",
+        "course_name": "生活美学",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010368",
+        "course_name": "记录片精品赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010373",
+        "course_name": "SolidWorks三维设计与装配",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010375",
+        "course_name": "MATLAB软件语言及程序设计",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010388",
+        "course_name": "世界人文地理",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010389",
+        "course_name": "公司金融",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010390",
+        "course_name": "欧美流行音乐欣赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010395",
+        "course_name": "西方电影艺术赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010397",
+        "course_name": "营养学概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010419",
+        "course_name": "单片机技术基础",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010434",
+        "course_name": "高分子世界",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010436",
+        "course_name": "Internet技术应用及网络安全",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010443",
+        "course_name": "俄罗斯文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010444",
+        "course_name": "摄影技术",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010447",
+        "course_name": "南京古迹文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010451",
+        "course_name": "民族器乐视听赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010462",
+        "course_name": "现代飞行器推进原理",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010464",
+        "course_name": "中外美术欣赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010470",
+        "course_name": "自然灾害专题",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010471",
+        "course_name": "西方文化概论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010473",
+        "course_name": "世界著名大学介绍及留学指导",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010476",
+        "course_name": "Pro/ENGINEER三维造型技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010478",
+        "course_name": "《三国演义》解读",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010479",
+        "course_name": "遥感图像处理与分析",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010483",
+        "course_name": "证券投资知识",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010496",
+        "course_name": "《水浒传》解读",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010498",
+        "course_name": "后现代艺术",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010503",
+        "course_name": "大众传媒与流行文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010504",
+        "course_name": "生物材料学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010524",
+        "course_name": "人际沟通技巧",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00010526",
+        "course_name": "现代诗欣赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010527",
+        "course_name": "诗词欣赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010530",
+        "course_name": "GPS卫星导航原理与应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010536",
+        "course_name": "世界名枪",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010537",
+        "course_name": "新概念武器",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010544",
+        "course_name": "现代物理新技术实验进展及创新实验",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00010545",
+        "course_name": "Labview程序设计及应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010549",
+        "course_name": "现代兵器赏析",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00010562",
+        "course_name": "西方建筑艺术赏萃",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00010624",
+        "course_name": "航空航天概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00020001",
+        "course_name": "英语交流",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00020201",
+        "course_name": "信息资源检索与利用",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00020601",
+        "course_name": "导航定位技术概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00030301",
+        "course_name": "手语入门",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00030401",
+        "course_name": "孔子和孟子的智慧",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00030501",
+        "course_name": "老子和庄子的智慧",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00001",
+        "course_name": "中华诗词之美",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00002",
+        "course_name": "从爱因斯坦到霍金的宇宙",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00003",
+        "course_name": "魅力科学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00004",
+        "course_name": "中国近代人物研究",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00005",
+        "course_name": "追求幸福：西方伦理史视角",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00006",
+        "course_name": "数学文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00007",
+        "course_name": "化学与人类",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00008",
+        "course_name": "微生物与人类健康",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00009",
+        "course_name": "中国文化概论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00010",
+        "course_name": "用经济学智慧解读中国",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00011",
+        "course_name": "世界建筑史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00012",
+        "course_name": "从“愚昧”到“科学”-科学技术简史",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00013",
+        "course_name": "认识地球",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00014",
+        "course_name": "文化地理",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00015",
+        "course_name": "项目管理学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00016",
+        "course_name": "珠宝鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00017",
+        "course_name": "大学生创新创业",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00018",
+        "course_name": "管理学精要",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00019",
+        "course_name": "中国古建筑欣赏与设计",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00020",
+        "course_name": "西方哲学智慧",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00021",
+        "course_name": "艺术史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00022",
+        "course_name": "思维训练与学习力提升",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00023",
+        "course_name": "创造性思维与创新方法",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00024",
+        "course_name": "创意学经济",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00025",
+        "course_name": "创业启蒙与案例分享",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00026",
+        "course_name": "创业基本功与精益创业方法论",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00027",
+        "course_name": "打造无敌商业计划书",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00028",
+        "course_name": "工业4.0与2025中国制造",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00029",
+        "course_name": "留学第一课",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00030",
+        "course_name": "从校园到职场",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00031",
+        "course_name": "葡萄酒与西方文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00032",
+        "course_name": "西藏的历史与文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00033",
+        "course_name": "考古与人类",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00034",
+        "course_name": "心理、行为与文化",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00035",
+        "course_name": "美学原理",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00036",
+        "course_name": "书法鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00037",
+        "course_name": "星海求知：天文学的奥秘",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00038",
+        "course_name": "个人理财规划",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00039",
+        "course_name": "口才艺术与社交礼仪",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00040",
+        "course_name": "创业创新领导力",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00041",
+        "course_name": "学术基本要素：专业论文写作",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00042",
+        "course_name": "创业管理实战",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00043",
+        "course_name": "人因工程——因人而设",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00044",
+        "course_name": "中国少数民族文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00045",
+        "course_name": "当水墨邂逅油彩",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00046",
+        "course_name": "虚拟现实技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00047",
+        "course_name": "职业素养",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00048",
+        "course_name": "走进故宫",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00049",
+        "course_name": "敦煌的艺术",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00050",
+        "course_name": "中国古建筑文化与鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00051",
+        "course_name": "食品安全",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00052",
+        "course_name": "食品营养学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00053",
+        "course_name": "人群与网络",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00054",
+        "course_name": "循环经济与可持续发展型企业",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00055",
+        "course_name": "中国戏曲·昆曲",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00056",
+        "course_name": "创业101：你的客户是谁",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00057",
+        "course_name": "工程职业伦理",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00058",
+        "course_name": "英语语法和写作风格",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00059",
+        "course_name": "艾滋病、性与健康",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00060",
+        "course_name": "关爱生命——急救与自救技能",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00061",
+        "course_name": "职场沟通",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00062",
+        "course_name": "科学写作",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00063",
+        "course_name": "人工智能",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00064",
+        "course_name": "实验室准入教育",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00065",
+        "course_name": "解码国家安全",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00066",
+        "course_name": "红色经典导论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00067",
+        "course_name": "创业人生",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00068",
+        "course_name": "中国道路",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00069",
+        "course_name": "马克思主义的时代解读",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00070",
+        "course_name": "通识写作：怎样进行学术表达",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00071",
+        "course_name": "劳动通论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00072",
+        "course_name": "当代大学生国家安全教育",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00073",
+        "course_name": "艺术哲学：美是如何诞生的",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00074",
+        "course_name": "习近平新时代中国特色社会主义思想",
+        "category": "经济与社会类（四史）"
+    },
+    {
+        "course_code": "00W00075",
+        "course_name": "中国共产党党史概论",
+        "category": "经济与社会类（四史）"
+    },
+    {
+        "course_code": "00W00076",
+        "course_name": "四史选讲",
+        "category": "经济与社会类（四史）"
+    },
+    {
+        "course_code": "00W00077",
+        "course_name": "人工智能与信息社会",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00078",
+        "course_name": "生活中的运筹学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00079",
+        "course_name": "卫生应急",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00080",
+        "course_name": "中外古典园林史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00081",
+        "course_name": "中药学",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00082",
+        "course_name": "揭秘大气污染",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00083",
+        "course_name": "人文视野中的生态",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00084",
+        "course_name": "地球历史及其生命奥秘",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00086",
+        "course_name": "人人爱设计",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00087",
+        "course_name": "走进西方音乐",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00088",
+        "course_name": "文艺学名著导读",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00089",
+        "course_name": "汽车行走的艺术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00090",
+        "course_name": "管理素质与能力的五项修炼——跟我学“管理学”",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00091",
+        "course_name": "传统文化与现代经营管理",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00092",
+        "course_name": "物种起源导论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00093",
+        "course_name": "深入学习贯彻党的二十大精神",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00094",
+        "course_name": "一带一路与全球健康",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00095",
+        "course_name": "视听语言艺术",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00099",
+        "course_name": "先秦诸子导读",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00100",
+        "course_name": "《论语》导读（复旦版）",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00101",
+        "course_name": "走近中华优秀传统文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00102",
+        "course_name": "中国茶道",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00103",
+        "course_name": "明史十讲",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00104",
+        "course_name": "中华民族精神",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00105",
+        "course_name": "文艺复兴:欧洲由衰及盛的转折点",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00106",
+        "course_name": "欧洲文明概论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00107",
+        "course_name": "隋唐史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00108",
+        "course_name": "东南亚文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00109",
+        "course_name": "拉美文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00110",
+        "course_name": "资治通鉴精读-治国之道的史学表达",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00111",
+        "course_name": "影像中的人类学",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00112",
+        "course_name": "莎士比亚戏剧赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00113",
+        "course_name": "舞台人生：走进戏剧艺术",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00114",
+        "course_name": "聆听心声：音乐审美心理分析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00115",
+        "course_name": "帝国的兴衰：修昔底德战争史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00116",
+        "course_name": "影视鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00117",
+        "course_name": "舞蹈鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00118",
+        "course_name": "戏剧鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00119",
+        "course_name": "戏曲鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00120",
+        "course_name": "中国书法史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00121",
+        "course_name": "中国陶瓷史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00122",
+        "course_name": "东方文学史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00123",
+        "course_name": "中西文化与文学专题比较",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00124",
+        "course_name": "文艺美学",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00125",
+        "course_name": "东方电影",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00126",
+        "course_name": "美术概论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00127",
+        "course_name": "从泥巴到国粹：陶瓷绘画示范",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00128",
+        "course_name": "宋崇导演教你拍摄微电影",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00129",
+        "course_name": "山水地质学与中国绘画",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00130",
+        "course_name": "太阳系中的有趣科学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00131",
+        "course_name": "机器的征途：空天科技",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00132",
+        "course_name": "奇异的仿生学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00133",
+        "course_name": "走近核科学技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00134",
+        "course_name": "信息素养通识教程：数字化生存的必修课",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00135",
+        "course_name": "互联网金融概论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00136",
+        "course_name": "中国互联网金融实践",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00137",
+        "course_name": "悖论：思维的魔方",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00138",
+        "course_name": "内部控制与风险管理",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00139",
+        "course_name": "走进创业",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00140",
+        "course_name": "经济与社会：如何用决策思维洞察生活",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00141",
+        "course_name": "媒体创意经济：玩转互联网时代",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "00W00142",
+        "course_name": "新青年·习党史",
+        "category": "经济与社会类（四史）"
+    },
+    {
+        "course_code": "00W00143",
+        "course_name": "《共产党宣言》导读",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00144",
+        "course_name": "社会学与中国社会",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00145",
+        "course_name": "社会史研究导论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00146",
+        "course_name": "组织行为学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00148",
+        "course_name": "药事法规",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00149",
+        "course_name": "走近地下水",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00150",
+        "course_name": "爱的心理学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00151",
+        "course_name": "基于游戏开发的C语言程序设计快速入门",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00152",
+        "course_name": "中外城市公共艺术",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00153",
+        "course_name": "新中国史",
+        "category": "经济与社会类（四史）"
+    },
+    {
+        "course_code": "00W00154",
+        "course_name": "改革开放史",
+        "category": "经济与社会类（四史）"
+    },
+    {
+        "course_code": "00W00155",
+        "course_name": "社会主义发展史",
+        "category": "经济与社会类（四史）"
+    },
+    {
+        "course_code": "00W00159",
+        "course_name": "红色旅游与文化传承",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00160",
+        "course_name": "丝绸之路上的民族",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00161",
+        "course_name": "世界文明史",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00162",
+        "course_name": "心理学的智慧",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00163",
+        "course_name": "社会科学方法论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00164",
+        "course_name": "绘画里的中国：走进大师与经典",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00165",
+        "course_name": "发现唐诗宋词",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00166",
+        "course_name": "人人爱设计",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00167",
+        "course_name": "钢琴艺术赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00168",
+        "course_name": "《西厢记》赏析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00169",
+        "course_name": "文艺学名著导读",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00170",
+        "course_name": "体育中国",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00171",
+        "course_name": "垃圾分类",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00172",
+        "course_name": "能源中国",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00173",
+        "course_name": "新兴时代下的公共政策",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00174",
+        "course_name": "中医养生学",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00175",
+        "course_name": "《世说新语》与魏晋名士风流",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00176",
+        "course_name": "家庭安全合理用药",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00177",
+        "course_name": "形象管理",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00178",
+        "course_name": "应用文写作",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00179",
+        "course_name": "创新创业实战",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00180",
+        "course_name": "创新中国",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00181",
+        "course_name": "创新思维训练",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00182",
+        "course_name": "创业人生",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00183",
+        "course_name": "大国兵器",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00184",
+        "course_name": "药用植物学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00185",
+        "course_name": "仰望夜空——天文学入门",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00186",
+        "course_name": "管理心理学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00187",
+        "course_name": "3D打印技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00188",
+        "course_name": "企业营销道德与消费者权益保护",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00189",
+        "course_name": "中国传统玉文化与美玉鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00190",
+        "course_name": "探寻中国茶：一片树叶的传奇之旅",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00191",
+        "course_name": "绘画里的中国：走进大师与经典",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00192",
+        "course_name": "民俗资源与旅游",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00193",
+        "course_name": "美的历程：美学导论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00194",
+        "course_name": "中国现代文学名著选讲",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00195",
+        "course_name": "中国当代小说选读",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00196",
+        "course_name": "解读中国经济发展的密码",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00197",
+        "course_name": "像经济学家那样思考：信息、激励与政策",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "00W00198",
+        "course_name": "《春秋》导读",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00199",
+        "course_name": "《三国志》导读",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00200",
+        "course_name": "文化遗产与自然遗产",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00201",
+        "course_name": "中国共产党历史",
+        "category": "经济与社会类（四史）"
+    },
+    {
+        "course_code": "00W00202",
+        "course_name": "机器学习初步",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "00W00184",
+        "course_name": "药用植物学",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00203",
+        "course_name": "软体家具制造工艺学",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00204",
+        "course_name": "中国传统手工艺与文化创意设计",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "00W00205",
+        "course_name": "古典诗词鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "HX000001",
+        "course_name": "科学研究与创新",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "HX000002",
+        "course_name": "高分子：产品设计新灵感",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "HX000003",
+        "course_name": "光通信系统漫谈",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "HX000004",
+        "course_name": "计算机与计算技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "HX000005",
+        "course_name": "经济全球化与大国崛起",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "HX000006",
+        "course_name": "儒释道---中国传统思想概说",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "HX000007",
+        "course_name": "工程技术领域中的数学问题",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "HX000008",
+        "course_name": "科技英语",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "HX000009",
+        "course_name": "中国历史变迁：疆域．民族与文化",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "HX000010",
+        "course_name": "批判性思维",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "HX000011",
+        "course_name": "诗词欣赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "HX000012",
+        "course_name": "美术鉴赏",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "HX000013",
+        "course_name": "西方文化概论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "HX000014",
+        "course_name": "艺术概论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "HX000015",
+        "course_name": "社会问题研究导论",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "HX000016",
+        "course_name": "企业知识产权管理",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "HX000017",
+        "course_name": "大学生心理健康教育指导",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "HX000018",
+        "course_name": "走进物联网",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "HX000019",
+        "course_name": "武器装备概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "HX000020",
+        "course_name": "化学与社会",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "HX000020",
+        "course_name": "化学与社会",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "HX000021",
+        "course_name": "材料与文明、创新与发展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "HX000022",
+        "course_name": "工程文化",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "MJ000001",
+        "course_name": "设计美学大讲堂",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "MJ000002",
+        "course_name": "创新与知识产权文化",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "MJ000015",
+        "course_name": "人工智能前沿技术导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000001",
+        "course_name": "探索生命的测量",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000002",
+        "course_name": "新药研究与开发",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000003",
+        "course_name": "多体系统传递矩阵法",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000004",
+        "course_name": "智能电网新技术",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000005",
+        "course_name": "新型金属与先进复合材料",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000006",
+        "course_name": "材料精密成形的发展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000007",
+        "course_name": "行为经济学发展前沿",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "QY000008",
+        "course_name": "灵巧弹药关键技术与新进展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000009",
+        "course_name": "新型传感器",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000010",
+        "course_name": "工业工程学科前沿",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000011",
+        "course_name": "纳米显微光学技术学科前沿系列讲座",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000012",
+        "course_name": "信号采样理论新进展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000013",
+        "course_name": "毫米波探测研究进展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000014",
+        "course_name": "模式识别与机器智能",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000015",
+        "course_name": "新能源汽车概论",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000016",
+        "course_name": "现代装备技术前沿及产业发展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000017",
+        "course_name": "实验语音学",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000018",
+        "course_name": "超快激光及其在阿秒科学中的应用",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000019",
+        "course_name": "氟化学及其应用",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000020",
+        "course_name": "功能材料的未来",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000021",
+        "course_name": "中西文化异同分析",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "QY000022",
+        "course_name": "新型环境能量采集技术",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000023",
+        "course_name": "资源环境经济问题前沿专题",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "QY000024",
+        "course_name": "磁性材料技术及应用",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000025",
+        "course_name": "精准纳米结构的构筑及表征",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000026",
+        "course_name": "量子电磁学前沿导论",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000027",
+        "course_name": "生物电化学技术在环境工程中应用",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000028",
+        "course_name": "先进机电伺服控制技术",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000029",
+        "course_name": "信息系统学科前沿系列讲座",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000030",
+        "course_name": "并行计算导论",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000031",
+        "course_name": "电与磁工程学前沿技术",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000032",
+        "course_name": "材料与结构的冲击响应学科前沿",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000033",
+        "course_name": "热应力分析前沿",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000034",
+        "course_name": "航空航天现代制造技术与装备",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000035",
+        "course_name": "爆炸冲击效应前沿进展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000036",
+        "course_name": "计算光学成像与光信息技术前沿",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000037",
+        "course_name": "含能材料增材制造颠覆性前沿技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000038",
+        "course_name": "新奇的纳米材料",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000039",
+        "course_name": "微通道技术在有机合成中的应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000040",
+        "course_name": "毫米波太赫兹探测技术研究新进展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000040",
+        "course_name": "新型发光材料及应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000041",
+        "course_name": "防护材料与结构研究前沿与发展趋势",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000042",
+        "course_name": "高速水中兵器",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000043",
+        "course_name": "高级氧化技术在环境工程中的应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000044",
+        "course_name": "火炸药前沿合成技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000045",
+        "course_name": "工业互联网前沿技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000046",
+        "course_name": "深度学习前沿及产业概论",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "QY000047",
+        "course_name": "动力学设计与优化概述",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000048",
+        "course_name": "新型电池材料关键技术及其先进表征",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000049",
+        "course_name": "智能材料振动控制技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000050",
+        "course_name": "X射线光谱学基础与前沿",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000051",
+        "course_name": "拓扑量子物态简介",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000052",
+        "course_name": "双碳目标下氢能技术之路前沿讲座",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000053",
+        "course_name": "组织与领导能力",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "QY000054",
+        "course_name": "分形几何初探",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000056",
+        "course_name": "碳中和技术概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000057",
+        "course_name": "信息内容安全学科前沿",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000059",
+        "course_name": "蛋白质化学基础和研究方法",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "QY000060",
+        "course_name": "理想能源氢能的过去、现在及未来",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000001",
+        "course_name": "武器发展简论",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000002",
+        "course_name": "改变世界的微系统技术",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000003",
+        "course_name": "武器系统中的新型探测技术前沿",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000004",
+        "course_name": "战争之神的今生与来世",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000005",
+        "course_name": "科学研究与创新",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000006",
+        "course_name": "未来战争与机器人",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000007",
+        "course_name": "固体火箭发动机与现代科学技术的发展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000008",
+        "course_name": "载运工具与科技发展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000009",
+        "course_name": "“科学与艺术”漫谈",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000010",
+        "course_name": "化学的自然和社会属性",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000011",
+        "course_name": "先进材料专业知识学习方法",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000012",
+        "course_name": "看“光学”",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000013",
+        "course_name": "通信技术的过去现在和未来",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000014",
+        "course_name": "智能技术与应用",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000015",
+        "course_name": "计算机与计算技术",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000016",
+        "course_name": "多媒体计算与网络服务",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000017",
+        "course_name": "资本王国的科学与艺术",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "YT000018",
+        "course_name": "质量管理学科基础及发展方向",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "YT000019",
+        "course_name": "经济学视角下的选择行为与交往状态",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "YT000020",
+        "course_name": "科学技术领域中的热科学问题",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000021",
+        "course_name": "“利用误差消除误差”——控制思想精髓之探究",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000022",
+        "course_name": "控制的思想和方法",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000023",
+        "course_name": "从构思、设计到工程实践的自动化系统",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000024",
+        "course_name": "走近数学",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000025",
+        "course_name": "物理实验新技术和研究型实验思路和方法",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000026",
+        "course_name": "物理学——通向高新技术之门",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000027",
+        "course_name": "国学通论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YT000028",
+        "course_name": "材料与文明、创新与发展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000029",
+        "course_name": "环境问题",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000030",
+        "course_name": "现代生命科学前沿",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000031",
+        "course_name": "设计与文化传播",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YT000032",
+        "course_name": "艺术·大学·我",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YT000033",
+        "course_name": "材料：推动地球文明",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000034",
+        "course_name": "奇妙的燃烧与爆炸",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000035",
+        "course_name": "光学数字图像的获取及其在测试领域的应用",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000036",
+        "course_name": "走进企业管理",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000037",
+        "course_name": "漫谈雷达",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000038",
+        "course_name": "国内外著名工程光学研究中心研究前沿",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000039",
+        "course_name": "智能材料与结构",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000040",
+        "course_name": "改变世界的微系统技术",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000050",
+        "course_name": "光通信系统漫谈",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000051",
+        "course_name": "浅谈微波通信与深空探测技术",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000052",
+        "course_name": "我国高技术武器装备发展对科技英才的素质需求",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000053",
+        "course_name": "科技创新与特种新型装备",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000054",
+        "course_name": "探索机械世界",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000055",
+        "course_name": "怎样跨入技术创新之门",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000056",
+        "course_name": "无机非金属材料的历史与发展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000057",
+        "course_name": "以柔克刚-水切割技术",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000058",
+        "course_name": "发明与创新的方法与流程",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000059",
+        "course_name": "观察材料微观结构的慧眼",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000060",
+        "course_name": "图像识别技术在社会生活中的应用与发展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000061",
+        "course_name": "移动视觉技术",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000062",
+        "course_name": "中日文化比较",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YT000063",
+        "course_name": "生活中的法律问题研究",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "YT000064",
+        "course_name": "漫谈雷达",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000065",
+        "course_name": "微波在通信与探测中的应用",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000066",
+        "course_name": "国内外思维方式与材料科学技术的发展",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000067",
+        "course_name": "神奇的激光",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000068",
+        "course_name": "媒介批评理论与方法",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YT000069",
+        "course_name": "经济全球化与中国梦",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "YT000070",
+        "course_name": "新技术与管理革命",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000072",
+        "course_name": "光与电",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000073",
+        "course_name": "科学语言与工程问题-Matlab的天工开物",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000074",
+        "course_name": "3D打印与创客文化",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000075",
+        "course_name": "漫谈汽车动力",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000076",
+        "course_name": "化学与智能产品",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000077",
+        "course_name": "微波毫米波应用及前沿技术漫谈",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000078",
+        "course_name": "智能科学与技术漫谈",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000079",
+        "course_name": "物联云计算技术",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000080",
+        "course_name": "数学桥：小学到大学有多远",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000081",
+        "course_name": "芯片实验室技术漫谈及器件制作",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000082",
+        "course_name": "智能科学与机电一体化技术",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000083",
+        "course_name": "智能系统与智能机器人技术漫谈",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000084",
+        "course_name": "合作行为与社会发展",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "YT000085",
+        "course_name": "批判性思维与科技创新",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000086",
+        "course_name": "星际航行与太空探索",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000087",
+        "course_name": "化学与现代生活",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000088",
+        "course_name": "视觉与光电成像",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000089",
+        "course_name": "营养与健康",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000090",
+        "course_name": "神奇的智能材料",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000091",
+        "course_name": "高分子材料与现代生活",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000092",
+        "course_name": "轻武器开发与创新",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000093",
+        "course_name": "新能源汽车概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000094",
+        "course_name": "漫谈安全",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000095",
+        "course_name": "诺贝尔物理、化学奖选讲：光、量子与结构",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000096",
+        "course_name": "知识产权漫谈",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000098",
+        "course_name": "药物化学的诺贝尔奖之旅",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000099",
+        "course_name": "仿真技术在军事领域的应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000100",
+        "course_name": "大学生创新创业案例研讨",
+        "category": "创新与创业类"
+    },
+    {
+        "course_code": "YT000101",
+        "course_name": "工业互联网改变智造世界",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000102",
+        "course_name": "现代战争中的“矛盾”与防护科技",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000103",
+        "course_name": "新概念兵器中的弹道学导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000104",
+        "course_name": "二维材料搭乐高",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000105",
+        "course_name": "装备防护技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000106",
+        "course_name": "从黑火药到颠覆性含能材料",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000107",
+        "course_name": "新型光电成像技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000108",
+        "course_name": "兵器与战争演化概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000109",
+        "course_name": "漫谈现代新能源技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000110",
+        "course_name": "基于解释性语言的高效科学计算",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000111",
+        "course_name": "数据驱动的新材料设计",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000112",
+        "course_name": "走进神奇的新能源电池世界",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000114",
+        "course_name": "软化学创造多姿多彩世界",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YT000115",
+        "course_name": "可持续世界的光与影——神奇的光催化",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "GF000001",
+        "course_name": "国防特色通识教育课：武器发射篇",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "GF000002",
+        "course_name": "国防特色通识教育课：含能材料篇",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "GF000003",
+        "course_name": "国防特色通识教育课：自动控制篇",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "GF000004",
+        "course_name": "国防特色通识教育课：探测制导篇",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "YST00001",
+        "course_name": "艺术实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YST00002",
+        "course_name": "艺术实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YST00003",
+        "course_name": "艺术实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YST00004",
+        "course_name": "艺术实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YST00005",
+        "course_name": "艺术实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YST00006",
+        "course_name": "艺术实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YST00007",
+        "course_name": "艺术实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YST00008",
+        "course_name": "艺术实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YST00009",
+        "course_name": "艺术实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YST00010",
+        "course_name": "艺术实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "YST00011",
+        "course_name": "艺术实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "LH000001",
+        "course_name": "人工智能技术与智能制造",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000002",
+        "course_name": "原子制造技术导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000003",
+        "course_name": "车辆工程学科前沿技术发展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000004",
+        "course_name": "管工交叉的工业工程数智化前沿",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000005",
+        "course_name": "智能化火箭武器系统的力学基础",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000006",
+        "course_name": "材料与结构的冲击响应学科前沿",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000007",
+        "course_name": "新原理战斗部与战斗部技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000008",
+        "course_name": "智能微纳卫星发展与应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000009",
+        "course_name": "环境科学前沿与学科交叉",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000010",
+        "course_name": "生物工程前沿与学科交叉进展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000011",
+        "course_name": "能源环境催化技术",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000012",
+        "course_name": "奇妙的粉体材料",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000013",
+        "course_name": "保障健康之制药+",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000014",
+        "course_name": "爆炸安全与防护工程概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000015",
+        "course_name": "含能材料“爆力”美学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000016",
+        "course_name": "应用化学前沿交叉通识课",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000017",
+        "course_name": "塑造万物：奇妙的高分子世界",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000018",
+        "course_name": "漫谈雷达",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000019",
+        "course_name": "先进光学成像",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000020",
+        "course_name": "国内外著名工程光学研究中心研究前沿",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000021",
+        "course_name": "目标探测与识别技术前沿",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000022",
+        "course_name": "人工智能前沿技术导论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000023",
+        "course_name": "“医工+”数字孪生的魅力",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000024",
+        "course_name": "智能计算系统与应用漫谈",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000025",
+        "course_name": "金融赋能：助力智慧青春",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "LH000026",
+        "course_name": "国际经贸问题：智能博弈与决策",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "LH000027",
+        "course_name": "走进会计殿堂——领略国际商业通用语言",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "LH000028",
+        "course_name": "人资管理积极赋能：自我管理与发展",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "LH000029",
+        "course_name": "大数据与智慧运营",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "LH000030",
+        "course_name": "可持续能源及应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000031",
+        "course_name": "走进能源科学",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000032",
+        "course_name": "武器发射科学与技术前沿进展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000033",
+        "course_name": "复兴使命-强国之兵器",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000034",
+        "course_name": "设计、人因与智能时代",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000035",
+        "course_name": "人工智能与设计",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "LH000036",
+        "course_name": "设计思维认知与创新",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "LH000037",
+        "course_name": "人居环境与当代生活",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "LH000038",
+        "course_name": "智慧轨道交通",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000039",
+        "course_name": "双碳目标下的电气工程",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000040",
+        "course_name": "智能电网学科前沿讲座",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000041",
+        "course_name": "自动化大类前沿交叉讲座",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000042",
+        "course_name": "物理学通识及前沿概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000043",
+        "course_name": "光电信息交叉与前沿",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000044",
+        "course_name": "土木工程安全性与智能化",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000045",
+        "course_name": "力学通识及前沿概论",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000046",
+        "course_name": "区域与国别研究导论",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "LH000047",
+        "course_name": "综合日本学前沿课题",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "LH000048",
+        "course_name": "语言研究中的数据科学",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "LH000049",
+        "course_name": "国家理论与实践",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "LH000050",
+        "course_name": "合作行为与社会发展",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "LH000051",
+        "course_name": "循证社会科学",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "LH000052",
+        "course_name": "空天动力材料",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000053",
+        "course_name": "“材料+光电信息”前沿交叉",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000054",
+        "course_name": "走进神奇的纳米材料",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000055",
+        "course_name": "智能焊接与增材制造前沿讲坛",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000056",
+        "course_name": "创新与知识产权文化",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000057",
+        "course_name": "智慧交通与自动驾驶",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000058",
+        "course_name": "数学及其应用前沿进展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000059",
+        "course_name": "信息与计算科学专业前沿交叉课",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000060",
+        "course_name": "概率统计前沿进展",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000061",
+        "course_name": "射频芯片与系统前沿理论与技术基础",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000062",
+        "course_name": "马克思主义理论前沿",
+        "category": "人文与艺术类"
+    },
+    {
+        "course_code": "LH000063",
+        "course_name": "智能制造系统技术前沿系列讲座",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000064",
+        "course_name": "可再生能源多元化转化与利用前沿讲座",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000065",
+        "course_name": "网络与信息内容安全前沿讲座",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "LH000066",
+        "course_name": "大数据分析前沿技术及应用",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "ZN000001",
+        "course_name": "基于人工智能的半导体材料设计",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "ZN000002",
+        "course_name": "人工智能的光电探测领域实践",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "ZN000003",
+        "course_name": "人工智能+知识产权",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "ZN000004",
+        "course_name": "人工智能技术在安全领域的创新",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "ZN000005",
+        "course_name": "硅基智慧与碳基能量：人工智能与新能源融合创新",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "ZN000006",
+        "course_name": "智能化学：从分子设计到工业4.0",
+        "category": "自然与科技类"
+    },
+    {
+        "course_code": "ZN000007",
+        "course_name": "人工智能赋能管理实践与理论前沿",
+        "category": "经济与社会类"
+    },
+    {
+        "course_code": "ZN000008",
+        "course_name": "自动控制领域的AI漫游",
+        "category": "自然与科技类"
+    }
+]
