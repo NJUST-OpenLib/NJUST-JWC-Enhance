@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         南理工教务增强助手 V2 | 支持自动评教
 // @namespace    http://tampermonkey.net/
-// @version      2.0.1.3
+// @version      2.0.1.4
 // @description  在合适的地方显示课程大纲、选修课类别及选修课学分情况，并自动刷新登录状态。同时支持自动评教与批量提交。
 // @match        http://202.119.81.112/*
 // @match        http://bkjw.njust.edu.cn/*
@@ -16,12 +16,16 @@
 // @supportURL   https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance
 // ==/UserScript==
 
+/**
+ * ⚠️ 本文件由 build.js 自动生成，请勿直接修改。
+ * 源码位于 src/ 目录，修改后请执行：npm run build
+ */
+// ===== src/core/config.js ==============================================
 // ================================================================
 //  【模块一】核心增强功能模块
 //  职责：数据抓取、课程信息增强（大纲/类别）、学分统计、登录保活
 //  设计模式：单例对象（Singleton）组织各子系统
 // ================================================================
-
 (function () {
     'use strict';
 
@@ -32,13 +36,108 @@
      */
 
     // 选修课类别数据源（JSON 格式）
-    const CATEGORY_URLS = [
+    const CATEGORY_URL_TEMPLATES = [
         'https://enhance.njust.store/data/xxk.json',
         'https://enhance.njust.wiki/data/xxk.json',                                                               // 官方主节点
         'https://fastly.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',                        // jsDelivr 全球加速
         'https://testingcf.jsdelivr.net/gh/NJUST-OpenLib/NJUST-JWC-Enhance@latest/data/xxk.json',                    // jsDelivr Cloudflare
         'https://raw.githubusercontent.com/NJUST-OpenLib/NJUST-JWC-Enhance/refs/heads/main/data/xxk.json'             // GitHub 原始文件（备用）
     ];
+
+    /**
+     * ── 多版本培养方案支持 ───────────────────────────────────────────
+     * 教务处每 4 年更新一次通识课分类口径，各年级需按入学当年的方案统计类别学分。
+     * 脚本依据学号自动判断入学年份，加载对应版本的数据文件；也支持手动指定。
+     */
+
+    // 培养方案版本 → 数据文件名（2026 版即默认的 xxk.json）
+    const XXK_VERSION_FILES = {
+        '2018': 'xxk_2018.json',
+        '2022': 'xxk_2022.json',
+        '2026': 'xxk.json'
+    };
+
+    // 入学年份 → 培养方案版本（倒序匹配；学校若调整适用口径请修改此处）
+    const PLAN_VERSION_RULES = [
+        { since: 2026, version: '2026' },
+        { since: 2022, version: '2022' },
+        { since: 0, version: '2018' }
+    ];
+
+    const KEY_XXK_VERSION = 'njust_xxk_version';       // 手动指定的口径版本（优先级最高）
+    const KEY_XXK_YEAR = 'njust_xxk_enroll_year';      // 缓存的入学年份
+    const KEY_XXK_STUDENT = 'njust_xxk_student_mask';  // 缓存的脱敏学号
+
+    /**
+     * 识别当前登录者的学号与入学年份
+     * 学号规则（如 922110800724）：9=本科生，22=2022 级，108=自动化学院，其后为院内流水号
+     * 主框架页顶部节点 [id$="divLoginName"] 形如「张三(922110800724)」
+     */
+    function detectEnrollment() {
+        try {
+            const cachedYear = parseInt(localStorage.getItem(KEY_XXK_YEAR) || '', 10);
+            if (cachedYear) {
+                return { year: cachedYear, student: localStorage.getItem(KEY_XXK_STUDENT) || '' };
+            }
+
+            const nameNodes = document.querySelectorAll('[id$="divLoginName"], .Nsb_top_menu_nc');
+            let idNumber = '';
+            for (const node of nameNodes) {
+                const matched = (node.textContent || '').match(/(\d{9,15})/);
+                if (matched) { idNumber = matched[1]; break; }
+            }
+            if (!idNumber) return null;
+
+            // 第 2-3 位为入学年份后两位
+            const yearPart = idNumber.length >= 10 ? idNumber.slice(1, 3) : '';
+            const year = parseInt(yearPart, 10) + 2000;
+            if (!yearPart || year < 2008 || year > new Date().getFullYear() + 1) return null;
+
+            // 脱敏：保留前 6 位
+            const masked = idNumber.slice(0, 6) + '*'.repeat(Math.max(idNumber.length - 6, 0));
+            localStorage.setItem(KEY_XXK_YEAR, String(year));
+            localStorage.setItem(KEY_XXK_STUDENT, masked);
+            Logger.info(`识别到学号 ${masked}，推断入学年份 ${year}`);
+            return { year, student: masked };
+        } catch (e) {
+            Logger.warn('学号识别失败:', e);
+            return null;
+        }
+    }
+
+    /**
+     * 解析当前应使用的分类口径
+     * 优先级：手动指定 > 学号自动识别 > 默认 2026 版
+     */
+    function resolveCategoryVersion() {
+        try {
+            const manual = localStorage.getItem(KEY_XXK_VERSION);
+            if (manual && XXK_VERSION_FILES[manual]) {
+                return { version: manual, source: 'manual' };
+            }
+            const info = detectEnrollment();
+            if (info) {
+                const rule = PLAN_VERSION_RULES.find(r => info.year >= r.since);
+                if (rule) return { version: rule.version, source: 'auto', year: info.year, student: info.student };
+            }
+        } catch (e) {
+            Logger.warn('解析分类口径失败:', e);
+        }
+        return { version: '2026', source: 'default' };
+    }
+
+    /** 按指定口径生成分类数据源地址列表 */
+    function getCategoryURLs(version) {
+        const file = XXK_VERSION_FILES[version] || XXK_VERSION_FILES['2026'];
+        return CATEGORY_URL_TEMPLATES.map(url => url.replace('xxk.json', file));
+    }
+
+    /** 口径来源的中文描述，供日志与界面显示 */
+    function describeVersionSource(info) {
+        if (info.source === 'manual') return '手动指定';
+        if (info.source === 'auto') return `学号自动识别 · ${info.year} 级`;
+        return '默认 · 最新方案';
+    }
 
     // 课程大纲索引数据源（包含课程代码到 jx02id 的映射）
     const OUTLINE_URLS = [
@@ -85,6 +184,8 @@
      * 2. 标题栏滚动：标题栏会循环展示最新的日志摘要，5秒后自动复位。
      * 3. 级别过滤：支持在展开状态下通过下拉菜单过滤日志级别。
      */
+
+// ===== src/core/logging.js =============================================
     const LogPanelUI = {
         container: null,    // 外部容器 DOM
         body: null,         // 日志行容器 DOM
@@ -297,6 +398,8 @@
      * ── 缓存系统 ────────────────────────────────────────────────────
      * 负责远程 JSON 数据在本地 localStorage 的存取、过期判断及统计。
      */
+
+// ===== src/core/cache.js ===============================================
     const CacheManager = {
         /**
          * 生成 URL 对应的哈希键名
@@ -398,6 +501,7 @@
     // fix④: 彻底移除与 LogPanelUI 职责重叠的 StatusNotifier，
     //        原代码中该系统的调用已被注释，直接删除其定义以消除冗余。
 
+// ===== src/core/bootstrap.js ===========================================
     // ==================== 延迟初始化日志 ====================
     function initializeLogging() {
         if (document.readyState === 'loading') {
@@ -471,6 +575,7 @@
     let courseCategoryMap = {};
     let courseOutlineMap = {};
 
+// ===== src/ui/modal.js =================================================
     // ==================== 统一弹窗 ====================
     function createUnifiedModal(title, content, type = 'info') {
         const existingModal = document.getElementById('njustAssistantModal');
@@ -560,6 +665,7 @@
         return container;
     }
 
+// ===== src/ui/drag.js ==================================================
     // ==================== 拖动功能 ====================
     // fix②: 使用 getBoundingClientRect 获取视觉位置，修复折叠动画后拖拽跳位问题
     function addDragFunctionality(container) {
@@ -607,6 +713,7 @@
         document.addEventListener('touchend', dragEnd, { passive: false });
     }
 
+// ===== src/core/qiangzhi.js ============================================
     // ==================== 检测强智科技页面 ====================
     function checkQiangzhiPage() {
         try {
@@ -660,6 +767,7 @@
         }
     }
 
+// ===== src/ui/promoBanner.js ===========================================
     // ==================== 梨课程推荐提示 ====================
     function showPromoBanner() {
         // 检查是否已存在
@@ -715,6 +823,7 @@
         insertTarget.parentNode.insertBefore(promoLine, insertTarget);
     }
 
+// ===== src/core/dataSource.js ==========================================
     // ==================== 数据加载（智能切源）====================
     // fix⑤: 无论第几个数据源成功，均进行缓存；缓存读取也遍历所有 URL
     function loadJSONWithFallback(urls) {
@@ -825,6 +934,7 @@
         }
     }
 
+// ===== src/ui/creditsPanel.js ==========================================
     // ==================== 学分统计悬浮窗 ====================
     function createCreditSummaryWindow() {
         try {
@@ -852,6 +962,19 @@
                 </div>
                 <div style="background: #fff; padding: 18px 22px 10px 22px; max-height: 540px; overflow-y: auto;">
                     <div id="creditSummary"></div>
+                    <div id="xxkVersionBar" style="margin-top: 14px; padding: 9px 12px; background: #f0f7ff;
+                        border: 1px solid #d6e6ff; border-radius: 8px; font-size: 13px; color: #33557a;
+                        display: flex; align-items: center;">
+                        <span id="xxkVersionText">📦 分类口径：加载中…</span>
+                        <select id="xxkVersionSelect" title="选择学分统计所依据的培养方案版本"
+                            style="margin-left: auto; font-size: 12px; padding: 2px 6px; border: 1px solid #c9d8ea;
+                            border-radius: 6px; background: #fff; color: #33557a;">
+                            <option value="">按学号自动</option>
+                            <option value="2018">2018 版</option>
+                            <option value="2022">2022 版</option>
+                            <option value="2026">2026 版</option>
+                        </select>
+                    </div>
                     <div style="margin-top: 18px; padding-top: 12px; border-top: 1px solid #e0e0e0;
                         font-size: 13px; color: #888; line-height: 1.6; text-align: left;">
                         <li>对照个人培养方案核实具体修课要求</li>
@@ -913,6 +1036,29 @@
                 creditCloseBtn.addEventListener('click', () => container.remove());
                 creditCloseBtn.addEventListener('mouseenter', () => creditCloseBtn.style.backgroundColor = '#e0e0e0');
                 creditCloseBtn.addEventListener('mouseleave', () => creditCloseBtn.style.backgroundColor = 'transparent');
+            }
+
+            // 培养方案口径显示与手动切换
+            try {
+                const versionText = container.querySelector('#xxkVersionText');
+                const versionSelect = container.querySelector('#xxkVersionSelect');
+                const info = resolveCategoryVersion();
+                if (versionText) {
+                    versionText.textContent = `📦 分类口径：${info.version} 版（${describeVersionSource(info)}）`;
+                }
+                if (versionSelect) {
+                    versionSelect.value = localStorage.getItem(KEY_XXK_VERSION) || '';
+                    versionSelect.addEventListener('change', () => {
+                        const value = versionSelect.value;
+                        if (value) localStorage.setItem(KEY_XXK_VERSION, value);
+                        else localStorage.removeItem(KEY_XXK_VERSION);
+                        CacheManager.clear();
+                        Logger.info(`分类口径已切换为「${value || '按学号自动'}」，正在重新加载数据`);
+                        setTimeout(() => location.reload(), 300);
+                    });
+                }
+            } catch (e) {
+                Logger.warn('渲染分类口径控件失败:', e);
             }
 
             Logger.debug('学分统计弹窗创建完成');
@@ -1012,6 +1158,8 @@
      * ── 课程信息增强核心逻辑 ───────────────────────────────────────
      * 负责解析教务系统的表格 DOM，并根据映射表插入大纲链接、选修课类别等信息。
      */
+
+// ===== src/core/courseEnhance.js =======================================
     function processAllTables() {
         try {
             const tables = document.querySelectorAll('table');
@@ -1144,6 +1292,8 @@
      * ── 登录保活与自动修复系统 ───────────────────────────────────────
      * 解决教务系统频繁掉线、重复登录导致的报错页面。
      */
+
+// ===== src/core/loginKeepAlive.js ======================================
     function checkLoginErrorAndRefresh() {
         try {
             const pageTitle = document.title || '';
@@ -1245,6 +1395,8 @@
     /**
      * ── 脚本入口初始化 ──────────────────────────────────────────────
      */
+
+// ===== src/core/main.js ================================================
     async function init() {
         try {
             Logger.info('开始执行主要逻辑');
@@ -1265,10 +1417,12 @@
             autoRefreshLoginStatus();
             checkLoginErrorAndRefresh();
 
-            // 2. 加载远程配置数据
+            // 2. 加载远程配置数据（按学号对应的入学年份自适应培养方案口径）
             Logger.info('开始加载数据');
+            const versionInfo = resolveCategoryVersion();
+            Logger.info(`选修课分类口径：${versionInfo.version} 版（${describeVersionSource(versionInfo)}）`);
             const [categoryData, outlineData] = await Promise.all([
-                loadJSON(CATEGORY_URLS),
+                loadJSON(getCategoryURLs(versionInfo.version)),
                 loadJSON(OUTLINE_URLS)
             ]);
 
@@ -1351,6 +1505,7 @@
     window.__NJUST_LOGGER__ = Logger;
 })();
 
+// ===== src/evaluate/consts.js ==========================================
 // ================================================================
 //  【模块二】自动评教助手 V1
 //  功能：自动填分、批量保存、批量提交、分值实时预览
@@ -1453,6 +1608,7 @@
         if (el) el.textContent = JSON.stringify(loadStore(), null, 2);
     };
 
+// ===== src/evaluate/evaluateCore.js ====================================
     // ── 评价页面核心逻辑 ──────────────────────────────────────────────
     /**
      * 收集当前评价页面的所有评分组 (Radio) 及其对应的分值
@@ -1544,6 +1700,7 @@
         return roundFloat(total);
     };
 
+// ===== src/evaluate/style.js ===========================================
     // ── 样式注入 ──────────────────────────────────────────────────────
     const injectCSS = () => {
         if (document.getElementById('v80-style')) return;
@@ -1611,6 +1768,7 @@
         document.head.appendChild(style);
     };
 
+// ===== src/evaluate/panel.js ===========================================
     // ── 面板构建 ──────────────────────────────────────────────────────
     /**
      * 创建并注入控制面板 DOM
@@ -1672,6 +1830,7 @@
         return panel;
     };
 
+// ===== src/evaluate/findPage.js ========================================
     // ── FIND 页面 (评教类别入口页) ────────────────────────────────────
     if (location.href.includes('xspj_find.do')) {
         /**
@@ -1754,6 +1913,7 @@
         renderEntries();
     }
 
+// ===== src/evaluate/listPage.js ========================================
     // ── LIST 页面 (课程列表页) ────────────────────────────────────────
     if (location.href.includes('xspj_list.do')) {
         buildPanel(
@@ -1917,6 +2077,7 @@
         if (localStorage.getItem(KEY_SUBRUN) === 'true' && localStorage.getItem(KEY_SUBBSY) !== 'true') setTimeout(execNextSubmit, 1200);
     }
 
+// ===== src/evaluate/editPage.js ========================================
     // ── EDIT 页面 (具体课程评价页) ────────────────────────────────────
     if (location.href.includes('xspj_edit.do')) {
         const params = new URLSearchParams(location.search);
