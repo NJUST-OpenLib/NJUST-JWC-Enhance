@@ -1234,19 +1234,14 @@
             padding: 8px 20px;
             text-align: center;
             font-size: 12px;
-            color: #666;
+            color: var(--nju-text-2);
         `;
 
         promoLine.innerHTML = `
             <strong>推荐：</strong>尝试最新开发，支持本科生/研究生的 <strong>梨课程</strong>。
-            可以在<a href="https://github.com/simpleClover/NJUSTSchedule/releases/latest" target="_blank"
-                style="color: #007bff; text-decoration: none;">GitHub 下载</a> 或
-            <a href="https://course-cdn.njust.store/?dir=/NJUSTSchedule/releases/download" target="_blank"
-                style="color: #007bff; text-decoration: none;">CDN 下载</a>
-            <span style="font-size: 11px; color: #888;">(Android/HarmonyOS)</span>，IOS/PC 用户也可使用
-            <a href="https://Course.njust.store" target="_blank"
-                style="color: #007bff; text-decoration: none;">网页版</a>。
-
+            <a href="https://m.njust.store" target="_blank" rel="noopener noreferrer"
+                style="color: var(--nju-primary); text-decoration: none;">前往 m.njust.store</a>
+            <span style="font-size: 11px; color: var(--nju-text-3);">（支持 Android / HarmonyOS / iOS / PC）</span>
         `;
 
         // 在目标元素上方插入
