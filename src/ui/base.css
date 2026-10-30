@@ -119,3 +119,103 @@
     color: var(--nju-text-2);
     font-size: var(--nju-fs-sm);
 }
+
+/* =============================================================
+   统一窗口框架
+   ============================================================= */
+.nju-window {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background: var(--nju-bg);
+    border: 1px solid var(--nju-border);
+    border-radius: var(--nju-radius-lg);
+    box-shadow: var(--nju-shadow-md);
+    font-family: var(--nju-font);
+    color: var(--nju-text);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.nju-window-hd {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    background: var(--nju-bg-subtle);
+    border-bottom: 1px solid var(--nju-border);
+    cursor: move;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.nju-window-title {
+    font-size: var(--nju-fs-md);
+    font-weight: 600;
+    color: var(--nju-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nju-window-sub {
+    flex: 1;
+    min-width: 0;
+    font-size: var(--nju-fs-sm);
+    color: var(--nju-text-3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nju-window-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.nju-window-bd {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 16px 18px;
+    font-size: var(--nju-fs-md);
+    box-sizing: border-box;
+}
+
+.nju-window-ft {
+    flex-shrink: 0;
+    border-top: 1px solid var(--nju-border);
+    padding: 10px 18px;
+    font-size: var(--nju-fs-sm);
+    color: var(--nju-text-3);
+    line-height: 1.6;
+}
+
+/* ── 八方向缩放手柄 ── */
+.nju-resize-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.nju-resize-handle {
+    position: absolute;
+    pointer-events: auto;
+    touch-action: none;
+}
+
+.nju-resize-n, .nju-resize-s { left: 12px; right: 12px; height: 6px; cursor: ns-resize; }
+.nju-resize-e, .nju-resize-w { top: 12px; bottom: 12px; width: 6px; cursor: ew-resize; }
+.nju-resize-n { top: 0; }
+.nju-resize-s { bottom: 0; }
+.nju-resize-e { right: 0; }
+.nju-resize-w { left: 0; }
+.nju-resize-ne, .nju-resize-nw, .nju-resize-se, .nju-resize-sw { width: 14px; height: 14px; }
+.nju-resize-ne { top: 0; right: 0; cursor: nesw-resize; }
+.nju-resize-nw { top: 0; left: 0; cursor: nwse-resize; }
+.nju-resize-se { bottom: 0; right: 0; cursor: nwse-resize; }
+.nju-resize-sw { bottom: 0; left: 0; cursor: nesw-resize; }

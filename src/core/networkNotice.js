@@ -30,7 +30,7 @@
                 box-shadow: var(--nju-shadow-sm);
             `;
             bar.innerHTML = `
-                <span>⚠️ 教务处直连入口（202.119.81.112 / 113）仅限校园网访问，校外请使用
+                <span>教务处直连入口（202.119.81.112 / 113）仅限校园网访问，校外请使用
                     <a href="${SMART_CAMPUS_LOGIN_URL}" target="_blank"
                        style="color: var(--nju-primary); font-weight: 600; text-decoration: none;">智慧理工门户</a>
                     登录教务系统。

@@ -139,9 +139,25 @@
      */
     const DEBUG_CONFIG = {
         enabled: true,
-        level: 3,
-        showCache: true // 是否在日志中详细记录缓存的存取动作
+        level: 2,           // 默认仅记录 WARN 及以上，避免切页时缓存日志刷屏
+        showCache: false    // 是否在日志中详细记录缓存的存取动作
     };
+
+    /**
+     * 大纲链接显示模式
+     * both     = 课程大纲 + 大纲镜像（默认）
+     * original = 仅官方课程大纲
+     * mirror   = 仅大纲镜像
+     * none     = 不显示
+     */
+    const KEY_OUTLINE_MODE = 'njust_outline_mode';
+    function getOutlineMode() {
+        const mode = localStorage.getItem(KEY_OUTLINE_MODE);
+        return ['both', 'original', 'mirror', 'none'].indexOf(mode) !== -1 ? mode : 'both';
+    }
+    function setOutlineMode(mode) {
+        localStorage.setItem(KEY_OUTLINE_MODE, mode);
+    }
 
     /**
      * ── 缓存系统配置 ───────────────────────────────────────────────

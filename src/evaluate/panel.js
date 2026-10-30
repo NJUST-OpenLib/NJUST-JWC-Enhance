@@ -6,6 +6,7 @@
         injectCSS();
         const panel = document.createElement('div');
         panel.id = 'v80-panel';
+        panel.className = 'nju-window';
         panel.innerHTML = `
             <div id="v80-header">
                 <b>${titleHtml}</b>
@@ -15,7 +16,7 @@
             <div id="v80-body">${bodyHtml}</div>
             <div class="v80-section">
                 <div class="v80-sec-hd" id="store-hd">
-                    <span class="lbl">🗄 Storage 原始数据</span>
+                    <span class="lbl">Storage 原始数据</span>
                     <span class="arr" id="store-arr">▾</span>
                 </div>
                 <div class="v80-sec-body" id="store-body">
@@ -38,9 +39,13 @@
         const storeBody = document.getElementById('store-body'), storeArr = document.getElementById('store-arr');
         document.getElementById('store-hd').onclick = () => { storeBody.classList.toggle('open'); storeArr.textContent = storeBody.classList.contains('open') ? '▴' : '▾'; if (storeBody.classList.contains('open')) renderStoragePanel(); };
 
-        // 复用公共拖拽实现（避免直接赋值 document.onmousemove 覆盖页面其它监听器）
-        window.NJUI.makeDraggable(document.getElementById('v80-header'), panel, {
-            shouldIgnore: (e) => e.target.id === 'v80-close-btn'
+        // 复用公共窗口能力：拖动 + 八向缩放 + 位置记忆
+        window.NJUI.enableWindow({
+            id: 'evaluate',
+            target: panel,
+            handle: document.getElementById('v80-header'),
+            minWidth: 380,
+            minHeight: 260
         });
 
         return panel;

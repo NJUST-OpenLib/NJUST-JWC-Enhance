@@ -60,12 +60,13 @@
 
             this.container = document.createElement('div');
             this.container.id = 'njust-enhance-log';
-            this.container.className = 'minimized';
+            this.container.className = 'nju-window minimized';
             this.container.innerHTML = `
                 <div id="njust-enhance-log-hd">
                     <b><span id="nel-status-text">南理工教务增强助手 V2</span></b>
                     <span id="nel-clear-btn" class="nel-btn nel-clear" title="清空日志">清空</span>
-                    <span id="njust-log-toggle" class="nel-btn">展开 ▴</span>
+                    <span id="njust-log-hide" class="nel-btn" title="隐藏日志面板">隐藏</span>
+                    <span id="njust-log-toggle" class="nel-btn">展开</span>
                 </div>
                 <div id="njust-enhance-log-body"></div>
             `;
@@ -74,11 +75,29 @@
 
             this.initialized = true;
 
+            // 统一窗口能力：拖动 + 缩放 + 位置/尺寸记忆（底部贴边，禁用向下拉伸）
+            enableWindow({
+                id: 'log',
+                target: this.container,
+                handle: this.container.querySelector('#njust-enhance-log-hd'),
+                minWidth: 320,
+                minHeight: 160,
+                edges: ['n', 'e', 'w', 'ne', 'nw']
+            });
+
             // 绑定交互事件
             this.container.querySelector('#njust-enhance-log-hd').onclick = (e) => {
-                if (e.target.id === 'nel-clear-btn') return;
+                if (e.target.id === 'nel-clear-btn' || e.target.id === 'njust-log-hide') return;
                 const isMin = this.container.classList.toggle('minimized');
-                this.container.querySelector('#njust-log-toggle').textContent = isMin ? '展开 ▴' : '折叠 ▾';
+                this.container.querySelector('#njust-log-toggle').textContent = isMin ? '展开' : '折叠';
+            };
+
+            // 隐藏日志面板（持久化，右下角保留极简恢复入口）
+            this.container.querySelector('#njust-log-hide').onclick = (e) => {
+                e.stopPropagation();
+                localStorage.setItem('njust_log_hidden', '1');
+                this.container.style.display = 'none';
+                this._createRestoreButton();
             };
 
             this.container.querySelector('#nel-clear-btn').onclick = (e) => {
@@ -90,6 +109,12 @@
                 this._statusQueue = [];
                 this._statusPlaying = false;
             };
+
+            // 用户曾隐藏日志面板：保持隐藏，仅保留右下角恢复入口
+            if (localStorage.getItem('njust_log_hidden') === '1') {
+                this.container.style.display = 'none';
+                this._createRestoreButton();
+            }
 
             // 处理初始化前的缓存消息
             if (this.queue.length > 0) {
@@ -137,6 +162,12 @@
          * 标题栏消息队列播放器
          */
         _playStatusQueue() {
+            // 折叠状态下不播放标题栏滚动，避免切页时频繁跳动干扰阅读
+            if (this.container && this.container.classList.contains('minimized')) {
+                this._statusQueue = [];
+                this._statusPlaying = false;
+                return;
+            }
             if (this._statusQueue.length === 0) {
                 this._statusPlaying = false;
                 // 恢复默认状态文字
@@ -157,6 +188,32 @@
             }
             // 每 300ms 切换下一条，形成滚动感
             setTimeout(() => { this._playStatusQueue(); }, 300);
+        },
+
+        /**
+         * 右下角的极简恢复入口（隐藏日志后仍可找回）
+         */
+        _createRestoreButton() {
+            if (document.getElementById('njust-log-restore')) return;
+            const btn = document.createElement('button');
+            btn.id = 'njust-log-restore';
+            btn.type = 'button';
+            btn.textContent = '日志';
+            btn.title = '显示日志面板';
+            btn.style.cssText = `
+                position: fixed; right: 18px; bottom: 6px; z-index: var(--nju-z-float);
+                padding: 2px 6px; border: none; border-radius: 4px; background: transparent;
+                color: var(--nju-text-3); font-family: var(--nju-font); font-size: 11px;
+                opacity: 0.4; cursor: pointer; transition: opacity .15s ease;
+            `;
+            btn.addEventListener('mouseenter', () => { btn.style.opacity = '0.9'; });
+            btn.addEventListener('mouseleave', () => { btn.style.opacity = '0.4'; });
+            btn.addEventListener('click', () => {
+                localStorage.removeItem('njust_log_hidden');
+                if (this.container) this.container.style.display = '';
+                btn.remove();
+            });
+            document.body.appendChild(btn);
         },
 
         esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
