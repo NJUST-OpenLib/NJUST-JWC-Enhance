@@ -95,8 +95,8 @@
                                         const realId = courseOutlineMap[courseCode];
                                         if (realId) {
                                             const link = document.createElement('a');
-                                            // 拼接教务处官网预览链接
-                                            link.href = `http://202.119.81.112:8080/kcxxAction.do?method=kcdgView&jx02id=${realId}&isentering=0`;
+                                            // 拼接教务处官网预览链接（协议相对，跟随当前页面 http/https）
+                                            link.href = `//202.119.81.112:8080/kcxxAction.do?method=kcdgView&jx02id=${realId}&isentering=0`;
                                             link.textContent = '📘 查看课程大纲';
                                             link.target = '_blank';
                                             link.style.color = '#0077cc';

@@ -1,6 +1,6 @@
 {
   "name": "njust-jwc-enhance",
-  "version": "2.0.2.0",
+  "version": "2.0.3.0",
   "description": "南理工教务处增强程序及配套的数据采集处理",
   "main": "enhance.js",
   "directories": {

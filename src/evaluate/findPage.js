@@ -9,7 +9,8 @@
             anchors.forEach(a => {
                 const href = a.getAttribute('href');
                 const label = a.textContent.trim() || a.title || href;
-                const abs = href.startsWith('http') ? href : location.origin + href;
+                // 完整 URL、协议相对（//host/...）均保持原样，其余按当前站点补全
+                const abs = /^(https?:)?\/\//.test(href) ? href : location.origin + href;
                 found.push({ label, url: abs });
             });
             return found;

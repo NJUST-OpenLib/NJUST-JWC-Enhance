@@ -1,16 +1,21 @@
 // ==UserScript==
 // @name         南理工教务增强助手 V2 | 支持自动评教
 // @namespace    http://tampermonkey.net/
-// @version      2.0.2.0
+// @version      2.0.3.0
 // @description  在合适的地方显示课程大纲、选修课类别及选修课学分情况，并自动刷新登录状态。同时支持自动评教与批量提交。
-// @match        http://202.119.81.112/*
-// @match        http://bkjw.njust.edu.cn/*
-// @match        http://202.119.81.112:9080/*
-// @match        http://202.119.81.113:9080/*
+// @match        *://202.119.81.112/*
+// @match        *://202.119.81.112:8080/*
+// @match        *://202.119.81.112:9080/*
+// @match        *://202.119.81.113/*
+// @match        *://202.119.81.113:8080/*
+// @match        *://202.119.81.113:9080/*
+// @match        *://bkjw.njust.edu.cn/*
 // @grant        GM_xmlhttpRequest
 // @grant        unsafeWindow
 // @connect      jsdelivr.net
 // @connect      njust.wiki
+// @connect      njust.store
+// @connect      raw.githubusercontent.com
 // @author       Light
 // @license      MIT
 // @supportURL   https://github.com/NJUST-OpenLib/NJUST-JWC-Enhance
@@ -764,7 +769,7 @@
                             智慧理工门户登录
                             <span style="margin-left: 8px; font-size: 11px; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 6px;">校外可用 · 推荐</span>
                         </a>
-                        <a href="http://202.119.81.113:8080/" target="_blank" style="
+                        <a href="//202.119.81.113:8080/" target="_blank" style="
                             display: block; background: var(--nju-bg-subtle); color: var(--nju-text);
                             padding: 13px 20px; text-decoration: none; border-radius: var(--nju-radius-md);
                             font-weight: 500; font-size: var(--nju-fs-lg); text-align: center;
@@ -1303,8 +1308,8 @@
                                         const realId = courseOutlineMap[courseCode];
                                         if (realId) {
                                             const link = document.createElement('a');
-                                            // 拼接教务处官网预览链接
-                                            link.href = `http://202.119.81.112:8080/kcxxAction.do?method=kcdgView&jx02id=${realId}&isentering=0`;
+                                            // 拼接教务处官网预览链接（协议相对，跟随当前页面 http/https）
+                                            link.href = `//202.119.81.112:8080/kcxxAction.do?method=kcdgView&jx02id=${realId}&isentering=0`;
                                             link.textContent = '📘 查看课程大纲';
                                             link.target = '_blank';
                                             link.style.color = '#0077cc';
@@ -1880,7 +1885,8 @@
             anchors.forEach(a => {
                 const href = a.getAttribute('href');
                 const label = a.textContent.trim() || a.title || href;
-                const abs = href.startsWith('http') ? href : location.origin + href;
+                // 完整 URL、协议相对（//host/...）均保持原样，其余按当前站点补全
+                const abs = /^(https?:)?\/\//.test(href) ? href : location.origin + href;
                 found.push({ label, url: abs });
             });
             return found;

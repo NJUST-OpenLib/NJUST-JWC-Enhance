@@ -24,7 +24,7 @@
                             智慧理工门户登录
                             <span style="margin-left: 8px; font-size: 11px; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 6px;">校外可用 · 推荐</span>
                         </a>
-                        <a href="http://202.119.81.113:8080/" target="_blank" style="
+                        <a href="//202.119.81.113:8080/" target="_blank" style="
                             display: block; background: var(--nju-bg-subtle); color: var(--nju-text);
                             padding: 13px 20px; text-decoration: none; border-radius: var(--nju-radius-md);
                             font-weight: 500; font-size: var(--nju-fs-lg); text-align: center;
