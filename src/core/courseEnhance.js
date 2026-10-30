@@ -71,43 +71,76 @@
                                     titleDiv.style.fontSize = '13px';
                                     titleDiv.style.marginTop = '4px';
                                     titleDiv.style.fontStyle = 'italic';
-                                    titleDiv.textContent = `📌 老师说明: ${courseCodeTd.title}`;
+                                    titleDiv.textContent = `老师说明: ${courseCodeTd.title}`;
                                     courseCodeTd.appendChild(titleDiv);
                                     courseEnhanced = true;
                                 }
                             } catch (e) { Logger.warn('添加老师说明时出错:', e); }
 
-                            // 3. 插入教学大纲链接
+                            // 3. 插入教学大纲链接（原始 + 镜像）
                             try {
                                 if (courseCodeTd && !courseCodeTd.querySelector('[data-outline-inserted]')) {
                                     const outlineDiv = document.createElement('div');
                                     outlineDiv.setAttribute('data-outline-inserted', '1');
                                     outlineDiv.style.marginTop = '4px';
+                                    outlineDiv.style.fontSize = '13px';
+                                    // 三个链接可能较长，允许自动换行
+                                    outlineDiv.style.display = 'flex';
+                                    outlineDiv.style.flexWrap = 'wrap';
+                                    outlineDiv.style.gap = '2px';
 
-                                    if (isSmartCampus) {
-                                        // 智慧理工平台因跨域和权限限制，无法直接预览官网大纲
-                                        outlineDiv.textContent = '⚠️ 课程大纲功能受限';
-                                        outlineDiv.style.color = '#ff9800';
-                                        outlineDiv.style.fontWeight = 'bold';
-                                        outlineDiv.style.cursor = 'pointer';
-                                        outlineDiv.title = '当前使用智慧理工平台，课程大纲功能受限。请访问教务处官网获取完整功能';
-                                    } else {
-                                        const realId = courseOutlineMap[courseCode];
-                                        if (realId) {
-                                            const link = document.createElement('a');
-                                            // 拼接教务处官网预览链接（协议相对，跟随当前页面 http/https）
-                                            link.href = `//202.119.81.112:8080/kcxxAction.do?method=kcdgView&jx02id=${realId}&isentering=0`;
-                                            link.textContent = '📘 查看课程大纲';
-                                            link.target = '_blank';
-                                            link.style.color = '#0077cc';
-                                            outlineDiv.appendChild(link);
-                                        } else {
-                                            outlineDiv.textContent = '❌ 无大纲信息';
-                                            outlineDiv.style.color = 'gray';
+                                    const realId = courseOutlineMap[courseCode];
+
+                                    const makeOutlineLink = (href, text, title) => {
+                                        const link = document.createElement('a');
+                                        link.href = href;
+                                        link.textContent = text;
+                                        link.target = '_blank';
+                                        link.rel = 'noopener noreferrer';
+                                        link.style.color = 'var(--nju-primary)';
+                                        link.style.textDecoration = 'none';
+                                        link.style.marginLeft = '2px';
+                                        if (title) link.title = title;
+                                        return link;
+                                    };
+
+                                    const outlineMode = getOutlineMode();
+                                    if (outlineMode !== 'none') {
+                                        const showOriginal = (outlineMode === 'both' || outlineMode === 'original') && !!realId;
+                                        const showMirror = (outlineMode === 'both' || outlineMode === 'mirror');
+
+                                        if (showOriginal) {
+                                            // 智慧理工平台大纲：内容与教务处一致，页面标题显示为 2018 版本，校内外均可访问
+                                            outlineDiv.appendChild(makeOutlineLink(
+                                                `https://bkjw.njust.edu.cn/njlgdx/view/pyfa/kcdg_View.jsp?jx02id=${realId}`,
+                                                '[课程大纲1]',
+                                                '智慧理工平台大纲：页面标题显示为 2018 版本，内容与教务处一致，校内外均可访问'
+                                            ));
+
+                                            // 老教务网站大纲：页面标题显示为 2022 版本，仅校园网可访问
+                                            outlineDiv.appendChild(makeOutlineLink(
+                                                `//202.119.81.112:8080/kcxxAction.do?method=kcdgView&jx02id=${realId}&isentering=0`,
+                                                '[课程大纲2]',
+                                                '老教务网站大纲：页面标题显示为 2022 版本，仅校园网可访问（内容与智慧理工版本基本一致）'
+                                            ));
                                         }
+
+                                        if (showMirror) {
+                                            // 镜像站已收录全部课程（以课程号为唯一 key），不依赖 kcdg.json 映射，
+                                            // 即使该课程未上传大纲，链接依然可以访问
+                                            // 未收录官方大纲时，把入口称为「课程详情」更贴切
+                                            outlineDiv.appendChild(makeOutlineLink(
+                                                `https://kcdg.njust.store/html/${encodeURIComponent(courseCode)}.html`,
+                                                realId ? '[大纲镜像]' : '[课程详情]',
+                                                realId
+                                                    ? '课程大纲镜像站（校内外均可访问）'
+                                                    : '课程详情：该课程未收录官方大纲，可在镜像站查看课程信息（校内外均可访问）'
+                                            ));
+                                        }
+
+                                        courseCodeTd.appendChild(outlineDiv);
+                                        courseEnhanced = true;
                                     }
-                                    courseCodeTd.appendChild(outlineDiv);
-                                    courseEnhanced = true;
                                 }
                             } catch (e) { Logger.warn('添加课程大纲链接时出错:', e); }
 

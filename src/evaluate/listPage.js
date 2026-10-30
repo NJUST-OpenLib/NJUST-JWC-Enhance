@@ -1,7 +1,7 @@
     // ── LIST 页面 (课程列表页) ────────────────────────────────────────
     if (location.href.includes('xspj_list.do')) {
         buildPanel(
-            '🎓 南理工教务增强助手 V2',
+            '南理工教务增强助手 V2',
             `
                 <div id="v80-submit-hint"></div>
                 <div class="btn-row">
@@ -13,7 +13,7 @@
                     <button id="clear-log-btn" class="vb vb-danger" style="flex:1">清空日志</button>
                 </div>
                 <div class="btn-row">
-                    <a href="https://enhance.njust.wiki" target="_blank" class="vb vb-outline vb-mini" style="text-decoration:none;flex:1;text-align:center;">🔗 点击前往增强助手官网</a>
+                    <a href="https://enhance.njust.wiki" target="_blank" class="vb vb-outline vb-mini" style="text-decoration:none;flex:1;text-align:center;">前往增强助手官网</a>
                 </div>
             `,
             `<div id="course-list"></div>`
@@ -69,7 +69,8 @@
             courses.forEach(c => {
                 // 初始化存储项
                 if (!store[c.key]) store[c.key] = { auto: true, done: false, name: c.name, teacher: c.teacher, zpf: c.zpf, url: c.rawUrl, pj01id: qp(c.rawUrl, 'pj01id') };
-                if (c.submitted) store[c.key].done = true;
+                // 已评价或已提交都视为完成，避免重复打开同一门课
+                if (c.submitted || c.evaluated) store[c.key].done = true;
                 const info = store[c.key];
                 let stClass, stLabel;
                 if (c.submitted) { stClass = 'st-submitted'; stLabel = '已提交'; }
@@ -107,20 +108,33 @@
          */
         const execNext = () => {
             if (localStorage.getItem(KEY_RUNNING) !== 'true') return;
-            if (localStorage.getItem(KEY_BUSY) === 'true') return; // 等待当前窗口保存完毕
+
+            // 互斥锁：等待当前课程处理完毕；超过阈值视为流程中断并自动恢复
+            if (localStorage.getItem(KEY_BUSY) === 'true') {
+                const ts = parseInt(localStorage.getItem(KEY_BUSY_TS) || '0', 10);
+                if (ts && Date.now() - ts < LOCK_TIMEOUT) return;
+                localStorage.setItem(KEY_BUSY, 'false');
+                logInfo('上一次操作已超时，已自动恢复流程');
+            }
+
             const store = loadStore(), curPj01 = qp(location.href, 'pj01id');
             // 查找属于当前类别且未完成的待评价课程
             const pending = Object.keys(store).filter(k => { const c = store[k]; return c.auto && !c.done && (!curPj01 || qp(c.url, 'pj01id') === curPj01); });
+
             if (pending.length > 0) {
                 const c = store[pending[0]];
-                localStorage.setItem(KEY_BUSY, 'true'); // 上锁
-                logInfo(`▶ 正在保存：${c.name}`);
-                window.open(withAuto(c.url, 'true'), '_blank', 'width=1200,height=800');
+                localStorage.setItem(KEY_BUSY, 'true');
+                localStorage.setItem(KEY_BUSY_TS, String(Date.now()));
+                logInfo(`正在保存：${c.name}（本类别剩余 ${pending.length} 门）`);
+                // 记录列表页地址，供评价页完成后返回
+                sessionStorage.setItem('njust_eval_list_url', location.href);
+                // 同页跳转，避免异步 window.open 被浏览器拦截
+                setTimeout(() => { location.href = withAuto(c.url, 'true'); }, 300);
             } else {
-                // 当前类别处理完毕，检查跨类别队列
-                const queue = loadQueue();
-                if (queue.length > 0) { const next = queue.shift(); saveQueue(queue); localStorage.setItem(KEY_CURLIST, next); localStorage.setItem(KEY_BUSY, 'false'); setTimeout(() => { location.href = next; }, 800); }
-                else { localStorage.setItem(KEY_RUNNING, 'false'); localStorage.setItem(KEY_BUSY, 'false'); logSuccess('🎉 所有类别评价已全部完成！'); renderList(); alert('🎉全部评价已完成！'); }
+                localStorage.setItem(KEY_RUNNING, 'false');
+                localStorage.setItem(KEY_BUSY, 'false');
+                logSuccess('当前类别的课程已全部处理完成');
+                renderList();
             }
         };
 
@@ -129,24 +143,54 @@
          */
         const execNextSubmit = () => {
             if (localStorage.getItem(KEY_SUBRUN) !== 'true') return;
-            if (localStorage.getItem(KEY_SUBBSY) === 'true') return;
+
+            if (localStorage.getItem(KEY_SUBBSY) === 'true') {
+                const ts = parseInt(localStorage.getItem(KEY_SUBBSY_TS) || '0', 10);
+                if (ts && Date.now() - ts < LOCK_TIMEOUT) return;
+                localStorage.setItem(KEY_SUBBSY, 'false');
+                logInfo('上一次提交已超时，已自动恢复流程');
+            }
+
             const queue = loadSubQueue();
-            if (queue.length === 0) { localStorage.setItem(KEY_SUBRUN, 'false'); localStorage.setItem(KEY_SUBBSY, 'false'); logSuccess('🎉 所有勾选课程提交完毕！'); setTimeout(() => location.reload(), 800); return; }
-            const nextUrl = queue.shift(); saveSubQueue(queue); localStorage.setItem(KEY_SUBBSY, 'true');
+            if (queue.length === 0) {
+                localStorage.setItem(KEY_SUBRUN, 'false');
+                localStorage.setItem(KEY_SUBBSY, 'false');
+                logSuccess('所有勾选课程提交完毕');
+                setTimeout(() => location.reload(), 800);
+                return;
+            }
+
+            const nextUrl = queue.shift();
+            saveSubQueue(queue);
+            localStorage.setItem(KEY_SUBBSY, 'true');
+            localStorage.setItem(KEY_SUBBSY_TS, String(Date.now()));
             const submitStore = loadStore(), submitKey = courseKey(nextUrl), submitInfo = submitKey ? submitStore[submitKey] : null;
-            logInfo(`▶ 正在提交：${submitInfo ? submitInfo.name + '（' + submitInfo.teacher + '）' : nextUrl}`);
-            window.open(nextUrl, '_blank', 'width=1200,height=800');
+            logInfo(`正在提交：${submitInfo ? submitInfo.name + '（' + submitInfo.teacher + '）' : nextUrl}`);
+            sessionStorage.setItem('njust_eval_list_url', location.href);
+            // 同页跳转，避免被浏览器拦截
+            setTimeout(() => { location.href = nextUrl; }, 300);
         };
 
         // 按钮点击事件绑定
-        document.getElementById('start-btn').onclick = () => { localStorage.setItem(KEY_RUNNING, 'true'); localStorage.setItem(KEY_BUSY, 'false'); renderList(); execNext(); };
+        document.getElementById('start-btn').onclick = () => {
+            localStorage.setItem(KEY_RUNNING, 'true');
+            localStorage.setItem(KEY_BUSY, 'false');
+            localStorage.setItem(KEY_CURLIST, location.href);
+            renderList();
+            execNext();
+        };
         document.getElementById('submit-all-btn').onclick = () => {
             const store = loadStore(), toSubmit = parseRows().filter(c => { const info = store[c.key]; return (c.evaluated || (info && info.done)) && !c.submitted && (info ? info.auto !== false : true); });
             if (toSubmit.length === 0) return;
             if (!confirm(`即将提交以下 ${toSubmit.length} 门课程：\n` + toSubmit.map(c => `· ${c.name}（${c.teacher}）`).join('\n') + '\n\n确认继续？')) return;
             const queue = toSubmit.map(c => withSubmit(c.rawUrl)); saveSubQueue(queue); localStorage.setItem(KEY_SUBRUN, 'true'); localStorage.setItem(KEY_SUBBSY, 'false'); execNextSubmit();
         };
-        document.getElementById('reset-btn').onclick = () => { if (confirm('重置所有缓存？')) { [KEY_STORE, KEY_RUNNING, KEY_BUSY, KEY_QUEUE, KEY_CURLIST, KEY_SUBQUEUE, KEY_SUBRUN, KEY_SUBBSY].forEach(k => localStorage.removeItem(k)); location.reload(); } };
+        document.getElementById('reset-btn').onclick = () => {
+            if (!confirm('重置所有缓存？')) return;
+            [KEY_STORE, KEY_RUNNING, KEY_BUSY, KEY_BUSY_TS, KEY_CURLIST,
+                KEY_SUBQUEUE, KEY_SUBRUN, KEY_SUBBSY, KEY_SUBBSY_TS].forEach(k => localStorage.removeItem(k));
+            location.reload();
+        };
         document.getElementById('clear-log-btn').onclick = () => clearLogs();
 
         // 跨页面状态监听：当其他窗口修改了 busy 标志或完成状态时，本页面及时响应并触发下一步

@@ -29,6 +29,7 @@ const SOURCES = [
     'core/bootstrap.js',         // 日志延迟初始化、推广横幅初始化
     'ui/modal.js',               // 统一弹窗
     'ui/drag.js',                // 拖拽能力
+    'ui/window.js',              // 统一窗口能力（拖动 / 缩放 / 记忆）
     'core/qiangzhi.js',          // 强智科技页面检测
     'core/networkNotice.js',     // 校园网访问限制提示
     'ui/promoBanner.js',         // 梨课程推荐提示
@@ -69,7 +70,8 @@ function buildStyleBlock() {
                 console.warn(`⚠️  样式文件不存在，已跳过：src/${file}`);
                 return '';
             }
-            return fs.readFileSync(full, 'utf8');
+            // 同样规范化换行，保证跨平台构建结果一致
+            return fs.readFileSync(full, 'utf8').replace(/\r\n/g, '\n');
         })
         .join('\n\n');
 

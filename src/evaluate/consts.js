@@ -12,13 +12,15 @@
     const KEY_STORE = 'njust_eval_v1_store';    // 核心存储：课程状态、评分选项等
     const KEY_RUNNING = 'njust_eval_running';     // 全局标志：是否处于“开始评价并保存”流水线中
     const KEY_BUSY = 'njust_eval_busy';        // 互斥锁：防止多个窗口同时执行保存操作
-    const KEY_QUEUE = 'njust_eval_queue';       // 队列：待处理的类别 URL 列表
     const KEY_CURLIST = 'njust_eval_curlist';     // 当前正在处理的类别 URL
     const KEY_LOG = 'njust_eval_log';         // 日志存储
     const KEY_LOGLVL = 'njust_eval_loglvl';      // 日志显示等级过滤
     const KEY_SUBQUEUE = 'njust_eval_subqueue';    // 待提交课程的 URL 队列
     const KEY_SUBRUN = 'njust_eval_subrun';      // 全局标志：是否处于“提交已评课程”流水线中
     const KEY_SUBBSY = 'njust_eval_subbsy';      // 互斥锁：防止多个窗口同时执行提交操作
+    const KEY_BUSY_TS = 'njust_eval_busy_ts';       // 保存锁的时间戳（用于超时自动恢复）
+    const KEY_SUBBSY_TS = 'njust_eval_subbsy_ts';   // 提交锁的时间戳（用于超时自动恢复）
+    const LOCK_TIMEOUT = 90 * 1000;              // 锁的存活上限，超过视为流程已中断
 
     // URL 参数，用于传递指令给详情页
     const PARAM_AUTO = 'isAutoEval';             // 详情页接收后执行自动填分+保存
@@ -29,7 +31,7 @@
     // 日志级别与 UI 映射
     const LOG_LEVELS = { debug: 0, info: 1, success: 2, warn: 3, error: 4 };
     const LOG_LABELS = { debug: 'DBG', info: 'INF', success: 'OK ', warn: 'WRN', error: 'ERR' };
-    const LOG_ICONS = { debug: '🔍', info: 'ℹ️', success: '✅', warn: '⚠️', error: '❌' };
+    const LOG_ICONS = { debug: 'DBG', info: 'INF', success: 'OK', warn: 'WRN', error: 'ERR' };
 
     // 日志持久化与读取
     const loadLogs = () => JSON.parse(localStorage.getItem(KEY_LOG) || '[]');
@@ -87,8 +89,7 @@
     // 快捷访问 LocalStorage
     const loadStore = () => JSON.parse(localStorage.getItem(KEY_STORE) || '{}');
     const saveStore = (v) => localStorage.setItem(KEY_STORE, JSON.stringify(v));
-    const loadQueue = () => JSON.parse(localStorage.getItem(KEY_QUEUE) || '[]');
-    const saveQueue = (q) => localStorage.setItem(KEY_QUEUE, JSON.stringify(q));
+
     const loadSubQueue = () => JSON.parse(localStorage.getItem(KEY_SUBQUEUE) || '[]');
     const saveSubQueue = (q) => localStorage.setItem(KEY_SUBQUEUE, JSON.stringify(q));
 

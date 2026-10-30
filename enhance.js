@@ -27,7 +27,7 @@
  */
 // ===== 以下内容由 src/**/*.css 自动注入 =====
 (function () {
-    const njustCssText = "/* =============================================================\r\n   设计变量（Design Tokens）\r\n   全脚本统一的色彩 / 圆角 / 阴影 / 字号 / 层级体系。\r\n   组件样式一律通过 var() 引用，禁止再硬编码色值。\r\n   ============================================================= */\r\n:root {\r\n    /* ── 语义色 ── */\r\n    --nju-primary: #007AFF;\r\n    --nju-primary-hover: #0A6EDC;\r\n    --nju-primary-soft: rgba(0, 122, 255, 0.12);\r\n    --nju-success: #34C759;\r\n    --nju-success-soft: rgba(52, 199, 89, 0.12);\r\n    --nju-warning: #FF9500;\r\n    --nju-warning-soft: rgba(255, 149, 0, 0.12);\r\n    --nju-danger: #FF3B30;\r\n    --nju-danger-soft: rgba(255, 59, 48, 0.12);\r\n\r\n    /* ── 中性色 ── */\r\n    --nju-bg: #ffffff;\r\n    --nju-bg-subtle: #f5f6f8;\r\n    --nju-bg-hover: #eef0f3;\r\n    --nju-border: #e3e5e8;\r\n    --nju-border-strong: #d2d2d7;\r\n    --nju-text: #1d1d1f;\r\n    --nju-text-2: #5f6368;\r\n    --nju-text-3: #9aa0a6;\r\n\r\n    /* ── 圆角 ── */\r\n    --nju-radius-sm: 6px;\r\n    --nju-radius-md: 10px;\r\n    --nju-radius-lg: 14px;\r\n    --nju-radius-full: 999px;\r\n\r\n    /* ── 阴影 ── */\r\n    --nju-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);\r\n    --nju-shadow-md: 0 8px 28px rgba(0, 0, 0, 0.13);\r\n    --nju-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.18);\r\n\r\n    /* ── 字体 ── */\r\n    --nju-font: -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\",\r\n        Roboto, \"Helvetica Neue\", Arial, \"Microsoft YaHei\", sans-serif;\r\n    --nju-font-mono: \"SFMono-Regular\", Consolas, \"Lucida Console\", monospace;\r\n\r\n    /* ── 字号 ── */\r\n    --nju-fs-xs: 11px;\r\n    --nju-fs-sm: 12px;\r\n    --nju-fs-md: 13px;\r\n    --nju-fs-lg: 15px;\r\n    --nju-fs-xl: 17px;\r\n\r\n    /* ── 层级：统一分档，避免各面板自行定义 ── */\r\n    --nju-z-float: 9000;   /* 常驻浮层（日志抽屉等） */\r\n    --nju-z-panel: 10000;  /* 功能面板（学分统计、评教面板） */\r\n    --nju-z-modal: 11000;  /* 模态弹窗 */\r\n    --nju-z-topbar: 12000; /* 页面顶栏（评教自动条） */\r\n}\r\n\n\n/* =============================================================\r\n   基础原子类\r\n   依赖 theme.css 中定义的设计变量；所有面板共用同一套控件外观。\r\n   ============================================================= */\r\n\r\n/* ── 按钮 ── */\r\n.nju-btn {\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: 4px;\r\n    padding: 5px 12px;\r\n    border: 1px solid var(--nju-border);\r\n    border-radius: var(--nju-radius-sm);\r\n    background: var(--nju-bg);\r\n    color: var(--nju-text-2);\r\n    font-family: var(--nju-font);\r\n    font-size: var(--nju-fs-sm);\r\n    line-height: 1.4;\r\n    cursor: pointer;\r\n    transition: background-color .15s ease, border-color .15s ease, color .15s ease;\r\n}\r\n\r\n.nju-btn:hover { background: var(--nju-bg-hover); color: var(--nju-text); }\r\n.nju-btn:focus-visible { outline: 2px solid var(--nju-primary); outline-offset: 2px; }\r\n.nju-btn:disabled, .nju-btn[disabled] { opacity: .5; cursor: not-allowed; }\r\n\r\n.nju-btn-primary {\r\n    background: var(--nju-primary);\r\n    border-color: var(--nju-primary);\r\n    color: #fff;\r\n}\r\n.nju-btn-primary:hover { background: var(--nju-primary-hover); border-color: var(--nju-primary-hover); color: #fff; }\r\n\r\n.nju-btn-danger {\r\n    background: var(--nju-danger);\r\n    border-color: var(--nju-danger);\r\n    color: #fff;\r\n}\r\n.nju-btn-danger:hover { filter: brightness(.94); color: #fff; }\r\n\r\n.nju-btn-ghost { background: transparent; border-color: transparent; }\r\n.nju-btn-ghost:hover { background: var(--nju-bg-hover); }\r\n\r\n.nju-btn-mini { padding: 2px 8px; font-size: var(--nju-fs-xs); }\r\n\r\n/* 兼容评教模块的既有按钮类名，统一补齐交互态 */\r\n.vb:hover { filter: brightness(.96); }\r\n.vb:focus-visible { outline: 2px solid var(--nju-primary); outline-offset: 2px; }\r\n.vb:disabled, .vb[disabled] { opacity: .5; cursor: not-allowed; }\r\n\r\n/* ── 关闭按钮 ── */\r\n.nju-close {\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    width: 24px;\r\n    height: 24px;\r\n    padding: 0;\r\n    border: none;\r\n    border-radius: var(--nju-radius-full);\r\n    background: transparent;\r\n    color: var(--nju-text-3);\r\n    font-size: 15px;\r\n    line-height: 1;\r\n    cursor: pointer;\r\n    transition: background-color .15s ease, color .15s ease;\r\n}\r\n.nju-close:hover { background: var(--nju-bg-hover); color: var(--nju-text); }\r\n.nju-close:focus-visible { outline: 2px solid var(--nju-primary); outline-offset: 2px; }\r\n\r\n/* ── 面板骨架 ── */\r\n.nju-panel {\r\n    background: var(--nju-bg);\r\n    border: 1px solid var(--nju-border);\r\n    border-radius: var(--nju-radius-lg);\r\n    box-shadow: var(--nju-shadow-md);\r\n    font-family: var(--nju-font);\r\n    color: var(--nju-text);\r\n}\r\n\r\n.nju-panel-hd {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    padding: 12px 18px;\r\n    border-bottom: 1px solid var(--nju-border);\r\n    background: var(--nju-bg-subtle);\r\n    border-radius: var(--nju-radius-lg) var(--nju-radius-lg) 0 0;\r\n    font-size: var(--nju-fs-xl);\r\n    font-weight: 600;\r\n    color: var(--nju-text);\r\n}\r\n\r\n.nju-panel-bd { padding: 16px 18px; font-size: var(--nju-fs-md); }\r\n\r\n/* ── 徽章 ── */\r\n.nju-badge {\r\n    display: inline-flex;\r\n    align-items: center;\r\n    padding: 1px 8px;\r\n    border-radius: var(--nju-radius-full);\r\n    background: var(--nju-bg-subtle);\r\n    color: var(--nju-text-2);\r\n    font-size: var(--nju-fs-xs);\r\n    line-height: 1.6;\r\n}\r\n.nju-badge-primary { background: var(--nju-primary-soft); color: var(--nju-primary); }\r\n.nju-badge-success { background: var(--nju-success-soft); color: #248A3D; }\r\n.nju-badge-warning { background: var(--nju-warning-soft); color: #B25000; }\r\n.nju-badge-danger { background: var(--nju-danger-soft); color: #C0291D; }\r\n\r\n/* ── 提示条 ── */\r\n.nju-note {\r\n    padding: 9px 12px;\r\n    border: 1px solid var(--nju-border);\r\n    border-radius: var(--nju-radius-md);\r\n    background: var(--nju-primary-soft);\r\n    color: var(--nju-text-2);\r\n    font-size: var(--nju-fs-sm);\r\n}\r\n";
+    const njustCssText = "/* =============================================================\n   设计变量（Design Tokens）\n   全脚本统一的色彩 / 圆角 / 阴影 / 字号 / 层级体系。\n   组件样式一律通过 var() 引用，禁止再硬编码色值。\n   ============================================================= */\n:root {\n    /* ── 语义色 ── */\n    --nju-primary: #007AFF;\n    --nju-primary-hover: #0A6EDC;\n    --nju-primary-soft: rgba(0, 122, 255, 0.12);\n    --nju-success: #34C759;\n    --nju-success-soft: rgba(52, 199, 89, 0.12);\n    --nju-warning: #FF9500;\n    --nju-warning-soft: rgba(255, 149, 0, 0.12);\n    --nju-danger: #FF3B30;\n    --nju-danger-soft: rgba(255, 59, 48, 0.12);\n\n    /* ── 中性色 ── */\n    --nju-bg: #ffffff;\n    --nju-bg-subtle: #f5f6f8;\n    --nju-bg-hover: #eef0f3;\n    --nju-border: #e3e5e8;\n    --nju-border-strong: #d2d2d7;\n    --nju-text: #1d1d1f;\n    --nju-text-2: #5f6368;\n    --nju-text-3: #9aa0a6;\n\n    /* ── 圆角 ── */\n    --nju-radius-sm: 6px;\n    --nju-radius-md: 10px;\n    --nju-radius-lg: 14px;\n    --nju-radius-full: 999px;\n\n    /* ── 阴影 ── */\n    --nju-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);\n    --nju-shadow-md: 0 8px 28px rgba(0, 0, 0, 0.13);\n    --nju-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.18);\n\n    /* ── 字体 ── */\n    --nju-font: -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\",\n        Roboto, \"Helvetica Neue\", Arial, \"Microsoft YaHei\", sans-serif;\n    --nju-font-mono: \"SFMono-Regular\", Consolas, \"Lucida Console\", monospace;\n\n    /* ── 字号 ── */\n    --nju-fs-xs: 11px;\n    --nju-fs-sm: 12px;\n    --nju-fs-md: 13px;\n    --nju-fs-lg: 15px;\n    --nju-fs-xl: 17px;\n\n    /* ── 层级：统一分档，避免各面板自行定义 ── */\n    --nju-z-float: 9000;   /* 常驻浮层（日志抽屉等） */\n    --nju-z-panel: 10000;  /* 功能面板（学分统计、评教面板） */\n    --nju-z-modal: 11000;  /* 模态弹窗 */\n    --nju-z-topbar: 12000; /* 页面顶栏（评教自动条） */\n}\n\n\n/* =============================================================\n   基础原子类\n   依赖 theme.css 中定义的设计变量；所有面板共用同一套控件外观。\n   ============================================================= */\n\n/* ── 按钮 ── */\n.nju-btn {\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    gap: 4px;\n    padding: 5px 12px;\n    border: 1px solid var(--nju-border);\n    border-radius: var(--nju-radius-sm);\n    background: var(--nju-bg);\n    color: var(--nju-text-2);\n    font-family: var(--nju-font);\n    font-size: var(--nju-fs-sm);\n    line-height: 1.4;\n    cursor: pointer;\n    transition: background-color .15s ease, border-color .15s ease, color .15s ease;\n}\n\n.nju-btn:hover { background: var(--nju-bg-hover); color: var(--nju-text); }\n.nju-btn:focus-visible { outline: 2px solid var(--nju-primary); outline-offset: 2px; }\n.nju-btn:disabled, .nju-btn[disabled] { opacity: .5; cursor: not-allowed; }\n\n.nju-btn-primary {\n    background: var(--nju-primary);\n    border-color: var(--nju-primary);\n    color: #fff;\n}\n.nju-btn-primary:hover { background: var(--nju-primary-hover); border-color: var(--nju-primary-hover); color: #fff; }\n\n.nju-btn-danger {\n    background: var(--nju-danger);\n    border-color: var(--nju-danger);\n    color: #fff;\n}\n.nju-btn-danger:hover { filter: brightness(.94); color: #fff; }\n\n.nju-btn-ghost { background: transparent; border-color: transparent; }\n.nju-btn-ghost:hover { background: var(--nju-bg-hover); }\n\n.nju-btn-mini { padding: 2px 8px; font-size: var(--nju-fs-xs); }\n\n/* 兼容评教模块的既有按钮类名，统一补齐交互态 */\n.vb:hover { filter: brightness(.96); }\n.vb:focus-visible { outline: 2px solid var(--nju-primary); outline-offset: 2px; }\n.vb:disabled, .vb[disabled] { opacity: .5; cursor: not-allowed; }\n\n/* ── 关闭按钮 ── */\n.nju-close {\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    width: 24px;\n    height: 24px;\n    padding: 0;\n    border: none;\n    border-radius: var(--nju-radius-full);\n    background: transparent;\n    color: var(--nju-text-3);\n    font-size: 15px;\n    line-height: 1;\n    cursor: pointer;\n    transition: background-color .15s ease, color .15s ease;\n}\n.nju-close:hover { background: var(--nju-bg-hover); color: var(--nju-text); }\n.nju-close:focus-visible { outline: 2px solid var(--nju-primary); outline-offset: 2px; }\n\n/* ── 面板骨架 ── */\n.nju-panel {\n    background: var(--nju-bg);\n    border: 1px solid var(--nju-border);\n    border-radius: var(--nju-radius-lg);\n    box-shadow: var(--nju-shadow-md);\n    font-family: var(--nju-font);\n    color: var(--nju-text);\n}\n\n.nju-panel-hd {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 12px 18px;\n    border-bottom: 1px solid var(--nju-border);\n    background: var(--nju-bg-subtle);\n    border-radius: var(--nju-radius-lg) var(--nju-radius-lg) 0 0;\n    font-size: var(--nju-fs-xl);\n    font-weight: 600;\n    color: var(--nju-text);\n}\n\n.nju-panel-bd { padding: 16px 18px; font-size: var(--nju-fs-md); }\n\n/* ── 徽章 ── */\n.nju-badge {\n    display: inline-flex;\n    align-items: center;\n    padding: 1px 8px;\n    border-radius: var(--nju-radius-full);\n    background: var(--nju-bg-subtle);\n    color: var(--nju-text-2);\n    font-size: var(--nju-fs-xs);\n    line-height: 1.6;\n}\n.nju-badge-primary { background: var(--nju-primary-soft); color: var(--nju-primary); }\n.nju-badge-success { background: var(--nju-success-soft); color: #248A3D; }\n.nju-badge-warning { background: var(--nju-warning-soft); color: #B25000; }\n.nju-badge-danger { background: var(--nju-danger-soft); color: #C0291D; }\n\n/* ── 提示条 ── */\n.nju-note {\n    padding: 9px 12px;\n    border: 1px solid var(--nju-border);\n    border-radius: var(--nju-radius-md);\n    background: var(--nju-primary-soft);\n    color: var(--nju-text-2);\n    font-size: var(--nju-fs-sm);\n}\n\n/* =============================================================\n   统一窗口框架\n   ============================================================= */\n.nju-window {\n    position: fixed;\n    display: flex;\n    flex-direction: column;\n    background: var(--nju-bg);\n    border: 1px solid var(--nju-border);\n    border-radius: var(--nju-radius-lg);\n    box-shadow: var(--nju-shadow-md);\n    font-family: var(--nju-font);\n    color: var(--nju-text);\n    overflow: hidden;\n    box-sizing: border-box;\n}\n\n.nju-window-hd {\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    padding: 11px 16px;\n    background: var(--nju-bg-subtle);\n    border-bottom: 1px solid var(--nju-border);\n    cursor: move;\n    user-select: none;\n    flex-shrink: 0;\n}\n\n.nju-window-title {\n    font-size: var(--nju-fs-md);\n    font-weight: 600;\n    color: var(--nju-text);\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n}\n\n.nju-window-sub {\n    flex: 1;\n    min-width: 0;\n    font-size: var(--nju-fs-sm);\n    color: var(--nju-text-3);\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n}\n\n.nju-window-actions {\n    margin-left: auto;\n    display: flex;\n    align-items: center;\n    gap: 2px;\n    flex-shrink: 0;\n}\n\n.nju-window-bd {\n    flex: 1;\n    min-height: 0;\n    overflow: auto;\n    padding: 16px 18px;\n    font-size: var(--nju-fs-md);\n    box-sizing: border-box;\n}\n\n.nju-window-ft {\n    flex-shrink: 0;\n    border-top: 1px solid var(--nju-border);\n    padding: 10px 18px;\n    font-size: var(--nju-fs-sm);\n    color: var(--nju-text-3);\n    line-height: 1.6;\n}\n\n/* ── 八方向缩放手柄 ── */\n.nju-resize-layer {\n    position: absolute;\n    inset: 0;\n    pointer-events: none;\n    z-index: 5;\n}\n\n.nju-resize-handle {\n    position: absolute;\n    pointer-events: auto;\n    touch-action: none;\n}\n\n.nju-resize-n, .nju-resize-s { left: 12px; right: 12px; height: 6px; cursor: ns-resize; }\n.nju-resize-e, .nju-resize-w { top: 12px; bottom: 12px; width: 6px; cursor: ew-resize; }\n.nju-resize-n { top: 0; }\n.nju-resize-s { bottom: 0; }\n.nju-resize-e { right: 0; }\n.nju-resize-w { left: 0; }\n.nju-resize-ne, .nju-resize-nw, .nju-resize-se, .nju-resize-sw { width: 14px; height: 14px; }\n.nju-resize-ne { top: 0; right: 0; cursor: nesw-resize; }\n.nju-resize-nw { top: 0; left: 0; cursor: nwse-resize; }\n.nju-resize-se { bottom: 0; right: 0; cursor: nwse-resize; }\n.nju-resize-sw { bottom: 0; left: 0; cursor: nesw-resize; }\n";
     const styleEl = document.createElement("style");
     styleEl.id = "njust-injected-style";
     styleEl.textContent = njustCssText;
@@ -176,9 +176,25 @@
      */
     const DEBUG_CONFIG = {
         enabled: true,
-        level: 3,
-        showCache: true // 是否在日志中详细记录缓存的存取动作
+        level: 2,           // 默认仅记录 WARN 及以上，避免切页时缓存日志刷屏
+        showCache: false    // 是否在日志中详细记录缓存的存取动作
     };
+
+    /**
+     * 大纲链接显示模式
+     * both     = 课程大纲 + 大纲镜像（默认）
+     * original = 仅官方课程大纲
+     * mirror   = 仅大纲镜像
+     * none     = 不显示
+     */
+    const KEY_OUTLINE_MODE = 'njust_outline_mode';
+    function getOutlineMode() {
+        const mode = localStorage.getItem(KEY_OUTLINE_MODE);
+        return ['both', 'original', 'mirror', 'none'].indexOf(mode) !== -1 ? mode : 'both';
+    }
+    function setOutlineMode(mode) {
+        localStorage.setItem(KEY_OUTLINE_MODE, mode);
+    }
 
     /**
      * ── 缓存系统配置 ───────────────────────────────────────────────
@@ -262,12 +278,13 @@
 
             this.container = document.createElement('div');
             this.container.id = 'njust-enhance-log';
-            this.container.className = 'minimized';
+            this.container.className = 'nju-window minimized';
             this.container.innerHTML = `
                 <div id="njust-enhance-log-hd">
                     <b><span id="nel-status-text">南理工教务增强助手 V2</span></b>
                     <span id="nel-clear-btn" class="nel-btn nel-clear" title="清空日志">清空</span>
-                    <span id="njust-log-toggle" class="nel-btn">展开 ▴</span>
+                    <span id="njust-log-hide" class="nel-btn" title="隐藏日志面板">隐藏</span>
+                    <span id="njust-log-toggle" class="nel-btn">展开</span>
                 </div>
                 <div id="njust-enhance-log-body"></div>
             `;
@@ -276,11 +293,29 @@
 
             this.initialized = true;
 
+            // 统一窗口能力：拖动 + 缩放 + 位置/尺寸记忆（底部贴边，禁用向下拉伸）
+            enableWindow({
+                id: 'log',
+                target: this.container,
+                handle: this.container.querySelector('#njust-enhance-log-hd'),
+                minWidth: 320,
+                minHeight: 160,
+                edges: ['n', 'e', 'w', 'ne', 'nw']
+            });
+
             // 绑定交互事件
             this.container.querySelector('#njust-enhance-log-hd').onclick = (e) => {
-                if (e.target.id === 'nel-clear-btn') return;
+                if (e.target.id === 'nel-clear-btn' || e.target.id === 'njust-log-hide') return;
                 const isMin = this.container.classList.toggle('minimized');
-                this.container.querySelector('#njust-log-toggle').textContent = isMin ? '展开 ▴' : '折叠 ▾';
+                this.container.querySelector('#njust-log-toggle').textContent = isMin ? '展开' : '折叠';
+            };
+
+            // 隐藏日志面板（持久化，右下角保留极简恢复入口）
+            this.container.querySelector('#njust-log-hide').onclick = (e) => {
+                e.stopPropagation();
+                localStorage.setItem('njust_log_hidden', '1');
+                this.container.style.display = 'none';
+                this._createRestoreButton();
             };
 
             this.container.querySelector('#nel-clear-btn').onclick = (e) => {
@@ -292,6 +327,12 @@
                 this._statusQueue = [];
                 this._statusPlaying = false;
             };
+
+            // 用户曾隐藏日志面板：保持隐藏，仅保留右下角恢复入口
+            if (localStorage.getItem('njust_log_hidden') === '1') {
+                this.container.style.display = 'none';
+                this._createRestoreButton();
+            }
 
             // 处理初始化前的缓存消息
             if (this.queue.length > 0) {
@@ -339,6 +380,12 @@
          * 标题栏消息队列播放器
          */
         _playStatusQueue() {
+            // 折叠状态下不播放标题栏滚动，避免切页时频繁跳动干扰阅读
+            if (this.container && this.container.classList.contains('minimized')) {
+                this._statusQueue = [];
+                this._statusPlaying = false;
+                return;
+            }
             if (this._statusQueue.length === 0) {
                 this._statusPlaying = false;
                 // 恢复默认状态文字
@@ -359,6 +406,32 @@
             }
             // 每 300ms 切换下一条，形成滚动感
             setTimeout(() => { this._playStatusQueue(); }, 300);
+        },
+
+        /**
+         * 右下角的极简恢复入口（隐藏日志后仍可找回）
+         */
+        _createRestoreButton() {
+            if (document.getElementById('njust-log-restore')) return;
+            const btn = document.createElement('button');
+            btn.id = 'njust-log-restore';
+            btn.type = 'button';
+            btn.textContent = '日志';
+            btn.title = '显示日志面板';
+            btn.style.cssText = `
+                position: fixed; right: 18px; bottom: 6px; z-index: var(--nju-z-float);
+                padding: 2px 6px; border: none; border-radius: 4px; background: transparent;
+                color: var(--nju-text-3); font-family: var(--nju-font); font-size: 11px;
+                opacity: 0.4; cursor: pointer; transition: opacity .15s ease;
+            `;
+            btn.addEventListener('mouseenter', () => { btn.style.opacity = '0.9'; });
+            btn.addEventListener('mouseleave', () => { btn.style.opacity = '0.4'; });
+            btn.addEventListener('click', () => {
+                localStorage.removeItem('njust_log_hidden');
+                if (this.container) this.container.style.display = '';
+                btn.remove();
+            });
+            document.body.appendChild(btn);
         },
 
         esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -435,7 +508,7 @@
                     url
                 };
                 localStorage.setItem(this.getKey(url), JSON.stringify(cacheData));
-                if (DEBUG_CONFIG.showCache) Logger.info(`💾 缓存已保存: ${url}`);
+                if (DEBUG_CONFIG.showCache) Logger.info(`缓存已保存: ${url}`);
                 return true;
             } catch (e) {
                 Logger.error('缓存保存失败: ', e);
@@ -465,7 +538,7 @@
                 }
                 const age = ((now - cacheData.timestamp) / 1000).toFixed(1);
                 const remaining = ((cacheData.ttl - (now - cacheData.timestamp)) / 1000).toFixed(1);
-                if (DEBUG_CONFIG.showCache) Logger.info(`✅ 缓存命中: ${url} (已缓存${age}s，剩余${remaining}s)`);
+                if (DEBUG_CONFIG.showCache) Logger.info(`缓存命中: ${url} (已缓存${age}s，剩余${remaining}s)`);
                 return cacheData.data;
             } catch (e) {
                 Logger.error('缓存读取失败: ', e);
@@ -606,15 +679,13 @@
         };
         const theme = themeConfig[type] || themeConfig.info;
 
+        container.className = 'nju-window';
         container.style.cssText = `
-            position: fixed; top: 50%; left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            background: var(--nju-bg);
-            border: none; border-radius: var(--nju-radius-lg); padding: 0;
-            box-shadow: var(--nju-shadow-lg);
-            z-index: var(--nju-z-modal); min-width: 340px; max-width: 460px;
-            font-family: var(--nju-font);
-            overflow: hidden; animation: njustFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 420px; min-width: 320px; max-width: 90vw;
+            z-index: var(--nju-z-modal);
+            animation: njustFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         `;
 
         container.innerHTML = `
@@ -660,7 +731,13 @@
             document.head.appendChild(style);
         }
 
-        addDragFunctionality(container);
+        enableWindow({
+            id: 'modal',
+            target: container,
+            handle: container.querySelector('#dragHandle'),
+            minWidth: 320,
+            minHeight: 220
+        });
         document.body.appendChild(container);
 
         // 绑定关闭按钮事件
@@ -741,6 +818,269 @@
     // 模块二（自动评教）通过 window.NJUI.makeDraggable 复用同一份拖拽实现
     window.NJUI = window.NJUI || {};
     window.NJUI.makeDraggable = makeDraggable;
+
+// ===== src/ui/window.js ================================================
+    // ==================== 窗口能力（拖动 / 缩放 / 记忆） ====================
+    /**
+     * 为元素添加八方向缩放
+     * @param {HTMLElement} target 目标窗口
+     * @param {Object} [options]
+     * @param {number} [options.minWidth]
+     * @param {number} [options.minHeight]
+     * @param {string[]} [options.edges] 需要启用的方向，默认八向全开
+     * @param {Function} [options.onEnd] 缩放结束回调
+     */
+    function makeResizable(target, options = {}) {
+        if (!target) return;
+
+        const minWidth = options.minWidth || 280;
+        const minHeight = options.minHeight || 160;
+        const edges = options.edges || ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw'];
+
+        // 避免重复挂载
+        if (target.querySelector('.nju-resize-layer')) return;
+
+        let active = null;
+
+        const onMove = (e) => {
+            if (!active) return;
+            const dx = e.clientX - active.startX;
+            const dy = e.clientY - active.startY;
+            let { left, top, width, height } = active;
+            const edge = active.edge;
+
+            if (edge.indexOf('e') !== -1) width = Math.max(minWidth, active.width + dx);
+            if (edge.indexOf('s') !== -1) height = Math.max(minHeight, active.height + dy);
+            if (edge.indexOf('w') !== -1) {
+                width = Math.max(minWidth, active.width - dx);
+                left = active.left + (active.width - width);
+            }
+            if (edge.indexOf('n') !== -1) {
+                height = Math.max(minHeight, active.height - dy);
+                top = active.top + (active.height - height);
+            }
+
+            // 视口边界约束
+            const pad = 6;
+            if (left < pad) { width += left - pad; left = pad; }
+            if (top < pad) { height += top - pad; top = pad; }
+            const maxRight = window.innerWidth - pad;
+            const maxBottom = window.innerHeight - pad;
+            if (left + width > maxRight) width = maxRight - left;
+            if (top + height > maxBottom) height = maxBottom - top;
+
+            target.style.left = left + 'px';
+            target.style.top = top + 'px';
+            target.style.width = Math.max(minWidth, width) + 'px';
+            target.style.height = Math.max(minHeight, height) + 'px';
+            target.style.right = 'auto';
+            target.style.bottom = 'auto';
+            target.style.maxWidth = 'none';
+            target.style.maxHeight = 'none';
+            e.preventDefault();
+        };
+
+        const onUp = () => {
+            if (!active) return;
+            active = null;
+            document.removeEventListener('pointermove', onMove);
+            document.removeEventListener('pointerup', onUp);
+            if (options.onEnd) options.onEnd();
+        };
+
+        const onDown = (edge) => (e) => {
+            if (e.button !== undefined && e.button !== 0) return;
+            const rect = target.getBoundingClientRect();
+            active = {
+                edge,
+                startX: e.clientX,
+                startY: e.clientY,
+                left: rect.left,
+                top: rect.top,
+                width: rect.width,
+                height: rect.height
+            };
+            target.style.transform = 'none';
+            target.style.right = 'auto';
+            target.style.bottom = 'auto';
+            target.style.margin = '0';
+            e.preventDefault();
+            e.stopPropagation();
+            document.addEventListener('pointermove', onMove);
+            document.addEventListener('pointerup', onUp);
+        };
+
+        const layer = document.createElement('div');
+        layer.className = 'nju-resize-layer';
+        edges.forEach((edge) => {
+            const handle = document.createElement('div');
+            handle.className = 'nju-resize-handle nju-resize-' + edge;
+            handle.addEventListener('pointerdown', onDown(edge));
+            layer.appendChild(handle);
+        });
+        target.appendChild(layer);
+    }
+
+    /**
+     * 启用完整窗口行为：拖动、八向缩放、视口约束、位置/尺寸记忆、双击标题栏最大化
+     * @param {Object} config
+     * @param {string} config.id 用于记忆位置与尺寸
+     * @param {HTMLElement} config.target 窗口容器
+     * @param {HTMLElement} config.handle 拖动句柄（标题栏）
+     * @param {number} [config.minWidth]
+     * @param {number} [config.minHeight]
+     * @param {string[]} [config.edges]
+     */
+    function enableWindow(config) {
+        const { id, target, handle } = config || {};
+        if (!target || !handle) return null;
+
+        const minWidth = config.minWidth || 280;
+        const minHeight = config.minHeight || 160;
+        const storageKey = id ? ('njust_win_' + id) : null;
+
+        // 恢复位置与尺寸
+        if (storageKey) {
+            try {
+                const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+                const inViewport = saved &&
+                    saved.left >= 0 && saved.left < window.innerWidth - 60 &&
+                    saved.top >= 0 && saved.top < window.innerHeight - 40 &&
+                    saved.width >= minWidth && saved.height >= minHeight;
+                if (inViewport) {
+                    target.style.left = saved.left + 'px';
+                    target.style.top = saved.top + 'px';
+                    target.style.width = saved.width + 'px';
+                    target.style.height = saved.height + 'px';
+                    target.style.right = 'auto';
+                    target.style.bottom = 'auto';
+                }
+            } catch (e) { /* 忽略损坏的缓存 */ }
+        }
+
+        const persist = () => {
+            if (!storageKey) return;
+            const rect = target.getBoundingClientRect();
+            try {
+                localStorage.setItem(storageKey, JSON.stringify({
+                    left: Math.round(rect.left),
+                    top: Math.round(rect.top),
+                    width: Math.round(rect.width),
+                    height: Math.round(rect.height)
+                }));
+            } catch (e) { /* 忽略配额错误 */ }
+        };
+
+        let pressing = false;
+        let dragging = false;
+        let justDragged = false;
+        let startX = 0, startY = 0, startLeft = 0, startTop = 0;
+
+        const onMove = (e) => {
+            if (!pressing) return;
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+
+            // 移动超过阈值才判定为拖动，避免吞掉标题栏上的点击（如折叠）
+            if (!dragging && Math.abs(dx) < 3 && Math.abs(dy) < 3) return;
+            dragging = true;
+
+            const rect = target.getBoundingClientRect();
+            const pad = 4;
+            const maxLeft = Math.max(pad, window.innerWidth - rect.width - pad);
+            const maxTop = Math.max(pad, window.innerHeight - 40);
+            const left = Math.min(Math.max(pad, startLeft + dx), maxLeft);
+            const top = Math.min(Math.max(pad, startTop + dy), maxTop);
+            target.style.left = left + 'px';
+            target.style.top = top + 'px';
+            e.preventDefault();
+        };
+
+        const onUp = () => {
+            if (!pressing) return;
+            pressing = false;
+            if (dragging) {
+                justDragged = true;
+                setTimeout(() => { justDragged = false; }, 0);
+                persist();
+            }
+            dragging = false;
+            document.removeEventListener('pointermove', onMove);
+            document.removeEventListener('pointerup', onUp);
+        };
+
+        const onDown = (e) => {
+            // 交互控件不触发拖动
+            if (e.target.closest('.nju-close, .nju-window-actions, .nju-resize-handle, select, input, button, a')) return;
+            if (e.button !== undefined && e.button !== 0) return;
+            const rect = target.getBoundingClientRect();
+            startX = e.clientX;
+            startY = e.clientY;
+            startLeft = rect.left;
+            startTop = rect.top;
+            pressing = true;
+            target.style.right = 'auto';
+            target.style.bottom = 'auto';
+            target.style.margin = '0';
+            document.addEventListener('pointermove', onMove);
+            document.addEventListener('pointerup', onUp);
+        };
+
+        // 拖动结束后抑制本次 click，避免误触标题栏的折叠/切换
+        handle.addEventListener('click', (e) => {
+            if (!justDragged) return;
+            e.stopPropagation();
+            e.preventDefault();
+        }, true);
+
+        handle.addEventListener('pointerdown', onDown);
+
+        // 双击标题栏：最大化 / 还原
+        let maximized = false;
+        let restoreRect = null;
+        handle.addEventListener('dblclick', () => {
+            const rect = target.getBoundingClientRect();
+            if (!maximized) {
+                restoreRect = { left: rect.left, top: rect.top, width: rect.width, height: rect.height };
+                target.style.transform = 'none';
+                target.style.left = '8px';
+                target.style.top = '8px';
+                target.style.width = (window.innerWidth - 16) + 'px';
+                target.style.height = (window.innerHeight - 16) + 'px';
+                maximized = true;
+            } else {
+                const r = restoreRect || { left: 40, top: 40, width: 480, height: 420 };
+                target.style.left = r.left + 'px';
+                target.style.top = r.top + 'px';
+                target.style.width = r.width + 'px';
+                target.style.height = r.height + 'px';
+                maximized = false;
+            }
+            persist();
+        });
+
+        makeResizable(target, {
+            minWidth,
+            minHeight,
+            edges: config.edges,
+            onEnd: persist
+        });
+
+        // 视口尺寸变化时把窗口拉回可见区域
+        window.addEventListener('resize', () => {
+            const rect = target.getBoundingClientRect();
+            if (rect.left > window.innerWidth - 60 || rect.top > window.innerHeight - 40) {
+                target.style.left = Math.max(4, Math.min(rect.left, window.innerWidth - 80)) + 'px';
+                target.style.top = Math.max(4, Math.min(rect.top, window.innerHeight - 60)) + 'px';
+            }
+        });
+
+        return { persist };
+    }
+
+    window.NJUI = window.NJUI || {};
+    window.NJUI.makeResizable = makeResizable;
+    window.NJUI.enableWindow = enableWindow;
 
 // ===== src/core/qiangzhi.js ============================================
     // ==================== 检测强智科技页面 ====================
@@ -833,7 +1173,7 @@
                 box-shadow: var(--nju-shadow-sm);
             `;
             bar.innerHTML = `
-                <span>⚠️ 教务处直连入口（202.119.81.112 / 113）仅限校园网访问，校外请使用
+                <span>教务处直连入口（202.119.81.112 / 113）仅限校园网访问，校外请使用
                     <a href="${SMART_CAMPUS_LOGIN_URL}" target="_blank"
                        style="color: var(--nju-primary); font-weight: 600; text-decoration: none;">智慧理工门户</a>
                     登录教务系统。
@@ -1030,31 +1370,25 @@
         try {
             const container = document.createElement('div');
             container.id = 'creditSummaryWindow';
+            container.className = 'nju-window';
             container.style.cssText = `
-                position: fixed; top: 40px; right: 40px;
-                background: var(--nju-bg); border: 1px solid var(--nju-border); border-radius: var(--nju-radius-lg);
-                padding: 0; box-shadow: var(--nju-shadow-md);
-                z-index: var(--nju-z-panel); min-width: 420px; max-width: 520px;
-                font-family: var(--nju-font);
-                overflow: hidden;
+                top: 40px; right: 40px; width: 460px; height: 520px;
+                z-index: var(--nju-z-panel);
             `;
 
             container.innerHTML = `
-                <div id="creditDragHandle" style="
-                    background: var(--nju-bg-subtle); padding: 14px 22px; cursor: move;
-                    display: flex; justify-content: space-between; align-items: center;
-                    border-bottom: 1px solid var(--nju-border);">
-                    <div style="color: var(--nju-text); font-weight: 600; font-size: var(--nju-fs-xl); letter-spacing: 1px;">
-                        🎓 南理工教务增强助手 V2
+                <div class="nju-window-hd" id="creditDragHandle">
+                    <div class="nju-window-title">南理工教务增强助手 V2</div>
+                    <div class="nju-window-actions">
+                        <span id="creditCloseBtn" class="nju-close" title="关闭">✕</span>
                     </div>
-                    <span id="creditCloseBtn" class="nju-close">✕</span>
                 </div>
-                <div style="background: var(--nju-bg); padding: 18px 22px 10px 22px; max-height: 540px; overflow-y: auto;">
+                <div class="nju-window-bd" style="padding: 16px 18px 10px;">
                     <div id="creditSummary"></div>
                     <div id="xxkVersionBar" style="margin-top: 14px; padding: 9px 12px; background: var(--nju-primary-soft);
                         border: 1px solid rgba(0, 122, 255, 0.25); border-radius: var(--nju-radius-sm); font-size: var(--nju-fs-md); color: var(--nju-text-2);
                         display: flex; align-items: center;">
-                        <span id="xxkVersionText">📦 分类口径：加载中…</span>
+                        <span id="xxkVersionText">分类口径：加载中…</span>
                         <select id="xxkVersionSelect" title="选择学分统计所依据的培养方案版本"
                             style="margin-left: auto; font-size: var(--nju-fs-sm); padding: 2px 6px; border: 1px solid var(--nju-border);
                             border-radius: var(--nju-radius-sm); background: var(--nju-bg); color: var(--nju-text-2);">
@@ -1062,6 +1396,19 @@
                             <option value="2018">2018 版</option>
                             <option value="2022">2022 版</option>
                             <option value="2026">2026 版</option>
+                        </select>
+                    </div>
+                    <div id="outlineModeBar" style="margin-top: 8px; padding: 9px 12px; background: var(--nju-bg-subtle);
+                        border: 1px solid var(--nju-border); border-radius: var(--nju-radius-sm);
+                        font-size: var(--nju-fs-md); color: var(--nju-text-2); display: flex; align-items: center;">
+                        <span>大纲链接</span>
+                        <select id="outlineModeSelect" title="选择课程大纲链接的显示方式"
+                            style="margin-left: auto; font-size: var(--nju-fs-sm); padding: 2px 6px; border: 1px solid var(--nju-border);
+                            border-radius: var(--nju-radius-sm); background: var(--nju-bg); color: var(--nju-text-2);">
+                            <option value="both">全部显示（1 + 2 + 镜像）</option>
+                            <option value="original">仅官方大纲（1 + 2）</option>
+                            <option value="mirror">仅大纲镜像</option>
+                            <option value="none">不显示</option>
                         </select>
                     </div>
                     <div style="margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--nju-border);
@@ -1078,7 +1425,13 @@
             `;
 
             // 统一使用公共拖拽实现（句柄为本窗体的 creditDragHandle）
-            makeDraggable(container.querySelector('#creditDragHandle'), container);
+            enableWindow({
+                id: 'credits',
+                target: container,
+                handle: container.querySelector('#creditDragHandle'),
+                minWidth: 360,
+                minHeight: 240
+            });
 
             document.body.appendChild(container);
 
@@ -1095,7 +1448,7 @@
                 const versionSelect = container.querySelector('#xxkVersionSelect');
                 const info = resolveCategoryVersion();
                 if (versionText) {
-                    versionText.textContent = `📦 分类口径：${info.version} 版（${describeVersionSource(info)}）`;
+                    versionText.textContent = `分类口径：${info.version} 版（${describeVersionSource(info)}）`;
                 }
                 if (versionSelect) {
                     versionSelect.value = localStorage.getItem(KEY_XXK_VERSION) || '';
@@ -1106,6 +1459,16 @@
                         CacheManager.clear();
                         Logger.info(`分类口径已切换为「${value || '按学号自动'}」，正在重新加载数据`);
                         setTimeout(() => location.reload(), 300);
+                    });
+                }
+
+                const outlineSelect = container.querySelector('#outlineModeSelect');
+                if (outlineSelect) {
+                    outlineSelect.value = getOutlineMode();
+                    outlineSelect.addEventListener('change', () => {
+                        setOutlineMode(outlineSelect.value);
+                        Logger.info(`大纲链接显示方式已切换为「${outlineSelect.options[outlineSelect.selectedIndex].text}」`);
+                        setTimeout(() => location.reload(), 200);
                     });
                 }
             } catch (e) {
@@ -1163,7 +1526,7 @@
             const totalCountByCategory = Object.values(creditsByCategory).reduce((s, d) => s + d.count, 0);
 
             let summaryHTML = `<div style="border-bottom: 1px solid var(--nju-border); margin-bottom: 12px; padding-bottom: 10px;">`;
-            summaryHTML += `<div style="margin-bottom: 8px; font-size: var(--nju-fs-lg); color: var(--nju-text); font-weight: 600;">📊 按课程性质统计</div>`;
+            summaryHTML += `<div style="margin-bottom: 8px; font-size: var(--nju-fs-lg); color: var(--nju-text); font-weight: 600;">按课程性质统计</div>`;
             summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; background: var(--nju-bg-subtle); border-radius: var(--nju-radius-sm); padding: 4px 6px; margin-bottom: 4px;">
                 <span style="color: var(--nju-primary); font-weight: 600; font-size: var(--nju-fs-md);">总计</span>
                 <span style="font-weight: 600; color: var(--nju-primary); font-size: var(--nju-fs-md);">${totalCreditsByType.toFixed(1)} 学分</span>
@@ -1180,7 +1543,7 @@
 
             if (Object.keys(creditsByCategory).length > 0) {
                 summaryHTML += `<div style="margin-top: 16px;">`;
-                summaryHTML += `<div style="margin-bottom: 8px; font-size: var(--nju-fs-lg); color: var(--nju-text); font-weight: 600;">🏷️ 按选修课类别统计</div>`;
+                summaryHTML += `<div style="margin-bottom: 8px; font-size: var(--nju-fs-lg); color: var(--nju-text); font-weight: 600;">按选修课类别统计</div>`;
                 summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; background: var(--nju-bg-subtle); border-radius: var(--nju-radius-sm); padding: 4px 6px; margin-bottom: 4px;">
                     <span style="color: var(--nju-primary); font-weight: 600; font-size: var(--nju-fs-md);">总计</span>
                     <span style="font-weight: 600; color: var(--nju-primary); font-size: var(--nju-fs-md);">${totalCreditsByCategory.toFixed(1)} 学分</span>
@@ -1201,7 +1564,7 @@
         } catch (e) {
             Logger.error('更新学分统计失败:', e);
             const el = document.getElementById('creditSummary');
-            if (el) el.innerHTML = '<div style="color:var(--nju-danger);padding:10px;text-align:center;">❌ 学分统计更新失败</div>';
+            if (el) el.innerHTML = '<div style="color:var(--nju-danger);padding:10px;text-align:center;">学分统计更新失败</div>';
         }
     }
 
@@ -1284,43 +1647,76 @@
                                     titleDiv.style.fontSize = '13px';
                                     titleDiv.style.marginTop = '4px';
                                     titleDiv.style.fontStyle = 'italic';
-                                    titleDiv.textContent = `📌 老师说明: ${courseCodeTd.title}`;
+                                    titleDiv.textContent = `老师说明: ${courseCodeTd.title}`;
                                     courseCodeTd.appendChild(titleDiv);
                                     courseEnhanced = true;
                                 }
                             } catch (e) { Logger.warn('添加老师说明时出错:', e); }
 
-                            // 3. 插入教学大纲链接
+                            // 3. 插入教学大纲链接（原始 + 镜像）
                             try {
                                 if (courseCodeTd && !courseCodeTd.querySelector('[data-outline-inserted]')) {
                                     const outlineDiv = document.createElement('div');
                                     outlineDiv.setAttribute('data-outline-inserted', '1');
                                     outlineDiv.style.marginTop = '4px';
+                                    outlineDiv.style.fontSize = '13px';
+                                    // 三个链接可能较长，允许自动换行
+                                    outlineDiv.style.display = 'flex';
+                                    outlineDiv.style.flexWrap = 'wrap';
+                                    outlineDiv.style.gap = '2px';
 
-                                    if (isSmartCampus) {
-                                        // 智慧理工平台因跨域和权限限制，无法直接预览官网大纲
-                                        outlineDiv.textContent = '⚠️ 课程大纲功能受限';
-                                        outlineDiv.style.color = '#ff9800';
-                                        outlineDiv.style.fontWeight = 'bold';
-                                        outlineDiv.style.cursor = 'pointer';
-                                        outlineDiv.title = '当前使用智慧理工平台，课程大纲功能受限。请访问教务处官网获取完整功能';
-                                    } else {
-                                        const realId = courseOutlineMap[courseCode];
-                                        if (realId) {
-                                            const link = document.createElement('a');
-                                            // 拼接教务处官网预览链接（协议相对，跟随当前页面 http/https）
-                                            link.href = `//202.119.81.112:8080/kcxxAction.do?method=kcdgView&jx02id=${realId}&isentering=0`;
-                                            link.textContent = '📘 查看课程大纲';
-                                            link.target = '_blank';
-                                            link.style.color = '#0077cc';
-                                            outlineDiv.appendChild(link);
-                                        } else {
-                                            outlineDiv.textContent = '❌ 无大纲信息';
-                                            outlineDiv.style.color = 'gray';
+                                    const realId = courseOutlineMap[courseCode];
+
+                                    const makeOutlineLink = (href, text, title) => {
+                                        const link = document.createElement('a');
+                                        link.href = href;
+                                        link.textContent = text;
+                                        link.target = '_blank';
+                                        link.rel = 'noopener noreferrer';
+                                        link.style.color = 'var(--nju-primary)';
+                                        link.style.textDecoration = 'none';
+                                        link.style.marginLeft = '2px';
+                                        if (title) link.title = title;
+                                        return link;
+                                    };
+
+                                    const outlineMode = getOutlineMode();
+                                    if (outlineMode !== 'none') {
+                                        const showOriginal = (outlineMode === 'both' || outlineMode === 'original') && !!realId;
+                                        const showMirror = (outlineMode === 'both' || outlineMode === 'mirror');
+
+                                        if (showOriginal) {
+                                            // 智慧理工平台大纲：内容与教务处一致，页面标题显示为 2018 版本，校内外均可访问
+                                            outlineDiv.appendChild(makeOutlineLink(
+                                                `https://bkjw.njust.edu.cn/njlgdx/view/pyfa/kcdg_View.jsp?jx02id=${realId}`,
+                                                '[课程大纲1]',
+                                                '智慧理工平台大纲：页面标题显示为 2018 版本，内容与教务处一致，校内外均可访问'
+                                            ));
+
+                                            // 老教务网站大纲：页面标题显示为 2022 版本，仅校园网可访问
+                                            outlineDiv.appendChild(makeOutlineLink(
+                                                `//202.119.81.112:8080/kcxxAction.do?method=kcdgView&jx02id=${realId}&isentering=0`,
+                                                '[课程大纲2]',
+                                                '老教务网站大纲：页面标题显示为 2022 版本，仅校园网可访问（内容与智慧理工版本基本一致）'
+                                            ));
                                         }
+
+                                        if (showMirror) {
+                                            // 镜像站已收录全部课程（以课程号为唯一 key），不依赖 kcdg.json 映射，
+                                            // 即使该课程未上传大纲，链接依然可以访问
+                                            // 未收录官方大纲时，把入口称为「课程详情」更贴切
+                                            outlineDiv.appendChild(makeOutlineLink(
+                                                `https://kcdg.njust.store/html/${encodeURIComponent(courseCode)}.html`,
+                                                realId ? '[大纲镜像]' : '[课程详情]',
+                                                realId
+                                                    ? '课程大纲镜像站（校内外均可访问）'
+                                                    : '课程详情：该课程未收录官方大纲，可在镜像站查看课程信息（校内外均可访问）'
+                                            ));
+                                        }
+
+                                        courseCodeTd.appendChild(outlineDiv);
+                                        courseEnhanced = true;
                                     }
-                                    courseCodeTd.appendChild(outlineDiv);
-                                    courseEnhanced = true;
                                 }
                             } catch (e) { Logger.warn('添加课程大纲链接时出错:', e); }
 
@@ -1574,13 +1970,15 @@
     const KEY_STORE = 'njust_eval_v1_store';    // 核心存储：课程状态、评分选项等
     const KEY_RUNNING = 'njust_eval_running';     // 全局标志：是否处于“开始评价并保存”流水线中
     const KEY_BUSY = 'njust_eval_busy';        // 互斥锁：防止多个窗口同时执行保存操作
-    const KEY_QUEUE = 'njust_eval_queue';       // 队列：待处理的类别 URL 列表
     const KEY_CURLIST = 'njust_eval_curlist';     // 当前正在处理的类别 URL
     const KEY_LOG = 'njust_eval_log';         // 日志存储
     const KEY_LOGLVL = 'njust_eval_loglvl';      // 日志显示等级过滤
     const KEY_SUBQUEUE = 'njust_eval_subqueue';    // 待提交课程的 URL 队列
     const KEY_SUBRUN = 'njust_eval_subrun';      // 全局标志：是否处于“提交已评课程”流水线中
     const KEY_SUBBSY = 'njust_eval_subbsy';      // 互斥锁：防止多个窗口同时执行提交操作
+    const KEY_BUSY_TS = 'njust_eval_busy_ts';       // 保存锁的时间戳（用于超时自动恢复）
+    const KEY_SUBBSY_TS = 'njust_eval_subbsy_ts';   // 提交锁的时间戳（用于超时自动恢复）
+    const LOCK_TIMEOUT = 90 * 1000;              // 锁的存活上限，超过视为流程已中断
 
     // URL 参数，用于传递指令给详情页
     const PARAM_AUTO = 'isAutoEval';             // 详情页接收后执行自动填分+保存
@@ -1591,7 +1989,7 @@
     // 日志级别与 UI 映射
     const LOG_LEVELS = { debug: 0, info: 1, success: 2, warn: 3, error: 4 };
     const LOG_LABELS = { debug: 'DBG', info: 'INF', success: 'OK ', warn: 'WRN', error: 'ERR' };
-    const LOG_ICONS = { debug: '🔍', info: 'ℹ️', success: '✅', warn: '⚠️', error: '❌' };
+    const LOG_ICONS = { debug: 'DBG', info: 'INF', success: 'OK', warn: 'WRN', error: 'ERR' };
 
     // 日志持久化与读取
     const loadLogs = () => JSON.parse(localStorage.getItem(KEY_LOG) || '[]');
@@ -1649,8 +2047,7 @@
     // 快捷访问 LocalStorage
     const loadStore = () => JSON.parse(localStorage.getItem(KEY_STORE) || '{}');
     const saveStore = (v) => localStorage.setItem(KEY_STORE, JSON.stringify(v));
-    const loadQueue = () => JSON.parse(localStorage.getItem(KEY_QUEUE) || '[]');
-    const saveQueue = (q) => localStorage.setItem(KEY_QUEUE, JSON.stringify(q));
+
     const loadSubQueue = () => JSON.parse(localStorage.getItem(KEY_SUBQUEUE) || '[]');
     const saveSubQueue = (q) => localStorage.setItem(KEY_SUBQUEUE, JSON.stringify(q));
 
@@ -1736,7 +2133,7 @@
         let total = 0;
         gkeys.forEach((k, i) => {
             const opts = groups[k], len = opts.length;
-            let pick;
+            let pick = 0; // 默认选最高分，避免策略名异常时不勾选任何项
             if (strategy === 'highest') {
                 // 最高分策略：在扰动项选次高，其余全选最高
                 pick = (i === perturbIdx && len >= 2) ? 1 : 0;
@@ -1833,6 +2230,7 @@
         injectCSS();
         const panel = document.createElement('div');
         panel.id = 'v80-panel';
+        panel.className = 'nju-window';
         panel.innerHTML = `
             <div id="v80-header">
                 <b>${titleHtml}</b>
@@ -1842,7 +2240,7 @@
             <div id="v80-body">${bodyHtml}</div>
             <div class="v80-section">
                 <div class="v80-sec-hd" id="store-hd">
-                    <span class="lbl">🗄 Storage 原始数据</span>
+                    <span class="lbl">Storage 原始数据</span>
                     <span class="arr" id="store-arr">▾</span>
                 </div>
                 <div class="v80-sec-body" id="store-body">
@@ -1865,9 +2263,13 @@
         const storeBody = document.getElementById('store-body'), storeArr = document.getElementById('store-arr');
         document.getElementById('store-hd').onclick = () => { storeBody.classList.toggle('open'); storeArr.textContent = storeBody.classList.contains('open') ? '▴' : '▾'; if (storeBody.classList.contains('open')) renderStoragePanel(); };
 
-        // 复用公共拖拽实现（避免直接赋值 document.onmousemove 覆盖页面其它监听器）
-        window.NJUI.makeDraggable(document.getElementById('v80-header'), panel, {
-            shouldIgnore: (e) => e.target.id === 'v80-close-btn'
+        // 复用公共窗口能力：拖动 + 八向缩放 + 位置记忆
+        window.NJUI.enableWindow({
+            id: 'evaluate',
+            target: panel,
+            handle: document.getElementById('v80-header'),
+            minWidth: 380,
+            minHeight: 260
         });
 
         return panel;
@@ -1893,7 +2295,7 @@
         };
 
         buildPanel(
-            '🎓 南理工教务增强助手 V2',
+            '南理工教务增强助手 V2',
             `
                 <div id="v80-usage" style="font-size:13px;line-height:1.75;padding:14px 16px;border:1px solid #cbd5e0;border-radius:10px;background:#f7fafc;color:#2d3748;box-shadow:0 1px 6px rgba(0,0,0,0.06);">
                     <div style="font-weight:800;margin-bottom:8px;font-size:14px;">新手使用指南</div>
@@ -1933,13 +2335,14 @@
                 const related = Object.values(store).filter(c => c.url && qp(c.url, 'pj01id') === pj01);
                 const doneN = related.filter(c => c.done).length;
                 const totalN = related.length;
-                const isCur = running && curList && entry.url.includes(qp(curList, 'pj01id'));
+                const curPj01 = curList ? qp(curList, 'pj01id') : '';
+                const isCur = running && curPj01 && entry.url.includes(curPj01);
                 const allDone = totalN > 0 && doneN === totalN;
                 const card = document.createElement('div');
                 card.className = 'entry-card';
                 card.innerHTML = `<span class="entry-label">${esc(entry.label)}</span>` +
                     (totalN ? `<span class="entry-count">${doneN}/${totalN}</span>` : '') +
-                    `<span class="${isCur ? 'entry-st-run' : allDone ? 'entry-st-done' : 'entry-st-wait'}">${isCur ? '▶ 运行中' : allDone ? '✓ 已完成' : '等待中'}</span>` +
+                    `<span class="${isCur ? 'entry-st-run' : allDone ? 'entry-st-done' : 'entry-st-wait'}">${isCur ? '运行中' : allDone ? '已完成' : '等待中'}</span>` +
                     `<button class="vb vb-outline vb-mini entry-enter-btn" data-url="${esc(entry.url)}">进入</button>`;
                 box.appendChild(card);
             });
@@ -1961,7 +2364,7 @@
     // ── LIST 页面 (课程列表页) ────────────────────────────────────────
     if (location.href.includes('xspj_list.do')) {
         buildPanel(
-            '🎓 南理工教务增强助手 V2',
+            '南理工教务增强助手 V2',
             `
                 <div id="v80-submit-hint"></div>
                 <div class="btn-row">
@@ -1973,7 +2376,7 @@
                     <button id="clear-log-btn" class="vb vb-danger" style="flex:1">清空日志</button>
                 </div>
                 <div class="btn-row">
-                    <a href="https://enhance.njust.wiki" target="_blank" class="vb vb-outline vb-mini" style="text-decoration:none;flex:1;text-align:center;">🔗 点击前往增强助手官网</a>
+                    <a href="https://enhance.njust.wiki" target="_blank" class="vb vb-outline vb-mini" style="text-decoration:none;flex:1;text-align:center;">前往增强助手官网</a>
                 </div>
             `,
             `<div id="course-list"></div>`
@@ -2029,7 +2432,8 @@
             courses.forEach(c => {
                 // 初始化存储项
                 if (!store[c.key]) store[c.key] = { auto: true, done: false, name: c.name, teacher: c.teacher, zpf: c.zpf, url: c.rawUrl, pj01id: qp(c.rawUrl, 'pj01id') };
-                if (c.submitted) store[c.key].done = true;
+                // 已评价或已提交都视为完成，避免重复打开同一门课
+                if (c.submitted || c.evaluated) store[c.key].done = true;
                 const info = store[c.key];
                 let stClass, stLabel;
                 if (c.submitted) { stClass = 'st-submitted'; stLabel = '已提交'; }
@@ -2067,20 +2471,33 @@
          */
         const execNext = () => {
             if (localStorage.getItem(KEY_RUNNING) !== 'true') return;
-            if (localStorage.getItem(KEY_BUSY) === 'true') return; // 等待当前窗口保存完毕
+
+            // 互斥锁：等待当前课程处理完毕；超过阈值视为流程中断并自动恢复
+            if (localStorage.getItem(KEY_BUSY) === 'true') {
+                const ts = parseInt(localStorage.getItem(KEY_BUSY_TS) || '0', 10);
+                if (ts && Date.now() - ts < LOCK_TIMEOUT) return;
+                localStorage.setItem(KEY_BUSY, 'false');
+                logInfo('上一次操作已超时，已自动恢复流程');
+            }
+
             const store = loadStore(), curPj01 = qp(location.href, 'pj01id');
             // 查找属于当前类别且未完成的待评价课程
             const pending = Object.keys(store).filter(k => { const c = store[k]; return c.auto && !c.done && (!curPj01 || qp(c.url, 'pj01id') === curPj01); });
+
             if (pending.length > 0) {
                 const c = store[pending[0]];
-                localStorage.setItem(KEY_BUSY, 'true'); // 上锁
-                logInfo(`▶ 正在保存：${c.name}`);
-                window.open(withAuto(c.url, 'true'), '_blank', 'width=1200,height=800');
+                localStorage.setItem(KEY_BUSY, 'true');
+                localStorage.setItem(KEY_BUSY_TS, String(Date.now()));
+                logInfo(`正在保存：${c.name}（本类别剩余 ${pending.length} 门）`);
+                // 记录列表页地址，供评价页完成后返回
+                sessionStorage.setItem('njust_eval_list_url', location.href);
+                // 同页跳转，避免异步 window.open 被浏览器拦截
+                setTimeout(() => { location.href = withAuto(c.url, 'true'); }, 300);
             } else {
-                // 当前类别处理完毕，检查跨类别队列
-                const queue = loadQueue();
-                if (queue.length > 0) { const next = queue.shift(); saveQueue(queue); localStorage.setItem(KEY_CURLIST, next); localStorage.setItem(KEY_BUSY, 'false'); setTimeout(() => { location.href = next; }, 800); }
-                else { localStorage.setItem(KEY_RUNNING, 'false'); localStorage.setItem(KEY_BUSY, 'false'); logSuccess('🎉 所有类别评价已全部完成！'); renderList(); alert('🎉全部评价已完成！'); }
+                localStorage.setItem(KEY_RUNNING, 'false');
+                localStorage.setItem(KEY_BUSY, 'false');
+                logSuccess('当前类别的课程已全部处理完成');
+                renderList();
             }
         };
 
@@ -2089,24 +2506,54 @@
          */
         const execNextSubmit = () => {
             if (localStorage.getItem(KEY_SUBRUN) !== 'true') return;
-            if (localStorage.getItem(KEY_SUBBSY) === 'true') return;
+
+            if (localStorage.getItem(KEY_SUBBSY) === 'true') {
+                const ts = parseInt(localStorage.getItem(KEY_SUBBSY_TS) || '0', 10);
+                if (ts && Date.now() - ts < LOCK_TIMEOUT) return;
+                localStorage.setItem(KEY_SUBBSY, 'false');
+                logInfo('上一次提交已超时，已自动恢复流程');
+            }
+
             const queue = loadSubQueue();
-            if (queue.length === 0) { localStorage.setItem(KEY_SUBRUN, 'false'); localStorage.setItem(KEY_SUBBSY, 'false'); logSuccess('🎉 所有勾选课程提交完毕！'); setTimeout(() => location.reload(), 800); return; }
-            const nextUrl = queue.shift(); saveSubQueue(queue); localStorage.setItem(KEY_SUBBSY, 'true');
+            if (queue.length === 0) {
+                localStorage.setItem(KEY_SUBRUN, 'false');
+                localStorage.setItem(KEY_SUBBSY, 'false');
+                logSuccess('所有勾选课程提交完毕');
+                setTimeout(() => location.reload(), 800);
+                return;
+            }
+
+            const nextUrl = queue.shift();
+            saveSubQueue(queue);
+            localStorage.setItem(KEY_SUBBSY, 'true');
+            localStorage.setItem(KEY_SUBBSY_TS, String(Date.now()));
             const submitStore = loadStore(), submitKey = courseKey(nextUrl), submitInfo = submitKey ? submitStore[submitKey] : null;
-            logInfo(`▶ 正在提交：${submitInfo ? submitInfo.name + '（' + submitInfo.teacher + '）' : nextUrl}`);
-            window.open(nextUrl, '_blank', 'width=1200,height=800');
+            logInfo(`正在提交：${submitInfo ? submitInfo.name + '（' + submitInfo.teacher + '）' : nextUrl}`);
+            sessionStorage.setItem('njust_eval_list_url', location.href);
+            // 同页跳转，避免被浏览器拦截
+            setTimeout(() => { location.href = nextUrl; }, 300);
         };
 
         // 按钮点击事件绑定
-        document.getElementById('start-btn').onclick = () => { localStorage.setItem(KEY_RUNNING, 'true'); localStorage.setItem(KEY_BUSY, 'false'); renderList(); execNext(); };
+        document.getElementById('start-btn').onclick = () => {
+            localStorage.setItem(KEY_RUNNING, 'true');
+            localStorage.setItem(KEY_BUSY, 'false');
+            localStorage.setItem(KEY_CURLIST, location.href);
+            renderList();
+            execNext();
+        };
         document.getElementById('submit-all-btn').onclick = () => {
             const store = loadStore(), toSubmit = parseRows().filter(c => { const info = store[c.key]; return (c.evaluated || (info && info.done)) && !c.submitted && (info ? info.auto !== false : true); });
             if (toSubmit.length === 0) return;
             if (!confirm(`即将提交以下 ${toSubmit.length} 门课程：\n` + toSubmit.map(c => `· ${c.name}（${c.teacher}）`).join('\n') + '\n\n确认继续？')) return;
             const queue = toSubmit.map(c => withSubmit(c.rawUrl)); saveSubQueue(queue); localStorage.setItem(KEY_SUBRUN, 'true'); localStorage.setItem(KEY_SUBBSY, 'false'); execNextSubmit();
         };
-        document.getElementById('reset-btn').onclick = () => { if (confirm('重置所有缓存？')) { [KEY_STORE, KEY_RUNNING, KEY_BUSY, KEY_QUEUE, KEY_CURLIST, KEY_SUBQUEUE, KEY_SUBRUN, KEY_SUBBSY].forEach(k => localStorage.removeItem(k)); location.reload(); } };
+        document.getElementById('reset-btn').onclick = () => {
+            if (!confirm('重置所有缓存？')) return;
+            [KEY_STORE, KEY_RUNNING, KEY_BUSY, KEY_BUSY_TS, KEY_CURLIST,
+                KEY_SUBQUEUE, KEY_SUBRUN, KEY_SUBBSY, KEY_SUBBSY_TS].forEach(k => localStorage.removeItem(k));
+            location.reload();
+        };
         document.getElementById('clear-log-btn').onclick = () => clearLogs();
 
         // 跨页面状态监听：当其他窗口修改了 busy 标志或完成状态时，本页面及时响应并触发下一步
@@ -2129,6 +2576,15 @@
         const isAutoSub = params.get(PARAM_SUBMIT) === 'true';
         const isManual = !isAutoSave && !isAutoSub;
 
+        // 完成后退回课程列表页（同页跳转模式）
+        // 优先使用列表页在跳转前记录的地址，确保返回时是完整加载、脚本会重新执行
+        const goBack = () => {
+            const listUrl = sessionStorage.getItem('njust_eval_list_url');
+            if (listUrl) location.href = listUrl;
+            else if (history.length > 1) history.back();
+            else window.close();
+        };
+
         // 手动模式：注入顶栏快捷填分工具
         if (isManual) {
             const initManual = () => {
@@ -2141,7 +2597,7 @@
                 bar.id = 'v80-manual-bar';
                 bar.style.cssText = 'position:sticky;top:0;left:0;width:100%;z-index:var(--nju-z-topbar);box-sizing:border-box;background:#ebf8ff;border-bottom:2px solid #90cdf4;color:#2c5282;padding:10px 18px;font-family:var(--nju-font);box-shadow:var(--nju-shadow-sm);';
                 bar.innerHTML = `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-                    <span style="font-weight:700;font-size:13px;">🎓 南理工教务增强助手 V2</span>
+                    <span style="font-weight:700;font-size:13px;">南理工教务增强助手 V2</span>
                     <span style="font-size:11px;padding:2px 9px;border-radius:7px;background:#edf2f7;color:#718096;border:1px solid #cbd5e0;">手动模式</span>
                     <span style="font-size:12px;color:#4a5568;">快捷填分：</span>
                     <button id="v8-fill-highest" class="vb vb-outline vb-mini">最高分</button>
@@ -2190,12 +2646,12 @@
         const bgColor = isAutoSub ? '#f0fff4' : '#ebf8ff';
         const bdColor = isAutoSub ? '#9ae6b4' : '#90cdf4';
         const textColor = isAutoSub ? '#276749' : '#2c5282';
-        const modeName = isAutoSub ? '✅ 提交模式' : '💾 保存模式';
+        const modeName = isAutoSub ? '提交模式' : '保存模式';
 
         const bar = document.createElement('div');
         bar.style.cssText = `position:sticky;top:0;left:0;width:100%;z-index:var(--nju-z-topbar);box-sizing:border-box;background:${bgColor};color:${textColor};border-bottom:2px solid ${bdColor};box-shadow:var(--nju-shadow-sm);font-family:var(--nju-font);`;
         bar.innerHTML = `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 20px;">
-            <span style="font-weight:700;font-size:13px;">🎓 南理工教务增强助手 V2</span>
+            <span style="font-weight:700;font-size:13px;">南理工教务增强助手 V2</span>
             <span style="font-size:11px;padding:2px 10px;border-radius:8px;background:rgba(255,255,255,0.5);border:1px solid ${bdColor};">${modeName}</span>
             <span id="edit-tag" style="font-size:11px;padding:2px 10px;border-radius:8px;background:rgba(0,0,0,0.06);border:1px solid ${bdColor};">初始化...</span>
             <span id="v8-total-display" style="font-size:17px;font-weight:800;color:${textColor};padding:1px 10px;border-radius:6px;border:1px solid ${bdColor};background:#fff;">总分 0</span>
@@ -2206,15 +2662,22 @@
         document.body.prepend(bar);
 
         const tag = document.getElementById('edit-tag');
-        const editLog = (msg, level = 'info') => { tag.textContent = msg; pushLog('[edit] ' + msg, level); };
+        const editLog = (msg, level = 'info') => { tag.textContent = msg; pushLog(msg, level); };
         let stopped = false;
-        document.getElementById('stop-btn').onclick = () => { stopped = true; editLog('已停止'); document.getElementById('stop-btn').style.display = 'none'; };
+        document.getElementById('stop-btn').onclick = () => {
+            stopped = true;
+            editLog('已停止');
+            // 停止时主动释放锁，避免流水线卡死
+            localStorage.setItem(KEY_BUSY, 'false');
+            localStorage.setItem(KEY_SUBBSY, 'false');
+            document.getElementById('stop-btn').style.display = 'none';
+        };
 
         // 执行自动提交逻辑
         if (isAutoSub) {
             setTimeout(() => {
-                const key = courseKey(location.href), store = loadStore();
-                editLog('准备提交...');
+                const key = courseKey(location.href);
+                editLog('准备提交');
                 if (stopped) return;
 
                 // 提交模式下也要计算并显示当前总分
@@ -2225,20 +2688,36 @@
 
                 ensureValueFields();
 
+                const releaseLock = () => localStorage.setItem(KEY_SUBBSY, 'false');
+
                 const doSubmit = () => {
+                    if (stopped) { releaseLock(); return; }
+
                     const tj = document.getElementById('tj');
-                    if (!tj) { localStorage.setItem(KEY_SUBBSY, 'false'); setTimeout(() => window.close(), 1000); return; }
+                    if (!tj) {
+                        editLog('未找到提交按钮，请手动提交', 'error');
+                        releaseLock();
+                        return;
+                    }
+
                     try {
                         // 调用教务系统原生的提交函数
                         unsafeWindow.saveData(tj, '1');
-                        if (key && store[key]) { store[key].done = true; saveStore(store); }
-                        editLog('已提交！', 'success');
                     } catch (err) {
-                        logError(err.message);
-                        editLog('提交出错，请手动操作', 'error');
+                        editLog('提交出错，请手动处理：' + err.message, 'error');
+                        releaseLock();
+                        return;
                     }
-                    // 释放互斥锁并关闭窗口
-                    setTimeout(() => { localStorage.setItem(KEY_SUBBSY, 'false'); setTimeout(() => window.close(), 300); }, 800);
+
+                    // 提交成功后再标记完成，避免失败却被跳过
+                    const fresh = loadStore();
+                    if (key && fresh[key]) { fresh[key].done = true; saveStore(fresh); }
+                    editLog('已提交，返回列表', 'success');
+
+                    setTimeout(() => {
+                        releaseLock();
+                        setTimeout(goBack, 300);
+                    }, 800);
                 };
 
                 let tries = 0;
@@ -2250,21 +2729,55 @@
         } else {
             // 执行自动填分并保存逻辑
             setTimeout(() => {
-                const key = courseKey(location.href), store = loadStore();
+                if (stopped) return;
+
+                const key = courseKey(location.href);
                 const { gkeys, groups } = collectGroups();
                 ensureValueFields();
+
+                // 分值解析校验：解析不到任何分值时停止，避免误选全部 0 分
+                const hasValidScore = gkeys.some(k => groups[k].some(o => o.score > 0));
+                if (!gkeys.length || !hasValidScore) {
+                    editLog('未能解析评分项或分值，已停止自动保存', 'error');
+                    localStorage.setItem(KEY_BUSY, 'false');
+                    return;
+                }
+
                 const total = applyStrategy('highest', gkeys, groups);
-                document.getElementById('v8-total-display').textContent = `总分 ${total}`;
-                if (key && store[key]) { store[key].done = true; saveStore(store); }
+                const totalDisplay = document.getElementById('v8-total-display');
+                if (totalDisplay) totalDisplay.textContent = `总分 ${total}`;
+
                 if (stopped) return;
-                editLog('填写完成，即将保存');
+                editLog('填写完成，正在保存');
+
                 setTimeout(() => {
                     if (stopped) return;
+
                     const bc = document.getElementById('bc'); // 保存按钮
-                    if (bc) try { unsafeWindow.saveData(bc, '0'); } catch (err) { logError(err.message); }
-                    // 释放互斥锁并关闭窗口
-                    setTimeout(() => { localStorage.setItem(KEY_BUSY, 'false'); setTimeout(() => window.close(), 300); }, 600);
-                }, 1000);
+                    if (!bc) {
+                        editLog('未找到保存按钮，请手动保存', 'error');
+                        localStorage.setItem(KEY_BUSY, 'false');
+                        return;
+                    }
+
+                    try {
+                        unsafeWindow.saveData(bc, '0');
+                    } catch (err) {
+                        editLog('保存出错，请手动处理：' + err.message, 'error');
+                        localStorage.setItem(KEY_BUSY, 'false');
+                        return;
+                    }
+
+                    // 保存无异常后再标记完成，避免失败却被跳过
+                    const fresh = loadStore();
+                    if (key && fresh[key]) { fresh[key].done = true; saveStore(fresh); }
+                    editLog('已保存，返回列表', 'success');
+
+                    setTimeout(() => {
+                        localStorage.setItem(KEY_BUSY, 'false');
+                        setTimeout(goBack, 300);
+                    }, 800);
+                }, 800);
             }, 800);
         }
     }

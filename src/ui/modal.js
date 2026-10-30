@@ -14,15 +14,13 @@
         };
         const theme = themeConfig[type] || themeConfig.info;
 
+        container.className = 'nju-window';
         container.style.cssText = `
-            position: fixed; top: 50%; left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            background: var(--nju-bg);
-            border: none; border-radius: var(--nju-radius-lg); padding: 0;
-            box-shadow: var(--nju-shadow-lg);
-            z-index: var(--nju-z-modal); min-width: 340px; max-width: 460px;
-            font-family: var(--nju-font);
-            overflow: hidden; animation: njustFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 420px; min-width: 320px; max-width: 90vw;
+            z-index: var(--nju-z-modal);
+            animation: njustFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         `;
 
         container.innerHTML = `
@@ -68,7 +66,13 @@
             document.head.appendChild(style);
         }
 
-        addDragFunctionality(container);
+        enableWindow({
+            id: 'modal',
+            target: container,
+            handle: container.querySelector('#dragHandle'),
+            minWidth: 320,
+            minHeight: 220
+        });
         document.body.appendChild(container);
 
         // 绑定关闭按钮事件

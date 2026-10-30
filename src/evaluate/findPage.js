@@ -17,7 +17,7 @@
         };
 
         buildPanel(
-            '🎓 南理工教务增强助手 V2',
+            '南理工教务增强助手 V2',
             `
                 <div id="v80-usage" style="font-size:13px;line-height:1.75;padding:14px 16px;border:1px solid #cbd5e0;border-radius:10px;background:#f7fafc;color:#2d3748;box-shadow:0 1px 6px rgba(0,0,0,0.06);">
                     <div style="font-weight:800;margin-bottom:8px;font-size:14px;">新手使用指南</div>
@@ -57,13 +57,14 @@
                 const related = Object.values(store).filter(c => c.url && qp(c.url, 'pj01id') === pj01);
                 const doneN = related.filter(c => c.done).length;
                 const totalN = related.length;
-                const isCur = running && curList && entry.url.includes(qp(curList, 'pj01id'));
+                const curPj01 = curList ? qp(curList, 'pj01id') : '';
+                const isCur = running && curPj01 && entry.url.includes(curPj01);
                 const allDone = totalN > 0 && doneN === totalN;
                 const card = document.createElement('div');
                 card.className = 'entry-card';
                 card.innerHTML = `<span class="entry-label">${esc(entry.label)}</span>` +
                     (totalN ? `<span class="entry-count">${doneN}/${totalN}</span>` : '') +
-                    `<span class="${isCur ? 'entry-st-run' : allDone ? 'entry-st-done' : 'entry-st-wait'}">${isCur ? '▶ 运行中' : allDone ? '✓ 已完成' : '等待中'}</span>` +
+                    `<span class="${isCur ? 'entry-st-run' : allDone ? 'entry-st-done' : 'entry-st-wait'}">${isCur ? '运行中' : allDone ? '已完成' : '等待中'}</span>` +
                     `<button class="vb vb-outline vb-mini entry-enter-btn" data-url="${esc(entry.url)}">进入</button>`;
                 box.appendChild(card);
             });

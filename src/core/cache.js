@@ -19,7 +19,7 @@
                     url
                 };
                 localStorage.setItem(this.getKey(url), JSON.stringify(cacheData));
-                if (DEBUG_CONFIG.showCache) Logger.info(`💾 缓存已保存: ${url}`);
+                if (DEBUG_CONFIG.showCache) Logger.info(`缓存已保存: ${url}`);
                 return true;
             } catch (e) {
                 Logger.error('缓存保存失败: ', e);
@@ -49,7 +49,7 @@
                 }
                 const age = ((now - cacheData.timestamp) / 1000).toFixed(1);
                 const remaining = ((cacheData.ttl - (now - cacheData.timestamp)) / 1000).toFixed(1);
-                if (DEBUG_CONFIG.showCache) Logger.info(`✅ 缓存命中: ${url} (已缓存${age}s，剩余${remaining}s)`);
+                if (DEBUG_CONFIG.showCache) Logger.info(`缓存命中: ${url} (已缓存${age}s，剩余${remaining}s)`);
                 return cacheData.data;
             } catch (e) {
                 Logger.error('缓存读取失败: ', e);

@@ -3,31 +3,25 @@
         try {
             const container = document.createElement('div');
             container.id = 'creditSummaryWindow';
+            container.className = 'nju-window';
             container.style.cssText = `
-                position: fixed; top: 40px; right: 40px;
-                background: var(--nju-bg); border: 1px solid var(--nju-border); border-radius: var(--nju-radius-lg);
-                padding: 0; box-shadow: var(--nju-shadow-md);
-                z-index: var(--nju-z-panel); min-width: 420px; max-width: 520px;
-                font-family: var(--nju-font);
-                overflow: hidden;
+                top: 40px; right: 40px; width: 460px; height: 520px;
+                z-index: var(--nju-z-panel);
             `;
 
             container.innerHTML = `
-                <div id="creditDragHandle" style="
-                    background: var(--nju-bg-subtle); padding: 14px 22px; cursor: move;
-                    display: flex; justify-content: space-between; align-items: center;
-                    border-bottom: 1px solid var(--nju-border);">
-                    <div style="color: var(--nju-text); font-weight: 600; font-size: var(--nju-fs-xl); letter-spacing: 1px;">
-                        🎓 南理工教务增强助手 V2
+                <div class="nju-window-hd" id="creditDragHandle">
+                    <div class="nju-window-title">南理工教务增强助手 V2</div>
+                    <div class="nju-window-actions">
+                        <span id="creditCloseBtn" class="nju-close" title="关闭">✕</span>
                     </div>
-                    <span id="creditCloseBtn" class="nju-close">✕</span>
                 </div>
-                <div style="background: var(--nju-bg); padding: 18px 22px 10px 22px; max-height: 540px; overflow-y: auto;">
+                <div class="nju-window-bd" style="padding: 16px 18px 10px;">
                     <div id="creditSummary"></div>
                     <div id="xxkVersionBar" style="margin-top: 14px; padding: 9px 12px; background: var(--nju-primary-soft);
                         border: 1px solid rgba(0, 122, 255, 0.25); border-radius: var(--nju-radius-sm); font-size: var(--nju-fs-md); color: var(--nju-text-2);
                         display: flex; align-items: center;">
-                        <span id="xxkVersionText">📦 分类口径：加载中…</span>
+                        <span id="xxkVersionText">分类口径：加载中…</span>
                         <select id="xxkVersionSelect" title="选择学分统计所依据的培养方案版本"
                             style="margin-left: auto; font-size: var(--nju-fs-sm); padding: 2px 6px; border: 1px solid var(--nju-border);
                             border-radius: var(--nju-radius-sm); background: var(--nju-bg); color: var(--nju-text-2);">
@@ -35,6 +29,19 @@
                             <option value="2018">2018 版</option>
                             <option value="2022">2022 版</option>
                             <option value="2026">2026 版</option>
+                        </select>
+                    </div>
+                    <div id="outlineModeBar" style="margin-top: 8px; padding: 9px 12px; background: var(--nju-bg-subtle);
+                        border: 1px solid var(--nju-border); border-radius: var(--nju-radius-sm);
+                        font-size: var(--nju-fs-md); color: var(--nju-text-2); display: flex; align-items: center;">
+                        <span>大纲链接</span>
+                        <select id="outlineModeSelect" title="选择课程大纲链接的显示方式"
+                            style="margin-left: auto; font-size: var(--nju-fs-sm); padding: 2px 6px; border: 1px solid var(--nju-border);
+                            border-radius: var(--nju-radius-sm); background: var(--nju-bg); color: var(--nju-text-2);">
+                            <option value="both">全部显示（1 + 2 + 镜像）</option>
+                            <option value="original">仅官方大纲（1 + 2）</option>
+                            <option value="mirror">仅大纲镜像</option>
+                            <option value="none">不显示</option>
                         </select>
                     </div>
                     <div style="margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--nju-border);
@@ -51,7 +58,13 @@
             `;
 
             // 统一使用公共拖拽实现（句柄为本窗体的 creditDragHandle）
-            makeDraggable(container.querySelector('#creditDragHandle'), container);
+            enableWindow({
+                id: 'credits',
+                target: container,
+                handle: container.querySelector('#creditDragHandle'),
+                minWidth: 360,
+                minHeight: 240
+            });
 
             document.body.appendChild(container);
 
@@ -68,7 +81,7 @@
                 const versionSelect = container.querySelector('#xxkVersionSelect');
                 const info = resolveCategoryVersion();
                 if (versionText) {
-                    versionText.textContent = `📦 分类口径：${info.version} 版（${describeVersionSource(info)}）`;
+                    versionText.textContent = `分类口径：${info.version} 版（${describeVersionSource(info)}）`;
                 }
                 if (versionSelect) {
                     versionSelect.value = localStorage.getItem(KEY_XXK_VERSION) || '';
@@ -79,6 +92,16 @@
                         CacheManager.clear();
                         Logger.info(`分类口径已切换为「${value || '按学号自动'}」，正在重新加载数据`);
                         setTimeout(() => location.reload(), 300);
+                    });
+                }
+
+                const outlineSelect = container.querySelector('#outlineModeSelect');
+                if (outlineSelect) {
+                    outlineSelect.value = getOutlineMode();
+                    outlineSelect.addEventListener('change', () => {
+                        setOutlineMode(outlineSelect.value);
+                        Logger.info(`大纲链接显示方式已切换为「${outlineSelect.options[outlineSelect.selectedIndex].text}」`);
+                        setTimeout(() => location.reload(), 200);
                     });
                 }
             } catch (e) {
@@ -136,7 +159,7 @@
             const totalCountByCategory = Object.values(creditsByCategory).reduce((s, d) => s + d.count, 0);
 
             let summaryHTML = `<div style="border-bottom: 1px solid var(--nju-border); margin-bottom: 12px; padding-bottom: 10px;">`;
-            summaryHTML += `<div style="margin-bottom: 8px; font-size: var(--nju-fs-lg); color: var(--nju-text); font-weight: 600;">📊 按课程性质统计</div>`;
+            summaryHTML += `<div style="margin-bottom: 8px; font-size: var(--nju-fs-lg); color: var(--nju-text); font-weight: 600;">按课程性质统计</div>`;
             summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; background: var(--nju-bg-subtle); border-radius: var(--nju-radius-sm); padding: 4px 6px; margin-bottom: 4px;">
                 <span style="color: var(--nju-primary); font-weight: 600; font-size: var(--nju-fs-md);">总计</span>
                 <span style="font-weight: 600; color: var(--nju-primary); font-size: var(--nju-fs-md);">${totalCreditsByType.toFixed(1)} 学分</span>
@@ -153,7 +176,7 @@
 
             if (Object.keys(creditsByCategory).length > 0) {
                 summaryHTML += `<div style="margin-top: 16px;">`;
-                summaryHTML += `<div style="margin-bottom: 8px; font-size: var(--nju-fs-lg); color: var(--nju-text); font-weight: 600;">🏷️ 按选修课类别统计</div>`;
+                summaryHTML += `<div style="margin-bottom: 8px; font-size: var(--nju-fs-lg); color: var(--nju-text); font-weight: 600;">按选修课类别统计</div>`;
                 summaryHTML += `<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px; background: var(--nju-bg-subtle); border-radius: var(--nju-radius-sm); padding: 4px 6px; margin-bottom: 4px;">
                     <span style="color: var(--nju-primary); font-weight: 600; font-size: var(--nju-fs-md);">总计</span>
                     <span style="font-weight: 600; color: var(--nju-primary); font-size: var(--nju-fs-md);">${totalCreditsByCategory.toFixed(1)} 学分</span>
@@ -174,7 +197,7 @@
         } catch (e) {
             Logger.error('更新学分统计失败:', e);
             const el = document.getElementById('creditSummary');
-            if (el) el.innerHTML = '<div style="color:var(--nju-danger);padding:10px;text-align:center;">❌ 学分统计更新失败</div>';
+            if (el) el.innerHTML = '<div style="color:var(--nju-danger);padding:10px;text-align:center;">学分统计更新失败</div>';
         }
     }
 

@@ -71,7 +71,7 @@
         let total = 0;
         gkeys.forEach((k, i) => {
             const opts = groups[k], len = opts.length;
-            let pick;
+            let pick = 0; // 默认选最高分，避免策略名异常时不勾选任何项
             if (strategy === 'highest') {
                 // 最高分策略：在扰动项选次高，其余全选最高
                 pick = (i === perturbIdx && len >= 2) ? 1 : 0;

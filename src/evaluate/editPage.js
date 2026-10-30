@@ -5,6 +5,15 @@
         const isAutoSub = params.get(PARAM_SUBMIT) === 'true';
         const isManual = !isAutoSave && !isAutoSub;
 
+        // 完成后退回课程列表页（同页跳转模式）
+        // 优先使用列表页在跳转前记录的地址，确保返回时是完整加载、脚本会重新执行
+        const goBack = () => {
+            const listUrl = sessionStorage.getItem('njust_eval_list_url');
+            if (listUrl) location.href = listUrl;
+            else if (history.length > 1) history.back();
+            else window.close();
+        };
+
         // 手动模式：注入顶栏快捷填分工具
         if (isManual) {
             const initManual = () => {
@@ -17,7 +26,7 @@
                 bar.id = 'v80-manual-bar';
                 bar.style.cssText = 'position:sticky;top:0;left:0;width:100%;z-index:var(--nju-z-topbar);box-sizing:border-box;background:#ebf8ff;border-bottom:2px solid #90cdf4;color:#2c5282;padding:10px 18px;font-family:var(--nju-font);box-shadow:var(--nju-shadow-sm);';
                 bar.innerHTML = `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-                    <span style="font-weight:700;font-size:13px;">🎓 南理工教务增强助手 V2</span>
+                    <span style="font-weight:700;font-size:13px;">南理工教务增强助手 V2</span>
                     <span style="font-size:11px;padding:2px 9px;border-radius:7px;background:#edf2f7;color:#718096;border:1px solid #cbd5e0;">手动模式</span>
                     <span style="font-size:12px;color:#4a5568;">快捷填分：</span>
                     <button id="v8-fill-highest" class="vb vb-outline vb-mini">最高分</button>
@@ -66,12 +75,12 @@
         const bgColor = isAutoSub ? '#f0fff4' : '#ebf8ff';
         const bdColor = isAutoSub ? '#9ae6b4' : '#90cdf4';
         const textColor = isAutoSub ? '#276749' : '#2c5282';
-        const modeName = isAutoSub ? '✅ 提交模式' : '💾 保存模式';
+        const modeName = isAutoSub ? '提交模式' : '保存模式';
 
         const bar = document.createElement('div');
         bar.style.cssText = `position:sticky;top:0;left:0;width:100%;z-index:var(--nju-z-topbar);box-sizing:border-box;background:${bgColor};color:${textColor};border-bottom:2px solid ${bdColor};box-shadow:var(--nju-shadow-sm);font-family:var(--nju-font);`;
         bar.innerHTML = `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 20px;">
-            <span style="font-weight:700;font-size:13px;">🎓 南理工教务增强助手 V2</span>
+            <span style="font-weight:700;font-size:13px;">南理工教务增强助手 V2</span>
             <span style="font-size:11px;padding:2px 10px;border-radius:8px;background:rgba(255,255,255,0.5);border:1px solid ${bdColor};">${modeName}</span>
             <span id="edit-tag" style="font-size:11px;padding:2px 10px;border-radius:8px;background:rgba(0,0,0,0.06);border:1px solid ${bdColor};">初始化...</span>
             <span id="v8-total-display" style="font-size:17px;font-weight:800;color:${textColor};padding:1px 10px;border-radius:6px;border:1px solid ${bdColor};background:#fff;">总分 0</span>
@@ -82,15 +91,22 @@
         document.body.prepend(bar);
 
         const tag = document.getElementById('edit-tag');
-        const editLog = (msg, level = 'info') => { tag.textContent = msg; pushLog('[edit] ' + msg, level); };
+        const editLog = (msg, level = 'info') => { tag.textContent = msg; pushLog(msg, level); };
         let stopped = false;
-        document.getElementById('stop-btn').onclick = () => { stopped = true; editLog('已停止'); document.getElementById('stop-btn').style.display = 'none'; };
+        document.getElementById('stop-btn').onclick = () => {
+            stopped = true;
+            editLog('已停止');
+            // 停止时主动释放锁，避免流水线卡死
+            localStorage.setItem(KEY_BUSY, 'false');
+            localStorage.setItem(KEY_SUBBSY, 'false');
+            document.getElementById('stop-btn').style.display = 'none';
+        };
 
         // 执行自动提交逻辑
         if (isAutoSub) {
             setTimeout(() => {
-                const key = courseKey(location.href), store = loadStore();
-                editLog('准备提交...');
+                const key = courseKey(location.href);
+                editLog('准备提交');
                 if (stopped) return;
 
                 // 提交模式下也要计算并显示当前总分
@@ -101,20 +117,36 @@
 
                 ensureValueFields();
 
+                const releaseLock = () => localStorage.setItem(KEY_SUBBSY, 'false');
+
                 const doSubmit = () => {
+                    if (stopped) { releaseLock(); return; }
+
                     const tj = document.getElementById('tj');
-                    if (!tj) { localStorage.setItem(KEY_SUBBSY, 'false'); setTimeout(() => window.close(), 1000); return; }
+                    if (!tj) {
+                        editLog('未找到提交按钮，请手动提交', 'error');
+                        releaseLock();
+                        return;
+                    }
+
                     try {
                         // 调用教务系统原生的提交函数
                         unsafeWindow.saveData(tj, '1');
-                        if (key && store[key]) { store[key].done = true; saveStore(store); }
-                        editLog('已提交！', 'success');
                     } catch (err) {
-                        logError(err.message);
-                        editLog('提交出错，请手动操作', 'error');
+                        editLog('提交出错，请手动处理：' + err.message, 'error');
+                        releaseLock();
+                        return;
                     }
-                    // 释放互斥锁并关闭窗口
-                    setTimeout(() => { localStorage.setItem(KEY_SUBBSY, 'false'); setTimeout(() => window.close(), 300); }, 800);
+
+                    // 提交成功后再标记完成，避免失败却被跳过
+                    const fresh = loadStore();
+                    if (key && fresh[key]) { fresh[key].done = true; saveStore(fresh); }
+                    editLog('已提交，返回列表', 'success');
+
+                    setTimeout(() => {
+                        releaseLock();
+                        setTimeout(goBack, 300);
+                    }, 800);
                 };
 
                 let tries = 0;
@@ -126,21 +158,55 @@
         } else {
             // 执行自动填分并保存逻辑
             setTimeout(() => {
-                const key = courseKey(location.href), store = loadStore();
+                if (stopped) return;
+
+                const key = courseKey(location.href);
                 const { gkeys, groups } = collectGroups();
                 ensureValueFields();
+
+                // 分值解析校验：解析不到任何分值时停止，避免误选全部 0 分
+                const hasValidScore = gkeys.some(k => groups[k].some(o => o.score > 0));
+                if (!gkeys.length || !hasValidScore) {
+                    editLog('未能解析评分项或分值，已停止自动保存', 'error');
+                    localStorage.setItem(KEY_BUSY, 'false');
+                    return;
+                }
+
                 const total = applyStrategy('highest', gkeys, groups);
-                document.getElementById('v8-total-display').textContent = `总分 ${total}`;
-                if (key && store[key]) { store[key].done = true; saveStore(store); }
+                const totalDisplay = document.getElementById('v8-total-display');
+                if (totalDisplay) totalDisplay.textContent = `总分 ${total}`;
+
                 if (stopped) return;
-                editLog('填写完成，即将保存');
+                editLog('填写完成，正在保存');
+
                 setTimeout(() => {
                     if (stopped) return;
+
                     const bc = document.getElementById('bc'); // 保存按钮
-                    if (bc) try { unsafeWindow.saveData(bc, '0'); } catch (err) { logError(err.message); }
-                    // 释放互斥锁并关闭窗口
-                    setTimeout(() => { localStorage.setItem(KEY_BUSY, 'false'); setTimeout(() => window.close(), 300); }, 600);
-                }, 1000);
+                    if (!bc) {
+                        editLog('未找到保存按钮，请手动保存', 'error');
+                        localStorage.setItem(KEY_BUSY, 'false');
+                        return;
+                    }
+
+                    try {
+                        unsafeWindow.saveData(bc, '0');
+                    } catch (err) {
+                        editLog('保存出错，请手动处理：' + err.message, 'error');
+                        localStorage.setItem(KEY_BUSY, 'false');
+                        return;
+                    }
+
+                    // 保存无异常后再标记完成，避免失败却被跳过
+                    const fresh = loadStore();
+                    if (key && fresh[key]) { fresh[key].done = true; saveStore(fresh); }
+                    editLog('已保存，返回列表', 'success');
+
+                    setTimeout(() => {
+                        localStorage.setItem(KEY_BUSY, 'false');
+                        setTimeout(goBack, 300);
+                    }, 800);
+                }, 800);
             }, 800);
         }
     }
